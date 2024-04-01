@@ -33,7 +33,3 @@
 .MuiFormControl-root {
   border: 1px solid var(--light) !important;
 }
-
-.MuiInputBase-input {
-  color: var(--light) !important;
-}

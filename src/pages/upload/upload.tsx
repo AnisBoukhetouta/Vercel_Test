@@ -119,7 +119,7 @@ export default function Upload() {
                     value={formik.values.gameTitle}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    inputProps={{ style: { color: "var(--light)" } }}
+                    
                     error={
                       formik.touched.gameTitle &&
                       Boolean(formik.errors.gameTitle)
@@ -211,7 +211,7 @@ export default function Upload() {
                       value={formik.values.googlePlay}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      inputProps={{ style: { color: "var(--light)" } }}
+                      
                       error={
                         formik.touched.googlePlay &&
                         Boolean(formik.errors.googlePlay)
@@ -229,7 +229,7 @@ export default function Upload() {
                       value={formik.values.iOsApp}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      inputProps={{ style: { color: "var(--light)" } }}
+                      
                       error={
                         formik.touched.iOsApp && Boolean(formik.errors.iOsApp)
                       }
@@ -244,7 +244,7 @@ export default function Upload() {
                       value={formik.values.steamLink}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      inputProps={{ style: { color: "var(--light)" } }}
+                      
                       error={
                         formik.touched.steamLink &&
                         Boolean(formik.errors.steamLink)
