@@ -50,12 +50,14 @@ export default function Playground() {
         sx={{
           flexGrow: 1,
           py: 4,
+          background: 'url("/images/home/10303.jpg") no-repeat fixed center',
+          height: "100vh",
         }}
       >
         <Container
           maxWidth="xl"
           style={{
-            paddingTop: "6rem",
+            paddingTop: "4rem",
           }}
         >
           <Box>

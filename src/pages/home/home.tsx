@@ -1,15 +1,9 @@
 import React from "react";
-import Container from "@mui/material/Container";
-import GameView from "../../components/gameView/gameView";
 import ModelBox from "../../components/model/modelBox";
+import GameView from "../../components/gameView/gameView";
 
 const home = () => {
-  return (
-    <div>
-      {/* <GameView /> */}
-      <ModelBox />
-    </div>
-  );
+  return <ModelBox />;
 };
 
 export default home;
