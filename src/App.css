@@ -1,0 +1,38 @@
+:root {
+  --dark: #393e41;
+  --light: #f6f7eb;
+  --accent: #f97432;
+  --shadow: #00000080;
+  --black: #000000ff;
+  --transparent: #00000000;
+
+  --container-1-width: 100ch;
+  --padding-1: 1em;
+  --padding-2: 2em;
+  --padding-3: 3em;
+  --padding-4: 4em;
+  --padding-5: 5em;
+  --padding-8: 8em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-wrap: balance;
+  box-sizing: border-box;
+  position: relative;
+  /* font-family: 'Dela Gothic One', sans-serif; */
+  /* font-family: "Bebas Neue", sans-serif; */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: var(--light);
+  background: url("src/public/images/home/10302.jpg") no-repeat fixed center;
+  box-sizing: border-box;
+}
+
+.MuiFormControl-root {
+  border: 1px solid var(--light) !important;
+}
+
+.MuiInputBase-input {
+  color: var(--light) !important;
+}
