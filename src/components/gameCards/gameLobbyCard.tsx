@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import styles from "./card.module.css";
 import { Typography } from "@mui/material";
 
-export default function GameCard1({ item }) {
+export default function GameLobbyCard({ item }) {
   const [mouseOver, setMouseOver] = React.useState("");
 
   const handlePlay = (key) => {
