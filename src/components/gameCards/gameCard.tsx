@@ -1,6 +1,6 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import styles from "./card.module.css";
+import classes from "./card.module.css";
 
 export default function GameCard({ item }) {
   const [mouseOver, setMouseOver] = React.useState("");
@@ -27,7 +27,7 @@ export default function GameCard({ item }) {
       <img
         src={mouseOver === item.id ? item.imageOut : item.imageOver}
         alt="game"
-        className={styles.image}
+        className={classes.image}
       />
     </Card>
   );

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import styles from "./card.module.css";
+import classes from "./card.module.css";
 import { Typography } from "@mui/material";
 
 export default function GameLobbyCard({ item }) {
@@ -21,12 +21,12 @@ export default function GameLobbyCard({ item }) {
         boxShadow: 10,
         m: 2,
       }}
-      className={mouseOver && styles.card}
+      className={mouseOver && classes.card}
       onClick={() => handlePlay(item.id)}
       onMouseOver={() => setMouseOver(item.id)}
       onMouseOut={() => setMouseOver("")}
     >
-      <img src={item.imageOver} alt="game" className={styles.image} />
+      <img src={item.imageOver} alt="game" className={classes.image} />
       <Typography sx={{ fontSize: 14, color: "white" }}>Title</Typography>
     </Card>
   );
