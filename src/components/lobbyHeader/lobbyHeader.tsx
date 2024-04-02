@@ -20,7 +20,6 @@ export default function LobbyHeader() {
             fontSize: "20px",
             color: "rgb(206, 205, 202)",
             background: "rgb(84, 78, 62)",
-            // "&:hover": {
           }}
           onClick={handleClick}
         >

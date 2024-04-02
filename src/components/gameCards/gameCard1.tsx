@@ -1,6 +1,7 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import styles from "./card.module.css";
+import { Typography } from "@mui/material";
 
 export default function GameCard1({ item }) {
   const [mouseOver, setMouseOver] = React.useState("");
@@ -25,11 +26,8 @@ export default function GameCard1({ item }) {
       onMouseOver={() => setMouseOver(item.id)}
       onMouseOut={() => setMouseOver("")}
     >
-      <img
-        src={item.imageOver}
-        alt="game"
-        className={mouseOver ? styles.hover : styles.image}
-      />
+      <img src={item.imageOver} alt="game" className={styles.image} />
+      <Typography sx={{ fontSize: 14, color: "white" }}>Title</Typography>
     </Card>
   );
 }
