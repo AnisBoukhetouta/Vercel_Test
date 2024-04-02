@@ -29,7 +29,7 @@ export default function LobbyHeader() {
       </div>
       <img
         className={classes.image}
-        src="images/home/10307.jpg"
+        src="images/home/10308.jpg"
         alt="lexschool"
       />
     </div>
