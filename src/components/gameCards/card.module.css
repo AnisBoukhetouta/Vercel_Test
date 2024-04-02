@@ -4,9 +4,10 @@
 }
 
 .image :hover {
-  opacity: 0.2;
+  opacity: 0.1;
 }
 .card {
+  width: 180px;
   border: 4px solid rgba(255, 255, 255, 0.816);
   transition: 1s;
 }

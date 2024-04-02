@@ -18,8 +18,8 @@ export default function LobbyHeader() {
             height: "70px",
             borderRadius: "10px",
             fontSize: "20px",
-            color: "black",
-            background: "rgb(232, 174, 15)",
+            color: "rgb(206, 205, 202)",
+            background: "rgb(84, 78, 62)",
             // "&:hover": {
           }}
           onClick={handleClick}

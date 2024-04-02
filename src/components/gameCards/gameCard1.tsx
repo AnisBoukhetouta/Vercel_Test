@@ -13,7 +13,7 @@ export default function GameCard1({ item }) {
     <Card
       key={item.id}
       sx={{
-        minWidth: 180,
+        width: "180px",
         height: 130,
         cursor: "pointer",
         borderRadius: 5,
