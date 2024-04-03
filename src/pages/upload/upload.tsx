@@ -15,6 +15,7 @@ import {
 import AppConstants from "../../AppConstants";
 import { CloudUpload } from "@mui/icons-material";
 import axios from "axios";
+import FileUpload from "../../components/fileUpload/fileUpload";
 
 const initialValues = {
   gameTitle: "",
@@ -26,7 +27,7 @@ const initialValues = {
   iOsApp: "",
   steamLink: "",
   gameType: "",
-  fileUpload: null,
+  fileUpload: [],
   landscapeFile: null,
   portraitFile: null,
   squareFile: null,
@@ -48,10 +49,16 @@ const validationSchema = Yup.object().shape({
   // squareFile: Yup.mixed().required("squareFile is required"),
 });
 export default function Upload() {
-  const [fileUpload, setFileUpload] = React.useState<File | null>(null);
+  const [fileUpload, setFileUpload] = React.useState<File[]>([]);
   const [landscapeFile, setLandscapeFile] = React.useState<File | null>(null);
   const [portraitFile, setPortraitFile] = React.useState<File | null>(null);
   const [squareFile, setSquareFile] = React.useState<File | null>(null);
+
+  const xxx = (e) => {
+    setFileUpload(e);
+    console.log('~~~~~~~~~~~~~~~~1111111111', fileUpload)
+    console.log('~~~~~~~~~~~~~~~~2222222222', e)
+  }
 
   const registerHandler = async (values, { setSubmitting }) => {
     console.log(values);
@@ -318,7 +325,9 @@ export default function Upload() {
               <h2>Files *</h2>
               <div>
                 <Typography>File Upload *</Typography>
-                <Button
+                <FileUpload setFieldValue={xxx} />
+
+                {/* <Button
                   component="label"
                   variant="outlined"
                   style={{
@@ -342,7 +351,7 @@ export default function Upload() {
                       }
                     }}
                   />
-                </Button>
+                </Button> */}
               </div>
               <h2 style={{ marginTop: 30 }}>Cover Images</h2>
               <Stack direction="row" sx={{ justifyContent: "space-between" }}>
