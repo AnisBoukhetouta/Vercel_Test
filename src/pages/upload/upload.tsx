@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import {
@@ -54,11 +54,9 @@ export default function Upload() {
   const [portraitFile, setPortraitFile] = React.useState<File | null>(null);
   const [squareFile, setSquareFile] = React.useState<File | null>(null);
 
-  const xxx = (e) => {
-    setFileUpload(e);
-    console.log('~~~~~~~~~~~~~~~~1111111111', fileUpload)
-    console.log('~~~~~~~~~~~~~~~~2222222222', e)
-  }
+  useEffect(() => {
+    console.log("FileUpload state updated:", fileUpload);
+  }, [fileUpload]);
 
   const registerHandler = async (values, { setSubmitting }) => {
     console.log(values);
@@ -72,7 +70,11 @@ export default function Upload() {
     formData.append("iOsApp", values.iOsApp);
     formData.append("steamLink", values.steamLink);
     formData.append("gameType", values.gameType);
-    formData.append("fileUpload", values.fileUpload);
+    // formData.append("fileUpload", fileUpload[0]);
+    fileUpload.forEach((file, index) => {
+      formData.append(`fileUpload[${index}]`, file);
+      console.log('vvvvvvvv',file);
+    });
     formData.append("landscapeFile", values.landscapeFile);
     formData.append("portraitFile", values.portraitFile);
     formData.append("squareFile", values.squareFile);
@@ -325,7 +327,7 @@ export default function Upload() {
               <h2>Files *</h2>
               <div>
                 <Typography>File Upload *</Typography>
-                <FileUpload setFieldValue={xxx} />
+                <FileUpload setFieldValue={setFileUpload} />
 
                 {/* <Button
                   component="label"

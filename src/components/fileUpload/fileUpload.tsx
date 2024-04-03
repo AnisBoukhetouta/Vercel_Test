@@ -55,7 +55,7 @@ export default function FileUpload({setFieldValue}: Props) {
         onupdatefiles={handleFileUpload}
         instantUpload={false}
         allowMultiple={true}
-        maxFiles={3}
+        maxFiles={4}
         name="fileUpload"
         labelIdle='Drag & Drop your Game files or <span class="filepond--label-action">Browse</span>'
       />
