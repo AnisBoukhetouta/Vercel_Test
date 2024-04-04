@@ -27,7 +27,10 @@ const initialValues = {
   iOsApp: "",
   steamLink: "",
   gameType: "",
-  fileUpload: [],
+  "fileUpload[0]": null,
+  "fileUpload[1]": null,
+  "fileUpload[2]": null,
+  "fileUpload[3]": null,
   landscapeFile: null,
   portraitFile: null,
   squareFile: null,
@@ -57,6 +60,9 @@ export default function Upload() {
   useEffect(() => {
     console.log("FileUpload state updated:", fileUpload);
   }, [fileUpload]);
+  useEffect(() => {
+    console.log("LandscapeFile state updated:", landscapeFile);
+  }, [landscapeFile]);
 
   const registerHandler = async (values, { setSubmitting }) => {
     console.log(values);
@@ -75,8 +81,8 @@ export default function Upload() {
       formData.append(`fileUpload[${index}]`, file);
     });
     landscapeFile && formData.append("landscapeFile", landscapeFile[0]);
-    portraitFile && formData.append("portraitFile", portraitFile);
-    squareFile && formData.append("squareFile", squareFile);
+    portraitFile && formData.append("portraitFile", portraitFile[0]);
+    squareFile && formData.append("squareFile", squareFile[0]);
     try {
       const response = await axios.post(
         "http://localhost:5000/upload",

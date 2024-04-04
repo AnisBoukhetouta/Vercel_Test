@@ -45,8 +45,7 @@ export default function FileUpload({
   return (
     <div className="App">
       <FilePond
-        acceptedFileTypes={image ? ["image/*"] : [""]}
-        // acceptedFileTypes={["application/pdf", "image/*"]}
+        // acceptedFileTypes={image ? ["image/*"] : ["application/pdf", "image/*", ""]}
         // acceptedFileTypes={['application/octet-stream', 'application/javascript', 'application/wasm']}
         allowFileEncode
         allowImageTransform
