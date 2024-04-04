@@ -27,10 +27,6 @@ const initialValues = {
   iOsApp: "",
   steamLink: "",
   gameType: "",
-  "fileUpload[0]": null,
-  "fileUpload[1]": null,
-  "fileUpload[2]": null,
-  "fileUpload[3]": null,
   landscapeFile: null,
   portraitFile: null,
   squareFile: null,
@@ -76,13 +72,12 @@ export default function Upload() {
     formData.append("iOsApp", values.iOsApp);
     formData.append("steamLink", values.steamLink);
     formData.append("gameType", values.gameType);
-    // formData.append("fileUpload", fileUpload[0]);
-    fileUpload.forEach((file, index) => {
-      formData.append(`fileUpload[${index}]`, file);
-    });
     landscapeFile && formData.append("landscapeFile", landscapeFile[0]);
     portraitFile && formData.append("portraitFile", portraitFile[0]);
     squareFile && formData.append("squareFile", squareFile[0]);
+    fileUpload.map((file, index) => {
+      formData.append(`fileUpload${index}`, file);
+    });
     try {
       const response = await axios.post(
         "http://localhost:5000/upload",
@@ -337,6 +332,7 @@ export default function Upload() {
                   height={400}
                   setFieldValue={setFileUpload}
                   maxFiles={4}
+                  onChange={formik.handleChange}
                 />
               </div>
               <h2 style={{ marginTop: 30 }}>Cover Images</h2>
@@ -345,27 +341,27 @@ export default function Upload() {
                   <Typography>Landscape 16:9 (1920x1080)</Typography>
                   <FileUpload
                     fieldName="landscapeFile"
-                    image
                     height={280}
                     setFieldValue={setLandscapeFile}
+                    onChange={formik.handleChange}
                   />
                 </div>
                 <div style={{ width: "25%" }}>
                   <Typography>Portrait 2:3 (800x1200)</Typography>
                   <FileUpload
                     fieldName="portraitFile"
-                    image
                     height={350}
                     setFieldValue={setPortraitFile}
+                    onChange={formik.handleChange}
                   />
                 </div>
                 <div style={{ width: "25%" }}>
                   <Typography>Square 1:1 (800x800)</Typography>
                   <FileUpload
                     fieldName="squareFile"
-                    image
                     height={200}
                     setFieldValue={setSquareFile}
+                    onChange={formik.handleChange}
                   />
                 </div>
               </Stack>

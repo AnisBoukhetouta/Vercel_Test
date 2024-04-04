@@ -24,7 +24,6 @@ registerPlugin(
 
 interface Props {
   height: number;
-  image?: boolean;
   maxFiles?: number;
   fieldName: string;
   setFieldValue: (value: any) => void;
@@ -33,13 +32,12 @@ interface Props {
 // Our app
 export default function FileUpload({
   maxFiles,
-  image,
   height,
   fieldName,
   setFieldValue,
 }: Props) {
   const handleFileUpload = (files) => {
-    setFieldValue(files.map((file) => file.file))
+    setFieldValue(files.map((file) => file.file));
   };
 
   return (
