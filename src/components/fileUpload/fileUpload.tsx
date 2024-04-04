@@ -26,6 +26,7 @@ interface Props {
   height: number;
   maxFiles?: number;
   fieldName: string;
+  title: string;
   setFieldValue: (value: any) => void;
 }
 
@@ -33,6 +34,7 @@ interface Props {
 export default function FileUpload({
   maxFiles,
   height,
+  title,
   fieldName,
   setFieldValue,
 }: Props) {
@@ -59,7 +61,7 @@ export default function FileUpload({
         allowMultiple={Number(maxFiles) > 1 ? true : false}
         maxFiles={maxFiles}
         name={fieldName}
-        labelIdle='Drag & Drop your Game files or <span class="filepond--label-action">Browse</span>'
+        labelIdle={`Drag & Drop your ${title} or <span class="filepond--label-action">Browse</span>`}
       />
     </div>
   );

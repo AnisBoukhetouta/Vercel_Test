@@ -328,11 +328,11 @@ export default function Upload() {
               <div>
                 <Typography>File Upload *</Typography>
                 <FileUpload
+                  title="Game files"
                   fieldName="fileUpload"
                   height={400}
                   setFieldValue={setFileUpload}
                   maxFiles={4}
-                  onChange={formik.handleChange}
                 />
               </div>
               <h2 style={{ marginTop: 30 }}>Cover Images</h2>
@@ -341,27 +341,27 @@ export default function Upload() {
                   <Typography>Landscape 16:9 (1920x1080)</Typography>
                   <FileUpload
                     fieldName="landscapeFile"
+                    title="Landscape image file"
                     height={280}
                     setFieldValue={setLandscapeFile}
-                    onChange={formik.handleChange}
                   />
                 </div>
                 <div style={{ width: "25%" }}>
                   <Typography>Portrait 2:3 (800x1200)</Typography>
                   <FileUpload
+                    title="Portrait image file"
                     fieldName="portraitFile"
                     height={350}
                     setFieldValue={setPortraitFile}
-                    onChange={formik.handleChange}
                   />
                 </div>
                 <div style={{ width: "25%" }}>
                   <Typography>Square 1:1 (800x800)</Typography>
                   <FileUpload
+                    title="Square image file"
                     fieldName="squareFile"
                     height={200}
                     setFieldValue={setSquareFile}
-                    onChange={formik.handleChange}
                   />
                 </div>
               </Stack>
