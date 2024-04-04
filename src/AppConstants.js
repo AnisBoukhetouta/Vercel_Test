@@ -102,6 +102,13 @@ const AppConstants = {
     "HTML 5",
   ],
 
+  // unityConfig: {
+  //   loaderUrl: "Build/Public.loader.js",
+  //   dataUrl: "Build/Public.data.gz",
+  //   frameworkUrl: "Build/Public.framework.js.gz",
+  //   codeUrl: "Build/Public.wasm.gz",
+  // },
+
   unityConfig: {
     loaderUrl: "Build/public.loader.js",
     dataUrl: "Build/public.data",
