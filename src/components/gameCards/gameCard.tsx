@@ -31,7 +31,7 @@ export default function GameCard({ item, onSetItem }: Props) {
           boxShadow: 10,
           m: 2,
         }}
-        className={mouseOver && classes.card}
+        className={mouseOver ? classes.card : classes.cardOut}
         onClick={() => handlePlay(item._id)}
         onMouseOver={() => onMouseOver(true)}
         onMouseOut={() => onMouseOver(false)}

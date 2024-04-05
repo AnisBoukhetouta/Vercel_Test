@@ -13,7 +13,7 @@ interface Item {
   imageOver: string;
 }
 
-interface Data {
+export interface Data {
   _id: string;
   files: {
     category: string;
