@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from "react";
 import Loader from "../../navigation/loader/loader";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Unity, UnityConfig, useUnityContext } from "react-unity-webgl";
-import AppConstants from "../../AppConstants";
 import useInterval from "../../hooks/useInterval";
 import { useLocation } from "react-router";
 import { Data } from "../../components/lobbyHeaderGame/lobbyHeaderGame";
@@ -41,7 +40,6 @@ const UnityWrapper = ({ unityConfig }) => {
 
 export default function Playground() {
   const location = useLocation();
-  const [data, setData] = React.useState<any[]>([]);
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null
   );
@@ -49,7 +47,6 @@ export default function Playground() {
 
   useEffect(() => {
     fetch(state).then((contain) => {
-      console.log("~~~~~~~~~~~~contain", contain);
       setUnityConfig({
         loaderUrl: `http://localhost:5000/${contain[0].destination}/${contain[6].fileName}`,
         dataUrl: `http://localhost:5000/${contain[0].destination}/${contain[3].fileName}`,
