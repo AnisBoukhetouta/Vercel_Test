@@ -14,12 +14,9 @@ export default function LobbyHeaderGame() {
       <div className={classes.topGames}>
         <ScrollingCarousel
           children={AppConstants.cardData.map((item) => (
-            <GameLobbyCard key={item.id} item={item} />
+            <GameLobbyCard key={item._id} item={item} />
           ))}
         />
-        {/* {AppConstants.cardData.map((item) => (
-          <GameCard key={item.id} item={item} />
-        ))} */}
       </div>
     </div>
   );
