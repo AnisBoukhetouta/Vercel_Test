@@ -11,7 +11,6 @@ const test = () => {
       const getAllFiles = await axios
         .get("http://localhost:5000/files")
         .then((response) => {
-          console.log("RESULT~~~~~~", response.data);
           setFetchedData(response.data);
           console.log("FetchedData~~~~~~", response.data);
         })
