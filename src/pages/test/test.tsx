@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import classes from "./test.module.css";
 import Container from "@mui/material/Container";
-import { Button } from "@mui/material";
 import axios from "axios";
-import GameCard from "../../components/gameCards/gameCard";
 import GameCards from "../../components/gameCards/gameCards";
 
 interface Item {

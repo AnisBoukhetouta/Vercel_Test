@@ -110,6 +110,7 @@ export default function Upload() {
       );
       console.log(response.data);
       setSubmitting(false);
+      window.location.replace("/gamelobby");
     } catch (e) {
       console.log("Error submitting form:", e);
     }

@@ -3,9 +3,8 @@ import { Grid } from "@mui/material";
 import GameCard from "./gameCard";
 
 export default function GameCards({ cardData }) {
-
   return (
-    <Grid container direction="row" justifyContent="center" alignItems="center" sx={{mt:10}}>
+    <Grid container direction="row" justifyContent="center" alignItems="center">
       {cardData.map((item) => (
         <GameCard key={item._id} item={item} />
       ))}
