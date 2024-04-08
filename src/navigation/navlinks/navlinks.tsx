@@ -7,21 +7,13 @@ const navlinks = () => {
   return (
     <div>
       <ul className={classes.navlinks}>
-        <li>
-          <Navlink link="/">
-            <h1 style={{ color: "var(--accent)" }}>LexSCHOOL</h1>
-          </Navlink>
-        </li>
-        <li>
-          <Navlink link="/">Home</Navlink>
-        </li>
+        <Navlink link="/">
+          <h1 style={{color: "var(--accent)"}}>LexSCHOOL</h1>
+        </Navlink>
+        <Navlink link="/">Home</Navlink>
         {/* <Navlink link="/test">Test</Navlink> */}
-        <li>
-          <Navlink link="/gamelobby">GameLobby</Navlink>
-        </li>
-        <li>
-          <Navlink link="/upload">Upload</Navlink>
-        </li>
+        <Navlink link="/gamelobby">GameLobby</Navlink>
+        <Navlink link="/upload">Upload</Navlink>
         {/* <Navlink link="/playground">Playground</Navlink> */}
       </ul>
     </div>
