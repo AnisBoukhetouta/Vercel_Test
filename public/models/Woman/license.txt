@@ -1,0 +1,11 @@
+Model Information:
+* title:	N_Anniversary_40
+* source:	https://sketchfab.com/3d-models/n-anniversary-40-098effb437a2471d8ef55eb9f83ecbb1
+* author:	PixartistLilack (https://sketchfab.com/PixartistLilack)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "N_Anniversary_40" (https://sketchfab.com/3d-models/n-anniversary-40-098effb437a2471d8ef55eb9f83ecbb1) by PixartistLilack (https://sketchfab.com/PixartistLilack) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
