@@ -16,13 +16,13 @@ export default function Model() {
         shadow-mapSize={1024}
       />
       {/* <group position={[1, -1.5, 2]}> */}
-      <group position={[1, -0.7, 3]}>
+      {/* <group position={[1, -0.7, 3]}> woman */}
       {/* <group position={[1, -1.5, 2]} scale={[0.02, 0.02, 0.02]}>  soldierc*/}
-      {/* <group position={[1, -1.5, 2]} scale={[2.3, 2.3, 2.3]}>  human*/}
+      <group position={[1, -1.5, 2]} scale={[2.3, 2.3, 2.3]}>
         {/* <Soldier /> */}
         {/* <Soldierc /> */}
-        {/* <Human /> */}
-        <Woman />
+        <Human />
+        {/* <Woman /> */}
       </group>
       <mesh
         rotation={[-0.5 * Math.PI, 0, 0]}
