@@ -13,7 +13,7 @@ import { useCharacterAnimations } from '../context/CharacterAnimations'
 
 export function Soldier(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('models/modelb.glb')
+  const { nodes, materials, animations } = useGLTF('models/human.glb')
   const { actions, names } = useAnimations(animations, group)
   const { setAnimations } = useCharacterAnimations();
   console.log(names);
