@@ -11,7 +11,7 @@ export default function ModelBox() {
     "/images/home/10302.jpg"
   );
   const [item, setItem] = React.useState<any>();
-  const ModelView = useCallback(() => <Model />,[]);
+  const ModelView = useCallback(() => <Model />, []);
   return (
     <>
       <Canvas
@@ -21,18 +21,19 @@ export default function ModelBox() {
           backgroundImage: `url(${
             item !== undefined ? item.imageOver : "/images/home/10302.jpg"
           })`,
-          backgroundSize: "cover",
+          backgroundSize: "100vw 100vh",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
         shadows
       >
-        <ModelView/>
+        <ModelView />
       </Canvas>
-      
-        <div className={classes.miniCard}>
-          <GameCard item={item !== undefined ? item : AppConstants.cardData[0]} />
-        </div>
-      
+
+      <div className={classes.miniCard}>
+        <GameCard item={item !== undefined ? item : AppConstants.cardData[0]} />
+      </div>
+
       <TopGames setItem={setItem} />
     </>
   );
