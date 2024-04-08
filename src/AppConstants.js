@@ -119,83 +119,63 @@ const AppConstants = {
   cardData: [
     {
       _id: "0",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/wrFMxMIhtneRJTusXO/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/0.jpeg",
 
-      imageOver:
-        "https://cdn2.unrealengine.com/fncs-global-championship-2024-thumbnail-576x576-1c03b3ffb56c.jpg",
+      imageOver: "/images/cardImages/6.jpeg",
     },
     {
       _id: "1",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/jXjgsZMXchZjOeBqnu/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/1.jpeg",
 
-      imageOver:
-        "https://cdn2.unrealengine.com/fortnite-masamune-thumbnail-576x576-b1dd7e5b37f1.jpg",
+      imageOver: "/images/cardImages/7.jpeg",
     },
     {
       _id: "2",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/jaVzxkfQPZPaogEjpO/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/2.jpeg",
 
-      imageOver:
-        "https://cdn2.unrealengine.com/lego-fortnite-mechanical-mayhem-thumbnail-576x576-83f5c7dc749b.jpg",
+      imageOver: "/images/cardImages/8.jpeg",
     },
     {
       _id: "3",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/BEDZdWAMdqRZhPDWHn/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/3.jpeg",
 
-      imageOver:
-        "https://cdn2.unrealengine.com/fortnite-island-creator-rules-thumbnail-576x576-d22334489b3d.jpg",
+      imageOver: "/images/cardImages/9.jpeg",
     },
     {
       _id: "4",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/jXjgsZMXchZjOeBqnu/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/4.jpeg",
 
-      imageOver:
-        "https://cdn2.unrealengine.com/fortnite-rise-of-midas-thumbnail-576x576-c8c5b1d4eaab.jpg",
+      imageOver: "/images/cardImages/0.jpeg",
     },
     {
       _id: "5",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/BEDZdWAMdqRZhPDWHn/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/5.jpeg",
 
-      imageOver:
-        "https://cdn-0001.qstv.on.epicgames.com/AgaQbdsOzEgnfeoEOv/image/landscape_comp_s.jpeg",
+      imageOver: "/images/cardImages/1.jpeg",
     },
     {
       _id: "6",
-      imageOut:
-        "https://cdn2.unrealengine.com/fortnite-masamune-thumbnail-576x576-b1dd7e5b37f1.jpg",
+      imageOut: "/images/cardImages/6.jpeg",
 
-      imageOver:
-        "https://cdn-0001.qstv.on.epicgames.com/BEDZdWAMdqRZhPDWHn/image/landscape_comp_s.jpeg",
+      imageOver: "/images/cardImages/2.jpeg",
     },
     {
       _id: "7",
-      imageOut:
-        "https://cdn2.unrealengine.com/fncs-global-championship-2024-thumbnail-576x576-1c03b3ffb56c.jpg",
+      imageOut: "/images/cardImages/7.jpeg",
 
-      imageOver:
-        "https://cdn-0001.qstv.on.epicgames.com/jaVzxkfQPZPaogEjpO/image/landscape_comp_s.jpeg",
+      imageOver: "/images/cardImages/3.jpeg",
     },
     {
       _id: "8",
-      imageOut:
-        "https://cdn-0001.qstv.on.epicgames.com/AgaQbdsOzEgnfeoEOv/image/landscape_comp_s.jpeg",
+      imageOut: "/images/cardImages/8.jpeg",
 
-      imageOver:
-        "https://cdn-0001.qstv.on.epicgames.com/jXjgsZMXchZjOeBqnu/image/landscape_comp_s.jpeg",
+      imageOver: "/images/cardImages/4.jpeg",
     },
     {
       _id: "9",
-      imageOut:
-        "https://cdn2.unrealengine.com/fortnite-rise-of-midas-thumbnail-576x576-c8c5b1d4eaab.jpg",
+      imageOut: "/images/cardImages/9.jpeg",
 
-      imageOver:
-        "https://cdn-0001.qstv.on.epicgames.com/wrFMxMIhtneRJTusXO/image/landscape_comp_s.jpeg",
+      imageOver: "/images/cardImages/5.jpeg",
     },
   ],
 };
