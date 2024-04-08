@@ -149,9 +149,9 @@ const AppConstants = {
     },
     {
       _id: "5",
-      imageOut: "/images/cardImages/5.jpeg",
+      imageOut: "/images/cardImages/8.jpeg",
 
-      imageOver: "/images/cardImages/1.jpeg",
+      imageOver: "/images/cardImages/4.jpeg",
     },
     {
       _id: "6",
@@ -167,9 +167,9 @@ const AppConstants = {
     },
     {
       _id: "8",
-      imageOut: "/images/cardImages/8.jpeg",
+      imageOut: "/images/cardImages/5.jpeg",
 
-      imageOver: "/images/cardImages/4.jpeg",
+      imageOver: "/images/cardImages/1.jpeg",
     },
     {
       _id: "9",
