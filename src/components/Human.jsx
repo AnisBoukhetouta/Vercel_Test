@@ -23,7 +23,7 @@ export function Human(props) {
   }, [names]);
 
   useEffect(() => {
-    actions[names[0]].reset().fadeIn(0.5).play();
+    actions[names[0]].reset().fadeIn(1).play();
   }, []);
   return (
     <group ref={group} {...props} dispose={null}>
