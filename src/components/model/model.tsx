@@ -1,6 +1,7 @@
 import { OrbitControls } from "@react-three/drei";
 import React from "react";
 import { Soldier } from "../Soldier";
+import { Soldierc } from "../Soldierc";
 
 export default function Model() {
   return (
@@ -12,8 +13,9 @@ export default function Model() {
         castShadow
         shadow-mapSize={1024}
       />
-      <group position={[1, -2, 2]}>
-        <Soldier />
+      <group position={[1, -1.5, 2]} scale={[0.02, 0.02, 0.02]}>
+        {/* <Soldier /> */}
+        <Soldierc />
       </group>
       <mesh
         rotation={[-0.5 * Math.PI, 0, 0]}
