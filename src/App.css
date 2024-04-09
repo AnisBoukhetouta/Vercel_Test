@@ -30,10 +30,7 @@
 .MuiInputBase-input, .MuiInputLabel-root {
   color: var(--light) !important;
 }
-.css-1puturl-MuiDivider-root::after {
-  border-top: rgba(255, 255, 255, 0.72) thin solid !important;
-}
-.css-1puturl-MuiDivider-root::before {
+.css-1oprhov::after, ::before {
   border-top: rgba(255, 255, 255, 0.72) thin solid !important;
 }
 .css-1d6wzja-MuiButton-startIcon {
