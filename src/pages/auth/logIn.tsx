@@ -8,8 +8,6 @@ import {
   Container,
   Divider,
   Grid,
-  Stack,
-  SvgIcon,
   TextField,
   Typography,
 } from "@mui/material";
@@ -54,7 +52,7 @@ const Login = () => {
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
         <img src="/logo.svg" />
-        <p className={classes.formLabel}>Sign In or Sign Up</p>
+        <p className={classes.formLabel}>Sign In</p>
         <form className={classes.form}>
           <TextField
             type="email"
@@ -92,7 +90,7 @@ const Login = () => {
             disabled={!able}
             sx={{ cursor: "pointer" }}
           >
-            CONTINUE
+            Sign In
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>
           <Grid>
@@ -127,7 +125,7 @@ const Login = () => {
               startIcon={<Instagram sx={{ width: 50, height: 50 }} />}
             ></Button>
           </Grid>
-          <Typography className={classes.divider}>
+          <p className={classes.divider}>
             By singning in or signing up, you agree with our <br />
             <NavLink
               className={classes.fontStyle}
@@ -135,8 +133,14 @@ const Login = () => {
             >
               Privacy Policy
             </NavLink>
-          </Typography>
+          </p>
         </form>
+        <Typography sx={{marginTop: 2}} className={classes.divider}>
+          Create a new account.{" "}
+          <NavLink to="/signup" className={classes.fontStyle}>
+            Sign Up
+          </NavLink>
+        </Typography>
         {/* <section>
           <div>
             <p className={classes.fontStyle}> FocusApp </p>
