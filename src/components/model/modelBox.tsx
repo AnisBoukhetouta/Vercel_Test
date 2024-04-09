@@ -5,17 +5,22 @@ import classes from "./modelBox.module.css";
 import TopGames from "../topGames/topGames";
 import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
-import ImageCach from "../imageCach";
+import CachImages from "../imageCach";
+import { LinearProgress } from "@mui/material";
 
 export default function ModelBox() {
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const [item, setItem] = React.useState<any>();
   const ModelView = useCallback(() => <Model />, []);
   useEffect(() => {
-    item !== undefined && ImageCach(item.imageOver);
+    setLoading(true);
+    item !== undefined
+      ? CachImages({ url: item.imageOver, setIsLoading: setLoading })
+      : CachImages({ url: "/images/home/10302.jpg", setIsLoading: setLoading });
   });
   return (
     <>
+      {loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
       <Canvas
         camera={{ position: [1, 1, 5], fov: 50 }}
         className={classes.modelBox}

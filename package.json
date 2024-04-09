@@ -19,7 +19,7 @@
     "@mantine/core": "^7.7.1",
     "@mantine/hooks": "^7.7.1",
     "@mui/icons-material": "^5.15.14",
-    "@mui/material": "^5.14.12",
+    "@mui/material": "^5.15.15",
     "@react-three/drei": "^9.103.0",
     "@react-three/fiber": "^8.16.1",
     "@trendyol-js/react-carousel": "^3.0.2",
