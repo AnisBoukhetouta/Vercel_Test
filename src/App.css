@@ -25,15 +25,22 @@
   /* font-family: "Bebas Neue", sans-serif; */
   /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
   font-family: "Paytone One", sans-serif;
-  /* color: var(--light); */
+  /* color: var(--light); */   
   /* background: url("/images/home/10302.jpg") no-repeat fixed center; */
   box-sizing: border-box;
 }
-
 .MuiFormControl-root {
   border: 1px solid var(--light) !important;
 }
-
-.MuiInputBase-input {
+.MuiInputBase-input, .MuiInputLabel-root {
   color: var(--light) !important;
+}
+.css-1puturl-MuiDivider-root::before, ::after {
+  border-top: rgba(255, 255, 255, 0.72) thin solid !important;
+}
+.css-1d6wzja-MuiButton-startIcon {
+  margin: 0 !important;
+}
+.css-1d6wzja-MuiButton-startIcon>*:nth-of-type(1) {
+  font-size: 33px !important;
 }

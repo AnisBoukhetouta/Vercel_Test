@@ -13,7 +13,6 @@ const Signup = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('AAAAAAAAAAAA',auth);
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in

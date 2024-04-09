@@ -3,6 +3,24 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./auth.module.css";
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  SvgIcon,
+  TextField,
+  Typography,
+} from "@mui/material";
+import {
+  Apple,
+  Facebook,
+  Google,
+  Instagram,
+  LinkedIn,
+  Stream,
+} from "@mui/icons-material";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,9 +32,8 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        console.log("~~~~~~~~USERCREDENTIAL~~~~~~", userCredential);
         const user = userCredential.user;
-        navigate("/home");
+        navigate("/");
         console.log(user);
       })
       .catch((error) => {
@@ -27,8 +44,77 @@ const Login = () => {
   };
 
   return (
-    <>
-      <main className={classes.authMain}>
+    <div className={classes.authMain}>
+      <Container className={classes.formContainer}>
+        <img src="/logo.svg" />
+        <p className={classes.formLabel}>Sign In or Sign Up</p>
+        <form className={classes.form}>
+          <TextField
+            type="email"
+            fullWidth
+            style={{
+              backgroundColor: "#00000000",
+              color: "rgb(255, 255, 255)",
+            }}
+            label="Email Address"
+            variant="filled"
+          />
+          <TextField
+            type="password"
+            fullWidth
+            style={{
+              backgroundColor: "#00000000",
+              color: "rgb(255, 255, 255)",
+            }}
+            label="Password"
+            variant="filled"
+          />
+          <Button type="submit" variant="contained" fullWidth>
+            CONTINUE
+          </Button>
+          <Divider className={classes.divider}>or continue with</Divider>
+          <Grid>
+            <Button
+              className={classes.socialButtons}
+              variant="contained"
+              startIcon={<Google />}
+            ></Button>
+            <Button
+              className={classes.socialButtons}
+              variant="contained"
+              startIcon={<Stream />}
+            ></Button>
+            <Button
+              className={classes.socialButtons}
+              variant="contained"
+              startIcon={<Facebook />}
+            ></Button>
+            <Button
+              className={classes.socialButtons}
+              variant="contained"
+              startIcon={<Apple />}
+            ></Button>
+            <Button
+              className={classes.socialButtons}
+              variant="contained"
+              startIcon={<LinkedIn />}
+            ></Button>
+            <Button
+              className={classes.socialButtons}
+              variant="contained"
+              startIcon={<Instagram />}
+            ></Button>
+          </Grid>
+          <Typography className={classes.fontStyle}>
+            By singning in or signing up, you agree with our <br />
+            <NavLink
+              className={classes.fontStyle}
+              to="https://www.epicgames.com/site/en-US/privacypolicy?lang=en-US"
+            >
+              Privacy Policy
+            </NavLink>
+          </Typography>
+        </form>
         <section>
           <div>
             <p className={classes.fontStyle}> FocusApp </p>
@@ -72,8 +158,8 @@ const Login = () => {
             </p>
           </div>
         </section>
-      </main>
-    </>
+      </Container>
+    </div>
   );
 };
 
