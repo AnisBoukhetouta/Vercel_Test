@@ -1,17 +1,19 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
 import Model from "./model";
 import classes from "./modelBox.module.css";
 import TopGames from "../topGames/topGames";
 import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
+import ImageCach from "../imageCach";
 
 export default function ModelBox() {
-  const [background, setBackground] = React.useState<any>(
-    "/images/home/10302.jpg"
-  );
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [item, setItem] = React.useState<any>();
   const ModelView = useCallback(() => <Model />, []);
+  useEffect(() => {
+    item !== undefined && ImageCach(item.imageOver);
+  });
   return (
     <>
       <Canvas
@@ -21,7 +23,6 @@ export default function ModelBox() {
           backgroundImage: `url(${
             item !== undefined ? item.imageOver : "/images/home/10302.jpg"
           })`,
-          // backgroundSize: "100vw auto",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
