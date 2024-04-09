@@ -25,6 +25,7 @@ export default function ModelBox() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundPositionY: "Top",
         }}
         shadows
       >
