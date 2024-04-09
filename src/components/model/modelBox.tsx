@@ -5,12 +5,11 @@ import classes from "./modelBox.module.css";
 import TopGames from "../topGames/topGames";
 import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
-import CachImages from "../imageCach";
 import { LinearProgress } from "@mui/material";
 import { toDataURL } from "../imageCach";
 
 export default function ModelBox() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>("/images/home/10302.jpg");
   const [item, setItem] = useState<any>();
 
