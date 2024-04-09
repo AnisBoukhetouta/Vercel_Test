@@ -21,9 +21,11 @@ export default function ModelBox() {
           backgroundImage: `url(${
             item !== undefined ? item.imageOver : "/images/home/10302.jpg"
           })`,
-          backgroundSize: "100vw 100vh",
+          // backgroundSize: "100vw auto",
+          backgroundSize: "100vw auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundPositionY: -50,
         }}
         shadows
       >
