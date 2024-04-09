@@ -30,7 +30,10 @@
 .MuiInputBase-input, .MuiInputLabel-root {
   color: var(--light) !important;
 }
-.css-1oprhov::after, ::before {
+.css-1oprhov::after {
+  border-top: rgba(255, 255, 255, 0.72) thin solid !important;
+}
+.css-1oprhov::before {
   border-top: rgba(255, 255, 255, 0.72) thin solid !important;
 }
 .css-1d6wzja-MuiButton-startIcon {
