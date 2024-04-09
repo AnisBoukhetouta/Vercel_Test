@@ -33,6 +33,7 @@
     "filepond-plugin-image-preview": "^4.6.12",
     "filepond-plugin-image-resize": "^2.0.10",
     "filepond-plugin-image-transform": "^3.8.7",
+    "firebase": "^10.10.0",
     "formik": "^2.4.5",
     "install": "^0.13.0",
     "npm": "^10.5.1",

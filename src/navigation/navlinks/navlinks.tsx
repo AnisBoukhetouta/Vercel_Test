@@ -13,6 +13,8 @@ const navlinks = () => {
         <Navlink link="/">Home</Navlink>
         <Navlink link="/gamelobby">GameLobby</Navlink>
         <Navlink link="/upload">Upload</Navlink>
+        <Navlink link="/signup">SignUp</Navlink>
+        <Navlink link="/login">Login</Navlink>
         {/* <Navlink link="/playground">Playground</Navlink> */}
       </ul>
     </div>
