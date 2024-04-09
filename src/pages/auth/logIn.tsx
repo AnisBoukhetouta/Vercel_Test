@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -43,6 +43,10 @@ const Login = () => {
       });
   };
 
+  useEffect (() => {
+    console.log(email, password);
+  })
+
   return (
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
@@ -60,6 +64,7 @@ const Login = () => {
             label="Email Address"
             variant="filled"
             placeholder="Email address"
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <TextField
@@ -76,7 +81,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Button onClick={onLogin} type="submit" variant="contained" fullWidth>
+          <Button onClick={onLogin} variant="contained" fullWidth>
             CONTINUE
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>
