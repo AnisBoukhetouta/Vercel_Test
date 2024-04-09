@@ -10,7 +10,7 @@ const CachImages = async ({ url, setIsLoading }: Props) => {
     image.src = url;
     // setIsLoading(false);
     image.onload = () => {
-      setIsLoading(true);
+      setIsLoading(false);
       resolve;
     };
     image.onerror = reject;
