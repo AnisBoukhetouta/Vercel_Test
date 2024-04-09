@@ -11,7 +11,7 @@ import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useCharacterAnimations } from '../context/CharacterAnimations'
 
-export function Human(props) {
+export function Character(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/human.glb')
   const { actions, names } = useAnimations(animations, group)
