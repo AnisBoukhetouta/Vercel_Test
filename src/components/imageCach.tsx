@@ -8,7 +8,7 @@ const CachImages = async ({ url, setIsLoading }: Props) => {
     const image = new Image();
 
     image.src = url;
-    setIsLoading(false);
+    // setIsLoading(false);
     image.onload = () => {
       setIsLoading(true);
       resolve;

@@ -25,6 +25,7 @@ export default function ModelBox() {
     };
 
     preloadImage();
+    console.log('loading~~~~~~~~~~~~~~', loading)
   }, [item]);
 
   const ModelView = useCallback(() => <Model />, []);
