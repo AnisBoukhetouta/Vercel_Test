@@ -32,13 +32,13 @@ export default function ModelBox() {
 
   return (
     <>
-      {!loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
+      {loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
       <Canvas
         camera={{ position: [1, 1, 5], fov: 50 }}
         className={classes.modelBox}
         style={{
           backgroundImage: `url(${
-            item && loading ? item.imageOver : "/images/home/10302.jpg"
+            item ? item.imageOver : "/images/home/10302.jpg"
           })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
