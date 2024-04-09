@@ -30,12 +30,18 @@
 .MuiInputBase-input, .MuiInputLabel-root {
   color: var(--light) !important;
 }
-.css-1oprhov::after {
+div>.css-1oprhov::after {
   border-top: rgba(255, 255, 255, 0.72) thin solid !important;
 }
-.css-1oprhov::before {
+div>.css-1oprhov::before {
   border-top: rgba(255, 255, 255, 0.72) thin solid !important;
 }
+/* .css-1puturl-MuiDivider-root::after {
+  border-top: rgba(255, 255, 255, 0.72) thin solid !important;
+}
+.css-1puturl-MuiDivider-root::before {
+  border-top: rgba(255, 255, 255, 0.72) thin solid !important;
+} */
 .css-1d6wzja-MuiButton-startIcon {
   margin: 0 !important;
 }
