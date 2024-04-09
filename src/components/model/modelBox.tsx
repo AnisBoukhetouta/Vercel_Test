@@ -22,10 +22,9 @@ export default function ModelBox() {
             item !== undefined ? item.imageOver : "/images/home/10302.jpg"
           })`,
           // backgroundSize: "100vw auto",
-          backgroundSize: "100vw auto",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundPositionY: -50,
         }}
         shadows
       >
