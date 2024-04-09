@@ -1,8 +1,5 @@
 import { OrbitControls } from "@react-three/drei";
 import React from "react";
-import { Soldier } from "../Soldier";
-import { Soldierc } from "../Soldierc";
-import { Human } from "../Human";
 import { Character } from "../Character";
 
 export default function Model() {
@@ -15,13 +12,7 @@ export default function Model() {
         castShadow
         shadow-mapSize={1024}
       />
-      {/* <group position={[1, -1.5, 2]}> */}
       <group position={[1, -0.5, 3.5]}>
-        {/* <group position={[1, -1.5, 2]} scale={[0.02, 0.02, 0.02]}> soldierc */}
-        {/* <group position={[1, -1.5, 2]} scale={[2.3, 2.3, 2.3]}> human */}
-        {/* <Soldier /> */}
-        {/* <Soldierc /> */}
-        {/* <Human /> */}
         <Character />
       </group>
       <mesh

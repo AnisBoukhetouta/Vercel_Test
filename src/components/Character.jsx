@@ -12,7 +12,6 @@ export function Character(props) {
   const { nodes, materials, animations } = useGLTF('/models/character.glb')
   const { actions, names } = useAnimations(animations, group)
   const { setAnimations } = useCharacterAnimations();
-  console.log(names);
 
   useEffect(() => {
     setAnimations(names);

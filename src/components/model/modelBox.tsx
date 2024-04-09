@@ -13,7 +13,6 @@ export default function ModelBox() {
   const [item, setItem] = useState<any>();
 
   useEffect(() => {
-    // Preload image and set loading state accordingly
     const preloadImage = async () => {
       try {
         setLoading(true);
@@ -25,7 +24,6 @@ export default function ModelBox() {
     };
 
     preloadImage();
-    console.log('loading~~~~~~~~~~~~~~', loading)
   }, [item]);
 
   const ModelView = useCallback(() => <Model />, []);

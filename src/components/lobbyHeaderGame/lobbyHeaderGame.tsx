@@ -66,15 +66,7 @@ export default function LobbyHeaderGame() {
 
   return (
     <div className={classes.lobodyGame}>
-      {/* <Typography variant="h4" gutterBottom sx={{ color: "white", ml: 2 }}>
-          BY EPIO
-        </Typography> */}
       <div className={classes.topGames}>
-        {/* <ScrollingCarousel
-          children={AppConstants.cardData.map((item) => (
-            <GameLobbyCard key={item._id} item={item} />
-          ))}
-        /> */}
         <Container maxWidth="lg" className={classes.lobbyCardsContainer}>
           <GameCards cardData={items} />
         </Container>
