@@ -37,7 +37,7 @@ export default function ModelBox() {
         className={classes.modelBox}
         style={{
           backgroundImage: `url(${
-            item ? item.imageOver : "/images/home/10302.jpg"
+            item && loading ? item.imageOver : "/images/home/10302.jpg"
           })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
