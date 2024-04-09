@@ -26,6 +26,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [able, setAble] = useState(false);
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -44,8 +45,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log(email, password);
-  });
+    if (email.length && password.length) {
+      setAble(true);
+    } else setAble(false);
+  }, [email, password]);
 
   return (
     <div className={classes.authMain}>
@@ -81,7 +84,14 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Button type="submit" onClick={onLogin} variant="contained" fullWidth>
+          <Button
+            type="submit"
+            onClick={onLogin}
+            variant="contained"
+            fullWidth
+            disabled={!able}
+            sx={{ cursor: "pointer" }}
+          >
             CONTINUE
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>

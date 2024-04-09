@@ -39,3 +39,7 @@
 .css-6xugel {
   margin: 0 !important;
 }
+.Mui-disabled {
+  color: var(--light) !important;
+  cursor: alias;
+}
