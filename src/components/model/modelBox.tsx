@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Model from "./model";
 import classes from "./modelBox.module.css";
@@ -9,16 +9,26 @@ import CachImages from "../imageCach";
 import { LinearProgress } from "@mui/material";
 
 export default function ModelBox() {
-  const [loading, setLoading] = React.useState<boolean>(true);
-  const [item, setItem] = React.useState<any>();
-  const ModelView = useCallback(() => <Model />, []);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [item, setItem] = useState<any>();
+
   useEffect(() => {
-    item !== undefined
-      ? CachImages({ url: item.imageOver, setIsLoading: setLoading })
-      : CachImages({ url: "/images/home/10302.jpg", setIsLoading: setLoading });
-    setLoading(false);
-    console.log("33333333333333333", loading);
-  });
+    // Preload image and set loading state accordingly
+    const preloadImage = async () => {
+      try {
+        setLoading(true);
+        const imageUrl = item ? item.imageOver : "/images/home/10302.jpg";
+        await CachImages({ url: imageUrl, setIsLoading: setLoading });
+      } catch (error) {
+        console.error("Error preloading image:", error);
+      }
+    };
+
+    preloadImage();
+  }, [item]);
+
+  const ModelView = useCallback(() => <Model />, []);
+
   return (
     <>
       {!loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
@@ -27,7 +37,7 @@ export default function ModelBox() {
         className={classes.modelBox}
         style={{
           backgroundImage: `url(${
-            item !== undefined ? item.imageOver : "/images/home/10302.jpg"
+            item ? item.imageOver : "/images/home/10302.jpg"
           })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -40,7 +50,7 @@ export default function ModelBox() {
       </Canvas>
 
       <div className={classes.miniCard}>
-        <GameCard item={item !== undefined ? item : AppConstants.cardData[0]} />
+        <GameCard item={item || AppConstants.cardData[0]} />
       </div>
 
       <TopGames setItem={setItem} />
