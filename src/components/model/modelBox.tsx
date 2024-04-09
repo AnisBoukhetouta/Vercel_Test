@@ -27,11 +27,11 @@ export default function ModelBox() {
 
   return (
     <>
-      {loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
       <Canvas
         camera={{ position: [1, 1, 5], fov: 50 }}
         className={classes.modelBox}
         style={{
+          position: "relative",
           backgroundImage: `url(${imageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -42,7 +42,9 @@ export default function ModelBox() {
       >
         <ModelView />
       </Canvas>
-
+      {loading && (
+        <LinearProgress className={classes.progressbar} color="error"  />
+      )}
       <div className={classes.miniCard}>
         <GameCard item={item || AppConstants.cardData[0]} />
       </div>
