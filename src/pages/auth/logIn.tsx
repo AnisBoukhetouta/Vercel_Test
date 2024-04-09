@@ -43,9 +43,9 @@ const Login = () => {
       });
   };
 
-  useEffect (() => {
+  useEffect(() => {
     console.log(email, password);
-  })
+  });
 
   return (
     <div className={classes.authMain}>
@@ -81,7 +81,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Button onClick={onLogin} variant="contained" fullWidth>
+          <Button type="submit" onClick={onLogin} variant="contained" fullWidth>
             CONTINUE
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>
@@ -89,32 +89,32 @@ const Login = () => {
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<Google />}
+              startIcon={<Google sx={{ width: 50, height: 50 }} />}
             ></Button>
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<Stream />}
+              startIcon={<Stream sx={{ width: 50, height: 50 }} />}
             ></Button>
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<Facebook />}
+              startIcon={<Facebook sx={{ width: 50, height: 50 }} />}
             ></Button>
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<Apple />}
+              startIcon={<Apple sx={{ width: 50, height: 50 }} />}
             ></Button>
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<LinkedIn />}
+              startIcon={<LinkedIn sx={{ width: 50, height: 50 }} />}
             ></Button>
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<Instagram />}
+              startIcon={<Instagram sx={{ width: 50, height: 50 }} />}
             ></Button>
           </Grid>
           <Typography className={classes.divider}>
