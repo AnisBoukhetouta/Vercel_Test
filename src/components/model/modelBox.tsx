@@ -13,14 +13,15 @@ export default function ModelBox() {
   const [item, setItem] = React.useState<any>();
   const ModelView = useCallback(() => <Model />, []);
   useEffect(() => {
-    setLoading(true);
     item !== undefined
       ? CachImages({ url: item.imageOver, setIsLoading: setLoading })
       : CachImages({ url: "/images/home/10302.jpg", setIsLoading: setLoading });
+    setLoading(false);
+    console.log("33333333333333333", loading);
   });
   return (
     <>
-      {loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
+      {!loading && <LinearProgress color="error" sx={{ zIndex: 3 }} />}
       <Canvas
         camera={{ position: [1, 1, 5], fov: 50 }}
         className={classes.modelBox}
