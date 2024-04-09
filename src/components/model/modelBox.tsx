@@ -33,9 +33,6 @@ export default function ModelBox() {
         camera={{ position: [1, 1, 5], fov: 50 }}
         className={classes.modelBox}
         style={{
-          // backgroundImage: `url(${
-          //   item ? item.imageOver : "/images/home/10302.jpg"
-          // })`,
           backgroundImage: `url(${imageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
