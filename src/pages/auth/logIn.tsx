@@ -76,7 +76,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <Button type="submit" variant="contained" fullWidth>
+          <Button onClick={onLogin} type="submit" variant="contained" fullWidth>
             CONTINUE
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>
@@ -112,7 +112,7 @@ const Login = () => {
               startIcon={<Instagram />}
             ></Button>
           </Grid>
-          <Typography className={classes.fontStyle}>
+          <Typography className={classes.divider}>
             By singning in or signing up, you agree with our <br />
             <NavLink
               className={classes.fontStyle}
@@ -122,7 +122,7 @@ const Login = () => {
             </NavLink>
           </Typography>
         </form>
-        <section>
+        {/* <section>
           <div>
             <p className={classes.fontStyle}> FocusApp </p>
 
@@ -164,7 +164,7 @@ const Login = () => {
               No account yet? <NavLink to="/signup">Sign up</NavLink>
             </p>
           </div>
-        </section>
+        </section> */}
       </Container>
     </div>
   );

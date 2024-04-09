@@ -21,12 +21,7 @@
   text-wrap: balance;
   box-sizing: border-box;
   position: relative;
-  /* font-family: 'Dela Gothic One', sans-serif; */
-  /* font-family: "Bebas Neue", sans-serif; */
-  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
   font-family: "Paytone One", sans-serif;
-  /* color: var(--light); */   
-  /* background: url("/images/home/10302.jpg") no-repeat fixed center; */
   box-sizing: border-box;
 }
 .MuiFormControl-root {
@@ -43,4 +38,7 @@
 }
 .css-1d6wzja-MuiButton-startIcon>*:nth-of-type(1) {
   font-size: 33px !important;
+}
+.css-6xugel {
+  margin: 0 !important;
 }
