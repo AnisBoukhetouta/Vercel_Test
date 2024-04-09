@@ -1,19 +1,13 @@
-interface Props {
-  url: string;
-  setIsLoading: (event: boolean) => void;
-}
-
-const CachImages = async ({ url, setIsLoading }: Props) => {
-  return await new Promise((resolve, reject) => {
-    const image = new Image();
-
-    image.src = url;
-    image.onload = () => {
-      setIsLoading(false);
-      resolve;
+export function toDataURL(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      callback(reader.result);
     };
-    image.onerror = reject;
-  });
-};
-
-export default CachImages;
+    reader.readAsDataURL(xhr.response);
+  };
+  xhr.open("GET", url);
+  xhr.responseType = "blob";
+  xhr.send();
+}

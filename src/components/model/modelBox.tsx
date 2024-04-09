@@ -7,23 +7,21 @@ import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
 import CachImages from "../imageCach";
 import { LinearProgress } from "@mui/material";
+import { toDataURL } from "../imageCach";
 
 export default function ModelBox() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [imageUrl, setImageUrl] = useState<string>("/images/home/10302.jpg");
   const [item, setItem] = useState<any>();
 
   useEffect(() => {
-    const preloadImage = async () => {
-      try {
-        setLoading(true);
-        const imageUrl = item ? item.imageOver : "/images/home/10302.jpg";
-        await CachImages({ url: imageUrl, setIsLoading: setLoading });
-      } catch (error) {
-        console.error("Error preloading image:", error);
-      }
-    };
-
-    preloadImage();
+    if (item) {
+      setLoading(true);
+      toDataURL(item.imageOver, function (dataUrl) {
+        setImageUrl(dataUrl);
+        setLoading(false);
+      });
+    }
   }, [item]);
 
   const ModelView = useCallback(() => <Model />, []);
@@ -35,9 +33,10 @@ export default function ModelBox() {
         camera={{ position: [1, 1, 5], fov: 50 }}
         className={classes.modelBox}
         style={{
-          backgroundImage: `url(${
-            item ? item.imageOver : "/images/home/10302.jpg"
-          })`,
+          // backgroundImage: `url(${
+          //   item ? item.imageOver : "/images/home/10302.jpg"
+          // })`,
+          backgroundImage: `url(${imageUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
