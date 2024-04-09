@@ -55,9 +55,12 @@ const Login = () => {
             style={{
               backgroundColor: "#00000000",
               color: "rgb(255, 255, 255)",
+              borderRadius: "5px",
             }}
             label="Email Address"
             variant="filled"
+            placeholder="Email address"
+            required
           />
           <TextField
             type="password"
@@ -65,9 +68,13 @@ const Login = () => {
             style={{
               backgroundColor: "#00000000",
               color: "rgb(255, 255, 255)",
+              borderRadius: "5px",
             }}
             label="Password"
             variant="filled"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <Button type="submit" variant="contained" fullWidth>
             CONTINUE
