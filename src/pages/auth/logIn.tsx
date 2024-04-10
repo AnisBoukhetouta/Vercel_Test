@@ -93,16 +93,14 @@ const Login = () => {
             Sign In
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>
-          <Grid>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              fullWidth
-              startIcon={<Google sx={{ height: 50, marginRight: 1 }} />}
-            >
-              With Google
-            </Button>
-          </Grid>
+          <Button
+            className={classes.socialButtons}
+            variant="contained"
+            fullWidth
+            startIcon={<Google sx={{ marginRight: 1 }} />}
+          >
+            With Google
+          </Button>
           <p className={classes.divider}>
             By singning in or signing up, you agree with our <br />
             <NavLink

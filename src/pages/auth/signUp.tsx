@@ -96,38 +96,14 @@ const Signup = () => {
             Sign Up
           </Button>
           <Divider className={classes.divider}>or continue with</Divider>
-          <Grid>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Google sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Stream sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Facebook sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Apple sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<LinkedIn sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Instagram sx={{ width: 50, height: 50 }} />}
-            ></Button>
-          </Grid>
+          <Button
+            className={classes.socialButtons}
+            variant="contained"
+            fullWidth
+            startIcon={<Google sx={{ marginRight: 1 }} />}
+          >
+            With Google
+          </Button>
           <p className={classes.divider}>
             By singning in or signing up, you agree with our <br />
             <NavLink
@@ -138,8 +114,8 @@ const Signup = () => {
             </NavLink>
           </p>
         </form>
-        <Typography sx={{marginTop: 2}} className={classes.divider}>
-          Already have an account?{' '}
+        <Typography sx={{ marginTop: 2 }} className={classes.divider}>
+          Already have an account?{" "}
           <NavLink to="/login" className={classes.fontStyle}>
             Sign in
           </NavLink>

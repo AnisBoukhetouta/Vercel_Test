@@ -36,12 +36,6 @@
 .css-1oprhov::before {
   border-top: rgba(255, 255, 255, 0.72) thin solid !important;
 }
-.css-1d6wzja-MuiButton-startIcon {
-  margin: 0 !important;
-}
-.css-6xugel {
-  margin: 0 !important;
-}
 .Mui-disabled {
   color: var(--light) !important;
   cursor: alias;
