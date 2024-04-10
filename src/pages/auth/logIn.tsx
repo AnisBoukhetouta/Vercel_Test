@@ -97,7 +97,9 @@ const Login = () => {
             className={classes.socialButtons}
             variant="contained"
             fullWidth
-            startIcon={<Google sx={{ marginRight: 1 }} />}
+            startIcon={
+              <Google sx={{ width: 30, height: 30, marginRight: 1 }} />
+            }
           >
             With Google
           </Button>
