@@ -99,7 +99,9 @@ const Login = () => {
               variant="contained"
               fullWidth
               startIcon={<Google sx={{ height: 50, marginRight: 1 }} />}
-            >With Google</Button>
+            >
+              With Google
+            </Button>
           </Grid>
           <p className={classes.divider}>
             By singning in or signing up, you agree with our <br />
@@ -111,55 +113,12 @@ const Login = () => {
             </NavLink>
           </p>
         </form>
-        <Typography sx={{marginTop: 2}} className={classes.divider}>
+        <Typography sx={{ marginTop: 2 }} className={classes.divider}>
           Create a new account.{" "}
           <NavLink to="/signup" className={classes.fontStyle}>
             Sign Up
           </NavLink>
         </Typography>
-        {/* <section>
-          <div>
-            <p className={classes.fontStyle}> FocusApp </p>
-
-            <form>
-              <div>
-                <label className={classes.fontStyle} htmlFor="email-address">
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="Email address"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <label className={classes.fontStyle} htmlFor="password">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <button onClick={onLogin}>Login</button>
-              </div>
-            </form>
-
-            <p className={classes.fontStyle}>
-              No account yet? <NavLink to="/signup">Sign up</NavLink>
-            </p>
-          </div>
-        </section> */}
       </Container>
     </div>
   );
