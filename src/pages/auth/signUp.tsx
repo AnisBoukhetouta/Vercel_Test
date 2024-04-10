@@ -110,6 +110,7 @@ const Signup = () => {
             By singning in or signing up, you agree with our <br />
             <NavLink
               className={classes.fontStyle}
+              target="blank"
               to="https://www.epicgames.com/site/en-US/privacypolicy?lang=en-US"
             >
               Privacy Policy

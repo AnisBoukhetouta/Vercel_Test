@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import classes from "./lobbyHeaderGame.module.css";
-import AppConstants from "../../AppConstants";
-import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import GameLobbyCard from "../gameCards/gameLobbyCard";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import axios from "axios";
 import GameCards from "../gameCards/gameCards";
 
