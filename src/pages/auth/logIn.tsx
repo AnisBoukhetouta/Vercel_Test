@@ -7,17 +7,11 @@ import {
   Button,
   Container,
   Divider,
-  Grid,
   TextField,
   Typography,
 } from "@mui/material";
 import {
-  Apple,
-  Facebook,
   Google,
-  Instagram,
-  LinkedIn,
-  Stream,
 } from "@mui/icons-material";
 
 const Login = () => {
