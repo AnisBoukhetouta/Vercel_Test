@@ -97,33 +97,9 @@ const Login = () => {
             <Button
               className={classes.socialButtons}
               variant="contained"
-              startIcon={<Google sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Stream sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Facebook sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Apple sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<LinkedIn sx={{ width: 50, height: 50 }} />}
-            ></Button>
-            <Button
-              className={classes.socialButtons}
-              variant="contained"
-              startIcon={<Instagram sx={{ width: 50, height: 50 }} />}
-            ></Button>
+              fullWidth
+              startIcon={<Google sx={{ height: 50, marginRight: 1 }} />}
+            >With Google</Button>
           </Grid>
           <p className={classes.divider}>
             By singning in or signing up, you agree with our <br />
