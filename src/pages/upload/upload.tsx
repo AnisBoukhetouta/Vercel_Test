@@ -46,23 +46,13 @@ export default function Upload() {
     auth.onAuthStateChanged(function (user) {
       if (user) {
         let uid = user.uid;
-        console.log("UID", uid);
       } else {
         navigate("/login");
-        // console.log("No user is signed in.");
       }
     });
   }, []);
 
-  useEffect(() => {
-    console.log("FileUpload state updated:", fileUpload);
-  }, [fileUpload]);
-  useEffect(() => {
-    console.log("LandscapeFile state updated:", landscapeFile);
-  }, [landscapeFile]);
-
   const registerHandler = async (values, { setSubmitting }) => {
-    console.log(values);
     const formData = new FormData();
     formData.append("gameTitle", values.gameTitle);
     formData.append("category", values.category);
@@ -77,7 +67,6 @@ export default function Upload() {
     portraitFile && formData.append("portraitFile", portraitFile[0]);
     squareFile && formData.append("squareFile", squareFile[0]);
     fileUpload.map((file, index) => {
-      // formData.append(`fileUpload${index}`, file);
       const data = ".data";
       const wasm = ".wasm";
       const framework = ".framework";
@@ -108,7 +97,7 @@ export default function Upload() {
           },
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       setSubmitting(false);
       window.location.replace("/gamelobby");
     } catch (e) {
