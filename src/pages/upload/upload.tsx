@@ -16,6 +16,8 @@ import AppConstants from "../../AppConstants";
 import { CloudUpload } from "@mui/icons-material";
 import axios from "axios";
 import FileUpload from "../../components/fileUpload/fileUpload";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   gameTitle: "",
@@ -37,7 +39,20 @@ export default function Upload() {
   const [landscapeFile, setLandscapeFile] = React.useState<File | null>(null);
   const [portraitFile, setPortraitFile] = React.useState<File | null>(null);
   const [squareFile, setSquareFile] = React.useState<File | null>(null);
+  const navigate = useNavigate();
   let uploadContainer: File[] = [];
+
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        let uid = user.uid;
+        console.log("UID", uid);
+      } else {
+        navigate("/login");
+        // console.log("No user is signed in.");
+      }
+    });
+  }, []);
 
   useEffect(() => {
     console.log("FileUpload state updated:", fileUpload);
