@@ -46,6 +46,7 @@ export default function Upload() {
     auth.onAuthStateChanged(function (user) {
       if (user) {
         let uid = user.uid;
+        console.log("UID", uid);
       } else {
         navigate("/login");
       }
