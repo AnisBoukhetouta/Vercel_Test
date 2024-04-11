@@ -39,6 +39,7 @@ export default function Upload() {
   const [landscapeFile, setLandscapeFile] = React.useState<File | null>(null);
   const [portraitFile, setPortraitFile] = React.useState<File | null>(null);
   const [squareFile, setSquareFile] = React.useState<File | null>(null);
+  const [uid, setUid] = React.useState("");
   const [characterFileUpload, setCharacterFileUpload] =
     React.useState<File | null>(null);
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function Upload() {
     auth.onAuthStateChanged(function (user) {
       if (user) {
         let uid = user.uid;
+        setUid(uid);
         console.log("UID", uid);
       } else {
         navigate("/login");
@@ -110,6 +112,7 @@ export default function Upload() {
 
   const onCharacterUpload = async (values, { setSubmitting }) => {
     const formData = new FormData();
+    formData.append("uid", uid);
     characterFileUpload && formData.append("characterFileUpload", characterFileUpload[0]);
     try {
       const response = await axios.post(
