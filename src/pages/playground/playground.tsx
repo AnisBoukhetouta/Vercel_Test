@@ -30,8 +30,8 @@ const UnityWrapper = ({ unityConfig }) => {
 };
 
 export default function Playground() {
-  const baseUrl = process.env.APP_BASE;
-  const getFilesUrl = process.env.GET_FILES;
+  const baseUrl = import.meta.env.APP_BASE;
+  const getFilesUrl = import.meta.env.GET_FILES;
   const location = useLocation();
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null

@@ -35,7 +35,7 @@ const initialValues = {
 };
 
 export default function Upload() {
-  const uploadUrl = process.env.UPLOAD_FILES;
+  const uploadUrl = import.meta.env.UPLOAD_FILES;
   const [fileUpload, setFileUpload] = React.useState<File[]>([]);
   const [landscapeFile, setLandscapeFile] = React.useState<File | null>(null);
   const [portraitFile, setPortraitFile] = React.useState<File | null>(null);

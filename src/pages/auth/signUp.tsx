@@ -14,7 +14,7 @@ import { Google } from "@mui/icons-material";
 import axios from "axios";
 
 const Signup = () => {
-  const userInfoUrl = process.env.USER_INFO;
+  const userInfoUrl = import.meta.env.USER_INFO;
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState("");

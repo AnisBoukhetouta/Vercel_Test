@@ -35,8 +35,8 @@ export interface Data {
 export default function LobbyHeaderGame() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
   const items: Item[] = [];
-  const getFilesUrl = process.env.GET_FILES;
-  const baseUrl = process.env.APP_BASE;
+  const getFilesUrl = import.meta.env.GET_FILES;
+  const baseUrl = import.meta.env.APP_BASE;
 
   useEffect(() => {
     const fetch = async () => {
