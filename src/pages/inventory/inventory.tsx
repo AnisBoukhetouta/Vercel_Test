@@ -17,7 +17,6 @@ export default function Inventory() {
   useEffect(() => {
     const getModel = async () => {
       auth.onAuthStateChanged(function (user) {
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~", user?.uid);
         if (user) {
           setUid(user.uid);
         } else {
@@ -29,7 +28,7 @@ export default function Inventory() {
           await axios
             .get(`https://grat.fun/api/pwniq/characterFiles?uid=${uid}`)
             .then((response) => {
-              const { destination, fileName } = response.data;
+          const { destination, fileName } = response.data;
               console.log("FetchedModel~~~~~~", response.data);
               setCharacterUrl(
                 `https://grat.fun/api/pwniq/${destination}/${fileName}`
