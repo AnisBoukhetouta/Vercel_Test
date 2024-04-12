@@ -16,7 +16,7 @@ export default function ModelBox() {
   useEffect(() => {
     if (item) {
       setLoading(true);
-      toDataURL(item.imageOver, function (dataUrl) {
+      toDataURL(item.imageCardOver, function (dataUrl) {
         setImageUrl(dataUrl);
         setLoading(false);
       });

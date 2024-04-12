@@ -128,7 +128,7 @@ const AppConstants = {
     {
       _id: "1",
       // imageOut: "/images/cardImages/1.jpeg",
-      imageOut: "/images/initialCardImages/1.jpeg",
+      imageOut: "/images/initialCardImages/1.jpg",
 
       imageOver: "/images/cardImages/7.jpeg",
       imageCardOver: "/images/initialCardImages/7.jpeg",
@@ -136,10 +136,10 @@ const AppConstants = {
     {
       _id: "2",
       // imageOut: "/images/cardImages/2.jpeg",
-      imageOut: "/images/initialCardImages/2.jpeg",
+      imageOut: "/images/initialCardImages/2.jpg",
 
-      imageOver: "/images/cardImages/8.jpeg",
-      imageCardOver: "/images/initialCardImages/8.jpeg",
+      imageOver: "/images/cardImages/10.jpeg",
+      imageCardOver: "/images/initialCardImages/10.jpeg",
     },
     {
       _id: "3",
@@ -170,8 +170,8 @@ const AppConstants = {
       // imageOut: "/images/cardImages/6.jpeg",
       imageOut: "/images/initialCardImages/6.jpeg",
 
-      imageOver: "/images/cardImages/2.jpeg",
-      imageCardOver: "/images/initialCardImages/2.jpeg",
+      imageOver: "/images/cardImages/2.jpg",
+      imageCardOver: "/images/initialCardImages/2.jpg",
     },
     {
       _id: "7",
@@ -186,8 +186,8 @@ const AppConstants = {
       // imageOut: "/images/cardImages/5.jpeg",
       imageOut: "/images/initialCardImages/5.jpeg",
 
-      imageOver: "/images/cardImages/1.jpeg",
-      imageCardOver: "/images/initialCardImages/1.jpeg",
+      imageOver: "/images/cardImages/1.jpg",
+      imageCardOver: "/images/initialCardImages/1.jpg",
     },
     {
       _id: "9",
