@@ -2,14 +2,52 @@
   display: flex;
   flex-flow: row;
   align-items: center;
-  gap: var(--padding-2);
+  gap: var(--padding-1);
   padding: var(--padding-1);
   font-size: large;
   list-style: none;
 }
+
+.title {
+  font-size: 28px;
+  color: white;
+  font-weight: 800;
+  font-family: cursive;
+}
+
 @media (max-width: 45em) {
   .navlinks {
     display: flex;
     flex-flow: column;
   }
+}
+
+.searchButton {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+svg:hover path {
+  fill: rgb(255, 255, 255);
+  transition: 0.33s;
+}
+
+.languageButton {
+  width: 26px;
+  height: 26px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.loginButton {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: rgb(78, 76, 76);
+  border: 0;
+  cursor: pointer;
 }
