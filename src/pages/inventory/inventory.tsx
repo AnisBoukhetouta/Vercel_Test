@@ -7,8 +7,10 @@ import axios from "axios";
 import { auth } from "../../firebase";
 import { OrbitControls } from "@react-three/drei";
 import { UserCharacter } from "../../components/userCharacter";
+import { useNavigate } from "react-router-dom";
 
 export default function Inventory() {
+  const navigate = useNavigate();
   const [uid, setUid] = useState("");
   const [characterUrl, setCharacterUrl] = useState("");
 
@@ -19,7 +21,7 @@ export default function Inventory() {
         if (user) {
           setUid(user.uid);
         } else {
-          console.log("No user logged in");
+          navigate("/login");
         }
       });
       try {
