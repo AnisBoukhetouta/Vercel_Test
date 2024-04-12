@@ -26,7 +26,7 @@ export default function Inventory() {
       try {
         if (uid) {
           const response = await axios.get(
-            `http://localhost:6001/api/pwniq/characterFiles?uid=${uid}`
+            `https://grat.fun/api/pwniq/characterFiles?uid=${uid}`
           );
           console.log("FetchedModel~~~~~~", response.data);
           setFetchedCharacters(response.data);
