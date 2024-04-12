@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"; // Import updateProfile
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import classes from "./auth.module.css";
 import {
@@ -14,70 +14,60 @@ import { Google } from "@mui/icons-material";
 import axios from "axios";
 
 const Signup = () => {
-  const userInfoUrl = import.meta.env.USER_INFO;
   const navigate = useNavigate();
 
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [able, setAble] = useState(false);
 
   const onSignUp = async (e) => {
     e.preventDefault();
 
-    try {
-      // Create user with email and password
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        userEmail,
-        password
-      );
-      const user = userCredential.user;
-
-      // Update the user's profile with the userName
-      await updateProfile(user, {
-        displayName: userName,
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        const {
+          uid,
+          email,
+          metadata: { creationTime, lastSignInTime },
+          providerId,
+          stsTokenManager: { accessToken, refreshToken },
+        } = user;
+        const userInfo = {
+          email,
+          creationTime,
+          lastSignInTime,
+          uid,
+          providerId,
+          accessToken,
+          refreshToken,
+        };
+        console.log("USERINFO", userInfo);
+        try {
+          const response = axios.post(
+            "https://grat.fun/api/pwniq/userInfo",
+            userInfo
+          );
+          console.log("RESPONSE", response);
+          navigate("/login");
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        // ..
       });
-
-      // Extract user information
-      const {
-        uid,
-        email,
-        metadata: { creationTime, lastSignInTime },
-        providerId,
-        stsTokenManager: { accessToken, refreshToken },
-        displayName, // Retrieve displayName
-      } = user;
-
-      // Construct user info object
-      const userInfo = {
-        email,
-        creationTime,
-        lastSignInTime,
-        uid,
-        providerId,
-        accessToken,
-        refreshToken,
-        userName: displayName, // Use displayName as userName
-      };
-
-      // Post user info to your backend
-      const response = userInfoUrl && (await axios.post(userInfoUrl, userInfo));
-      response && console.log("RESPONSE", response.data);
-
-      // Navigate to login page upon successful sign-up
-      navigate("/login");
-    } catch (error) {
-      console.error("Error signing up:", error);
-      // Handle error codes/messages here
-    }
   };
 
   useEffect(() => {
-    if (userName.length && userEmail.length && password.length) {
+    if (email.length && password.length) {
       setAble(true);
     } else setAble(false);
-  }, [userEmail, password]);
+  }, [email, password]);
 
   return (
     <div className={classes.authMain}>
@@ -85,20 +75,6 @@ const Signup = () => {
         <img src="/logo.svg" />
         <p className={classes.formLabel}>Sign Up</p>
         <form className={classes.form}>
-          <TextField
-            type="userName"
-            fullWidth
-            style={{
-              backgroundColor: "#00000000",
-              color: "rgb(255, 255, 255)",
-              borderRadius: "5px",
-            }}
-            label="User Name"
-            variant="filled"
-            placeholder="User Name"
-            onChange={(e) => setUserName(e.target.value)}
-            required
-          />
           <TextField
             type="email"
             fullWidth
@@ -110,7 +86,7 @@ const Signup = () => {
             label="Email Address"
             variant="filled"
             placeholder="Email address"
-            onChange={(e) => setUserEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <TextField
@@ -153,7 +129,7 @@ const Signup = () => {
             <NavLink
               className={classes.fontStyle}
               target="blank"
-              to="/Privacy Policy"
+              to="https://www.epicgames.com/site/en-US/privacypolicy?lang=en-US"
             >
               Privacy Policy
             </NavLink>

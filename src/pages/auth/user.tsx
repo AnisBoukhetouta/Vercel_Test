@@ -39,7 +39,7 @@ const User = () => {
           <NavLink
             className={classes.fontStyle}
             target="blank"
-            to="/Privacy Policy"
+            to="https://www.epicgames.com/site/en-US/privacypolicy?lang=en-US"
           >
             Privacy Policy
           </NavLink>

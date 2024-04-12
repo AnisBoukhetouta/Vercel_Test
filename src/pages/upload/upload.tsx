@@ -35,7 +35,6 @@ const initialValues = {
 };
 
 export default function Upload() {
-  const uploadUrl = import.meta.env.UPLOAD_FILES;
   const [fileUpload, setFileUpload] = React.useState<File[]>([]);
   const [landscapeFile, setLandscapeFile] = React.useState<File | null>(null);
   const [portraitFile, setPortraitFile] = React.useState<File | null>(null);
@@ -94,11 +93,15 @@ export default function Upload() {
       formData.append(`fileUpload${index}`, file);
     });
     try {
-      const response = uploadUrl && await axios.post(uploadUrl, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "https://grat.fun/api/pwniq/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       // console.log(response.data);
       setSubmitting(false);
       window.location.replace("/gamelobby");
@@ -110,8 +113,7 @@ export default function Upload() {
   const onCharacterUpload = async (values, { setSubmitting }) => {
     const formData = new FormData();
     formData.append("uid", uid);
-    characterFileUpload &&
-      formData.append("characterFileUpload", characterFileUpload[0]);
+    characterFileUpload && formData.append("characterFileUpload", characterFileUpload[0]);
     try {
       const response = await axios.post(
         "https://grat.fun/api/pwniq/characterFileUpload",

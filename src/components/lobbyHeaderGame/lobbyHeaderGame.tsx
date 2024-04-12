@@ -35,14 +35,12 @@ export interface Data {
 export default function LobbyHeaderGame() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
   const items: Item[] = [];
-  const getFilesUrl = import.meta.env.GET_FILES;
-  const baseUrl = import.meta.env.APP_BASE;
 
   useEffect(() => {
     const fetch = async () => {
       try {
         await axios
-          .get(getFilesUrl)
+          .get("https://grat.fun/api/pwniq/files")
           .then((response) => {
             setFetchedData(response.data);
             console.log("FetchedData~~~~~~", response.data);
@@ -58,8 +56,8 @@ export default function LobbyHeaderGame() {
   fetchedData.map((data, index) => {
     items.push({
       _id: data._id,
-      imageOut: `${baseUrl}/${data.files[0].destination}/${data.files[0].fileName}`,
-      imageCardOver: `${baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
+      imageOut: `https://grat.fun/api/pwniq/${data.files[0].destination}/${data.files[0].fileName}`,
+      imageCardOver: `https://grat.fun/api/pwniq/${data.files[0].destination}/${data.files[2].fileName}`,
     });
   });
 
