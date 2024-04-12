@@ -6,7 +6,7 @@ import GameCards from "../gameCards/gameCards";
 
 interface Item {
   _id: string;
-  imageCardOver: string;
+  imageOver: string;
 }
 
 export interface Data {
