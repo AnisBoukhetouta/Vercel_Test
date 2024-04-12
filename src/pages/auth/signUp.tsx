@@ -32,7 +32,6 @@ const Signup = () => {
           email,
           metadata: { creationTime, lastSignInTime },
           providerId,
-          reloadUserInfo: { localId },
           stsTokenManager: { accessToken, refreshToken },
         } = user;
         const userInfo = {
@@ -41,7 +40,6 @@ const Signup = () => {
           lastSignInTime,
           uid,
           providerId,
-          localId,
           accessToken,
           refreshToken,
         };
