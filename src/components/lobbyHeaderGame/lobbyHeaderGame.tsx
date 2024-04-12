@@ -6,7 +6,6 @@ import GameCards from "../gameCards/gameCards";
 
 interface Item {
   _id: string;
-  imageOut: string;
   imageCardOver: string;
 }
 
@@ -56,7 +55,6 @@ export default function LobbyHeaderGame() {
   fetchedData.map((data, index) => {
     items.push({
       _id: data._id,
-      imageOut: `https://grat.fun/api/pwniq/${data.files[0].destination}/${data.files[0].fileName}`,
       imageCardOver: `https://grat.fun/api/pwniq/${data.files[0].destination}/${data.files[2].fileName}`,
     });
   });
