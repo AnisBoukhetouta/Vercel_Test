@@ -10,9 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  Google,
-} from "@mui/icons-material";
+import { Google } from "@mui/icons-material";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -102,7 +100,7 @@ const Login = () => {
             <NavLink
               className={classes.fontStyle}
               target="blank"
-              to="https://www.epicgames.com/site/en-US/privacypolicy?lang=en-US"
+              to="/Privacy Policy"
             >
               Privacy Policy
             </NavLink>
