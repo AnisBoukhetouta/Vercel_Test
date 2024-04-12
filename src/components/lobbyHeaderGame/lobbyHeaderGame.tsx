@@ -57,7 +57,7 @@ export default function LobbyHeaderGame() {
   fetchedData.map((data, index) => {
     items.push({
       _id: data._id,
-      imageCardOver: `${baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
+      imageOver: `${baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
     });
   });
 
