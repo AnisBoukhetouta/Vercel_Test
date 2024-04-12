@@ -27,12 +27,12 @@ export default function Inventory() {
       try {
         if (uid) {
           await axios
-            .get(`http://grat.fun/api/pwniq/characterFiles?uid=${uid}`)
+            .get(`https://grat.fun/api/pwniq/characterFiles?uid=${uid}`)
             .then((response) => {
               const { destination, fileName } = response.data;
               console.log("FetchedModel~~~~~~", response.data);
               setCharacterUrl(
-                `http://grat.fun/api/pwniq/${destination}/${fileName}`
+                `https://grat.fun/api/pwniq/${destination}/${fileName}`
               );
             });
         }
