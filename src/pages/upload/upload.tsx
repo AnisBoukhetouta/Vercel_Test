@@ -99,7 +99,6 @@ export default function Upload() {
           "Content-Type": "multipart/form-data",
         },
       });
-      // console.log(response.data);
       setSubmitting(false);
       window.location.replace("/gamelobby");
     } catch (e) {
@@ -118,7 +117,6 @@ export default function Upload() {
           "Content-Type": "multipart/form-data",
         },
       });
-      // console.log(response.data);
       setSubmitting(false);
       window.location.replace("/inventory");
     } catch (e) {
