@@ -17,28 +17,19 @@ export default function GameCard({ item, onSetItem }: Props) {
 
   return (
     <div className={classes.cardBody}>
-      <div className={classes.center}>
-        <div className={classes.line}>
-          <Card
-            key={item._id}
-            sx={{
-              cursor: "pointer",
-              borderRadius: 5,
-              boxShadow: 10,
-            }}
-            className={classes.card}
-            onClick={() => handleClick(!mouseOver)}
-            onMouseOver={() => setMouseOver(true)}
-            onMouseOut={() => setMouseOver(false)}
-          >
-            <div className={classes.imageContainer}>
-              <img
-                src={item.imageOver}
-                alt="game"
-                className={classes.enlargeImage}
-              />
-            </div>
-          </Card>
+      <div
+        className={classes.center}
+        key={item._id}
+        onClick={() => handleClick(!mouseOver)}
+        onMouseOver={() => setMouseOver(true)}
+        onMouseOut={() => setMouseOver(false)}
+      >
+        <div className={classes.card}>
+          <img
+            src={item.imageOver}
+            alt="game"
+            className={classes.enlargeImage}
+          />
         </div>
         <CardData item={item} />
       </div>
