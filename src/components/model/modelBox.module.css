@@ -1,5 +1,5 @@
 .modelBox {
-  height: 100vh !important;
+  height: 90vh !important;
   position: relative;
 }
 .progressbar {
@@ -12,7 +12,5 @@
 .miniCard {
   position: absolute;
   top: 40%;
-  top: 300;
   left: 10%;
-  left: 100;
 }
