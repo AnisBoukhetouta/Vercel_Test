@@ -9,9 +9,7 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column: 1fr 1fr;
   height: var(--header-height);
-  /* padding-block: 1.25rem; */
   padding-inline: var(--header-padding-inline);
   position: relative;
   max-width: 1900px;
