@@ -2,8 +2,7 @@ import React from "react";
 import classes from "./topGames.module.css";
 import AppConstants from "../../AppConstants";
 import GameCard from "../gameCards/gameCard";
-import ScrollCarousel from "scroll-carousel-react";
-import { Carousel, ScrollingCarousel } from "@trendyol-js/react-carousel";
+import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 
 interface Props {
   setItem: (e: any) => void;

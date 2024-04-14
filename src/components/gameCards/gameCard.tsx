@@ -1,7 +1,6 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import classes from "./card.module.css";
-import { Typography } from "@mui/material";
 import CardData from "./gameCardData";
 
 interface Props {

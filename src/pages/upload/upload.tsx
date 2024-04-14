@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import {
   Autocomplete,
   Box,

@@ -2,7 +2,6 @@ import { Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import classes from "./inventory.module.css";
 import { Canvas } from "@react-three/fiber";
-import Model from "../../components/model/model";
 import axios from "axios";
 import { auth } from "../../firebase";
 import { OrbitControls } from "@react-three/drei";
