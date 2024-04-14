@@ -7,9 +7,9 @@ interface Props {
 }
 export default function CardData({ item }: Props) {
   return (
-    <>
+    <div className={classes.cardData}>
       <div className={classes.title}>Title</div>
       <CardValue item={item} />
-    </>
+    </div>
   );
 }
