@@ -1,10 +1,14 @@
 import React from "react";
-import classes from "./navlinks.module.css";
+import classes from "./menu.module.css";
 
 const LanguageButton = () => {
   return (
     <button className={classes.languageButton}>
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        className={classes.svg1}
+      >
         <path
           fill="rgb(158, 158, 158)"
           fill-rule="evenodd"

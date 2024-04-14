@@ -1,10 +1,14 @@
 import React from "react";
-import classes from "./navlinks.module.css";
+import classes from "./menu.module.css";
 
 const LoginButton = () => {
   return (
     <button className={classes.loginButton}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        className={classes.svg1}
+      >
         <path
           fill-rule="evenodd"
           fill="rgb(158, 158, 158)"

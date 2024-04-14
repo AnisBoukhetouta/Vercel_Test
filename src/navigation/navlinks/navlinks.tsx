@@ -1,11 +1,7 @@
 import * as React from "react";
 import classes from "./navlinks.module.css";
-
 import Navlink from "../navlink/navlink";
 import { NavLink } from "react-router-dom";
-import SearchButton from "./searchButton";
-import LanguageButton from "./languageButton";
-import LoginButton from "./loginButton";
 
 const navlinks = () => {
   return (
@@ -18,10 +14,6 @@ const navlinks = () => {
         <Navlink link="/gamelobby">GameLobby</Navlink>
         <Navlink link="/upload">Upload</Navlink>
         <Navlink link="/inventory">Inventory</Navlink>
-        {/* <Navlink link="/playground">Playground</Navlink> */}
-        <SearchButton />
-        <LanguageButton />
-        <LoginButton />
       </ul>
     </div>
   );
