@@ -42,7 +42,7 @@ const navbar = (props) => {
         )}
         <Line />
         <LanguageButton />
-        <LoginButton />
+        <LoginButton uid={uid} />
         <DownloadButton />
       </nav>
     </header>
