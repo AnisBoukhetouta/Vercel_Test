@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classes from "./lobbyHeaderGame.module.css";
 import { Container } from "@mui/material";
 import axios from "axios";
 import GameCards from "../gameCards/gameCards";
-import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import GameCard from "../gameCards/gameCard";
-import AppConstants from "../../AppConstants";
-import Carouselbutton from "./carouselButton";
 
 interface Item {
   _id: string;
@@ -35,13 +31,8 @@ export interface Data {
   }[];
 }
 
-interface Props {
-  setItem: (e: any) => void;
-}
-
-export default function LobbyHeaderGame({ setItem }: Props) {
+export default function LobbyHeaderGame() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  const [mouseOver, setMouseOver] = useState(false);
   const items: Item[] = [];
   const getFilesUrl = import.meta.env.VITE_GET_FILES;
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -72,14 +63,10 @@ export default function LobbyHeaderGame({ setItem }: Props) {
 
   return (
     <div className={classes.lobodyGame}>
-      <div className={classes.topGames} onMouseOver={() => setMouseOver(true)}>
-        <div className={classes.title}>BY EPIC</div>
-        <ScrollingCarousel
-          children={AppConstants.cardData.map((item) => (
-            <GameCards cardData={items} />
-          ))}
-        />
-        {/* {mouseOver && <Carouselbutton />} */}
+      <div className={classes.topGames}>
+        <Container maxWidth="lg" className={classes.lobbyCardsContainer}>
+          <GameCards cardData={items} />
+        </Container>
       </div>
     </div>
   );
