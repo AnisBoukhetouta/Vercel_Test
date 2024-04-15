@@ -6,7 +6,7 @@ interface Props {
   onSetItem?: (e: any) => void;
   link?: boolean;
   item: any;
-  setView?: (e: any) => void;
+  setView?: () => void;
 }
 
 export default function GameCard({ item, onSetItem, link, setView }: Props) {

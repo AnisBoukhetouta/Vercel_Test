@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 interface Props {
   item: any;
   link?: boolean;
-  setView?: (e: any) => void;
+  setView?: () => void;
 }
 export default function CardData({ item, link, setView }: Props) {
   return (
@@ -19,7 +19,7 @@ export default function CardData({ item, link, setView }: Props) {
         </>
       ) : (
         <button
-          onClick={() => setView}
+          onClick={setView}
           className={classes.lobbyHeaderButton}
           type="button"
         >

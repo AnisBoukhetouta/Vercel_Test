@@ -28,7 +28,6 @@ export default function ModelBox() {
   }, [item]);
 
   const ModelView = useCallback(() => <Model />, []);
-
   return (
     <>
       <Canvas
@@ -58,12 +57,10 @@ export default function ModelBox() {
         <GameCard
           item={item || AppConstants.cardData[0]}
           link={true}
-          setView={setView}
+          setView={() => setView(true)}
+          onSetItem={(item) => setItem(item)}
         />
       </div>
-      <Button variant="contained" onClick={() => setView(true)}>
-        Play Now
-      </Button>
       <TopGames setItem={setItem} />
     </>
   );
