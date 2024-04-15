@@ -5,15 +5,16 @@ import classes from "./modelBox.module.css";
 import TopGames from "../topGames/topGames";
 import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
-import { LinearProgress } from "@mui/material";
+import { Button, LinearProgress } from "@mui/material";
 import { toDataURL } from "../imageCach";
-import { NavLink } from "react-router-dom";
+import Playground from "../../pages/playground/playground";
 
 export default function ModelBox() {
   const [loading, setLoading] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>(
     AppConstants.cardData[0].imageCardOver
   );
+  const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
 
   useEffect(() => {
@@ -48,17 +49,21 @@ export default function ModelBox() {
       {loading && (
         <LinearProgress className={classes.progressbar} color="error" />
       )}
+      {!!view && (
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100vw" }}>
+          <Playground />
+        </div>
+      )}
       <div className={classes.miniCard}>
-        <NavLink
-          key={item ? item._id : AppConstants.cardData[0]._id}
-          to="/playground"
-          state={item ? item._id : AppConstants.cardData[0]._id}
-          style={{ textDecoration: "none" }}
-        >
-          <GameCard item={item || AppConstants.cardData[0]} link={true} />
-        </NavLink>
+        <GameCard
+          item={item || AppConstants.cardData[0]}
+          link={true}
+          setView={setView}
+        />
       </div>
-
+      <Button variant="contained" onClick={() => setView(true)}>
+        Play Now
+      </Button>
       <TopGames setItem={setItem} />
     </>
   );

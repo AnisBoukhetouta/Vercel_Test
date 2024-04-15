@@ -77,12 +77,13 @@ export default function Playground() {
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null
   );
-  const state = location.state;
+  // const state = !!location.state ?? "TEST";
+  const state = "TEST";
 
   const fetch = async (state) => {
-    if (!state) {
-      navigate("/");
-    }
+    // if (!state) {
+    //   navigate("/");
+    // }
     try {
       return axios.get(`${getFilesUrl}?gameTitle=${state}`).then((res) => {
         return res.data[0].files;
@@ -105,7 +106,6 @@ export default function Playground() {
 
   return (
     <>
-      {/* {loading && <Loader />} */}
       <Box
         component="main"
         sx={{

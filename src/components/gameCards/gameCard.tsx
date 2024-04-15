@@ -6,9 +6,10 @@ interface Props {
   onSetItem?: (e: any) => void;
   link?: boolean;
   item: any;
+  setView?: (e: any) => void;
 }
 
-export default function GameCard({ item, onSetItem, link }: Props) {
+export default function GameCard({ item, onSetItem, link, setView }: Props) {
   const [mouseOver, setMouseOver] = React.useState(false);
 
   const handleClick = (over: boolean) => {
@@ -31,7 +32,7 @@ export default function GameCard({ item, onSetItem, link }: Props) {
             className={classes.enlargeImage}
           />
         </div>
-        <CardData item={item} link={link}/>
+        <CardData setView={setView} item={item} link={link} />
       </div>
     </div>
   );

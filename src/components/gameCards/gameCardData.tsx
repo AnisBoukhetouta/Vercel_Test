@@ -7,8 +7,9 @@ import { NavLink } from "react-router-dom";
 interface Props {
   item: any;
   link?: boolean;
+  setView?: (e: any) => void;
 }
-export default function CardData({ item, link }: Props) {
+export default function CardData({ item, link, setView }: Props) {
   return (
     <div className={!link ? classes.cardData : classes.link}>
       {!link ? (
@@ -17,11 +18,13 @@ export default function CardData({ item, link }: Props) {
           <CardValue item={item} />
         </>
       ) : (
-        <NavLink to="/play">
-          <button className={classes.lobbyHeaderButton} type="button">
-            PLAY NOW
-          </button>
-        </NavLink>
+        <button
+          onClick={() => setView}
+          className={classes.lobbyHeaderButton}
+          type="button"
+        >
+          PLAY NOW
+        </button>
       )}
     </div>
   );
