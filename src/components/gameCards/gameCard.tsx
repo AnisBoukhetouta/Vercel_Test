@@ -1,14 +1,14 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
 import classes from "./card.module.css";
 import CardData from "./gameCardData";
 
 interface Props {
   onSetItem?: (e: any) => void;
+  link?: boolean;
   item: any;
 }
 
-export default function GameCard({ item, onSetItem }: Props) {
+export default function GameCard({ item, onSetItem, link }: Props) {
   const [mouseOver, setMouseOver] = React.useState(false);
 
   const handleClick = (over: boolean) => {
@@ -31,7 +31,7 @@ export default function GameCard({ item, onSetItem }: Props) {
             className={classes.enlargeImage}
           />
         </div>
-        <CardData item={item} />
+        <CardData item={item} link={link}/>
       </div>
     </div>
   );

@@ -1,15 +1,28 @@
 import React from "react";
 import classes from "./card.module.css";
 import CardValue from "./gameCardValue";
+import { Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 interface Props {
   item: any;
+  link?: boolean;
 }
-export default function CardData({ item }: Props) {
+export default function CardData({ item, link }: Props) {
   return (
-    <div className={classes.cardData}>
-      <div className={classes.title}>Title</div>
-      <CardValue item={item} />
+    <div className={!link ? classes.cardData : classes.link}>
+      {!link ? (
+        <>
+          <div className={classes.title}>Title</div>
+          <CardValue item={item} />
+        </>
+      ) : (
+        <NavLink to="/play">
+          <button className={classes.lobbyHeaderButton} type="button">
+            PLAY NOW
+          </button>
+        </NavLink>
+      )}
     </div>
   );
 }

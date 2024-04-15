@@ -55,7 +55,7 @@ export default function ModelBox() {
           state={item ? item._id : AppConstants.cardData[0]._id}
           style={{ textDecoration: "none" }}
         >
-          <GameCard item={item || AppConstants.cardData[0]} />
+          <GameCard item={item || AppConstants.cardData[0]} link={true} />
         </NavLink>
       </div>
 
