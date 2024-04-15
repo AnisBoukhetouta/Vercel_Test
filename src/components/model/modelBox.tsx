@@ -49,7 +49,7 @@ export default function ModelBox() {
       {loading && (
         <LinearProgress className={classes.progressbar} color="error" />
       )}
-      {/* <div className={classes.miniCard}>
+      <div className={classes.miniCard}>
         <NavLink
           key={item ? item._id : AppConstants.cardData[2]._id}
           to="/playground"
@@ -58,7 +58,7 @@ export default function ModelBox() {
         >
           <NewGameCard item={item || AppConstants.cardData[2]} />
         </NavLink>
-      </div> */}
+      </div>
 
       <TopGames setItem={setItem} />
     </>
