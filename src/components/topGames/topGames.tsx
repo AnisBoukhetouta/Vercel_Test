@@ -4,6 +4,7 @@ import AppConstants from "../../AppConstants";
 import GameCard from "../gameCards/gameCard";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import axios from "axios";
+import NewGameCard from "../newGameCard/newGameCard";
 
 interface Props {
   setItem: (e: any) => void;
@@ -35,9 +36,8 @@ export interface Data {
   }[];
 }
 export default function TopGames({ setItem }: Props) {
-
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  
+
   const items: Item[] = [];
   const getFilesUrl = import.meta.env.VITE_GET_FILES;
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -66,12 +66,11 @@ export default function TopGames({ setItem }: Props) {
     });
   });
 
-
   return (
     <div className={classes.topGames}>
       <ScrollingCarousel
-        children={items.map((item) => (
-          <GameCard onSetItem={setItem} key={item._id} item={item} />
+        children={AppConstants.cardData.map((item) => (
+          <NewGameCard onSetItem={setItem} key={item._id} item={item} />
         ))}
       />
     </div>
