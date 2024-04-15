@@ -10,7 +10,9 @@ import { toDataURL } from "../imageCach";
 
 export default function ModelBox() {
   const [loading, setLoading] = useState<boolean>(false);
-  const [imageUrl, setImageUrl] = useState<string>(AppConstants.cardData[0].imageCardOver);
+  const [imageUrl, setImageUrl] = useState<string>(
+    AppConstants.cardData[0].imageCardOver
+  );
   const [item, setItem] = useState<any>();
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function ModelBox() {
         <ModelView />
       </Canvas>
       {loading && (
-        <LinearProgress className={classes.progressbar} color="error"  />
+        <LinearProgress className={classes.progressbar} color="error" />
       )}
       <div className={classes.miniCard}>
         <GameCard item={item || AppConstants.cardData[0]} />
