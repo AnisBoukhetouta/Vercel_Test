@@ -14,3 +14,9 @@
   top: 40%;
   left: 10%;
 }
+
+@media screen and (max-height:700px) {
+  .miniCard {
+    display: none;
+  }
+}
