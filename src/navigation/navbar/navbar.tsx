@@ -9,6 +9,7 @@ import Line from "../../components/menu/line";
 import DownloadButton from "../../components/menu/dowloadButton";
 import EpicButton from "../../components/menu/epicButton";
 import SearchInput from "../../components/menu/searchInput";
+import { NavLink } from "react-router-dom";
 
 const navbar = (props) => {
   const [uid, setUid] = useState("");
@@ -25,6 +26,9 @@ const navbar = (props) => {
       <nav className={classes.tool}>
         <EpicButton />
         <Line />
+        <NavLink to="/" style={{ textDecoration: "none" }}>
+          <h1 className={classes.title}>LexSCHOOL</h1>
+        </NavLink>
         <Navlinks />
       </nav>
       <nav className={classes.tools}>
