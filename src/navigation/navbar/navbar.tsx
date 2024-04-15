@@ -10,6 +10,7 @@ import DownloadButton from "../../components/menu/dowloadButton";
 import EpicButton from "../../components/menu/epicButton";
 import SearchInput from "../../components/menu/searchInput";
 import { NavLink } from "react-router-dom";
+import MenuButton from "../../components/menu/menuButton";
 
 const navbar = (props) => {
   const [uid, setUid] = useState("");
@@ -48,6 +49,11 @@ const navbar = (props) => {
         <LanguageButton />
         <LoginButton uid={uid} />
         <DownloadButton />
+      </nav>
+      <nav className={classes.menuTool}>
+        <button className={classes.menuButton}>
+          <MenuButton />
+        </button>
       </nav>
     </header>
   );

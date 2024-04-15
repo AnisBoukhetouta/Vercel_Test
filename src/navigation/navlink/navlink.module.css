@@ -28,3 +28,9 @@
     margin: var(--padding-1);
   }
 }
+
+@media screen and (max-width: 1227px) {
+  .navlink {
+    display: none;
+  }
+}
