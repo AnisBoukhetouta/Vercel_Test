@@ -6,7 +6,6 @@ const navlinks = () => {
   return (
     <div>
       <ul className={classes.navlinks}>
-
         <Navlink link="/">Home</Navlink>
         <Navlink link="/gamelobby">GameLobby</Navlink>
         <Navlink link="/upload">Upload</Navlink>
