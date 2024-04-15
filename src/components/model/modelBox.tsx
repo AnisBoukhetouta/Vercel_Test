@@ -36,7 +36,7 @@ export default function ModelBox() {
         style={{
           position: "relative",
           backgroundImage: `url(${imageUrl})`,
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundPositionY: "Top",

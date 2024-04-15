@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./lobbyHeader.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function LobbyHeader() {
   const handleClick = () => {
@@ -21,7 +22,7 @@ export default function LobbyHeader() {
           <div className={classes.title}>LexSCHOOL</div>
           <div className={classes.titleBody}>The future of Game is here.</div>
           <div className={classes.buttonline}>
-            <a href="/play">
+            <NavLink to="/play">
               <button
                 className={classes.lobbyHeaderButton}
                 type="button"
@@ -29,7 +30,7 @@ export default function LobbyHeader() {
               >
                 PLAY NOW
               </button>
-            </a>
+            </NavLink>
           </div>
         </center>
       </div>
