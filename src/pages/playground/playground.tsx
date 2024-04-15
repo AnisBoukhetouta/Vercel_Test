@@ -21,8 +21,8 @@ const UnityWrapper = ({ unityConfig }) => {
       console.log('`````````READY_SUCCESS`````````');
     } else if (state === 'COMPLETED') {
       console.log('`````````COMPLETED`````````');
-      // navigate('/inventory')
       alert('Game Completed');
+      navigate('/inventory')
     }
   }, []);
 
