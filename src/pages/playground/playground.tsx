@@ -2,13 +2,37 @@ import React, { useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import { Unity, UnityConfig, useUnityContext } from "react-unity-webgl";
 import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./playground.module.css";
 
 const UnityWrapper = ({ unityConfig }) => {
+  const navigate = useNavigate();
   const unityContext = useUnityContext(unityConfig);
-  const { isLoaded, loadingProgression, sendMessage } = unityContext;
+  const { addEventListener, isLoaded, loadingProgression, sendMessage } = unityContext;
   console.log("isLoaded", isLoaded, loadingProgression);
+
+  const onGameState = React.useCallback((state: string) => {
+    if (state === 'DISCONNECT') {
+      console.log('`````````Disconnected`````````');
+    } else if (state === 'JOIN_SUCCESS') {
+      console.log('`````````JOIN_SUCCESS`````````');
+    } else if (state === 'READY_SUCCESS') {
+      console.log('`````````READY_SUCCESS`````````');
+    } else if (state === 'COMPLETED') {
+      console.log('`````````COMPLETED`````````');
+      navigate('/inventory')
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("Initialize Unity Events");
+    addEventListener("GameState", onGameState);
+
+    return () => {
+      removeEventListener("GameState", onGameState);
+    };
+  }, [onGameState]);
 
   return (
     <div className={classes.container}>

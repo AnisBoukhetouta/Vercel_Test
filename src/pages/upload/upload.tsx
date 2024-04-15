@@ -100,7 +100,7 @@ export default function Upload() {
         },
       });
       setSubmitting(false);
-      window.location.replace("/gamelobby");
+      window.location.replace("/");
     } catch (e) {
       console.log("Error submitting form:", e);
     }
