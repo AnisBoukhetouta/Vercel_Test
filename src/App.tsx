@@ -19,8 +19,8 @@ import Inventory from "./pages/inventory/inventory";
 const App = () => {
   let routes = (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/gamelobby" element={<GameLobby />} />
+      <Route path="/play" element={<Home />} />
+      <Route path="/" element={<GameLobby />} />
       <Route path="/upload" element={<Upload />} />
       <Route path="/playground" element={<Playground />} />
       <Route path="/signup" element={<Signup />} />

@@ -21,13 +21,15 @@ export default function LobbyHeader() {
           <div className={classes.title}>LexSCHOOL</div>
           <div className={classes.titleBody}>The future of Game is here.</div>
           <div className={classes.buttonline}>
-            <button
-              className={classes.lobbyHeaderButton}
-              type="button"
-              onClick={handleClick}
-            >
-              PLAY NOW
-            </button>
+            <a href="/play">
+              <button
+                className={classes.lobbyHeaderButton}
+                type="button"
+                onClick={handleClick}
+              >
+                PLAY NOW
+              </button>
+            </a>
           </div>
         </center>
       </div>

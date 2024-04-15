@@ -7,6 +7,7 @@ import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
 import { LinearProgress } from "@mui/material";
 import { toDataURL } from "../imageCach";
+import { NavLink } from "react-router-dom";
 
 export default function ModelBox() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -18,7 +19,7 @@ export default function ModelBox() {
   useEffect(() => {
     if (item) {
       setLoading(true);
-      toDataURL(item.imageCardOver, function (dataUrl) {
+      toDataURL(item.imageOver, function (dataUrl) {
         setImageUrl(dataUrl);
         setLoading(false);
       });
@@ -48,7 +49,14 @@ export default function ModelBox() {
         <LinearProgress className={classes.progressbar} color="error" />
       )}
       <div className={classes.miniCard}>
-        <GameCard item={item || AppConstants.cardData[0]} />
+        <NavLink
+          key={item ? item._id : AppConstants.cardData[0]._id}
+          to="/playground"
+          state={item ? item._id : AppConstants.cardData[0]._id}
+          style={{ textDecoration: "none" }}
+        >
+          <GameCard item={item || AppConstants.cardData[0]} />
+        </NavLink>
       </div>
 
       <TopGames setItem={setItem} />
