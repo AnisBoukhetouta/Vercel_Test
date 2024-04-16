@@ -11,6 +11,7 @@ import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./playground.module.css";
+import Nebula from "../../components/Nebula/Nebula";
 
 const UnityWrapper = ({ unityConfig }) => {
   const navigate = useNavigate();
@@ -73,9 +74,11 @@ const UnityWrapper = ({ unityConfig }) => {
       <div
         className={classes.loader}
         style={{
-          display: !isLoaded ? "inline" : "none",
+          display: !view ? "inline" : "none",
         }}
-      ></div>
+      >
+        <Nebula />
+      </div>
       <Typography
         style={{
           position: "absolute",
