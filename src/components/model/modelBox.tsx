@@ -50,7 +50,7 @@ export default function ModelBox() {
       )}
       {!!view && (
         <div style={{ position: "absolute", top: 0, left: 0, width: "100vw" }}>
-          <Playground />
+          <Playground item={item} />
         </div>
       )}
       <div className={classes.miniCard}>

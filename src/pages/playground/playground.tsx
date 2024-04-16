@@ -69,7 +69,7 @@ const UnityWrapper = ({ unityConfig }) => {
   );
 };
 
-export default function Playground() {
+export default function Playground({item}) {
   const navigate = useNavigate();
   const location = useLocation();
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -78,7 +78,7 @@ export default function Playground() {
     null
   );
   // const state = !!location.state ?? "TEST";
-  const state = "TEST";
+  const state = item._id;
 
   const fetch = async (state) => {
     // if (!state) {
