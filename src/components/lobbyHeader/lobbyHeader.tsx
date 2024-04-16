@@ -19,7 +19,7 @@ export default function LobbyHeader() {
       </div>
       <div className={classes.lobbyHearder}>
         <center>
-          <div className={classes.title}>LexSCHOOL</div>
+          <div className={classes.title}>Pwn IQ</div>
           <div className={classes.titleBody}>The future of Game is here.</div>
           <div className={classes.buttonline}>
             <NavLink to="/play">

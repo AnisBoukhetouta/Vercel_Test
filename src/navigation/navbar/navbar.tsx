@@ -28,7 +28,7 @@ const navbar = (props) => {
         <EpicButton />
         <Line />
         <NavLink to="/" style={{ textDecoration: "none" }}>
-          <h1 className={classes.title}>LexSCHOOL</h1>
+          <h1 className={classes.title}>Pwn IQ</h1>
         </NavLink>
         <Navlinks />
       </nav>
