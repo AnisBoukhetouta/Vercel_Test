@@ -42,7 +42,7 @@ const UnityWrapper = ({ unityConfig }) => {
     return () => {
       removeEventListener("GameState", onGameState);
     };
-  }, [onGameState]);
+  }, [addEventListener, onGameState, removeEventListener]);
 
   useEffect(() => {
     !!isLoaded && setTimeout(() => setView(true), 2000);
