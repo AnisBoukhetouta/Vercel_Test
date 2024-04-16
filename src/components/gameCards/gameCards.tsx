@@ -12,7 +12,7 @@ export default function GameCards({ cardData }) {
         children={cardData.map((item) => (
           <NavLink
             key={item._id}
-            to="/playground"
+            to="/play"
             state={item._id}
             style={{ textDecoration: "none" }}
           >

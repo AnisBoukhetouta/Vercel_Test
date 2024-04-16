@@ -67,14 +67,7 @@ export default function LobbyHeaderGame() {
     <div className={classes.lobodyGame}>
       <div className={classes.topGames}>
         <div className={classes.title}>BY EPIC</div>
-        {/* <Container maxWidth="lg" className={classes.lobbyCardsContainer}> */}
         <GameCards cardData={items} />
-        {/* </Container> */}
-        {/* <ScrollingCarousel
-          children={AppConstants.cardData.map((item) => (
-            <GameCards cardData={items} />
-          ))} */}
-        {/* /> */}
       </div>
     </div>
   );
