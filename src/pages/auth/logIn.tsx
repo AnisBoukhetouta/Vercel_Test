@@ -110,7 +110,7 @@ const Login = () => {
         </form>
         <Typography sx={{ marginTop: 2 }} className={classes.divider}>
           Create a new account.{" "}
-          <NavLink to="/signup" className={classes.fontStyle}>
+          <NavLink to="/regist/signup" className={classes.fontStyle}>
             Sign Up
           </NavLink>
         </Typography>

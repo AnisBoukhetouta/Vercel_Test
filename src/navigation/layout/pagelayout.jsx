@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import classes from "./layout.module.css";
 
 import Navbar from "../navbar/navbar";
 import Sidebar from "../sidebar/sidebar";
-import Footer from "../footer/footer";
 
-class layout extends Component {
+class pageLayout extends Component {
   state = { showSidebar: false };
 
   sidebarClosedHandler = () => {
@@ -33,4 +32,4 @@ class layout extends Component {
   }
 }
 
-export default layout;
+export default pageLayout;

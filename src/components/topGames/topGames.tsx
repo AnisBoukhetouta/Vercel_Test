@@ -10,7 +10,7 @@ interface Props {
   setItem: (e: any) => void;
 }
 
-interface Item {
+export interface Item {
   _id: string;
   imageOver: string;
 }
@@ -69,8 +69,10 @@ export default function TopGames({ setItem }: Props) {
   return (
     <div className={classes.topGames}>
       <ScrollingCarousel
-        children={AppConstants.cardData.map((item) => (
-          <NewGameCard onSetItem={setItem} key={item._id} item={item} />
+        children={items.map((item) => (
+          // children={AppConstants.cardData.map((item) => (
+          // <NewGameCard onSetItem={setItem} key={item._id} item={item} />
+          <GameCard onSetItem={setItem} key={item._id} item={item} />
         ))}
       />
     </div>

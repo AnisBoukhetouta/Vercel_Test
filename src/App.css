@@ -1,6 +1,7 @@
 :root {
   --dark: #393e41;
-  --light: #f6f7eb;
+  /* --light: #f6f7eb; */
+  --light: #ffffff;
   --accent: #f97432;
   --shadow: #00000080;
   --black: #000000ff;

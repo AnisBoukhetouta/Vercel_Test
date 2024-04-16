@@ -53,7 +53,7 @@ export default function Upload() {
         setUid(uid);
         console.log("UID", uid);
       } else {
-        navigate("/login");
+        navigate("/regist/login");
       }
     });
   }, []);

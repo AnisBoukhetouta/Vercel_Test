@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./navlink.module.css";
+import classes from "./gameNavlink.module.css";
 
 import { NavLink } from "react-router-dom";
 
-const navlink = (props) => {
+const GameNavLink = (props) => {
   return (
     <li className={classes.navlink}>
       <NavLink
@@ -16,4 +16,4 @@ const navlink = (props) => {
   );
 };
 
-export default navlink;
+export default GameNavLink;
