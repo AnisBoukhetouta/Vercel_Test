@@ -54,15 +54,15 @@ const App = () => {
             </PageLayout>
           }
         />
-        <Route
-          path="upload"
-          element={
-            <PageLayout>
-              <Upload />
-            </PageLayout>
-          }
-        />
       </Route>
+      <Route
+        path="/upload"
+        element={
+          <PageLayout>
+            <Upload />
+          </PageLayout>
+        }
+      />
       <Route
         path="/play"
         element={

@@ -1,5 +1,5 @@
 import { Component } from "react";
-import classes from "./layout.module.css";
+import classes from "./gamelayout.module.css";
 
 import GameNavbar from "../navbar/gameNavbar";
 import GameSidebar from "../sidebar/gameSidebar";

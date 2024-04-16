@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import classes from "./navbar.module.css";
+import classes from "./gameNavbar.module.css";
 import GameNavlinks from "../navlinks/gameNavlinks";
 import { auth } from "../../firebase";
 import SearchButton from "../../components/menu/searchButton";
@@ -28,7 +28,7 @@ const gameNavbar = (props) => {
         <EpicButton />
         <Line />
         <NavLink to="/" style={{ textDecoration: "none" }}>
-          <h1 className={classes.title}>Pwn IQ</h1>
+          <h1 className={classes.title}>H</h1>
         </NavLink>
         <GameNavlinks />
       </nav>
