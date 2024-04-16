@@ -23,14 +23,8 @@ const UnityWrapper = ({ unityConfig }) => {
   console.log("isLoaded", isLoaded, loadingProgression);
 
   const onGameState = React.useCallback((state: string) => {
-    if (state === "DISCONNECT") {
-      console.log("`````````Disconnected`````````");
-    } else if (state === "JOIN_SUCCESS") {
-      console.log("`````````JOIN_SUCCESS`````````");
-    } else if (state === "READY_SUCCESS") {
-      console.log("`````````READY_SUCCESS`````````");
-    } else if (state === "COMPLETED") {
-      console.log("`````````COMPLETED`````````");
+    if (state) {
+      console.log("~~~~~~~~~~~~~~~~~~~~~", state);
       setCompleted(!completed);
       setTimeout(() => navigate("/inventory"), 2000);
     }
