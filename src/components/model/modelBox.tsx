@@ -5,11 +5,13 @@ import classes from "./modelBox.module.css";
 import TopGames from "../topGames/topGames";
 import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
-import { Button, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { toDataURL } from "../imageCach";
 import Playground from "../../pages/playground/playground";
+import { useLocation } from "react-router-dom";
 
 export default function ModelBox() {
+  const { state } = useLocation();
   const [loading, setLoading] = useState<boolean>(false);
   const [imageUrl, setImageUrl] = useState<string>(
     AppConstants.cardData[0].imageCardOver
@@ -25,9 +27,8 @@ export default function ModelBox() {
         setLoading(false);
       });
     }
-  }, [item]);
+  }, [item, state]);
 
-  const ModelView = useCallback(() => <Model />, []);
   return (
     <>
       <Canvas
@@ -35,7 +36,7 @@ export default function ModelBox() {
         className={classes.modelBox}
         style={{
           position: "relative",
-          backgroundImage: `url(${imageUrl})`,
+          backgroundImage: `url(${state.imageOver})`,
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -43,27 +44,29 @@ export default function ModelBox() {
         }}
         shadows
       >
-        <ModelView />
+        <Model />
       </Canvas>
       {loading && (
         <LinearProgress className={classes.progressbar} color="error" />
       )}
       {!!view && (
         <div style={{ position: "absolute", top: 0, left: 0, width: "100vw" }}>
-          <Playground item={item} />
+          <Playground item={state._id} />
         </div>
       )}
       {!view && (
-        <div className={classes.miniCard}>
-          <GameCard
-            item={item || AppConstants.cardData[0]}
-            link={true}
-            setView={() => setView(true)}
-            onSetItem={(item) => setItem(item)}
-          />
-        </div>
+        <>
+          <div className={classes.miniCard}>
+            <GameCard
+              item={state || AppConstants.cardData[0]}
+              link={true}
+              setView={() => setView(true)}
+              onSetItem={(item) => setItem(item)}
+            />
+          </div>
+          <TopGames setItem={setItem} />
+        </>
       )}
-      <TopGames setItem={setItem} />
     </>
   );
 }

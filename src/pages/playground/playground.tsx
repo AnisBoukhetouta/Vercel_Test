@@ -87,8 +87,10 @@ const UnityWrapper = ({ unityConfig }) => {
     </div>
   );
 };
-
-export default function Playground({ item }) {
+interface Props {
+  item?: any;
+}
+export default function Playground({ item }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -97,11 +99,12 @@ export default function Playground({ item }) {
     null
   );
   // const state = !!location.state ?? "TEST";
-  const state = item ? item._id : location.state;
+  const state = item ? item : location.state;
 
   const fetch = async (state) => {
     if (!state) {
-      navigate("/");
+      console.log("STATE", state);
+      // navigate("/");
     }
     try {
       return axios.get(`${getFilesUrl}?gameTitle=${state}`).then((res) => {

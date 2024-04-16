@@ -7,13 +7,12 @@ import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 export default function GameCards({ cardData }) {
   return (
     <Grid container direction="row" justifyContent="center" alignItems="center">
-      {/* {cardData.map((item) => ( */}
       <ScrollingCarousel
         children={cardData.map((item) => (
           <NavLink
             key={item._id}
             to="/play"
-            state={item._id}
+            state={item}
             style={{ textDecoration: "none" }}
           >
             <GameCard item={item} />
