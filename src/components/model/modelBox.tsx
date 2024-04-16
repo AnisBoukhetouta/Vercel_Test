@@ -69,7 +69,9 @@ export default function ModelBox() {
         style={{
           position: "relative",
           backgroundImage: `url(${
-            items.length
+            item
+              ? item.imageOver
+              : items.length
               ? items[0].imageOver
               : AppConstants.cardData[0].imageOver
           })`,
