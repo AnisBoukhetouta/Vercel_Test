@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Alert, Box, Container } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Container,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 import { Unity, UnityConfig, useUnityContext } from "react-unity-webgl";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +15,7 @@ import classes from "./playground.module.css";
 const UnityWrapper = ({ unityConfig }) => {
   const navigate = useNavigate();
   const [completed, setCompleted] = React.useState(false);
+  const [view, setView] = React.useState(false);
   const unityContext = useUnityContext(unityConfig);
   const { addEventListener, isLoaded, loadingProgression, sendMessage } =
     unityContext;
@@ -37,13 +44,17 @@ const UnityWrapper = ({ unityConfig }) => {
     };
   }, [onGameState]);
 
+  useEffect(() => {
+    !!isLoaded && setTimeout(() => setView(true), 2000);
+  }, [isLoaded]);
+
   return (
     <div className={classes.container}>
       {!!completed && (
         <Alert
           severity="success"
           color="warning"
-          sx={{ position: "absolute", top: "2rem", zIndex: 10000 }}
+          sx={{ position: "absolute", top: "2rem", zIndex: 50 }}
         >
           Congratulations!
           <br />
@@ -56,7 +67,7 @@ const UnityWrapper = ({ unityConfig }) => {
         unityProvider={unityContext.unityProvider}
         className={classes.unity}
         style={{
-          display: !!isLoaded ? "inline" : "none",
+          display: !!view ? "inline" : "none",
         }}
       />
       <div
@@ -65,11 +76,22 @@ const UnityWrapper = ({ unityConfig }) => {
           display: !isLoaded ? "inline" : "none",
         }}
       ></div>
+      <Typography
+        style={{
+          position: "absolute",
+          top: "55vh",
+          zIndex: 10000,
+          color: "white",
+          display: !view ? "inline" : "none",
+        }}
+      >
+        Loading {Math.floor(loadingProgression * 100)} %
+      </Typography>
     </div>
   );
 };
 
-export default function Playground({item}) {
+export default function Playground({ item }) {
   const navigate = useNavigate();
   const location = useLocation();
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -78,12 +100,12 @@ export default function Playground({item}) {
     null
   );
   // const state = !!location.state ?? "TEST";
-  const state = item._id;
+  const state = item ? item._id : location.state;
 
   const fetch = async (state) => {
-    // if (!state) {
-    //   navigate("/");
-    // }
+    if (!state) {
+      navigate("/");
+    }
     try {
       return axios.get(`${getFilesUrl}?gameTitle=${state}`).then((res) => {
         return res.data[0].files;

@@ -53,14 +53,16 @@ export default function ModelBox() {
           <Playground item={item} />
         </div>
       )}
-      <div className={classes.miniCard}>
-        <GameCard
-          item={item || AppConstants.cardData[0]}
-          link={true}
-          setView={() => setView(true)}
-          onSetItem={(item) => setItem(item)}
-        />
-      </div>
+      {!view && (
+        <div className={classes.miniCard}>
+          <GameCard
+            item={item || AppConstants.cardData[0]}
+            link={true}
+            setView={() => setView(true)}
+            onSetItem={(item) => setItem(item)}
+          />
+        </div>
+      )}
       <TopGames setItem={setItem} />
     </>
   );
