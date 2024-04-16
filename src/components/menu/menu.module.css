@@ -88,15 +88,19 @@
 
 .search {
   border-radius: 30px;
-  border: 2px solid rgb(181, 181, 181);
+  border: 2px solid var(--light);
   padding: 2px;
+  color: var(--light);
 }
-
+::placeholder {
+	color: rgb(199, 207, 209);
+}
 .searchInput {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   gap: 5px;
   height: 25px;
+  color: var(--light);
 }
 
 .closeButton {

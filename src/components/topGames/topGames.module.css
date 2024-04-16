@@ -1,9 +1,11 @@
 .topGames {
   width: 90vw;
   position: absolute;
-  bottom: 2rem;
+  bottom: -8rem;
   left: 4rem;
-  overflow-x: auto;
   scrollbar-width: none;
   display: flex;
+}
+.topGames:hover {
+  bottom: 0;
 }

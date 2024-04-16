@@ -32,7 +32,7 @@ const gameNavbar = (props) => {
         </NavLink>
         <GameNavlinks />
       </nav>
-      <nav className={classes.tools}>
+      <div className={classes.tools}>
         {search ? (
           <button
             className={classes.searchButton}
@@ -45,11 +45,7 @@ const gameNavbar = (props) => {
         ) : (
           <SearchInput handleClick={() => setSearch(true)} />
         )}
-        <Line />
-        <LanguageButton />
-        <LoginButton uid={uid} />
-        <DownloadButton />
-      </nav>
+      </div>
       <nav className={classes.menuTool}>
         <button className={classes.menuButton}>
           <MenuButton />
