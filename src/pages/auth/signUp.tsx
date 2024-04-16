@@ -51,7 +51,7 @@ const Signup = () => {
 
       const response = await axios.post(userInfoUrl, userInfo);
       console.log("RESPONSE", response);
-      navigate("/login");
+      navigate("/regist/login");
     } catch (error) {
       console.error("Error signing up:", error);
       // Handle error here, e.g., show error message to user
@@ -149,7 +149,7 @@ const Signup = () => {
         </form>
         <Typography sx={{ marginTop: 2 }} className={classes.divider}>
           Already have an account?{" "}
-          <NavLink to="/login" className={classes.fontStyle}>
+          <NavLink to="/regist/login" className={classes.fontStyle}>
             Sign in
           </NavLink>
         </Typography>

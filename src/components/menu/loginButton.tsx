@@ -8,7 +8,7 @@ interface Props {
 
 const LoginButton = ({uid} : Props) => {
   return (
-    <NavLink to={!!uid ? "/user" : "/login"}>
+    <NavLink to={!!uid ? "/user" : "/regist/login"}>
       <button className={classes.loginButton}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

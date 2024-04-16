@@ -7,30 +7,90 @@ import "@fontsource/bebas-neue";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
 
-import Layout from "./navigation/layout/layout";
+import PageLayout from "./navigation/layout/pagelayout";
+import GameLayout from "./navigation/layout/gamelayout";
 import GameLobby from "./pages/gameLobby/gameLobby";
 import Upload from "./pages/upload/upload";
 import Playground from "./pages/playground/playground";
-import Signup from "./pages/auth/signUp";
-import Login from "./pages/auth/logIn";
+import Signup from "./pages/auth/signup";
+import Login from "./pages/auth/login";
 import User from "./pages/auth/user";
 import Inventory from "./pages/inventory/inventory";
 
 const App = () => {
   let routes = (
     <Routes>
-      <Route path="/play" element={<Home />} />
-      <Route path="/" element={<GameLobby />} />
-      <Route path="/upload" element={<Upload />} />
-      <Route path="/playground" element={<Playground />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/user" element={<User />} />
-      <Route path="/inventory" element={<Inventory />} />
+      <Route
+        path="/"
+        element={
+          <PageLayout>
+            <GameLobby />
+          </PageLayout>
+        }
+      />
+      <Route path="/regist">
+        <Route
+          index
+          path="login"
+          element={
+            <PageLayout>
+              <Login />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="signup"
+          element={
+            <PageLayout>
+              <Signup />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="user"
+          element={
+            <PageLayout>
+              <User />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="upload"
+          element={
+            <PageLayout>
+              <Upload />
+            </PageLayout>
+          }
+        />
+      </Route>
+      <Route
+        path="/play"
+        element={
+          <GameLayout>
+            <Home />
+          </GameLayout>
+        }
+      />
+      <Route
+        path="/playground"
+        element={
+          <GameLayout>
+            <Playground />
+          </GameLayout>
+        }
+      />
+      <Route
+        path="/inventory"
+        element={
+          <GameLayout>
+            <Inventory />
+          </GameLayout>
+        }
+      />
     </Routes>
   );
 
-  return <Layout>{routes}</Layout>;
+  return <>{routes}</>;
 };
 
 export default App;

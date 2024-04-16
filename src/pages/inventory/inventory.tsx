@@ -21,7 +21,7 @@ export default function Inventory() {
         if (user) {
           setUid(user.uid);
         } else {
-          navigate("/login");
+          navigate("/regist/login");
         }
       });
       try {
