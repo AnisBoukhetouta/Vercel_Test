@@ -132,19 +132,11 @@ export default function Playground({ item }: Props) {
         component="main"
         sx={{
           flexGrow: 1,
-          py: 4,
           background: "#101014",
           height: "100vh",
         }}
       >
-        <Container
-          maxWidth="xl"
-          style={{
-            paddingTop: "4rem",
-          }}
-        >
-          {!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}
-        </Container>
+        <div>{!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}</div>
       </Box>
     </>
   );
