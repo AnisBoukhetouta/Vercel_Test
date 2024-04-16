@@ -73,7 +73,7 @@ export default function ModelBox() {
               ? item.imageOver
               : items.length
               ? items[0].imageOver
-              : AppConstants.cardData[0].imageOver
+              : ""
           })`,
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
