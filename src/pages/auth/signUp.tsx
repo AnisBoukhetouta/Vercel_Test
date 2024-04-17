@@ -41,7 +41,7 @@ const Signup = () => {
       } = user;
       const userInfo = {
         userName,
-        email: userEmail,
+        email: email,
         creationTime,
         lastSignInTime,
         uid,

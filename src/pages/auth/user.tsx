@@ -3,6 +3,7 @@ import { auth } from "../../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./auth.module.css";
 import { Button, Container, Divider, Typography } from "@mui/material";
+import Logo from "./logo";
 
 const User = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const User = () => {
   return (
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
-        <img src="/logo.svg" />
+        <Logo />
         <p className={classes.formLabel}>{`UID : ${uid}`}</p>
         <Button
           type="submit"
