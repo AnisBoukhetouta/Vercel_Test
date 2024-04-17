@@ -1,4 +1,5 @@
 const AppConstants = {
+  uploadTypes: ["PwnIQ_Game", "Character"],
   categories: [
     ".io",
     "Action",

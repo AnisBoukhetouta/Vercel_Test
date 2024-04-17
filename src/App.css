@@ -58,3 +58,6 @@
 .filepond--root {
   min-width: 9.5em;
 }
+.MuiSvgIcon-root {
+  color: white !important;
+}
