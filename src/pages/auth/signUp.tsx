@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import classes from "./auth.module.css";
 import {
@@ -55,6 +55,19 @@ const Signup = () => {
       navigate("/regist/login");
     } catch (error) {
       console.error("Error signing up:", error);
+      // Handle error here, e.g., show error message to user
+    }
+  };
+
+  const onGoogle = async (e) => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      // User signed in successfully
+      // Redirect or perform additional actions as needed
+      console.log('SUCCESSFUL')
+    } catch (error) {
+      console.error("Error signing in with Google:", error);
       // Handle error here, e.g., show error message to user
     }
   };
@@ -134,6 +147,7 @@ const Signup = () => {
             startIcon={
               <Google sx={{ width: 30, height: 30, marginRight: 1 }} />
             }
+            onClick={onGoogle}
           >
             With Google
           </Button>
