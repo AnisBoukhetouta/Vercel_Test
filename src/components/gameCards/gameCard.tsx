@@ -2,6 +2,7 @@ import * as React from "react";
 import classes from "./card.module.css";
 import CardData from "./gameCardData";
 import { Skeleton } from "@mui/material";
+import { toDataURL } from "../imageCach";
 
 interface Props {
   onSetItem?: (e: any) => void;
@@ -11,14 +12,27 @@ interface Props {
 
 export default function GameCard({ item, onSetItem, link }: Props) {
   const [mouseOver, setMouseOver] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClick = (over: boolean) => {
     onSetItem && onSetItem(item);
   };
 
+  React.useEffect(() => {
+    if (item) {
+      setLoading(true);
+      toDataURL(item.imageOver, function (dataUrl) {
+        // setTimeout(() => {
+        //   setLoading(false);
+        // }, 3000);
+        setLoading(false);
+      });
+    }
+  }, [item]);
+
   return (
     <div className={classes.cardBody}>
-      {item ? (
+      {!loading ? (
         <div
           className={classes.center}
           key={item._id}
@@ -36,7 +50,13 @@ export default function GameCard({ item, onSetItem, link }: Props) {
           {!link && <CardData item={item} />}
         </div>
       ) : (
-        <Skeleton variant="rectangular" width={235} height={!link?198:120}/>
+        <Skeleton
+          animation="wave"
+          variant="rounded"
+          width={235}
+          sx={{ bgcolor: "grey.900" }}
+          height={!link ? 198 : 120}
+        />
       )}
     </div>
   );
