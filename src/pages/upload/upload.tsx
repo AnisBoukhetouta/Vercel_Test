@@ -5,6 +5,7 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import GameUpload from "./gameUpload";
 import CharacterUpload from "./characterUpload";
+import classes from "./upload.module.css";
 
 export default function Upload() {
   const [uid, setUid] = React.useState("");
@@ -26,22 +27,23 @@ export default function Upload() {
   }, []);
 
   return (
-    <Container
+    <div
       style={{
+        padding: "4rem",
         paddingTop: "8rem",
-        paddingBottom: "4rem",
         minHeight: "100vh",
         color: "rgb(237, 237, 237)",
       }}
     >
       <div
+        className={classes.headingContainer}
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        <h1>Submit Game</h1>
+        <h1 className={classes.largeHeading}>Submit Game</h1>
         <div>
           <Typography>What are you submitting?</Typography>
           <Autocomplete
@@ -57,6 +59,6 @@ export default function Upload() {
       </div>
       {uploadType == "PwnIQ_Game" && <GameUpload />}
       {uploadType === "Character" && <CharacterUpload uid={uid} />}
-    </Container>
+    </div>
   );
 }

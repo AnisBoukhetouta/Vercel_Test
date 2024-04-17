@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import {
+  Alert,
   Autocomplete,
   Box,
   Button,
@@ -13,6 +14,7 @@ import {
 import AppConstants from "../../AppConstants";
 import FileUpload from "../../components/fileUpload/fileUpload";
 import { CloudUpload } from "@mui/icons-material";
+import classes from "./upload.module.css";
 import axios from "axios";
 
 const initialValues = {
@@ -98,7 +100,7 @@ export default function GameUpload() {
     >
       {(formik) => (
         <Form>
-          <h2 style={{ paddingTop: "3rem" }}>PwnIQ Game Upload</h2>
+          <h2 className={classes.heading}>PwnIQ Game Upload</h2>
           <Paper
             sx={{
               marginTop: 3,
@@ -107,10 +109,10 @@ export default function GameUpload() {
               color: "rgb(202, 196, 196)",
             }}
           >
-            <h2>Game details</h2>
-            <Stack spacing={5}>
+            <h2 className={classes.pageTitle}>Game details</h2>
+            <Stack spacing={3}>
               <Box>
-                <Typography>Game title *</Typography>
+                <div className={classes.fieldName}>Game title *</div>
                 <TextField
                   name="gameTitle"
                   variant="outlined"
@@ -127,9 +129,13 @@ export default function GameUpload() {
                     formik.touched.gameTitle && formik.errors.gameTitle
                   }
                 />
+                <div className={classes.description}>
+                  Must be the same as the title that appears in your game - Max
+                  length is 40 chars.
+                </div>
               </Box>
               <Box>
-                <Typography>Category *</Typography>
+                <div className={classes.fieldName}>Category *</div>
                 <Autocomplete
                   sx={{ width: 500 }}
                   options={AppConstants.categories}
@@ -155,7 +161,10 @@ export default function GameUpload() {
                 />
               </Box>
               <Box>
-                <Typography>Tags *</Typography>
+                <div className={classes.alignedFlexBox}>
+                  <div className={classes.fieldName}>Tags *</div>
+                  <div className={classes.description}>MAX. 5</div>
+                </div>
                 <Autocomplete
                   onChange={(event, value) =>
                     (formik.values.tags = value || "")
@@ -175,7 +184,10 @@ export default function GameUpload() {
                   )}
                 />
               </Box>
-              <Typography>Description *</Typography>
+              <div className={classes.alignedFlexBox}>
+                <div className={classes.fieldName}>Description *</div>
+                <div className={classes.description}>NO HTML ALLOWED</div>
+              </div>
               <TextareaAutosize
                 name="description"
                 required
@@ -192,7 +204,7 @@ export default function GameUpload() {
                   padding: 15,
                 }}
               />
-              <Typography>Controls *</Typography>
+              <div className={classes.fieldName}>Controls *</div>
               <TextareaAutosize
                 name="controls"
                 required
@@ -212,7 +224,9 @@ export default function GameUpload() {
 
               <Stack direction="row" justifyContent="space-between">
                 <Stack direction="column" width={300}>
-                  <span>Google Play Store link</span>
+                  <div className={classes.fieldName}>
+                    Google Play Store link
+                  </div>
                   <TextField
                     name="googlePlay"
                     value={formik.values.googlePlay}
@@ -229,7 +243,7 @@ export default function GameUpload() {
                   />
                 </Stack>
                 <Stack direction="column" width={300}>
-                  <span>iOS App Store link</span>
+                  <div className={classes.fieldName}>iOS App Store link</div>
                   <TextField
                     name="iOsApp"
                     value={formik.values.iOsApp}
@@ -243,7 +257,7 @@ export default function GameUpload() {
                   />
                 </Stack>
                 <Stack direction="column" width={300}>
-                  <span>Steam link</span>
+                  <div className={classes.fieldName}>Steam link</div>
                   <TextField
                     name="steamLink"
                     value={formik.values.steamLink}
@@ -270,9 +284,13 @@ export default function GameUpload() {
               color: "rgb(202, 196, 196)",
             }}
           >
-            <h2>Game Type</h2>
+            <h2 className={classes.pageTitle}>Game Type</h2>
             <Box>
-              <Typography>Game Type *</Typography>
+              <Alert variant="filled" severity="warning">
+                Please read our CrazyGames documentation carefully before
+                submitting a game!
+              </Alert>
+              <div className={classes.fieldName}>Game Type *</div>
               <Autocomplete
                 sx={{ width: 500 }}
                 onChange={(event, value) =>
@@ -305,9 +323,9 @@ export default function GameUpload() {
               color: "rgb(202, 196, 196)",
             }}
           >
-            <h2>Files *</h2>
+            <h2 className={classes.pageTitle}>Files *</h2>
             <div>
-              <Typography>File Upload *</Typography>
+              <div className={classes.fieldName}>File Upload *</div>
               <FileUpload
                 title="Game files"
                 fieldName="fileUpload"
@@ -316,10 +334,12 @@ export default function GameUpload() {
                 maxFiles={4}
               />
             </div>
-            <h2 style={{ marginTop: 30 }}>Cover Images</h2>
+            <h2 className={classes.pageTitle}>Cover Images</h2>
             <Stack direction="row" sx={{ justifyContent: "space-between" }}>
               <div style={{ width: "45%" }}>
-                <Typography>Landscape 16:9 (1920x1080)</Typography>
+                <div className={classes.fieldName}>
+                  Landscape 16:9 (1920x1080)
+                </div>
                 <FileUpload
                   fieldName="landscapeFile"
                   title="Landscape image file"
@@ -328,7 +348,7 @@ export default function GameUpload() {
                 />
               </div>
               <div style={{ width: "25%" }}>
-                <Typography>Portrait 2:3 (800x1200)</Typography>
+                <div className={classes.fieldName}>Portrait 2:3 (800x1200)</div>
                 <FileUpload
                   title="Portrait image file"
                   fieldName="portraitFile"
@@ -337,7 +357,7 @@ export default function GameUpload() {
                 />
               </div>
               <div style={{ width: "25%" }}>
-                <Typography>Square 1:1 (800x800)</Typography>
+                <div className={classes.fieldName}>Square 1:1 (800x800)</div>
                 <FileUpload
                   title="Square image file"
                   fieldName="squareFile"
