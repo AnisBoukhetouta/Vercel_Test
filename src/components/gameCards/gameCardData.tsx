@@ -12,19 +12,11 @@ interface Props {
 export default function CardData({ item, link, setView }: Props) {
   return (
     <div className={!link ? classes.cardData : classes.link}>
-      {!link ? (
+      {!link && (
         <>
           <div className={classes.title}>{item._id}</div>
           <CardValue item={item} />
         </>
-      ) : (
-        <button
-          onClick={setView}
-          className={classes.lobbyHeaderButton}
-          type="button"
-        >
-          PLAY NOW
-        </button>
       )}
     </div>
   );
