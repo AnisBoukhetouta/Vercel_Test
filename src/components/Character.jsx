@@ -18,7 +18,7 @@ export function Character(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
-        <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+        <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01} >
           <primitive object={nodes.Root} />
           <skinnedMesh
             name="Character_Female_Face_01"
