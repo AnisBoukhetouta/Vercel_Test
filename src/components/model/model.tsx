@@ -6,19 +6,21 @@ export default function Model() {
   return (
     <>
       <OrbitControls
-        minAzimuthAngle={-0.2}
-        maxAzimuthAngle={-0.2}
+        minAzimuthAngle={0.2}
+        maxAzimuthAngle={0.2}
         minPolarAngle={1.34}
         maxPolarAngle={1.34}
+        maxDistance={7.5}
+        // minDistance={5.5}
         minDistance={6.5}
-        maxDistance={6}
       />
       <ambientLight />
       <directionalLight
         position={[-5, 5, 5]}
         castShadow
         shadow-mapSize={1024}
-      />1      <group position={[-0.7, -0.2, 3.5]}>
+      />
+      <group position={[1, -0.2, 3.5]}>
         <Character />
       </group>
       <mesh

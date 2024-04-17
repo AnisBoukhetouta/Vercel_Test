@@ -9,6 +9,18 @@
   font-weight: 1000;
   text-wrap: nowrap;
 }
+.disabledButton {
+  display: block;
+  text-decoration: none;
+  color: var(--light);
+  padding: 6px 20px;
+  color: var(--light);
+  text-align: center;
+  font: 20px "system-ui";
+  font-weight: 1000;
+  text-wrap: nowrap;
+  cursor: pointer;
+}
 
 .navlink a:hover,
 .navlink a:active,

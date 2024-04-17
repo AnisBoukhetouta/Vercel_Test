@@ -8,11 +8,11 @@ const gameNavlinks = () => {
       <ul className={classes.navlinks}>
         <GameNavlink link="/play">PLAY</GameNavlink>
         <GameNavlink link="/inventory">LOCKER</GameNavlink>
-        <GameNavlink link="/1">ITEM SHOP</GameNavlink>
-        <GameNavlink link="/2">BATTLE PASS</GameNavlink>
-        <GameNavlink link="/3">QUESTS</GameNavlink>
-        <GameNavlink link="/4">COMPLETE</GameNavlink>
-        <GameNavlink link="/5">CAREER</GameNavlink>
+        <GameNavlink disable={true} link="#">ITEM SHOP</GameNavlink>
+        <GameNavlink disable={true} link="#">BATTLE PASS</GameNavlink>
+        <GameNavlink disable={true} link="#">QUESTS</GameNavlink>
+        <GameNavlink disable={true} link="#">COMPLETE</GameNavlink>
+        <GameNavlink disable={true} link="#">CAREER</GameNavlink>
       </ul>
     </div>
   );
