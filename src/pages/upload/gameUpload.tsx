@@ -98,7 +98,7 @@ export default function GameUpload() {
     >
       {(formik) => (
         <Form>
-          <h1 style={{ paddingTop: "3rem" }}>PwnIQ Game Upload</h1>
+          <h2 style={{ paddingTop: "3rem" }}>PwnIQ Game Upload</h2>
           <Paper
             sx={{
               marginTop: 3,

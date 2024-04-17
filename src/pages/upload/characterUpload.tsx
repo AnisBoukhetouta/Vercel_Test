@@ -42,9 +42,9 @@ export default function CharacterUpload({ uid }: Prop) {
     >
       {(formik) => (
         <Form>
-          <h1 style={{ paddingTop: "3rem" }}>
+          <h2 style={{ paddingTop: "3rem" }}>
             Character or Backbling File Upload
-          </h1>
+          </h2>
           <Paper
             sx={{
               marginTop: 3,
