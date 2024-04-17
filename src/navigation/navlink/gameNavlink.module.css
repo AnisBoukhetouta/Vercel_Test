@@ -8,6 +8,7 @@
   font: 20px "system-ui";
   font-weight: 1000;
   text-wrap: nowrap;
+  margin-right: 5px;
 }
 .disabledButton {
   display: block;

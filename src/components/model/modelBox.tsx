@@ -16,7 +16,6 @@ export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
   const navigate = useNavigate();
   const items: Item[] = [];
-  const { state } = useLocation();
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
