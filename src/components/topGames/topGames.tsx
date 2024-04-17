@@ -4,12 +4,13 @@ import AppConstants from "../../AppConstants";
 import GameCard from "../gameCards/gameCard";
 import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import axios from "axios";
+import NewGameCard from "../newGameCard/newGameCard";
 
 interface Props {
   setItem: (e: any) => void;
 }
 
-interface Item {
+export interface Item {
   _id: string;
   imageOver: string;
 }
@@ -35,9 +36,8 @@ export interface Data {
   }[];
 }
 export default function TopGames({ setItem }: Props) {
-
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  
+
   const items: Item[] = [];
   const getFilesUrl = import.meta.env.VITE_GET_FILES;
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -65,7 +65,6 @@ export default function TopGames({ setItem }: Props) {
       imageOver: `${baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
     });
   });
-
 
   return (
     <div className={classes.topGames}>

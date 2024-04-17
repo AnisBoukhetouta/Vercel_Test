@@ -14,7 +14,7 @@ export default function CardData({ item, link, setView }: Props) {
     <div className={!link ? classes.cardData : classes.link}>
       {!link ? (
         <>
-          <div className={classes.title}>Title</div>
+          <div className={classes.title}>{item._id}</div>
           <CardValue item={item} />
         </>
       ) : (

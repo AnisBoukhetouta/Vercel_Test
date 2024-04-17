@@ -10,7 +10,7 @@ const User = () => {
 
   const onLogout = () => {
     auth.signOut();
-    navigate("/login");
+    navigate("/regist/login");
   };
 
   useEffect(() => {

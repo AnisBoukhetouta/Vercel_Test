@@ -10,9 +10,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  Google,
-} from "@mui/icons-material";
+import { Google } from "@mui/icons-material";
+import Logo from "./logo";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/");
+        navigate("/play");
         console.log(user);
       })
       .catch((error) => {
@@ -45,7 +44,7 @@ const Login = () => {
   return (
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
-        <img src="/logo.svg" />
+        <Logo />
         <p className={classes.formLabel}>Sign In</p>
         <form className={classes.form}>
           <TextField
@@ -110,7 +109,7 @@ const Login = () => {
         </form>
         <Typography sx={{ marginTop: 2 }} className={classes.divider}>
           Create a new account.{" "}
-          <NavLink to="/signup" className={classes.fontStyle}>
+          <NavLink to="/regist/signup" className={classes.fontStyle}>
             Sign Up
           </NavLink>
         </Typography>

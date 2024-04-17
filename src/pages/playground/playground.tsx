@@ -23,14 +23,8 @@ const UnityWrapper = ({ unityConfig }) => {
   console.log("isLoaded", isLoaded, loadingProgression);
 
   const onGameState = React.useCallback((state: string) => {
-    if (state === "DISCONNECT") {
-      console.log("`````````Disconnected`````````");
-    } else if (state === "JOIN_SUCCESS") {
-      console.log("`````````JOIN_SUCCESS`````````");
-    } else if (state === "READY_SUCCESS") {
-      console.log("`````````READY_SUCCESS`````````");
-    } else if (state === "COMPLETED") {
-      console.log("`````````COMPLETED`````````");
+    if (state) {
+      console.log("~~~~~~~~~~~~~~~~~~~~~", state);
       setCompleted(!completed);
       setTimeout(() => navigate("/inventory"), 2000);
     }
@@ -93,8 +87,10 @@ const UnityWrapper = ({ unityConfig }) => {
     </div>
   );
 };
-
-export default function Playground({ item }) {
+interface Props {
+  item?: any;
+}
+export default function Playground({ item }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
   const baseUrl = import.meta.env.VITE_APP_BASE;
@@ -103,11 +99,12 @@ export default function Playground({ item }) {
     null
   );
   // const state = !!location.state ?? "TEST";
-  const state = item ? item._id : location.state;
+  const state = item ? item : location.state;
 
   const fetch = async (state) => {
     if (!state) {
-      navigate("/");
+      console.log("STATE", state);
+      // navigate("/");
     }
     try {
       return axios.get(`${getFilesUrl}?gameTitle=${state}`).then((res) => {
@@ -135,19 +132,11 @@ export default function Playground({ item }) {
         component="main"
         sx={{
           flexGrow: 1,
-          py: 4,
           background: "#101014",
           height: "100vh",
         }}
       >
-        <Container
-          maxWidth="xl"
-          style={{
-            paddingTop: "4rem",
-          }}
-        >
-          {!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}
-        </Container>
+        <div>{!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}</div>
       </Box>
     </>
   );

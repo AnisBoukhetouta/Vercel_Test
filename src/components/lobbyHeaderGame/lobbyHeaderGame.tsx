@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import classes from "./lobbyHeaderGame.module.css";
-import { Container } from "@mui/material";
 import axios from "axios";
 import GameCards from "../gameCards/gameCards";
-import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import AppConstants from "../../AppConstants";
 
 interface Item {
   _id: string;
@@ -67,14 +64,7 @@ export default function LobbyHeaderGame() {
     <div className={classes.lobodyGame}>
       <div className={classes.topGames}>
         <div className={classes.title}>BY EPIC</div>
-        {/* <Container maxWidth="lg" className={classes.lobbyCardsContainer}> */}
         <GameCards cardData={items} />
-        {/* </Container> */}
-        {/* <ScrollingCarousel
-          children={AppConstants.cardData.map((item) => (
-            <GameCards cardData={items} />
-          ))} */}
-        {/* /> */}
       </div>
     </div>
   );
