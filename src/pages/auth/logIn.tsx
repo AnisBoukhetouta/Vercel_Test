@@ -35,11 +35,30 @@ const Login = () => {
       });
   };
 
+  const onGoogle = async (e) => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      // User signed in successfully
+      // Redirect or perform additional actions as needed
+      console.log("SUCCESSFUL");
+    } catch (error) {
+      console.error("Error signing in with Google:", error);
+      // Handle error here, e.g., show error message to user
+    }
+  };
+
   useEffect(() => {
     if (email.length && password.length) {
       setAble(true);
     } else setAble(false);
   }, [email, password]);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) navigate("/regist/play");
+    });
+  });
 
   return (
     <div className={classes.authMain}>
@@ -93,6 +112,7 @@ const Login = () => {
             startIcon={
               <Google sx={{ width: 30, height: 30, marginRight: 1 }} />
             }
+            onClick={onGoogle}
           >
             With Google
           </Button>

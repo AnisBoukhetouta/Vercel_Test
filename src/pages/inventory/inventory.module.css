@@ -5,7 +5,7 @@
   padding-left: 4rem;
   display: flex;
   background: radial-gradient(#1ab1f2, #0c2858);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .inventoryMenu {

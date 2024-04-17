@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 import classes from "./auth.module.css";
 import {
@@ -20,6 +24,7 @@ const Signup = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [uid, setUid] = useState("");
   const [able, setAble] = useState(false);
 
   const onSignUp = async (e) => {
@@ -65,7 +70,7 @@ const Signup = () => {
       await signInWithPopup(auth, provider);
       // User signed in successfully
       // Redirect or perform additional actions as needed
-      console.log('SUCCESSFUL')
+      console.log("SUCCESSFUL");
     } catch (error) {
       console.error("Error signing in with Google:", error);
       // Handle error here, e.g., show error message to user
@@ -77,6 +82,12 @@ const Signup = () => {
       setAble(true);
     } else setAble(false);
   }, [userEmail, password, userName]);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) navigate("/regist/play");
+    });
+  });
 
   return (
     <div className={classes.authMain}>

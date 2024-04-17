@@ -16,7 +16,9 @@ const User = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
-      user && setUid(user.uid);
+      if (user) {
+        setUid(user.uid);
+      } else navigate("/regist/login");
     });
   }, []);
 
