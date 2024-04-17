@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./auth.module.css";
