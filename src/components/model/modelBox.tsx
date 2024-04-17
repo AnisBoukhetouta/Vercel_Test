@@ -82,20 +82,15 @@ export default function ModelBox() {
       {loading && (
         <LinearProgress className={classes.progressbar} color="error" />
       )}
-      {!!view && (
+      {!!view ? (
         <div style={{ position: "absolute", top: 0, left: 0, width: "100vw" }}>
           <Playground item={!!item ? item._id : items[0]._id} />
         </div>
-      )}
-      {!view && (
+      ) : (
         <>
           {items.length && (
             <div className={classes.miniCard}>
-              <GameCard
-                item={item ?? items[0]}
-                link={true}
-                setView={() => setView(true)}
-              />
+              <GameCard item={item ?? items[0]} link={true} />
               <div className={classes.buttonline}>
                 <button
                   className={classes.lobbyHeaderButton}

@@ -1,5 +1,5 @@
 .cardBody {
-  height: 200px;
+  /* height: 200px; */
   margin: 10px;
 }
 
@@ -114,9 +114,4 @@
   width: auto;
   padding-top: 15px;
   font-family: "Gill Sans", sans-serif;
-}
-.link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

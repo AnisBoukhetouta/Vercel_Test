@@ -72,7 +72,7 @@ const App = () => {
         }
       />
       <Route
-        path="/playground"
+        path="/*"
         element={
           <GameLayout>
             <Home />

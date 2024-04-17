@@ -11,11 +11,10 @@
 }
 .miniCard {
   position: absolute;
-  top: 130px;
-  left: 100px;
+  top: 15%;
+  left: 5%;
 }
 .lobbyHeaderButton {
-  margin: 10px;
   padding: 20px;
   width: 210px;
   border-radius: 22px;
@@ -27,6 +26,8 @@
   border: 0;
 }
 .buttonline {
+  margin: 10px;
+  margin-top: 150%;
   width: 210px;
   outline-color: transparent;
   outline-offset: 0.75rem;

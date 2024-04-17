@@ -6,18 +6,14 @@ import { NavLink } from "react-router-dom";
 
 interface Props {
   item: any;
-  link?: boolean;
-  setView?: () => void;
 }
-export default function CardData({ item, link, setView }: Props) {
+export default function CardData({ item }: Props) {
   return (
-    <div className={!link ? classes.cardData : classes.link}>
-      {!link && (
+    <div className={classes.cardData}>
         <>
           <div className={classes.title}>{item._id}</div>
           <CardValue item={item} />
         </>
-      )}
     </div>
   );
 }
