@@ -1,12 +1,13 @@
 .topGames {
   width: 90vw;
   position: absolute;
-  bottom: -8rem;
+  bottom: -9rem;
   left: 4rem;
   scrollbar-width: none;
+  transition: all 1s ease-out;
   display: flex;
 }
 .topGames:hover {
   bottom: 0;
-  transition: all 1s;
+  transition: all 0.7s;
 }
