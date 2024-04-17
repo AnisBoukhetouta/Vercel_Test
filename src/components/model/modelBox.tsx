@@ -96,13 +96,15 @@ export default function ModelBox() {
                 link={true}
                 setView={() => setView(true)}
               />
-              <button
-                onClick={() => setView(true)}
-                className={classes.lobbyHeaderButton}
-                type="button"
-              >
-                PLAY NOW
-              </button>
+              <div className={classes.buttonline}>
+                <button
+                  className={classes.lobbyHeaderButton}
+                  type="button"
+                  onClick={() => setView(true)}
+                >
+                  PLAY NOW
+                </button>
+              </div>
             </div>
           )}
           <TopGames setItem={setItem} />
