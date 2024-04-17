@@ -85,7 +85,7 @@ const Signup = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged(function (user) {
-      if (user) navigate("/regist/play");
+      if (user) navigate("/play");
     });
   });
 
