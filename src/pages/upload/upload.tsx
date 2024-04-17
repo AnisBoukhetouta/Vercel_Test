@@ -128,6 +128,7 @@ export default function Upload() {
     <Container
       style={{
         paddingTop: "8rem",
+        paddingBottom: "4rem",
         color: "rgb(237, 237, 237)",
       }}
     >
@@ -236,7 +237,8 @@ export default function Upload() {
                     backgroundColor: "#00000000",
                     color: "rgb(202, 196, 196)",
                     border: "1px solid white",
-                    padding: 5,
+                    borderRadius: 10,
+                    padding: 15,
                   }}
                 />
                 <Typography>Controls *</Typography>
@@ -252,7 +254,8 @@ export default function Upload() {
                     backgroundColor: "#00000000",
                     color: "rgb(202, 196, 196)",
                     border: "1px solid white",
-                    padding: 5,
+                    borderRadius: 10,
+                    padding: 15,
                   }}
                 />
 
@@ -401,7 +404,6 @@ export default function Upload() {
                   variant="contained"
                   sx={{
                     marginTop: 5,
-                    marginBottom: 5,
                     padding: 2,
                   }}
                 >
@@ -431,7 +433,6 @@ export default function Upload() {
                 color: "rgb(202, 196, 196)",
               }}
             >
-              <div>
                 <Typography>File Upload *</Typography>
                 <FileUpload
                   title="Character or Backbling file"
@@ -440,7 +441,6 @@ export default function Upload() {
                   setFieldValue={setCharacterFileUpload}
                   maxFiles={1}
                 />
-              </div>
               <Stack direction="row" sx={{ justifyContent: "end" }}>
                 <Button
                   startIcon={<CloudUpload />}

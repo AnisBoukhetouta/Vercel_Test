@@ -28,7 +28,12 @@
 .MuiFormControl-root {
   border: 1px solid var(--light) !important;
 }
-.MuiInputBase-input, .MuiInputLabel-root {
+.MuiOutlinedInput-root,
+.MuiFormControl-root {
+  border-radius: 10px !important;
+}
+.MuiInputBase-input,
+.MuiInputLabel-root {
   color: var(--light) !important;
 }
 .css-1oprhov::after {
@@ -40,4 +45,16 @@
 .Mui-disabled {
   color: var(--light) !important;
   cursor: alias;
+}
+.filepond--drip {
+  opacity: 1 !important;
+  background: rgb(54, 54, 54) !important;
+  border: 1px dashed rgba(255, 255, 255);
+  border-radius: 0.5rem !important;
+}
+.filepond--drop-label {
+  color: rgb(202, 196, 196) !important;
+}
+.filepond--root {
+  min-width: 9.5em;
 }
