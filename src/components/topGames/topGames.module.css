@@ -8,4 +8,5 @@
 }
 .topGames:hover {
   bottom: 0;
+  transition: all 1s;
 }

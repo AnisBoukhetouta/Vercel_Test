@@ -28,7 +28,7 @@ const gameNavbar = (props) => {
         <EpicButton />
         <Line />
         <NavLink to="/" style={{ textDecoration: "none" }}>
-          <h1 className={classes.title}>H</h1>
+          <h1 className={classes.title}>PwnIQ</h1>
         </NavLink>
         <GameNavlinks />
       </nav>

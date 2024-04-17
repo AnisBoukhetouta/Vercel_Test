@@ -75,7 +75,7 @@ const App = () => {
         path="/playground"
         element={
           <GameLayout>
-            <Playground />
+            <Home />
           </GameLayout>
         }
       />

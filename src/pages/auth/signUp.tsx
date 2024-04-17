@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Google } from "@mui/icons-material";
 import axios from "axios";
+import Logo from "./logo";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ const Signup = () => {
   return (
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
-        <img src="/logo.svg" />
+        <Logo />
         <p className={classes.formLabel}>Sign Up</p>
         <form className={classes.form}>
           <TextField

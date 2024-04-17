@@ -10,9 +10,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  Google,
-} from "@mui/icons-material";
+import { Google } from "@mui/icons-material";
+import Logo from "./logo";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,7 +44,7 @@ const Login = () => {
   return (
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
-        <img src="/logo.svg" />
+        <Logo />
         <p className={classes.formLabel}>Sign In</p>
         <form className={classes.form}>
           <TextField
