@@ -32,7 +32,7 @@ export default function GameCard({ item, onSetItem, link }: Props) {
 
   return (
     <div className={classes.cardBody}>
-      {!loading ? (
+      {item ? (
         <div
           className={classes.center}
           key={item._id}
