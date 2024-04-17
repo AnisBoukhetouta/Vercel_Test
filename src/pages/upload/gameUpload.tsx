@@ -14,6 +14,7 @@ import {
 import AppConstants from "../../AppConstants";
 import FileUpload from "../../components/fileUpload/fileUpload";
 import { CloudUpload } from "@mui/icons-material";
+import HelpIcon from "@mui/icons-material/Help";
 import classes from "./upload.module.css";
 import axios from "axios";
 
@@ -110,7 +111,7 @@ export default function GameUpload() {
             }}
           >
             <h2 className={classes.pageTitle}>Game details</h2>
-            <Stack spacing={3}>
+            <Stack>
               <Box>
                 <div className={classes.fieldName}>Game title *</div>
                 <TextField
@@ -129,7 +130,7 @@ export default function GameUpload() {
                     formik.touched.gameTitle && formik.errors.gameTitle
                   }
                 />
-                <div className={classes.description}>
+                <div className={classes.description2}>
                   Must be the same as the title that appears in your game - Max
                   length is 40 chars.
                 </div>
@@ -325,7 +326,13 @@ export default function GameUpload() {
           >
             <h2 className={classes.pageTitle}>Files *</h2>
             <div>
-              <div className={classes.fieldName}>File Upload *</div>
+              <div className={classes.alignedFlexBox}>
+                <div className={classes.fieldName}>File Upload *</div>
+                <HelpIcon
+                  fontSize="small"
+                  sx={{ marginTop: "24px", marginBottom: " 10px" }}
+                />
+              </div>
               <FileUpload
                 title="Game files"
                 fieldName="fileUpload"
@@ -334,7 +341,18 @@ export default function GameUpload() {
                 maxFiles={4}
               />
             </div>
-            <h2 className={classes.pageTitle}>Cover Images</h2>
+            <h2 className={classes.fieldName}>Cover Images *</h2>
+            <div className={classes.description2}>
+              We will use the cover image to show your game on our pages
+              (homepage, category pages, …). Make it appealing and professional
+              looking! A good cover image will make the users want to play your
+              game. Please provide 3 sizes for your game cover : landscape
+              (1920x1080) portrait (800x1200) and square (800x800). For more
+              information, make sure to read our{" "}
+              <a href="#" className={classes.alink}>
+                guidelines for game covers.
+              </a>
+            </div>
             <Stack direction="row" sx={{ justifyContent: "space-between" }}>
               <div style={{ width: "45%" }}>
                 <div className={classes.fieldName}>
@@ -342,7 +360,7 @@ export default function GameUpload() {
                 </div>
                 <FileUpload
                   fieldName="landscapeFile"
-                  title="Landscape image file"
+                  title="Landscape"
                   height={280}
                   setFieldValue={setLandscapeFile}
                 />
@@ -350,7 +368,7 @@ export default function GameUpload() {
               <div style={{ width: "25%" }}>
                 <div className={classes.fieldName}>Portrait 2:3 (800x1200)</div>
                 <FileUpload
-                  title="Portrait image file"
+                  title="Portrait"
                   fieldName="portraitFile"
                   height={350}
                   setFieldValue={setPortraitFile}
@@ -359,7 +377,7 @@ export default function GameUpload() {
               <div style={{ width: "25%" }}>
                 <div className={classes.fieldName}>Square 1:1 (800x800)</div>
                 <FileUpload
-                  title="Square image file"
+                  title="Square"
                   fieldName="squareFile"
                   height={200}
                   setFieldValue={setSquareFile}
@@ -367,18 +385,12 @@ export default function GameUpload() {
               </div>
             </Stack>
             <Stack direction="row" sx={{ justifyContent: "end" }}>
-              <Button
-                startIcon={<CloudUpload />}
-                type="submit"
-                disabled={formik.isSubmitting}
-                variant="contained"
-                sx={{
-                  marginTop: 5,
-                  padding: 2,
-                }}
-              >
-                Upload
-              </Button>
+              <div className={classes.buttonline}>
+                <button className={classes.lobbyHeaderButton} type="submit">
+                  <CloudUpload fontSize="large" />
+                  <div>Upload</div>
+                </button>
+              </div>
             </Stack>
           </Paper>
         </Form>

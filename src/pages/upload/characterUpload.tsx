@@ -1,9 +1,9 @@
 import React from "react";
+import classes from "./upload.module.css";
 import { Form, Formik } from "formik";
 import { Button, Paper, Stack, Typography } from "@mui/material";
 import FileUpload from "../../components/fileUpload/fileUpload";
 import { CloudUpload } from "@mui/icons-material";
-import { auth } from "../../firebase";
 import axios from "axios";
 
 interface Prop {
@@ -42,7 +42,7 @@ export default function CharacterUpload({ uid }: Prop) {
     >
       {(formik) => (
         <Form>
-          <h2 style={{ paddingTop: "3rem" }}>
+          <h2 className={classes.heading}>
             Character or Backbling File Upload
           </h2>
           <Paper
@@ -53,7 +53,7 @@ export default function CharacterUpload({ uid }: Prop) {
               color: "rgb(202, 196, 196)",
             }}
           >
-            <Typography>File Upload *</Typography>
+            <div className={classes.fieldName}>File Upload *</div>
             <FileUpload
               title="Character or Backbling file"
               fieldName="characterFileUpload"
@@ -62,19 +62,12 @@ export default function CharacterUpload({ uid }: Prop) {
               maxFiles={1}
             />
             <Stack direction="row" sx={{ justifyContent: "end" }}>
-              <Button
-                startIcon={<CloudUpload />}
-                type="submit"
-                disabled={formik.isSubmitting}
-                variant="contained"
-                sx={{
-                  marginTop: 5,
-                  marginBottom: 5,
-                  padding: 2,
-                }}
-              >
-                Upload
-              </Button>
+              <div className={classes.buttonline}>
+                <button className={classes.lobbyHeaderButton} type="submit">
+                  <CloudUpload fontSize="large" />
+                  <div>Upload</div>
+                </button>
+              </div>
             </Stack>
           </Paper>
         </Form>

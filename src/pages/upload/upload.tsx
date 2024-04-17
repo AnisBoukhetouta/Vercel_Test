@@ -27,7 +27,7 @@ export default function Upload() {
   }, []);
 
   return (
-    <div
+    <Container
       style={{
         padding: "4rem",
         paddingTop: "8rem",
@@ -59,6 +59,6 @@ export default function Upload() {
       </div>
       {uploadType == "PwnIQ_Game" && <GameUpload />}
       {uploadType === "Character" && <CharacterUpload uid={uid} />}
-    </div>
+    </Container>
   );
 }

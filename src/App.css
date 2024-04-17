@@ -49,7 +49,7 @@
 .filepond--drip {
   opacity: 1 !important;
   background: rgb(54, 54, 54) !important;
-  border: 1px dashed rgba(255, 255, 255);
+  border: 2px dashed rgba(255, 255, 255);
   border-radius: 0.5rem !important;
 }
 .filepond--drop-label {
