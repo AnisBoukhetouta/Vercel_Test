@@ -84,7 +84,7 @@ export default function Inventory() {
 }
 
 const menu = [
-  { id: 0, title: "CHARACTOR" },
+  { id: 0, title: "CHARACTER" },
   { id: 1, title: "EMOTES" },
   { id: 2, title: "WRAPS" },
   { id: 3, title: "LOBBY" },
