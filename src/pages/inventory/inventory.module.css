@@ -1,30 +1,30 @@
 .inventoryMain {
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   padding-top: 8rem;
   padding-left: 4rem;
   display: flex;
   background: radial-gradient(#1ab1f2, #0c2858);
+  overflow: hidden;
 }
 
 .inventoryMenu {
-  width: 500px;
+  width: 320px;
   height: 100%;
   padding-top: 5rem;
-  padding-left: 5%;
 }
 
 .inventoryMenuBody {
-  width: 300px;
-  padding: 1rem;
+  width: 250px;
+  padding: 0.5rem;
   background-color: rgba(0, 0, 0, 0.387);
   border-radius: 15px;
 }
 
 .inventoryMenuButton {
   width: 100%;
-  height: 30px;
-  padding: 2rem;
+  height: 55px;
+  padding: 1rem;
   align-items: center;
   display: flex;
   border: 0;
@@ -39,7 +39,7 @@
 }
 
 .buttonTitle {
-  font-size: 22px;
+  font-size: 20px;
   color: white;
   font-weight: 800;
 }
@@ -61,196 +61,3 @@
   width: 80%;
   height: 100%;
 }
-.character {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  margin-bottom: 7rem;
-}
-
-.characterBodyTitle {
-  font-size: 70px;
-  font-weight: 900;
-  color: white;
-  transform: skewX(-10deg);
-}
-
-.characterBodysmallTitle {
-  font-size: 30px;
-  font-weight: 900;
-  color: rgba(135, 172, 198, 0.724);
-  transform: skewX(-8deg);
-}
-
-.characterBodyCards {
-  max-width: 550px;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.cardImg {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  transition: transform 0.2s ease;
-}
-
-.card {
-  height: 150px;
-  background-color: rgba(255, 255, 255, 0.186);
-  border-radius: 15px;
-  cursor: pointer;
-  outline-color: transparent;
-  outline-offset: 0.3rem;
-  outline-style: solid;
-  outline-width: 0;
-  transition-duration: 0.15s;
-  cursor: pointer;
-  transition-property: outline-color, outline-offset, outline-width;
-  transition-timing-function: ease-out;
-  overflow: clip;
-  margin: 1rem;
-}
-
-.card:hover {
-  outline-offset: 0.3rem;
-  outline-width: 0.25rem;
-  outline-color: rgba(163, 253, 255, 0.754);
-  box-shadow: 1px 1px 10px 10px rgba(163, 253, 255, 0.708);
-}
-
-.card:hover .cardImg {
-  transform: scale(1.1);
-}
-
-.buttons {
-  height: 30px;
-  padding: 2rem;
-  align-items: center;
-  display: flex;
-  background-color: #e2e2e2cd;
-  cursor: pointer;
-  font-size: 22px;
-  color: rgba(6, 6, 6, 0.91);
-  font-weight: 800;
-  border-radius: 15px;
-  border: 0;
-  margin-top: 1rem;
-  justify-content: center;
-  outline-color: transparent;
-  outline-offset: 0.3rem;
-  outline-style: solid;
-  outline-width: 0;
-  transition-duration: 0.15s;
-  cursor: pointer;
-  transition-property: outline-color, outline-offset, outline-width;
-  transition-timing-function: ease-out;
-  overflow: clip;
-}
-
-.saveButtonlng {
-  width: 300px;
-}
-
-.optionButton {
-  width: 200px;
-  text-align: center;
-}
-
-.buttons:hover {
-  outline-offset: 0.3rem;
-  outline-width: 0.25rem;
-  outline-color: rgb(163, 253, 255);
-  box-shadow: 1px 1px 10px rgb(163, 253, 255);
-}
-
-@keyframes flow {
-  0% {
-    left: 0; /* Start from the right edge */
-  }
-  50% {
-    left: 100%; /* Move to the left edge */
-  }
-  100% {
-    left: 100%; /* Move back to the right edge */
-  }
-}
-
-.colorFlow {
-  position: absolute;
-  top: 0;
-  left: 100%; /* Start from the left edge */
-  width: 50%; /* Adjust width as needed */
-  height: 100%;
-  background: radial-gradient(
-    rgba(163, 253, 255, 0.744),
-    rgba(255, 255, 255, 0.563)
-  );
-  border-radius: 10px;
-}
-
-.card:hover .colorFlow {
-  animation: flow 0.8s linear forwards; /* Animation lasts 4 seconds */
-  box-shadow: 1px 1px 10px 10px rgba(255, 255, 255, 0.563);
-  opacity: 0.3;
-}
-
-.characterCards {
-  max-width: 800px;
-  height: 700px;
-}
-
-.cardBody {
-  max-width: 800px;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-}
-
-.characterCard {
-  max-width: 200px;
-  height: 200px;
-}
-
-.characterElement {
-  position: absolute;
-  right: 1rem;
-  top: 6rem;
-  width: 200px;
-  height: 600px;
-}
-
-.characterElementWidth {
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
-}
-
-.characterText {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-}
-
-.bar {
-  position: absolute;
-  top: 10.5rem;
-  left: 0;
-  width: 300px;
-  height: 3rem;
-  background-color: white;
-  transform: skew(0deg, -2deg) translateY(5rem);
-  transition: transform 150ms ease-out;
-  z-index: 1000;
-  /* transform: skew(0deg, -3deg) translateY(0); */
-}
-
-.bar--secondary {
-  bottom: -2rem;
-}
-
-/* .cardBody:hover .bar {
-  transform: skew(0deg, -3deg) translateY(0);
-} */

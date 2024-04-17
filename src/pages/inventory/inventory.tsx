@@ -7,11 +7,12 @@ import { auth } from "../../firebase";
 import { OrbitControls } from "@react-three/drei";
 import { UserCharacter } from "../../components/userCharacter";
 import { useNavigate } from "react-router-dom";
+import InventoryBody from "../../components/charactory/charactory";
 
 export default function Inventory() {
   const navigate = useNavigate();
-  const [characterName, setCharacterName] = useState(0);
   const [title, setTitle] = useState(0);
+  const [characterOptions, setCharacterOptions] = useState(false);
 
   const baseUrl = import.meta.env.VITE_APP_BASE;
   const getCharacterFile = import.meta.env.VITE_GET_CHARACTER_FILE;
@@ -40,6 +41,11 @@ export default function Inventory() {
     getModel();
   }, [uid, navigate]);
 
+  const handleMenuClick = (key) => {
+    setTitle(key);
+    setCharacterOptions(false);
+  };
+
   return (
     <>
       <div className={classes.inventoryMain}>
@@ -49,7 +55,7 @@ export default function Inventory() {
               <button
                 className={classes.inventoryMenuButton}
                 key={item.id}
-                onClick={() => setTitle(key)}
+                onClick={() => handleMenuClick(key)}
               >
                 <div className={classes.buttonIcon}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -65,86 +71,12 @@ export default function Inventory() {
           </div>
         </div>
         <div className={classes.inventoryBody}>
-          <div className={classes.character}>
-            <div className={classes.characterBody}>
-              <div className={classes.characterBodyTitle}>
-                {menu[title].title}
-              </div>
-              <div className={classes.characterBodysmallTitle}>
-                {charactor[characterName].title}
-              </div>
-              <div className={classes.characterBodyCards}>
-                {charactor.map((item, key) => (
-                  <div
-                    className={classes.card}
-                    key={item.id}
-                    onClick={() => setCharacterName(key)}
-                  >
-                    <img
-                      src={item.image}
-                      alt="character"
-                      className={classes.cardImg}
-                    />
-                    <div className={classes.colorFlow} />
-                  </div>
-                ))}
-              </div>
-
-              <button className={`${classes.buttons} ${classes.saveButton}`}>
-                SAVE CHARACTOR
-              </button>
-              <button className={`${classes.buttons} ${classes.optionButton}`}>
-                OPTIONS
-              </button>
-            </div>
-            <div className={classes.characterDispaly}></div>
-          </div>
-          <div className={`${classes["bar--secondary"]} ${classes.bar}`}></div>
-          {/* charactor save */}
-          <div className={classes.character}>
-            <div className={classes.characterBody}>
-              <div className={classes.characterBodyTitle}>
-                {" "}
-                SAVED CHARACTOR{" "}
-              </div>
-              <div className={classes.characterCards}>
-                <div className={classes.cardBody}>
-                  {charactorSave.map((item, index) => (
-                    <div
-                      className={`${classes.card} ${classes.characterCard} `}
-                    >
-                      <img
-                        src={item.image}
-                        alt="character"
-                        className={classes.cardImg}
-                      />
-                      <div
-                        className={`${classes.buttonTitle} ${classes.characterText}`}
-                      >
-                        Title
-                      </div>
-                      <div className={classes.colorFlow} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className={classes.characterDispaly}></div>
-            <div className={classes.characterElement}>
-              {charactor.map((item, index) => (
-                <div
-                  className={`${classes.card} ${classes.characterElementWidth} `}
-                >
-                  <img
-                    src={item.image}
-                    alt="character"
-                    className={classes.cardImg}
-                  />
-                  <div className={classes.colorFlow} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <InventoryBody
+            characterOptions={characterOptions}
+            menu={menu}
+            title={title}
+            setCharacterOptions={() => setCharacterOptions(true)}
+          />
         </div>
       </div>
     </>
@@ -153,36 +85,12 @@ export default function Inventory() {
 
 const menu = [
   { id: 0, title: "CHARACTOR" },
-  { id: 1, title: "EMOTE" },
+  { id: 1, title: "EMOTES" },
   { id: 2, title: "WRAPS" },
   { id: 3, title: "LOBBY" },
-  { id: 4, title: "INSTRUMENT" },
+  { id: 4, title: "INSTRUMENTS" },
   { id: 5, title: "CARS" },
-  { id: 6, title: "JAMTRACS" },
-];
-
-const charactor = [
-  { id: 0, title: "OUTFIT", image: "./images/inventory/charactor.png" },
-  { id: 1, title: "BACKBLING", image: "./images/inventory/charactor.png" },
-  { id: 2, title: "PICKAXE", image: "./images/inventory/charactor.png" },
-  { id: 3, title: "GLIDER", image: "./images/inventory/charactor.png" },
-  { id: 4, title: "CONTRAIL", image: "./images/inventory/charactor.png" },
-  { id: 5, title: "AURA", image: "./images/inventory/charactor.png" },
-];
-
-const charactorSave = [
-  { id: 0, image: "./images/inventory/charactor.png" },
-  { id: 1, image: "./images/inventory/charactor.png" },
-  { id: 2, image: "./images/inventory/charactor.png" },
-  { id: 3, image: "./images/inventory/charactor.png" },
-  { id: 4, image: "./images/inventory/charactor.png" },
-  { id: 5, image: "./images/inventory/charactor.png" },
-  { id: 6, image: "./images/inventory/charactor.png" },
-  { id: 7, image: "./images/inventory/charactor.png" },
-  { id: 8, image: "./images/inventory/charactor.png" },
-  { id: 9, image: "./images/inventory/charactor.png" },
-  { id: 10, image: "./images/inventory/charactor.png" },
-  { id: 11, image: "./images/inventory/charactor.png" },
+  { id: 6, title: "JAM TRACKS" },
 ];
 
 {
