@@ -68,11 +68,7 @@ export default function ModelBox() {
         style={{
           position: "relative",
           backgroundImage: `url(${
-            item
-              ? item.imageOver
-              : items.length
-              ? items[0].imageOver
-              : ""
+            item ? item.imageOver : items.length ? items[0].imageOver : ""
           })`,
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
@@ -100,6 +96,13 @@ export default function ModelBox() {
                 link={true}
                 setView={() => setView(true)}
               />
+              <button
+                onClick={() => setView(true)}
+                className={classes.lobbyHeaderButton}
+                type="button"
+              >
+                PLAY NOW
+              </button>
             </div>
           )}
           <TopGames setItem={setItem} />
