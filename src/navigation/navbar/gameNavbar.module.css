@@ -80,7 +80,7 @@
   display: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1227px) {
   .menuButton {
     width: 25px;
     height: 25px;

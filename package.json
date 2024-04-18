@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^6.1.8",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/bebas-neue": "^5.0.14",
@@ -24,6 +25,8 @@
     "@react-three/fiber": "^8.16.1",
     "@trendyol-js/react-carousel": "^3.0.2",
     "@uppy/react": "^3.3.0",
+    "aws-amplify": "^6.0.28",
+    "aws-sdk": "^2.1601.0",
     "axios": "^1.6.8",
     "filepond-plugin-file-encode": "^2.1.14",
     "filepond-plugin-file-validate-size": "^2.2.8",
