@@ -49,6 +49,7 @@
   gap: 0.75rem;
   justify-content: flex-start;
   z-index: 4;
+  padding: var(--padding-1);
 }
 
 .menuTool {
@@ -89,12 +90,10 @@
     cursor: pointer;
     display: block;
   }
-
   .tools {
     display: none;
   }
-
-  .tool {
-    padding: var(--padding-1);
+  .gameNavLinksView {
+    display: none;
   }
 }
