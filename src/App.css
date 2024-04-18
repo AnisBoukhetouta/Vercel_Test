@@ -61,6 +61,3 @@
 .MuiSvgIcon-root {
   color: white !important;
 }
-.input:-internal-autofill-selected {
-  background-color: var(--accent)!important;
-}

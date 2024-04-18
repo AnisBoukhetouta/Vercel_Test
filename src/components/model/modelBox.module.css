@@ -47,7 +47,7 @@
 }
 
 @media screen and (max-height: 700px) {
-  .miniCard {
-    display: none;
+  .buttonline {
+    margin-top: 200px;
   }
 }
