@@ -89,11 +89,12 @@
     cursor: pointer;
     display: block;
   }
-
+  .navLinksView {
+    display: none;
+  }
   .tools {
     display: none;
   }
-
   .tool {
     padding: var(--padding-1);
   }
