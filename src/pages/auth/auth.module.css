@@ -38,3 +38,7 @@
   flex-direction: column;
   gap: 30px;
 }
+.errorMessage{
+  color: red;
+  font-size: smaller;
+}

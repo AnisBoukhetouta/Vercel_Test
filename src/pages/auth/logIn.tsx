@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./auth.module.css";
@@ -18,6 +22,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [able, setAble] = useState(false);
+  const [message, setMessage] = useState("");
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -31,6 +36,7 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setMessage(errorMessage);
         console.log(errorCode, errorMessage);
       });
   };
@@ -65,6 +71,7 @@ const Login = () => {
       <Container className={classes.formContainer}>
         <Logo />
         <p className={classes.formLabel}>Sign In</p>
+        <div className={classes.errorMessage}>{message}</div>
         <form className={classes.form}>
           <TextField
             type="email"

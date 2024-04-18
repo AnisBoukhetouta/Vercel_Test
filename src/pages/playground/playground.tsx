@@ -47,9 +47,10 @@ const UnityWrapper = ({ unityConfig }) => {
     <div className={classes.container}>
       {!!completed && (
         <Alert
+          variant="filled"
           severity="success"
           color="warning"
-          sx={{ position: "absolute", top: "2rem", zIndex: 50 }}
+          sx={{ position: "absolute", top: "8rem", zIndex: 50 }}
         >
           Congratulations!
           <br />
