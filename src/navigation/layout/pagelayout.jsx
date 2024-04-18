@@ -12,7 +12,6 @@ class pageLayout extends Component {
   };
 
   toggleSidebarHandler = () => {
-    console.log('~~~~~~~~~~~~~~~~',this.state.showSidebar);
     this.setState((prevState) => {
       return { showSidebar: !prevState.showSidebar };
     });

@@ -16,7 +16,9 @@ const sidebar = (props) => {
     <Container maxWidth="sm">
       <Backdrop show={props.open} clicked={props.closed} />
       <div className={attachedClasses.join(" ")} onClick={props.closed}>
-        <Navlinks />
+        <nav>
+          <Navlinks />
+        </nav>
       </div>
     </Container>
   );

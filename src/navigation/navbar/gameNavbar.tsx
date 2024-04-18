@@ -30,9 +30,7 @@ const gameNavbar = (props) => {
         <NavLink to="/" style={{ textDecoration: "none" }}>
           <h1 className={classes.title}>PwnIQ</h1>
         </NavLink>
-        <div className={classes.gameNavLinksView}>
-          <GameNavlinks />
-        </div>
+        <GameNavlinks />
       </nav>
       <div className={classes.tools}>
         {search ? (
