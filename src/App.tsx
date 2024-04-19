@@ -16,6 +16,7 @@ import Signup from "./pages/auth/signUp";
 import Login from "./pages/auth/logIn";
 import User from "./pages/auth/user";
 import Inventory from "./pages/inventory/inventory";
+import Practice from "./pages/practice";
 
 const App = () => {
   let routes = (
@@ -85,6 +86,14 @@ const App = () => {
           <GameLayout>
             <Inventory />
           </GameLayout>
+        }
+      />
+      <Route
+        path="/practice"
+        element={
+          <PageLayout>
+            <Practice />
+          </PageLayout>
         }
       />
     </Routes>
