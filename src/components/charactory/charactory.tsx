@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./charactory.module.css";
+import ModelViewer from "../modelViewer/modelViewer";
 
 interface Props {
   characterOptions: boolean;
@@ -18,37 +19,44 @@ export default function InventoryBody({
   return (
     <>
       <div className={characterOptions ? classes.hide : classes.character}>
-        <div className={classes.characterBody}>
-          <div className={classes.characterBodyTitle}>{menu[title].title}</div>
-          <div className={classes.characterBodysmallTitle}>
-            {charactor[characterName].title}
-          </div>
-          <div className={classes.characterBodyCards}>
-            {charactor.map((item, key) => (
-              <div
-                className={`${classes.card} ${classes.cardWidth}`}
-                key={key}
-                onClick={() => setCharacterName(item.id)}
-              >
-                <img
-                  src={item.image}
-                  alt="character"
-                  className={classes.cardImg}
-                />
-                <div className={classes.colorFlow} />
-              </div>
-            ))}
-          </div>
+        <div className={classes.characterBodyCotainer}>
+          <div>
+            <div className={classes.characterBodyTitle}>
+              {menu[title].title}
+            </div>
+            <div className={classes.characterBodysmallTitle}>
+              {charactor[characterName].title}
+            </div>
+            <div className={classes.characterBodyCards}>
+              {charactor.map((item, key) => (
+                <div
+                  className={`${classes.card} ${classes.cardWidth}`}
+                  key={key}
+                  onClick={() => setCharacterName(item.id)}
+                >
+                  <img
+                    src={item.image}
+                    alt="character"
+                    className={classes.cardImg}
+                  />
+                  <div className={classes.colorFlow} />
+                </div>
+              ))}
+            </div>
 
-          <button className={`${classes.buttons} ${classes.saveButton}`}>
-            SAVE CHARACTOR
-          </button>
-          <button
-            className={`${classes.buttons} ${classes.optionButton}`}
-            onClick={() => setCharacterOptions(true)}
-          >
-            OPTIONS
-          </button>
+            <button className={`${classes.buttons} ${classes.saveButton}`}>
+              SAVE CHARACTOR
+            </button>
+            <button
+              className={`${classes.buttons} ${classes.optionButton}`}
+              onClick={() => setCharacterOptions(true)}
+            >
+              OPTIONS
+            </button>
+          </div>
+          <div>
+            <ModelViewer src={String(characterName)} />
+          </div>
         </div>
         <div className={classes.characterDispaly}></div>
       </div>
