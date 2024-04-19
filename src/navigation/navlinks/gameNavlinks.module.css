@@ -10,6 +10,7 @@
   .navlinks {
     display: flex;
     flex-flow: column;
+    margin: 10px;
   }
 }
 

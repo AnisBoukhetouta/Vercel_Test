@@ -49,7 +49,7 @@ const gameNavbar = (props) => {
         )}
       </div>
       <nav className={classes.menuTool}>
-        <button className={classes.menuButton}>
+        <button className={classes.menuButton} onClick={props.toggleSidebar}>
           <MenuButton />
         </button>
       </nav>
