@@ -88,14 +88,6 @@ const App = () => {
           </GameLayout>
         }
       />
-      <Route
-        path="/practice"
-        element={
-          <PageLayout>
-            <Practice />
-          </PageLayout>
-        }
-      />
     </Routes>
   );
 

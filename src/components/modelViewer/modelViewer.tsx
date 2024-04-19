@@ -8,7 +8,7 @@ function Model() {
   const { camera } = useThree();
   const gltf = useLoader(GLTFLoader, "models/character0.glb");
   const { animations, nodes } = gltf;
-  const mixer = new THREE.AnimationMixer(nodes.Scene); 
+  const mixer = new THREE.AnimationMixer(nodes.Scene);
 
   const clip = animations[0];
   const action = mixer.clipAction(clip);
@@ -21,11 +21,15 @@ function Model() {
 
   //   camera.fov = 45; // Set the FOV (in degrees) for the zoom level
 
-  camera.lookAt(0, 0, 0); 
+  camera.lookAt(0, 0, 0);
   return <primitive object={nodes.Scene} position={[0, -1, 8.2]} />;
 }
 
-function ModelViewer() {
+interface Props {
+  src: string;
+}
+
+function ModelViewer({ src }: Props) {
   return (
     <Canvas style={{ width: "100vw", height: "100vh" }}>
       <ambientLight intensity={1} />
