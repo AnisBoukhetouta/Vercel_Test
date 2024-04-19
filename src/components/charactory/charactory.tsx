@@ -54,7 +54,7 @@ export default function InventoryBody({
               OPTIONS
             </button>
           </div>
-          <div>
+          <div className={classes.modelViewerContainer}>
             <ModelViewer src={String(characterName)} />
           </div>
         </div>

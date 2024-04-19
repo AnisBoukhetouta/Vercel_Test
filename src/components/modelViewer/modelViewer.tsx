@@ -38,7 +38,15 @@ function ModelViewer({ src }: Props) {
       <directionalLight intensity={0.6} color="white" position={[5, 5, 5]} />
       <pointLight intensity={0.8} color="white" position={[-5, -5, -5]} />
       <Model />
-      <OrbitControls />
+      <OrbitControls
+        enablePan={false}
+        minDistance={9.5}
+        maxDistance={10.5}
+        zoomSpeed={0.3}
+        zoom0={10}
+        // args={[camera, document.documentElement]}
+        enableRotate={false}
+      />
     </Canvas>
   );
 }

@@ -214,3 +214,6 @@
   color: white;
   font-weight: 800;
 }
+.modelViewerContainer {
+  width: 100%;
+}
