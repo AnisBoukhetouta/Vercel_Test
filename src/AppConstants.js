@@ -103,6 +103,8 @@ const AppConstants = {
     "HTML 5",
   ],
 
+  fileTypes: ["Outfit", "Backbling", "Pickaxe", "Glider", "Contrail", "Aura"],
+
   // unityConfig: {
   //   loaderUrl: "Build/Public.loader.js",
   //   dataUrl: "Build/Public.data.gz",

@@ -112,7 +112,7 @@ export default function GameUpload() {
           >
             <h2 className={classes.pageTitle}>Game details</h2>
             <Stack>
-              <Box>
+              <div>
                 <div className={classes.fieldName}>Game title *</div>
                 <TextField
                   name="gameTitle"
@@ -134,8 +134,8 @@ export default function GameUpload() {
                   Must be the same as the title that appears in your game - Max
                   length is 40 chars.
                 </div>
-              </Box>
-              <Box>
+              </div>
+              <div>
                 <div className={classes.fieldName}>Category *</div>
                 <Autocomplete
                   sx={{ width: 500 }}
@@ -160,8 +160,8 @@ export default function GameUpload() {
                     />
                   )}
                 />
-              </Box>
-              <Box>
+              </div>
+              <div>
                 <div className={classes.alignedFlexBox}>
                   <div className={classes.fieldName}>Tags *</div>
                   <div className={classes.description}>MAX. 5</div>
@@ -184,7 +184,7 @@ export default function GameUpload() {
                     />
                   )}
                 />
-              </Box>
+              </div>
               <div className={classes.alignedFlexBox}>
                 <div className={classes.fieldName}>Description *</div>
                 <div className={classes.description}>NO HTML ALLOWED</div>
@@ -286,7 +286,7 @@ export default function GameUpload() {
             }}
           >
             <h2 className={classes.pageTitle}>Game Type</h2>
-            <Box>
+            <div>
               <Alert variant="filled" severity="warning">
                 Please read our CrazyGames documentation carefully before
                 submitting a game!
@@ -314,7 +314,7 @@ export default function GameUpload() {
                   />
                 )}
               />
-            </Box>
+            </div>
           </Paper>
           <Paper
             sx={{
