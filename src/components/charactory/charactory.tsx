@@ -17,7 +17,6 @@ export default function InventoryBody({
   const [characterName, setCharacterName] = useState(0);
   return (
     <>
-      {" "}
       <div className={characterOptions ? classes.hide : classes.character}>
         <div className={classes.characterBody}>
           <div className={classes.characterBodyTitle}>{menu[title].title}</div>
@@ -28,8 +27,8 @@ export default function InventoryBody({
             {charactor.map((item, key) => (
               <div
                 className={`${classes.card} ${classes.cardWidth}`}
-                key={item.id}
-                onClick={() => setCharacterName(key)}
+                key={key}
+                onClick={() => setCharacterName(item.id)}
               >
                 <img
                   src={item.image}
@@ -53,7 +52,6 @@ export default function InventoryBody({
         </div>
         <div className={classes.characterDispaly}></div>
       </div>
-      {/* charactor save */}
       <div
         className={
           characterOptions
@@ -67,7 +65,10 @@ export default function InventoryBody({
             <div className={classes.characterCards}>
               <div className={classes.cardBody}>
                 {charactorSave.map((item, index) => (
-                  <div className={`${classes.card} ${classes.characterCard} `}>
+                  <div
+                    key={index}
+                    className={`${classes.card} ${classes.characterCard} `}
+                  >
                     <img
                       src={item.image}
                       alt="character"
@@ -88,6 +89,7 @@ export default function InventoryBody({
           <div className={classes.characterElement}>
             {charactor.map((item, index) => (
               <div
+                key={index}
                 className={`${classes.card} ${classes.characterElementWidth} `}
               >
                 <img
