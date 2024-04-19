@@ -102,7 +102,9 @@ export default function ModelBox() {
               </div>
             </div>
           )}
+          <div className={classes.topGamesContainer}>
           <TopGames setItem={setItem} />
+          </div>
         </>
       )}
     </>
