@@ -62,10 +62,17 @@ export default function CharacterUpload({ uid }: Prop) {
               maxFiles={1}
             />
             <Stack direction="row" sx={{ justifyContent: "end" }}>
-              <div className={classes.buttonline}>
-                <button className={classes.lobbyHeaderButton} type="submit">
+              <div
+                aria-disabled={formik.isSubmitting}
+                className={classes.buttonline}
+              >
+                <button
+                  disabled={formik.isSubmitting}
+                  className={classes.lobbyHeaderButton}
+                  type="submit"
+                >
                   <CloudUpload fontSize="large" />
-                  <div>Upload</div>
+                  Upload
                 </button>
               </div>
             </Stack>
