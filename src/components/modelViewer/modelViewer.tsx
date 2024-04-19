@@ -34,14 +34,9 @@ function ModelViewer({ src }: Props) {
 
   return (
     <Canvas className={classes.modelContainer}>
-      <ambientLight intensity={1} />
-      <directionalLight
-        intensity={0.8}
-        position={[0, 0, 0]}
-        // position={[300, 300, 400]}
-        // angle={0.2}
-        // penumbra={1}
-      />
+      <ambientLight intensity={0.5} color="white" />
+      <directionalLight intensity={0.6} color="white" position={[5, 5, 5]} />
+      <pointLight intensity={0.8} color="white" position={[-5, -5, -5]} />
       <Model />
       <OrbitControls />
     </Canvas>
