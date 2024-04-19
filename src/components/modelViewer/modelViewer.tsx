@@ -1,22 +1,28 @@
 import React from "react";
-import { Canvas, useLoader, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { OrbitControls, useAnimations } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 function Model() {
   const { camera } = useThree();
-  const gltf = useLoader(GLTFLoader, "models/character.glb");
+  const gltf = useLoader(GLTFLoader, "models/character0.glb");
   const { animations, nodes } = gltf;
-  const { actions } = useAnimations(animations, nodes);
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~", nodes);
-  actions.animationName?.play();
-  camera.position.set(0, 0, 10); // Increase or decrease the z-coordinate for zooming
+  const mixer = new THREE.AnimationMixer(nodes.Scene); 
 
-  // Adjust camera field of view (optional)
+  const clip = animations[0];
+  const action = mixer.clipAction(clip);
+  useFrame((state, delta) => {
+    mixer.update(delta);
+  });
+  action.play();
+  action.loop = THREE.LoopRepeat;
+  camera.position.set(0, 0, 10);
+
   //   camera.fov = 45; // Set the FOV (in degrees) for the zoom level
 
-  camera.lookAt(0, 0, 0); // Look at the center of the scene
-  return <primitive object={nodes.scene} position={[0, -1, 8.2]} />;
+  camera.lookAt(0, 0, 0); 
+  return <primitive object={nodes.Scene} position={[0, -1, 8.2]} />;
 }
 
 function ModelViewer() {
