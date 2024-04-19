@@ -214,6 +214,9 @@
   color: white;
   font-weight: 800;
 }
+.characterOptionsContainer {
+  width: auto;
+}
 .modelViewerContainer {
-  width: 100%;
+  width: 40vw;
 }

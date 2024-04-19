@@ -20,7 +20,7 @@ export default function InventoryBody({
     <>
       <div className={characterOptions ? classes.hide : classes.character}>
         <div className={classes.characterBodyCotainer}>
-          <div>
+          <div className={classes.characterOptionsContainer}>
             <div className={classes.characterBodyTitle}>
               {menu[title].title}
             </div>
