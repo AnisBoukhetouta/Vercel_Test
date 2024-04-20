@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./charactory.module.css";
 import ModelViewer from "../modelViewer/modelViewer";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface Props {
   characterOptions: boolean;
@@ -15,7 +18,69 @@ export default function InventoryBody({
   title,
   setCharacterOptions,
 }: Props) {
+  const navigate = useNavigate();
   const [characterName, setCharacterName] = useState(0);
+
+  const baseUrl = import.meta.env.VITE_APP_BASE;
+  const getCharacterFile = import.meta.env.VITE_GET_CHARACTER_FILE;
+  const [uid, setUid] = useState("");
+  const [fetchedData, setFetchedData] = useState<any>([]);
+  const [image, setImage] = useState("");
+  const [glbFile, setGlbFile] = useState("");
+
+  useEffect(() => {
+    const getModel = async () => {
+      auth.onAuthStateChanged(function (user) {
+        if (user) {
+          setUid(user.uid);
+        } else {
+          navigate("/regist/login");
+        }
+      });
+      try {
+        if (uid) {
+          const response = await axios.get(`${getCharacterFile}?uid=${uid}`);
+          console.log("FetchedModel~~~~~~", response.data);
+          setFetchedData(response.data);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getModel();
+  }, [uid, navigate]);
+
+  useEffect(() => {
+    if (fetchedData.length > 0) {
+      const backblingFiles = fetchedData.find(
+        (item: any) => item._id === "Backbling"
+      )?.files;
+      const backblingFileNames = backblingFiles?.map((item: any) =>
+        item.fileName.split(".").slice(0, -1).join(".")
+      );
+      const uniqueFileNames = [...new Set(backblingFileNames)];
+      const img = backblingFiles?.find(
+        (item: any) =>
+          item.fileName.includes(uniqueFileNames[0]) &&
+          item.fieldName === "coverImage" &&
+          item
+      );
+      const glb = backblingFiles?.find(
+        (item: any) =>
+          item.fileName.includes(uniqueFileNames[0]) &&
+          item.fieldName === "characterFileUpload" &&
+          item
+      );
+      setImage(baseUrl + "/" + img.destination + "/" + img.fileName);
+      setGlbFile(baseUrl + "/" + glb.destination + "/" + glb.fileName);
+    }
+  }, [fetchedData]);
+
+  useEffect(() => {
+    console.log("@@@@@@@@@@@@@@", image);
+    console.log("!!!!!!!!!!!!!!", glbFile);
+  }, [image, glbFile]);
+
   return (
     <>
       <div className={characterOptions ? classes.hide : classes.character}>
@@ -35,7 +100,7 @@ export default function InventoryBody({
                   onClick={() => setCharacterName(item.id)}
                 >
                   <img
-                    src={item.image}
+                    src={item.title !== "BACKBLING" ? item.image : image}
                     alt="character"
                     className={classes.cardImg}
                   />
@@ -55,10 +120,12 @@ export default function InventoryBody({
             </button>
           </div>
           <div className={classes.modelViewerContainer}>
-            <ModelViewer src={String(characterName)} />
+            <ModelViewer src={glbFile} />
           </div>
         </div>
-        <div className={classes.characterDispaly}></div>
+        {/* <div className={classes.characterDispaly}>
+          <ModelViewer src={glbFile} />
+        </div> */}
       </div>
       <div
         className={

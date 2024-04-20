@@ -12,8 +12,8 @@ interface Props {
 function ModelViewer({ src }: Props) {
   function Model() {
     const { camera } = useThree();
-    const gltf = useLoader(GLTFLoader, "models/character0.glb");
-    // const gltf = useLoader(GLTFLoader, src);
+    // const gltf = useLoader(GLTFLoader, "models/character0.glb");
+    const gltf = useLoader(GLTFLoader, src);
     const { animations, nodes } = gltf;
     const mixer = new THREE.AnimationMixer(nodes.Scene);
 

@@ -17,7 +17,10 @@ export default function Inventory() {
   const baseUrl = import.meta.env.VITE_APP_BASE;
   const getCharacterFile = import.meta.env.VITE_GET_CHARACTER_FILE;
   const [uid, setUid] = useState("");
-  const [fetchedCharacters, setFetchedCharacters] = useState([]);
+  const [fetchedData, setFetchedData] = useState<any>([]);
+  const [backbling, setBackbling] = useState<any>([]);
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [modelUrl, setModelUrl] = useState<string>("");
 
   useEffect(() => {
     const getModel = async () => {
@@ -28,15 +31,15 @@ export default function Inventory() {
           navigate("/regist/login");
         }
       });
-      try {
-        if (uid) {
-          const response = await axios.get(`${getCharacterFile}?uid=${uid}`);
-          console.log("FetchedModel~~~~~~", response.data);
-          setFetchedCharacters(response.data);
-        }
-      } catch (e) {
-        console.log(e);
-      }
+      // try {
+      //   if (uid) {
+      //     const response = await axios.get(`${getCharacterFile}?uid=${uid}`);
+      //     console.log("FetchedModel~~~~~~", response.data);
+      //     setFetchedData(response.data);
+      //   }
+      // } catch (e) {
+      //   console.log(e);
+      // }
     };
     getModel();
   }, [uid, navigate]);
