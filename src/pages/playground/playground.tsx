@@ -25,7 +25,6 @@ const UnityWrapper = ({ unityConfig }) => {
 
   const onGameState = React.useCallback((state: string) => {
     if (state) {
-      console.log("~~~~~~~~~~~~~~~~~~~~~", state);
       setCompleted(!completed);
       setTimeout(() => navigate("/inventory"), 2000);
     }
@@ -106,15 +105,13 @@ interface Props {
   item?: any;
 }
 export default function Playground({ item }: Props) {
-  const navigate = useNavigate();
-  const location = useLocation();
   const baseUrl = import.meta.env.VITE_APP_BASE;
   const getFilesUrl = import.meta.env.VITE_GET_FILES;
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null
   );
   // const state = !!location.state ?? "TEST";
-  const state = item ? item : location.state;
+  const state = item;
 
   const fetch = async (state) => {
     if (!state) {

@@ -90,12 +90,6 @@ const Signup = () => {
     } else setAble(false);
   }, [userEmail, password, userName]);
 
-  useEffect(() => {
-    auth.onAuthStateChanged(function (user) {
-      if (user) navigate("/play");
-    });
-  });
-
   return (
     <div className={classes.authMain}>
       <Container className={classes.formContainer}>
