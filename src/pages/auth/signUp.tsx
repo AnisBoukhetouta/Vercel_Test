@@ -3,7 +3,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  getAuth,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 import classes from "./auth.module.css";
@@ -54,6 +56,11 @@ const Signup = () => {
         accessToken,
         refreshToken,
       };
+
+      const authorize = getAuth();
+      updateProfile(authorize.currentUser, {
+        displayName: userName,
+      }).catch((Error) => console.log(Error));
 
       const response = await axios.post(userInfoUrl, userInfo);
       console.log("RESPONSE", response);

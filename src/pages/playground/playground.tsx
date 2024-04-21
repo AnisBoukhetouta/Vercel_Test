@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./playground.module.css";
 import Nebula from "../../components/Nebula/Nebula";
+import { getAuth } from "firebase/auth";
 
 const UnityWrapper = ({ unityConfig }) => {
   const navigate = useNavigate();
@@ -45,16 +46,14 @@ const UnityWrapper = ({ unityConfig }) => {
 
   const sendDataToUnity = (data) => {
     if (unityContext) {
-      unityContext.sendMessage(
-        "LeftPanel",
-        "ReceiveDataFromWeb",
-        JSON.stringify(data)
-      );
+      unityContext.sendMessage("LeftPanel", "ReceiveDataFromWeb", data);
     }
   };
 
   useEffect(() => {
-    const dataToSend = "ACE"; // Replace with your data
+    const auth = getAuth();
+    const { displayName } = auth.currentUser;
+    const dataToSend = displayName ?? "Noob000001"; // Replace with your data
     sendDataToUnity(dataToSend);
   });
 
