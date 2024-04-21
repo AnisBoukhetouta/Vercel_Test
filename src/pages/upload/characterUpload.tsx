@@ -1,14 +1,7 @@
 import React from "react";
 import classes from "./upload.module.css";
 import { Form, Formik } from "formik";
-import {
-  Autocomplete,
-  Button,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Autocomplete, Paper, Stack, TextField } from "@mui/material";
 import FileUpload from "../../components/fileUpload/fileUpload";
 import { CloudUpload } from "@mui/icons-material";
 import axios from "axios";
@@ -25,7 +18,6 @@ const initialValues = {
 };
 
 export default function CharacterUpload({ uid }: Prop) {
-  const characterFileUploadUrl = import.meta.env.VITE_CHARACTER_FILE_UPLOAD;
   const [characterFileUpload, setCharacterFileUpload] =
     React.useState<File | null>(null);
   const [coverImage, setCoverImage] = React.useState<File | null>(null);
@@ -38,7 +30,7 @@ export default function CharacterUpload({ uid }: Prop) {
     characterFileUpload &&
       formData.append("characterFileUpload", characterFileUpload[0]);
     try {
-      await axios.post(characterFileUploadUrl, formData, {
+      await axios.post(AppConstants.characterFileUploadUrl, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

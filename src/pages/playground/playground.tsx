@@ -7,12 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 import { Unity, UnityConfig, useUnityContext } from "react-unity-webgl";
-import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./playground.module.css";
 import Nebula from "../../components/Nebula/Nebula";
 import { getAuth } from "firebase/auth";
+import AppConstants from "../../AppConstants";
 
 const UnityWrapper = ({ unityConfig }) => {
   const navigate = useNavigate();
@@ -105,8 +105,6 @@ interface Props {
   item?: any;
 }
 export default function Playground({ item }: Props) {
-  const baseUrl = import.meta.env.VITE_APP_BASE;
-  const getFilesUrl = import.meta.env.VITE_GET_FILES;
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null
   );
@@ -119,7 +117,7 @@ export default function Playground({ item }: Props) {
       // navigate("/");
     }
     try {
-      return axios.get(`${getFilesUrl}?gameTitle=${state}`).then((res) => {
+      return axios.get(`${AppConstants.getFilesUrl}?gameTitle=${state}`).then((res) => {
         return res.data[0].files;
       });
     } catch (e) {
@@ -130,10 +128,10 @@ export default function Playground({ item }: Props) {
   useEffect(() => {
     fetch(state).then((contain) => {
       setUnityConfig({
-        loaderUrl: `${baseUrl}/${contain[0].destination}/${contain[6].fileName}`,
-        dataUrl: `${baseUrl}/${contain[0].destination}/${contain[3].fileName}`,
-        frameworkUrl: `${baseUrl}/${contain[0].destination}/${contain[5].fileName}`,
-        codeUrl: `${baseUrl}/${contain[0].destination}/${contain[4].fileName}`,
+        loaderUrl: `${AppConstants.baseUrl}/${contain[0].destination}/${contain[6].fileName}`,
+        dataUrl: `${AppConstants.baseUrl}/${contain[0].destination}/${contain[3].fileName}`,
+        frameworkUrl: `${AppConstants.baseUrl}/${contain[0].destination}/${contain[5].fileName}`,
+        codeUrl: `${AppConstants.baseUrl}/${contain[0].destination}/${contain[4].fileName}`,
       });
     });
   }, [state]);

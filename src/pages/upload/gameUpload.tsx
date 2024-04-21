@@ -3,13 +3,10 @@ import { Form, Formik } from "formik";
 import {
   Alert,
   Autocomplete,
-  Box,
-  Button,
   Paper,
   Stack,
   TextField,
   TextareaAutosize,
-  Typography,
 } from "@mui/material";
 import AppConstants from "../../AppConstants";
 import FileUpload from "../../components/fileUpload/fileUpload";
@@ -41,7 +38,6 @@ export default function GameUpload() {
 
   const onUpload = async (values, { setSubmitting }) => {
     const formData = new FormData();
-    const uploadUrl = import.meta.env.VITE_UPLOAD_FILES;
     formData.append("gameTitle", values.gameTitle);
     formData.append("category", values.category);
     formData.append("tags", values.tags);
@@ -76,7 +72,7 @@ export default function GameUpload() {
       formData.append(`fileUpload${index}`, file);
     });
     try {
-      const response = await axios.post(uploadUrl, formData, {
+      await axios.post(AppConstants.uploadUrl, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

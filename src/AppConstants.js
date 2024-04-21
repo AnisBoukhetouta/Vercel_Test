@@ -171,6 +171,12 @@ const AppConstants = {
       imageCardOver: "/images/initialCardImages/5.jpeg",
     },
   ],
+  baseUrl: import.meta.env.VITE_APP_BASE,
+  getCharacterUrl: import.meta.env.VITE_GET_CHARACTER_FILE,
+  getFilesUrl: import.meta.env.VITE_GET_FILES,
+  userInfoUrl: import.meta.env.VITE_USER_INFO,
+  characterFileUploadUrl: import.meta.env.VITE_CHARACTER_FILE_UPLOAD,
+  uploadUrl: import.meta.env.VITE_UPLOAD_FILES,
 };
 
 export default AppConstants;

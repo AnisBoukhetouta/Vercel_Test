@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import classes from "./charactory.module.css";
-import ModelViewer from "../modelViewer/modelViewer";
-import { auth } from "../../firebase";
+import classes from "./inventoryShow.module.css";
+import ModelViewer from "../../modelViewer/modelViewer";
+import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import AppConstants from "../../../AppConstants";
 
 interface Props {
   characterOptions: boolean;
@@ -12,7 +13,7 @@ interface Props {
   setCharacterOptions: (value: boolean) => void;
 }
 
-export default function InventoryBody({
+export default function InventoryShow({
   characterOptions,
   menu,
   title,
@@ -21,8 +22,6 @@ export default function InventoryBody({
   const navigate = useNavigate();
   const [characterName, setCharacterName] = useState("Outfit");
 
-  const baseUrl = import.meta.env.VITE_APP_BASE;
-  const getCharacterFile = import.meta.env.VITE_GET_CHARACTER_FILE;
   const [uid, setUid] = useState("");
   const [fetchedData, setFetchedData] = useState<any>([]);
   const [image, setImage] = useState("");
@@ -39,7 +38,7 @@ export default function InventoryBody({
       });
       try {
         if (uid) {
-          const response = await axios.get(`${getCharacterFile}?uid=${uid}`);
+          const response = await axios.get(`${AppConstants.getCharacterUrl}?uid=${uid}`);
           console.log("FetchedModel~~~~~~", response.data);
           setFetchedData(response.data);
         }
@@ -71,18 +70,19 @@ export default function InventoryBody({
           item.fieldName === "characterFileUpload" &&
           item
       );
-      setImage(baseUrl + "/" + img.destination + "/" + img.fileName);
-      setGlbFile(baseUrl + "/" + glb.destination + "/" + glb.fileName);
+      setImage(AppConstants.baseUrl + "/" + img.destination + "/" + img.fileName);
+      setGlbFile(AppConstants.baseUrl + "/" + glb.destination + "/" + glb.fileName);
     }
   }, [fetchedData, characterName]);
 
   useEffect(() => {
     console.log("@@@@@@@@@@@@@@", image);
     console.log("!!!!!!!!!!!!!!", glbFile);
+    console.log("ZZZZZZZZZZZZZZ", charactor);
   }, [image, glbFile, characterName]);
 
   return (
-    <>
+    <div className={classes.inventoryShow}>
       <div className={characterOptions ? classes.hide : classes.character}>
         <div className={classes.characterBodyCotainer}>
           <div className={classes.characterOptionsContainer}>
@@ -123,9 +123,7 @@ export default function InventoryBody({
             <ModelViewer src={glbFile} />
           </div>
         </div>
-        {/* <div className={classes.characterDispaly}>
-          <ModelViewer src={glbFile} />
-        </div> */}
+        {/* <div className={classes.characterDispaly}></div>  */}
       </div>
       <div
         className={
@@ -178,7 +176,7 @@ export default function InventoryBody({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -19,8 +19,6 @@ export default function ModelBox() {
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
-  const getFilesUrl = import.meta.env.VITE_GET_FILES;
-  const baseUrl = import.meta.env.VITE_APP_BASE;
 
   useEffect(() => {
     if (item) {
@@ -40,7 +38,7 @@ export default function ModelBox() {
     const fetch = async () => {
       try {
         await axios
-          .get(getFilesUrl)
+          .get(AppConstants.getFilesUrl)
           .then((response) => {
             setFetchedData(response.data);
             console.log("FetchedData~~~~~~", response.data);
@@ -56,7 +54,7 @@ export default function ModelBox() {
   fetchedData.map((data, index) => {
     items.push({
       _id: data._id,
-      imageOver: `${baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
+      imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
     });
   });
 
