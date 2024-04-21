@@ -19,7 +19,7 @@ export default function InventoryBody({
   setCharacterOptions,
 }: Props) {
   const navigate = useNavigate();
-  const [characterName, setCharacterName] = useState(0);
+  const [characterName, setCharacterName] = useState("Outfit");
 
   const baseUrl = import.meta.env.VITE_APP_BASE;
   const getCharacterFile = import.meta.env.VITE_GET_CHARACTER_FILE;
@@ -52,20 +52,20 @@ export default function InventoryBody({
 
   useEffect(() => {
     if (fetchedData.length > 0) {
-      const backblingFiles = fetchedData.find(
-        (item: any) => item._id === "Backbling"
+      const characterFiles = fetchedData.find(
+        (item: any) => item._id === characterName
       )?.files;
-      const backblingFileNames = backblingFiles?.map((item: any) =>
+      const backblingFileNames = characterFiles?.map((item: any) =>
         item.fileName.split(".").slice(0, -1).join(".")
       );
       const uniqueFileNames = [...new Set(backblingFileNames)];
-      const img = backblingFiles?.find(
+      let img = characterFiles?.find(
         (item: any) =>
           item.fileName.includes(uniqueFileNames[0]) &&
           item.fieldName === "coverImage" &&
           item
       );
-      const glb = backblingFiles?.find(
+      let glb = characterFiles?.find(
         (item: any) =>
           item.fileName.includes(uniqueFileNames[0]) &&
           item.fieldName === "characterFileUpload" &&
@@ -74,12 +74,12 @@ export default function InventoryBody({
       setImage(baseUrl + "/" + img.destination + "/" + img.fileName);
       setGlbFile(baseUrl + "/" + glb.destination + "/" + glb.fileName);
     }
-  }, [fetchedData]);
+  }, [fetchedData, characterName]);
 
   useEffect(() => {
     console.log("@@@@@@@@@@@@@@", image);
     console.log("!!!!!!!!!!!!!!", glbFile);
-  }, [image, glbFile]);
+  }, [image, glbFile, characterName]);
 
   return (
     <>
@@ -90,17 +90,17 @@ export default function InventoryBody({
               {menu[title].title}
             </div>
             <div className={classes.characterBodysmallTitle}>
-              {charactor[characterName].title}
+              {characterName.toUpperCase()}
             </div>
             <div className={classes.characterBodyCards}>
               {charactor.map((item, key) => (
                 <div
                   className={`${classes.card} ${classes.cardWidth}`}
                   key={key}
-                  onClick={() => setCharacterName(item.id)}
+                  onClick={() => setCharacterName(item.title)}
                 >
                   <img
-                    src={item.title !== "BACKBLING" ? item.image : image}
+                    src={image}
                     alt="character"
                     className={classes.cardImg}
                   />
@@ -183,12 +183,12 @@ export default function InventoryBody({
 }
 
 const charactor = [
-  { id: 0, title: "OUTFIT", image: "./images/inventory/glider.png" },
-  { id: 1, title: "BACKBLING", image: "./images/inventory/contrail.png" },
-  { id: 2, title: "PICKAXE", image: "./images/inventory/back.png" },
-  { id: 3, title: "GLIDER", image: "./images/inventory/plan.png" },
-  { id: 4, title: "CONTRAIL", image: "./images/inventory/charactor.png" },
-  { id: 5, title: "AURA", image: "./images/inventory/empty.png" },
+  { id: 0, title: "Outfit", image: "./images/inventory/glider.png" },
+  { id: 1, title: "Backbling", image: "./images/inventory/contrail.png" },
+  { id: 2, title: "Pickaxe", image: "./images/inventory/back.png" },
+  { id: 3, title: "Glider", image: "./images/inventory/plan.png" },
+  { id: 4, title: "Contrail", image: "./images/inventory/charactor.png" },
+  { id: 5, title: "Aura", image: "./images/inventory/empty.png" },
 ];
 
 const charactorSave = [
