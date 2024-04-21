@@ -43,6 +43,21 @@ const UnityWrapper = ({ unityConfig }) => {
     !!isLoaded && setTimeout(() => setView(true), 2000);
   }, [isLoaded]);
 
+  const sendDataToUnity = (data) => {
+    if (unityContext) {
+      unityContext.sendMessage(
+        "LeftPanel",
+        "ReceiveDataFromWeb",
+        JSON.stringify(data)
+      );
+    }
+  };
+
+  useEffect(() => {
+    const dataToSend = "ACE"; // Replace with your data
+    sendDataToUnity(dataToSend);
+  });
+
   return (
     <div className={classes.container}>
       {!!completed && (
