@@ -172,11 +172,11 @@ const AppConstants = {
     },
   ],
   baseUrl: import.meta.env.VITE_APP_BASE,
-  getCharacterUrl: import.meta.env.VITE_GET_CHARACTER_FILE,
+  uploadUrl: import.meta.env.VITE_UPLOAD_FILES,
   getFilesUrl: import.meta.env.VITE_GET_FILES,
   userInfoUrl: import.meta.env.VITE_USER_INFO,
+  getCharacterUrl: import.meta.env.VITE_GET_CHARACTER_FILE,
   characterFileUploadUrl: import.meta.env.VITE_CHARACTER_FILE_UPLOAD,
-  uploadUrl: import.meta.env.VITE_UPLOAD_FILES,
 };
 
 export default AppConstants;
