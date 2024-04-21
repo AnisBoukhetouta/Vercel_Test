@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./inventory.module.css";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import InventoryShow from "../../components/inventory/inventoryShow/inventoryShow";
+import InventoryView from "../../components/inventory/inventoryView/inventoryView";
 import InventoryNav from "../../components/inventory/inventoryNav/inventoryNav";
 
 export default function Inventory() {
@@ -31,9 +31,9 @@ export default function Inventory() {
   };
 
   return (
-    <div className={classes.inventoryMain}>
+    <div className={classes.inventoryContainer}>
       <InventoryNav menu={menu} onClick={handleMenuClick} />
-      <InventoryShow
+      <InventoryView
         characterOptions={characterOptions}
         menu={menu}
         title={title}
