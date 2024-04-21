@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./playground.module.css";
 import Nebula from "../../components/Nebula/Nebula";
+import { getAuth } from "firebase/auth";
 
 const UnityWrapper = ({ unityConfig }) => {
   const navigate = useNavigate();
@@ -24,7 +25,6 @@ const UnityWrapper = ({ unityConfig }) => {
 
   const onGameState = React.useCallback((state: string) => {
     if (state) {
-      console.log("~~~~~~~~~~~~~~~~~~~~~", state);
       setCompleted(!completed);
       setTimeout(() => navigate("/inventory"), 2000);
     }
@@ -42,6 +42,19 @@ const UnityWrapper = ({ unityConfig }) => {
   useEffect(() => {
     !!isLoaded && setTimeout(() => setView(true), 2000);
   }, [isLoaded]);
+
+  const sendDataToUnity = (data) => {
+    if (unityContext) {
+      unityContext.sendMessage("LeftPanel", "ReceiveDataFromWeb", data);
+    }
+  };
+
+  useEffect(() => {
+    const auth = getAuth();
+    const { displayName } = auth.currentUser;
+    const dataToSend = displayName ?? "Noob000001"; // Replace with your data
+    sendDataToUnity(dataToSend);
+  });
 
   return (
     <div className={classes.container}>
@@ -92,15 +105,13 @@ interface Props {
   item?: any;
 }
 export default function Playground({ item }: Props) {
-  const navigate = useNavigate();
-  const location = useLocation();
   const baseUrl = import.meta.env.VITE_APP_BASE;
   const getFilesUrl = import.meta.env.VITE_GET_FILES;
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null
   );
   // const state = !!location.state ?? "TEST";
-  const state = item ? item : location.state;
+  const state = item;
 
   const fetch = async (state) => {
     if (!state) {
