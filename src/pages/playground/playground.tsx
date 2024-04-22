@@ -108,7 +108,6 @@ export default function Playground({ item }: Props) {
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(
     null
   );
-  // const state = !!location.state ?? "TEST";
   const state = item;
 
   const fetch = async (state) => {
@@ -117,9 +116,11 @@ export default function Playground({ item }: Props) {
       // navigate("/");
     }
     try {
-      return axios.get(`${AppConstants.getFilesUrl}?gameTitle=${state}`).then((res) => {
-        return res.data[0].files;
-      });
+      return axios
+        .get(`${AppConstants.getFilesUrl}?gameTitle=${state}`)
+        .then((res) => {
+          return res.data[0].files;
+        });
     } catch (e) {
       console.log(e);
     }
@@ -137,17 +138,13 @@ export default function Playground({ item }: Props) {
   }, [state]);
 
   return (
-    <>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          background: "#101014",
-          height: "100vh",
-        }}
-      >
-        <div>{!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}</div>
-      </Box>
-    </>
+    <Box
+      component="main"
+      sx={{
+        background: "#101014",
+      }}
+    >
+      <div>{!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}</div>
+    </Box>
   );
 }

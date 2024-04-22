@@ -8,8 +8,9 @@ import AppConstants from "../../AppConstants";
 import { LinearProgress } from "@mui/material";
 import { toDataURL } from "../imageCach";
 import Playground from "../../pages/playground/playground";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import GameLayout from "../../navigation/layout/gamelayout";
 import { auth } from "../../firebase";
 
 export default function ModelBox() {
@@ -60,50 +61,53 @@ export default function ModelBox() {
 
   return (
     <>
-      <Canvas
-        camera={{ position: [1, 1, 5], fov: 50 }}
-        className={classes.modelBox}
-        style={{
-          position: "relative",
-          backgroundImage: `url(${
-            item ? item.imageOver : items.length ? items[0].imageOver : ""
-          })`,
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundPositionY: "Top",
-        }}
-        shadows
-      >
-        <Model />
-      </Canvas>
-      {loading && (
-        <LinearProgress className={classes.progressbar} color="error" />
+      {!view && (
+        <GameLayout>
+          <Canvas
+            camera={{ position: [1, 1, 5], fov: 50 }}
+            className={classes.modelBox}
+            style={{
+              position: "relative",
+              backgroundImage: `url(${
+                item ? item.imageOver : items.length ? items[0].imageOver : ""
+              })`,
+              backgroundSize: "100% 100%",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundPositionY: "Top",
+            }}
+            shadows
+          >
+            <Model />
+          </Canvas>
+          {loading && (
+            <LinearProgress className={classes.progressbar} color="error" />
+          )}
+          <>
+            {items.length && (
+              <div className={classes.miniCard}>
+                <GameCard item={item ?? items[0]} link={true} />
+                <div className={classes.buttonline}>
+                  <button
+                    className={classes.lobbyHeaderButton}
+                    type="button"
+                    onClick={() => setView(true)}
+                  >
+                    PLAY NOW
+                  </button>
+                </div>
+              </div>
+            )}
+            <div className={classes.topGamesContainer}>
+              <TopGames setItem={setItem} />
+            </div>
+          </>
+        </GameLayout>
       )}
-      {!!view ? (
-        <div style={{ position: "absolute", top: 0, left: 0, width: "100vw" }}>
+      {!!view && (
+        <div className={classes.playground}>
           <Playground item={!!item ? item._id : items[0]._id} />
         </div>
-      ) : (
-        <>
-          {items.length && (
-            <div className={classes.miniCard}>
-              <GameCard item={item ?? items[0]} link={true} />
-              <div className={classes.buttonline}>
-                <button
-                  className={classes.lobbyHeaderButton}
-                  type="button"
-                  onClick={() => setView(true)}
-                >
-                  PLAY NOW
-                </button>
-              </div>
-            </div>
-          )}
-          <div className={classes.topGamesContainer}>
-          <TopGames setItem={setItem} />
-          </div>
-        </>
       )}
     </>
   );

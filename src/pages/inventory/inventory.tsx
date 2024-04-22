@@ -26,6 +26,7 @@ export default function Inventory() {
   }, [uid, navigate]);
 
   const handleMenuClick = (key: any) => {
+    console.log(key)
     setTitle(key);
     setCharacterOptions(false);
   };
@@ -33,12 +34,7 @@ export default function Inventory() {
   return (
     <div className={classes.inventoryContainer}>
       <InventoryNav menu={menu} onClick={handleMenuClick} />
-      <InventoryView
-        characterOptions={characterOptions}
-        menu={menu}
-        title={title}
-        setCharacterOptions={() => setCharacterOptions(true)}
-      />
+      <InventoryView />
     </div>
   );
 }

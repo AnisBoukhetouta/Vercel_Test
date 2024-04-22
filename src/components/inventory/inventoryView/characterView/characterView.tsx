@@ -3,7 +3,7 @@ import classes from "./characterView.module.css";
 import ModelViewer from "../../../modelViewer/modelViewer";
 
 interface Props {
-  setOptions: (e: Boolean) => void;
+  setOptions: (e: boolean) => void;
 }
 
 export default function CharacterView({ setOptions }: Props) {

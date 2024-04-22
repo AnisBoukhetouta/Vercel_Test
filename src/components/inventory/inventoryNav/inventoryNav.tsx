@@ -3,7 +3,7 @@ import classes from "./inventoryNav.module.css";
 
 interface Props {
   menu: any[];
-  onClick: (key: number) => void;
+  onClick: (key: string) => void;
 }
 
 export default function InventoryNav({ menu, onClick }: Props) {
@@ -14,7 +14,7 @@ export default function InventoryNav({ menu, onClick }: Props) {
           <button
             className={classes.inventoryNavButton}
             key={item.id}
-            onClick={() => onClick(key)}
+            onClick={() => onClick(item.title)}
           >
             <div className={classes.buttonIcon}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">

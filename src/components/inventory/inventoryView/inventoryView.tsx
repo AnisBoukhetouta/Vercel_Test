@@ -8,18 +8,9 @@ import AppConstants from "../../../AppConstants";
 import CharacterView from "./characterView/characterView";
 import SavedCharacterView from "./savedChracterView/savedCharacterView";
 
-interface Props {
-  characterOptions: boolean;
-  menu: any[];
-  title: number;
-  setCharacterOptions: (value: boolean) => void;
-}
-
-export default function InventoryView({
-  characterOptions,
-  setCharacterOptions,
-}: Props) {
+export default function InventoryView() {
   const navigate = useNavigate();
+  const [characterOptions, setCharacterOptions] = useState(false);
   const [characterName, setCharacterName] = useState("Outfit");
 
   const [uid, setUid] = useState("");
@@ -89,9 +80,9 @@ export default function InventoryView({
 
   return (
     <div className={classes.inventoryView}>
-      <div className={characterOptions ? classes.hide : classes.character}>
-        <CharacterView setOptions={() => setCharacterOptions} />
-      </div>
+      {!characterOptions && (
+        <CharacterView setOptions={(e: boolean) => setCharacterOptions(e)} />
+      )}
       <div
         className={
           characterOptions ? `${classes.optionsView}` : `${classes.optionsShow}`
