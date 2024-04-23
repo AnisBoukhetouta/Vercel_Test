@@ -73,16 +73,16 @@ export default function CharacterView({ setOptions }: Props) {
     }
   }, [fetchedData, characterName]);
 
-  React.useEffect(() => {
-    console.log("@@@@@@@@@@@@@@", image);
-    console.log("!!!!!!!!!!!!!!", glbFile);
-    console.log("ZZZZZZZZZZZZZZ", charactor);
-  }, [image, glbFile, characterName]);
+  // React.useEffect(() => {
+  //   console.log("@@@@@@@@@@@@@@", image);
+  //   console.log("!!!!!!!!!!!!!!", glbFile);
+  //   console.log("ZZZZZZZZZZZZZZ", charactor);
+  // }, [image, glbFile, characterName]);
 
   return (
     <div className={classes.Cotainer}>
       <div className={classes.optionsContainer}>
-        <div className={classes.navTitle}>{menu[0].title}</div>
+        <div className={classes.navTitle}>CHARACTER</div>
         <div className={classes.optionTitle}>{characterName.toUpperCase()}</div>
         <div className={classes.characterBodyCards}>
           {charactor.map((item, key) => (
@@ -111,28 +111,18 @@ export default function CharacterView({ setOptions }: Props) {
           OPTIONS
         </button>
       </div>
-      <div className={classes.modelViewerContainer}>
+      {/* <div className={classes.modelViewerContainer}>
         <ModelViewer src={"./models/character0.glb"} />
-      </div>
+      </div> */}
     </div>
   );
 }
 
 const charactor = [
-  { id: 0, title: "Outfit", image: "./images/inventory/glider.png" },
-  { id: 1, title: "Backbling", image: "./images/inventory/contrail.png" },
-  { id: 2, title: "Pickaxe", image: "./images/inventory/back.png" },
-  { id: 3, title: "Glider", image: "./images/inventory/plan.png" },
-  { id: 4, title: "Contrail", image: "./images/inventory/charactor.png" },
-  { id: 5, title: "Aura", image: "./images/inventory/empty.png" },
-];
-
-const menu = [
-  { id: 0, title: "CHARACTER" },
-  { id: 1, title: "EMOTES" },
-  { id: 2, title: "WRAPS" },
-  { id: 3, title: "LOBBY" },
-  { id: 4, title: "INSTRUMENTS" },
-  { id: 5, title: "CARS" },
-  { id: 6, title: "JAM TRACKS" },
+  { title: "Outfit", image: "./images/inventory/glider.png" },
+  { title: "Backbling", image: "./images/inventory/contrail.png" },
+  { title: "Pickaxe", image: "./images/inventory/back.png" },
+  { title: "Glider", image: "./images/inventory/plan.png" },
+  { title: "Contrail", image: "./images/inventory/charactor.png" },
+  { title: "Aura", image: "./images/inventory/empty.png" },
 ];
