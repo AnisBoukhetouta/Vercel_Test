@@ -61,9 +61,9 @@ export default function CharacterView({ setOptions }: Props) {
         <div className={classes.navTitle}>CHARACTER</div>
         <div className={classes.optionTitle}>{equipType.toUpperCase()}</div>
         <div className={classes.equipCards}>
-          {characterItems.map((item, key) => {
+          {AppConstants.characterItems.map((item, key) => {
             let [image] = (
-              imageFiles.length > 0 ? imageFiles : characterItems
+              imageFiles.length > 0 ? imageFiles : AppConstants.characterItems
             ).filter((x) => x.fileType === item.fileType && x);
             return (
               <div
@@ -73,11 +73,10 @@ export default function CharacterView({ setOptions }: Props) {
               >
                 <img
                   src={
-                    !!image
+                    image.destination !== undefined
                       ? `${AppConstants.baseUrl}/${image.destination}/${image.fileName}`
                       : item.image
                   }
-                  // src={`images/inventory/empty.png`}
                   alt="character"
                   className={classes.cardImg}
                 />
@@ -105,12 +104,3 @@ export default function CharacterView({ setOptions }: Props) {
     </div>
   );
 }
-
-const characterItems = [
-  { fileType: "Outfit", image: "images/inventory/empty.png" },
-  { fileType: "Backbling", image: "images/inventory/empty.png" },
-  { fileType: "Pickaxe", image: "images/inventory/empty.png" },
-  { fileType: "Glider", image: "images/inventory/empty.png" },
-  { fileType: "Contrail", image: "images/inventory/empty.png" },
-  { fileType: "Aura", image: "images/inventory/empty.png" },
-];
