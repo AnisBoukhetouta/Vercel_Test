@@ -61,26 +61,30 @@ export default function CharacterView({ setOptions }: Props) {
         <div className={classes.navTitle}>CHARACTER</div>
         <div className={classes.optionTitle}>{equipType.toUpperCase()}</div>
         <div className={classes.equipCards}>
-          {imageFiles.length > 0 &&
-            characterItems.map((item, key) => {
-              let [image] = imageFiles.filter(
-                (x) => x.fileType === item.title && x
-              );
-              return (
-                <div
-                  className={`${classes.card} ${classes.cardWidth}`}
-                  key={key}
-                  onClick={() => setEquipType(item.title)}
-                >
-                  <img
-                    src={`${AppConstants.baseUrl}/${image.destination}/${image.fileName}`}
-                    alt="character"
-                    className={classes.cardImg}
-                  />
-                  <div className={classes.colorFlow} />
-                </div>
-              );
-            })}
+          {characterItems.map((item, key) => {
+            let [image] = (
+              imageFiles.length > 0 ? imageFiles : characterItems
+            ).filter((x) => x.fileType === item.fileType && x);
+            return (
+              <div
+                className={`${classes.card} ${classes.cardWidth}`}
+                key={key}
+                onClick={() => setEquipType(item.fileType)}
+              >
+                <img
+                  src={
+                    !!image
+                      ? `${AppConstants.baseUrl}/${image.destination}/${image.fileName}`
+                      : item.image
+                  }
+                  // src={`images/inventory/empty.png`}
+                  alt="character"
+                  className={classes.cardImg}
+                />
+                <div className={classes.colorFlow} />
+              </div>
+            );
+          })}
         </div>
 
         <button className={`${classes.buttons} ${classes.saveButton}`}>
@@ -103,10 +107,10 @@ export default function CharacterView({ setOptions }: Props) {
 }
 
 const characterItems = [
-  { title: "Outfit" },
-  { title: "Backbling" },
-  { title: "Pickaxe" },
-  { title: "Glider" },
-  { title: "Contrail" },
-  { title: "Aura" },
+  { fileType: "Outfit", image: "images/inventory/empty.png" },
+  { fileType: "Backbling", image: "images/inventory/empty.png" },
+  { fileType: "Pickaxe", image: "images/inventory/empty.png" },
+  { fileType: "Glider", image: "images/inventory/empty.png" },
+  { fileType: "Contrail", image: "images/inventory/empty.png" },
+  { fileType: "Aura", image: "images/inventory/empty.png" },
 ];
