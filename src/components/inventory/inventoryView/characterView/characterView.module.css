@@ -16,7 +16,7 @@
   transform: skewX(-8deg);
 }
 
-.characterBodyCards {
+.equipCards {
   max-width: 500px;
   display: flex;
   flex-wrap: wrap;
