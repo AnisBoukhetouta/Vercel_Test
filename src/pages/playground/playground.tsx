@@ -43,9 +43,9 @@ const UnityWrapper = ({ unityConfig }) => {
     !!isLoaded && setTimeout(() => setView(true), 2000);
   }, [isLoaded]);
 
-  const sendDataToUnity = (data) => {
+  const sendDataToUnity = (userName) => {
     if (unityContext) {
-      unityContext.sendMessage("LeftPanel", "ReceiveDataFromWeb", data);
+      unityContext.sendMessage("RoomController", "ReceiveDataFromWeb", userName);
     }
   };
 
