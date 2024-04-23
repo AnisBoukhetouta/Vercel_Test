@@ -12,12 +12,12 @@ interface Props {
 
 export default function CharacterView({ setOptions }: Props) {
   const navigate = useNavigate();
-  const [characterName, setCharacterName] = React.useState("Outfit");
-
+  const [equipType, setEquipType] = React.useState("Outfit");
   const [uid, setUid] = React.useState("");
   const [fetchedData, setFetchedData] = React.useState<any>([]);
-  const [image, setImage] = React.useState("");
   const [glbFile, setGlbFile] = React.useState("");
+  const [imageFiles, setImageFiles] = React.useState<any[]>([]);
+  const [glbFiles, setGlbFiles] = React.useState<any[]>([]);
 
   React.useEffect(() => {
     const getModel = async () => {
@@ -44,61 +44,43 @@ export default function CharacterView({ setOptions }: Props) {
   }, [uid, navigate]);
 
   React.useEffect(() => {
-    if (fetchedData.length > 0) {
-      const characterFiles = fetchedData.find(
-        (item: any) => item._id === characterName
-      )?.files;
-      const backblingFileNames = characterFiles?.map((item: any) =>
-        item.fileName.split(".").slice(0, -1).join(".")
-      );
-      const uniqueFileNames = [...new Set(backblingFileNames)];
-      let img = characterFiles?.find(
-        (item: any) =>
-          item.fileName.includes(uniqueFileNames[0]) &&
-          item.fieldName === "coverImage" &&
-          item
-      );
-      let glb = characterFiles?.find(
-        (item: any) =>
-          item.fileName.includes(uniqueFileNames[0]) &&
-          item.fieldName === "characterFileUpload" &&
-          item
-      );
-      setImage(
-        AppConstants.baseUrl + "/" + img.destination + "/" + img.fileName
-      );
-      setGlbFile(
-        AppConstants.baseUrl + "/" + glb.destination + "/" + glb.fileName
-      );
-    }
-  }, [fetchedData, characterName]);
+    setGlbFiles(fetchedData.map((item) => item.files[1]));
+    setImageFiles(fetchedData.map((item) => item.files[0]));
+  }, [fetchedData]);
 
-  // React.useEffect(() => {
-  //   console.log("@@@@@@@@@@@@@@", image);
-  //   console.log("!!!!!!!!!!!!!!", glbFile);
-  //   console.log("ZZZZZZZZZZZZZZ", charactor);
-  // }, [image, glbFile, characterName]);
+  React.useEffect(() => {
+    if (glbFiles.length > 0) {
+      const [glb] = glbFiles.filter((glb) => glb.fileType === equipType);
+      setGlbFile(`${AppConstants.baseUrl}/${glb.destination}/${glb.fileName}`);
+    }
+  }, [glbFiles, equipType]);
 
   return (
     <div className={classes.Cotainer}>
       <div className={classes.optionsContainer}>
         <div className={classes.navTitle}>CHARACTER</div>
-        <div className={classes.optionTitle}>{characterName.toUpperCase()}</div>
-        <div className={classes.characterBodyCards}>
-          {charactor.map((item, key) => (
-            <div
-              className={`${classes.card} ${classes.cardWidth}`}
-              key={key}
-              onClick={() => setCharacterName(item.title)}
-            >
-              <img
-                src={"./images/inventory/glider.png"}
-                alt="character"
-                className={classes.cardImg}
-              />
-              <div className={classes.colorFlow} />
-            </div>
-          ))}
+        <div className={classes.optionTitle}>{equipType.toUpperCase()}</div>
+        <div className={classes.equipCards}>
+          {imageFiles.length > 0 &&
+            characterItems.map((item, key) => {
+              let [image] = imageFiles.filter(
+                (x) => x.fileType === item.title && x
+              );
+              return (
+                <div
+                  className={`${classes.card} ${classes.cardWidth}`}
+                  key={key}
+                  onClick={() => setEquipType(item.title)}
+                >
+                  <img
+                    src={`${AppConstants.baseUrl}/${image.destination}/${image.fileName}`}
+                    alt="character"
+                    className={classes.cardImg}
+                  />
+                  <div className={classes.colorFlow} />
+                </div>
+              );
+            })}
         </div>
 
         <button className={`${classes.buttons} ${classes.saveButton}`}>
@@ -111,18 +93,20 @@ export default function CharacterView({ setOptions }: Props) {
           OPTIONS
         </button>
       </div>
-      {/* <div className={classes.modelViewerContainer}>
-        <ModelViewer src={"./models/character0.glb"} />
-      </div> */}
+      {glbFile.length > 0 && (
+        <div className={classes.modelViewerContainer}>
+          <ModelViewer src={glbFile} />
+        </div>
+      )}
     </div>
   );
 }
 
-const charactor = [
-  { title: "Outfit", image: "./images/inventory/glider.png" },
-  { title: "Backbling", image: "./images/inventory/contrail.png" },
-  { title: "Pickaxe", image: "./images/inventory/back.png" },
-  { title: "Glider", image: "./images/inventory/plan.png" },
-  { title: "Contrail", image: "./images/inventory/charactor.png" },
-  { title: "Aura", image: "./images/inventory/empty.png" },
+const characterItems = [
+  { title: "Outfit" },
+  { title: "Backbling" },
+  { title: "Pickaxe" },
+  { title: "Glider" },
+  { title: "Contrail" },
+  { title: "Aura" },
 ];
