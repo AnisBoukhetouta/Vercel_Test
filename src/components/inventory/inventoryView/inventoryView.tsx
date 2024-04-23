@@ -1,82 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "./inventoryView.module.css";
-import ModelViewer from "../../modelViewer/modelViewer";
-import { auth } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import AppConstants from "../../../AppConstants";
 import CharacterView from "./characterView/characterView";
 import SavedCharacterView from "./savedChracterView/savedCharacterView";
 
 export default function InventoryView() {
   const navigate = useNavigate();
   const [characterOptions, setCharacterOptions] = useState(false);
-  const [characterName, setCharacterName] = useState("Outfit");
 
-  const [uid, setUid] = useState("");
-  const [fetchedData, setFetchedData] = useState<any>([]);
-  const [image, setImage] = useState("");
-  const [glbFile, setGlbFile] = useState("");
-
-  useEffect(() => {
-    const getModel = async () => {
-      auth.onAuthStateChanged(function (user) {
-        if (user) {
-          setUid(user.uid);
-        } else {
-          navigate("/regist/login");
-        }
-      });
-      try {
-        if (uid) {
-          const response = await axios.get(
-            `${AppConstants.getCharacterUrl}?uid=${uid}`
-          );
-          console.log("FetchedModel~~~~~~", response.data);
-          setFetchedData(response.data);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    getModel();
-  }, [uid, navigate]);
-
-  useEffect(() => {
-    if (fetchedData.length > 0) {
-      const characterFiles = fetchedData.find(
-        (item: any) => item._id === characterName
-      )?.files;
-      const backblingFileNames = characterFiles?.map((item: any) =>
-        item.fileName.split(".").slice(0, -1).join(".")
-      );
-      const uniqueFileNames = [...new Set(backblingFileNames)];
-      let img = characterFiles?.find(
-        (item: any) =>
-          item.fileName.includes(uniqueFileNames[0]) &&
-          item.fieldName === "coverImage" &&
-          item
-      );
-      let glb = characterFiles?.find(
-        (item: any) =>
-          item.fileName.includes(uniqueFileNames[0]) &&
-          item.fieldName === "characterFileUpload" &&
-          item
-      );
-      setImage(
-        AppConstants.baseUrl + "/" + img.destination + "/" + img.fileName
-      );
-      setGlbFile(
-        AppConstants.baseUrl + "/" + glb.destination + "/" + glb.fileName
-      );
-    }
-  }, [fetchedData, characterName]);
-
-  useEffect(() => {
-    console.log("@@@@@@@@@@@@@@", image);
-    console.log("!!!!!!!!!!!!!!", glbFile);
-    console.log("ZZZZZZZZZZZZZZ", charactor);
-  }, [image, glbFile, characterName]);
 
   return (
     <div className={classes.inventoryView}>
