@@ -1,7 +1,7 @@
 import React from "react";
 import FortniteButton from "../customs/FortniteButton";
 
-export default function Cousrses() {
+function Cousrses() {
   return (
     <div
       style={{

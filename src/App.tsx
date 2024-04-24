@@ -11,12 +11,11 @@ import PageLayout from "./navigation/layout/pagelayout";
 import GameLayout from "./navigation/layout/gamelayout";
 import GameLobby from "./pages/gameLobby/gameLobby";
 import Upload from "./pages/upload/upload";
-import Playground from "./pages/playground/playground";
 import Signup from "./pages/auth/signUp";
 import Login from "./pages/auth/logIn";
 import User from "./pages/auth/user";
 import Inventory from "./pages/inventory/inventory";
-import Courses from "./pages/Courses";
+import Courses from "./pages/courses/index";
 
 const App = () => {
   let routes = (
