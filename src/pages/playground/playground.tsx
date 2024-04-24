@@ -87,7 +87,7 @@ const UnityWrapper = ({ unityConfig }) => {
       >
         <Nebula />
       </div>
-      <Typography
+      {/* <Typography
         style={{
           position: "absolute",
           top: "55vh",
@@ -97,7 +97,7 @@ const UnityWrapper = ({ unityConfig }) => {
         }}
       >
         Loading {Math.floor(loadingProgression * 100)} %
-      </Typography>
+      </Typography> */}
     </div>
   );
 };
