@@ -6,6 +6,7 @@ const navlinks = () => {
   return (
     <ul className={classes.navlinks}>
       <Navlink link="/upload">Upload</Navlink>
+      <Navlink link="/courses">Courses</Navlink>
     </ul>
   );
 };
