@@ -1,0 +1,9 @@
+.center {
+  background: linear-gradient(#8ec2ff, #0045f6);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  padding-top: 100px;
+  overflow: auto;
+}
