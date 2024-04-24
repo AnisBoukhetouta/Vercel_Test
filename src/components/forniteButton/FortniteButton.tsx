@@ -58,6 +58,7 @@ class FortniteButton extends React.Component<Props> {
   };
 
   toggleHoverClassOnChildren = () => {
+    
     // Array.from(this.children).forEach((child) => {
     //   child.classList.toggle("hovered");
     // });

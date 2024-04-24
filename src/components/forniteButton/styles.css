@@ -13,8 +13,8 @@
 }
 
 .fortnite-card {
-  width: 550px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
 }
 
 .primary-button {
@@ -76,14 +76,15 @@
 
 .fb-btn-text {
   color: white;
-  font-size: 3rem;
-  line-height: 3.25rem;
+  font-size: 1.6rem;
+  line-height: 5rem;
   letter-spacing: 0.1rem;
   margin: 0.25rem 0 0 0;
 }
 
 .fb-btn-text--secondary {
   font-size: 1.7rem;
+  font-weight: 900;
   line-height: 1.7rem;
   margin: 0.25rem 0 0 0;
   letter-spacing: 0.1rem;
@@ -91,7 +92,8 @@
 
 .fb-btn-subtext {
   color: rgb(var(--color-subtext));
-  font-size: 1.25rem;
+  font-weight: 800;
+  font-size: 1rem;
   line-height: 1rem;
   letter-spacing: 0.1rem;
   margin: 0.25rem 0 0 0;
@@ -112,6 +114,10 @@
   transition: clip-path 150ms linear;
 }
 
+.fortnite-button:hover > * > img,
+.fortnite-button:focus > * > img {
+  transform: scale(1.1);
+}
 .fortnite-button:hover,
 .fortnite-button:focus {
   clip-path: inset(-4% -4% -4% -4%);
@@ -134,14 +140,14 @@
   --color-subtext: 41, 219, 255;
 }
 .fortnite-button.yellow {
-  --color-dark: 34, 51, 216;
-  --color-medium: 0, 166, 255;
-  --color-light: 0, 166, 255;
-  --color-subtext: 41, 219, 255;
+  --color-dark: 173,104,18;
+  --color-medium: 244,203,76;
+  --color-light: 252,214,82;
+  --color-subtext: 255,209,49;
 }
 
 .fortnite-button .wrapper {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -228,6 +234,7 @@
   transform: translateY(25%);
   transition: transform 150ms ease-out;
 }
+
 
 @keyframes infinite-scroll {
   from {
