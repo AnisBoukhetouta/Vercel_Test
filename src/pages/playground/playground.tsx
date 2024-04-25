@@ -51,8 +51,7 @@ const UnityWrapper = ({ unityConfig }) => {
 
   useEffect(() => {
     const auth = getAuth();
-    const { displayName } = auth.currentUser;
-    const dataToSend = displayName ?? "Noob000001"; // Replace with your data
+    const dataToSend = auth.currentUser?.displayName ?? `Noob00${Math.floor(Math.random() * 999)}`;
     sendDataToUnity(dataToSend);
   });
 
@@ -87,17 +86,17 @@ const UnityWrapper = ({ unityConfig }) => {
       >
         <Nebula />
       </div>
-      {/* <Typography
+      <Typography
         style={{
           position: "absolute",
-          top: "55vh",
+          top: "59vh",
           zIndex: 10000,
           color: "white",
           display: !view ? "inline" : "none",
         }}
       >
         Loading {Math.floor(loadingProgression * 100)} %
-      </Typography> */}
+      </Typography>
     </div>
   );
 };

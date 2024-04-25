@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Model from "./model";
 import classes from "./modelBox.module.css";
@@ -11,11 +11,9 @@ import Playground from "../../pages/playground/playground";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
-import { auth } from "../../firebase";
 
 export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  const navigate = useNavigate();
   const items: Item[] = [];
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
@@ -31,11 +29,6 @@ export default function ModelBox() {
   }, [item]);
 
   React.useEffect(() => {
-    auth.onAuthStateChanged(function (user) {
-      if (!user) {
-        navigate("/regist/login");
-      }
-    });
     const fetch = async () => {
       try {
         await axios
