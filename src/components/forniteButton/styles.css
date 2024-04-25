@@ -114,6 +114,9 @@
   transition: clip-path 150ms linear;
 }
 
+.fortnite-button > * {
+  pointer-events: none;
+}
 .fortnite-button:hover > * > img,
 .fortnite-button:focus > * > img {
   transform: scale(1.1);
@@ -140,10 +143,10 @@
   --color-subtext: 41, 219, 255;
 }
 .fortnite-button.yellow {
-  --color-dark: 173,104,18;
-  --color-medium: 244,203,76;
-  --color-light: 252,214,82;
-  --color-subtext: 255,209,49;
+  --color-dark: 173, 104, 18;
+  --color-medium: 244, 203, 76;
+  --color-light: 252, 214, 82;
+  --color-subtext: 255, 209, 49;
 }
 
 .fortnite-button .wrapper {
@@ -234,7 +237,6 @@
   transform: translateY(25%);
   transition: transform 150ms ease-out;
 }
-
 
 @keyframes infinite-scroll {
   from {
