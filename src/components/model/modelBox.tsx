@@ -14,11 +14,12 @@ import GameLayout from "../../navigation/layout/gamelayout";
 
 export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  const items: Item[] = [];
+  // const items: Item[] = [];
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
   const [index, setIndex] = useState<number>(0);
+  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
     if (item) {
@@ -36,6 +37,17 @@ export default function ModelBox() {
           .get(AppConstants.getFilesUrl)
           .then((response) => {
             setFetchedData(response.data);
+            setItems((prevStore) => {
+              console.log("~~~~~~~~~~~~~", prevStore);
+              // Use the previous state (prevStore) to update the state
+              return [
+                ...prevStore,
+                ...response.data.map((item) => ({
+                  _id: item._id,
+                  imageOver: `${AppConstants.baseUrl}/${item.files[0].destination}/${item.files[2].fileName}`,
+                })),
+              ];
+            });
             console.log("FetchedData~~~~~~", response.data);
           })
           .catch((error) => console.log(error));
@@ -46,12 +58,16 @@ export default function ModelBox() {
     fetch();
   }, []);
 
-  fetchedData.map((data, index) => {
-    items.push({
-      _id: data._id,
-      imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
-    });
-  });
+  useEffect(() => {
+    console.log("@@@@@@@@@@@@@@@", items);
+  }, [items]);
+
+  // fetchedData.map((data, index) => {
+  //   items.push({
+  //     _id: data._id,
+  //     imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
+  //   });
+  // });
 
   const handleWheel = (e) => {
     const { deltaY } = e;
@@ -115,10 +131,15 @@ export default function ModelBox() {
                     : classes.topGamesShow
                 }
               >
-                <TopGames setItem={setItem} />
+                <TopGames items={items || []} setItem={setItem} />
+                <TopGames items={items || []} setItem={setItem} />
+                <TopGames items={items || []} setItem={setItem} />
+                <TopGames items={items || []} setItem={setItem} />
               </div>
             </div>
-            <div className={index < 10?classes.hiddenGround : classes.showGround}></div>
+            <div
+              className={index < 10 ? classes.hiddenGround : classes.showGround}
+            ></div>
           </div>
         </GameLayout>
       )}

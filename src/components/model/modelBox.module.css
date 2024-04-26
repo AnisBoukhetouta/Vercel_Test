@@ -51,9 +51,10 @@
 }
 .topGames {
   width: 90%;
-
   position: absolute;
-  bottom: -12rem;
+  display: flex;
+  flex-direction: column;
+  top: 0;
   scrollbar-width: none;
   transition: all 1s ease-out;
   display: flex;
@@ -61,7 +62,9 @@
 .topGamesHalfShow {
   width: 90%;
   position: absolute;
-  bottom: -7rem;
+  display: flex;
+  flex-direction: column;
+  top: -10vh;
   scrollbar-width: none;
   transition: all 1s ease-out;
   display: flex;
@@ -71,12 +74,15 @@
 .topGamesShow {
   width: 90%;
   position: absolute;
-  bottom: 70vh;
+  display: flex;
+  flex-direction: column;
+  top: -90vh;
   scrollbar-width: none;
   transition: all 1s ease-out;
   display: flex;
   z-index: 1;
   transition: all 0.7s;
+  overflow: scroll;
 }
 .hiddenGround {
   position: absolute;

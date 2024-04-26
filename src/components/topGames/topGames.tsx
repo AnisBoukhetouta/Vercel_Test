@@ -7,6 +7,7 @@ import axios from "axios";
 import NewGameCard from "../newGameCard/newGameCard";
 
 interface Props {
+  items: any[];
   setItem: (e: any) => void;
 }
 
@@ -35,35 +36,7 @@ export interface Data {
     _id: string;
   }[];
 }
-export default function TopGames({ setItem }: Props) {
-  const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-
-  const items: Item[] = [];
-
-  React.useEffect(() => {
-    const fetch = async () => {
-      try {
-        await axios
-          .get(AppConstants.getFilesUrl)
-          .then((response) => {
-            setFetchedData(response.data);
-            console.log("FetchedData~~~~~~", response.data);
-          })
-          .catch((error) => console.log(error));
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetch();
-  }, []);
-
-  fetchedData.map((data, index) => {
-    items.push({
-      _id: data._id,
-      imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
-    });
-  });
-
+export default function TopGames({ items, setItem }: Props) {
   return (
     <ScrollingCarousel
       children={items.map((item) => (
