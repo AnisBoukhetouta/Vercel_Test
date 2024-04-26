@@ -13,13 +13,12 @@ import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
 
 export default function ModelBox() {
-  const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  // const items: Item[] = [];
+  const [fetchedData, setFetchedData] = React.useState<Item[]>([]);
+  // const fetchedData: Item[] = [];
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
   const [index, setIndex] = useState<number>(0);
-  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
     if (item) {
@@ -36,8 +35,7 @@ export default function ModelBox() {
         await axios
           .get(AppConstants.getFilesUrl)
           .then((response) => {
-            setFetchedData(response.data);
-            setItems((prevStore) => {
+            setFetchedData((prevStore) => {
               // Use the previous state (prevStore) to update the state
               return [
                 ...prevStore,
@@ -57,15 +55,11 @@ export default function ModelBox() {
     fetch();
   }, []);
 
-  useEffect(() => {
-    console.log("@@@@@@@@@@@@@@@", items);
-  }, [items]);
-
   const handleWheel = (e) => {
     const { deltaY } = e;
     if (deltaY < 0) {
-      setIndex(index + 1);
-    } else setIndex(index - 1);
+      setIndex(index >= 13 ? 13 : index + 1);
+    } else setIndex(index <= -5 ? -5 : index - 1);
   };
 
   const handleSetItem = (item) => {
@@ -87,8 +81,8 @@ export default function ModelBox() {
                   backgroundImage: `url(${
                     item
                       ? item.imageOver
-                      : items.length
-                      ? items[0].imageOver
+                      : fetchedData.length
+                      ? fetchedData[0].imageOver
                       : ""
                   })`,
                   backgroundSize: "100% 100%",
@@ -103,20 +97,32 @@ export default function ModelBox() {
               {loading && (
                 <LinearProgress className={classes.progressbar} color="error" />
               )}
-              {items.length && (
+              {fetchedData.length && (
                 <div className={classes.miniCard}>
-                  <GameCard item={item ?? items[0]} link={true} />
-                  <div className={classes.buttonline}>
-                    <button
-                      className={classes.lobbyHeaderButton}
-                      type="button"
-                      onClick={() => setView(true)}
-                    >
-                      PLAY NOW
-                    </button>
-                  </div>
+                  <GameCard item={item ?? fetchedData[0]} link={true} />
                 </div>
               )}
+
+              <div
+                className={
+                  index < 5 ? classes.startCard : classes.startCardRemove
+                }
+              >
+                <div>
+                  <h2>ZERO BUILD - BATTLE ROYALE</h2>
+                </div>
+                <div className={classes.buttonline}>
+                  <button
+                    className={classes.lobbyHeaderButton}
+                    type="button"
+                    onClick={() => setView(true)}
+                  >
+                    RANKED: OFF
+                    <br />
+                    SQUAD - FILL
+                  </button>
+                </div>
+              </div>
             </div>
             <div className={classes.topGamesContainer}>
               <div
@@ -128,10 +134,10 @@ export default function ModelBox() {
                     : classes.topGamesShow
                 }
               >
-                <TopGames items={items || []} setItem={handleSetItem} />
-                <TopGames items={items || []} setItem={handleSetItem} />
-                <TopGames items={items || []} setItem={handleSetItem} />
-                <TopGames items={items || []} setItem={handleSetItem} />
+                <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                <TopGames items={fetchedData || []} setItem={handleSetItem} />
               </div>
             </div>
             <div
@@ -142,7 +148,7 @@ export default function ModelBox() {
       )}
       {!!view && (
         <div className={classes.playground}>
-          <Playground item={!!item ? item._id : items[0]._id} />
+          <Playground item={!!item ? item._id : fetchedData[0]._id} />
         </div>
       )}
     </>

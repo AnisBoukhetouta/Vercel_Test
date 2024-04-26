@@ -22,9 +22,6 @@ export default function GameCard({ item, onSetItem, link }: Props) {
     if (item) {
       setLoading(true);
       toDataURL(item.imageOver, function (dataUrl) {
-        // setTimeout(() => {
-        //   setLoading(false);
-        // }, 3000);
         setLoading(false);
       });
     }

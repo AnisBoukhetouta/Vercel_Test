@@ -39,8 +39,8 @@ export interface Data {
 export default function TopGames({ items, setItem }: Props) {
   return (
     <ScrollingCarousel
-      children={items.map((item) => (
-        <GameCard onSetItem={setItem} key={item._id} item={item} />
+      children={items.map((item, index) => (
+        <GameCard onSetItem={setItem} key={index} item={item} />
       ))}
     />
   );

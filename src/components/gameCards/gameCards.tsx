@@ -8,9 +8,9 @@ export default function GameCards({ cardData }) {
   return (
     <Grid container direction="row" justifyContent="center" alignItems="center">
       <ScrollingCarousel
-        children={cardData.map((item) => (
+        children={cardData.map((item, index) => (
           <NavLink
-            key={item._id}
+            key={index}
             to="/play"
             state={item}
             style={{ textDecoration: "none" }}
