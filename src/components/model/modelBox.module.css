@@ -1,3 +1,7 @@
+.wheel {
+  height: 100vh;
+  overflow: hidden;
+}
 .modelBox {
   height: 100vh !important;
   position: relative;

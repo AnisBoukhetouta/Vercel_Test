@@ -11,6 +11,7 @@ import Playground from "../../pages/playground/playground";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
+import {gsap} from "gsap";
 
 export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Item[]>([]);
@@ -55,6 +56,16 @@ export default function ModelBox() {
     fetch();
   }, []);
 
+  // const app = React.useRef<HTMLDivElement>(null);
+  // const ref = React.useRef<HTMLDivElement>(null);
+  // useEffect(() => {
+  //   // gsap.to(app.current, { rotate: 360, duration: 5 })
+  //     // gsap.to(app.current, { rotate: 360, duration: 1 })
+  //     gsap.fromTo(ref.current, { y: 0}, { y: -1000, duration: 1, scrollTrigger: {
+  //       tirgger: app.current
+  //     }})
+  // }, [])
+
   const handleWheel = (e) => {
     const { deltaY } = e;
     if (deltaY < 0) {
@@ -71,7 +82,7 @@ export default function ModelBox() {
     <>
       {!view && (
         <GameLayout>
-          <div onWheel={handleWheel}>
+          <div className={classes.wheel} onWheel={handleWheel}>
             <Canvas
               camera={{ position: [1, 1, 5], fov: 50 }}
               className={classes.modelBox}
@@ -138,10 +149,13 @@ export default function ModelBox() {
                     <h3>YOUR CURRENT LOBBY</h3>
                   </div>
                 )}
+                <div style={{height: "100vh", overflow: "scroll", scrollbarWidth: "none"}}>
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                </div>
               </div>
             </div>
             <div

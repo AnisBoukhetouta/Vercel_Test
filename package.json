@@ -40,6 +40,7 @@
     "firebase": "^10.10.0",
     "flowbite-react": "^0.8.0",
     "formik": "^2.4.5",
+    "gsap": "^3.12.5",
     "install": "^0.13.0",
     "npm": "^10.5.1",
     "react": "^18.2.0",

@@ -45,7 +45,8 @@ export default function LobbyHeaderGame() {
                 ...prevState,
                 ...response.data.map((data) => ({
                   _id: data._id,
-                  imageOver: data.files[0].path,
+                  // imageOver: data.files[0].path,
+                  imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
                 })),
               ];
             });
