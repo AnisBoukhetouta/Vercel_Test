@@ -72,56 +72,54 @@ export default function ModelBox() {
       {!view && (
         <GameLayout>
           <div onWheel={handleWheel}>
-            <div>
-              <Canvas
-                camera={{ position: [1, 1, 5], fov: 50 }}
-                className={classes.modelBox}
-                style={{
-                  position: "relative",
-                  backgroundImage: `url(${
-                    item
-                      ? item.imageOver
-                      : fetchedData.length
-                      ? fetchedData[0].imageOver
-                      : ""
-                  })`,
-                  backgroundSize: "100% 100%",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPositionY: "Top",
-                }}
-                shadows
-              >
-                <Model />
-              </Canvas>
-              {loading && (
-                <LinearProgress className={classes.progressbar} color="error" />
-              )}
-              {fetchedData.length && (
-                <div className={classes.miniCard}>
-                  <GameCard item={item ?? fetchedData[0]} link={true} />
-                </div>
-              )}
+            <Canvas
+              camera={{ position: [1, 1, 5], fov: 50 }}
+              className={classes.modelBox}
+              style={{
+                position: "relative",
+                backgroundImage: `url(${
+                  item
+                    ? item.imageOver
+                    : fetchedData.length
+                    ? fetchedData[0].imageOver
+                    : ""
+                })`,
+                backgroundSize: "100% 100%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundPositionY: "Top",
+              }}
+              shadows
+            >
+              <Model />
+            </Canvas>
+            {loading && (
+              <LinearProgress className={classes.progressbar} color="error" />
+            )}
+            {fetchedData.length && (
+              <div className={classes.miniCard}>
+                <GameCard item={item ?? fetchedData[0]} link={true} />
+              </div>
+            )}
 
-              <div
-                className={
-                  index < 5 ? classes.startCard : classes.startCardRemove
-                }
-              >
-                <div>
-                  <h2>ZERO BUILD - BATTLE ROYALE</h2>
-                </div>
-                <div className={classes.buttonline}>
-                  <button
-                    className={classes.lobbyHeaderButton}
-                    type="button"
-                    onClick={() => setView(true)}
-                  >
-                    RANKED: OFF
-                    <br />
-                    SQUAD - FILL
-                  </button>
-                </div>
+            <div
+              className={
+                index < 5 ? classes.startCard : classes.startCardRemove
+              }
+            >
+              <div>
+                <h2>ZERO BUILD - BATTLE ROYALE</h2>
+              </div>
+              <div className={classes.buttonline}>
+                <button
+                  className={classes.lobbyHeaderButton}
+                  type="button"
+                  onClick={() => setView(true)}
+                >
+                  RANKED: OFF
+                  <br />
+                  SQUAD - FILL
+                </button>
               </div>
             </div>
             <div className={classes.topGamesContainer}>
@@ -134,6 +132,12 @@ export default function ModelBox() {
                     : classes.topGamesShow
                 }
               >
+                {index < 10 && (
+                  <div className={classes.lobbyheader}>
+                    <h1>ZERO BUILD - BATTLE ROYALE</h1>
+                    <h3>YOUR CURRENT LOBBY</h3>
+                  </div>
+                )}
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
                 <TopGames items={fetchedData || []} setItem={handleSetItem} />
@@ -142,7 +146,7 @@ export default function ModelBox() {
             </div>
             <div
               className={index < 10 ? classes.hiddenGround : classes.showGround}
-            ></div>
+            />
           </div>
         </GameLayout>
       )}
