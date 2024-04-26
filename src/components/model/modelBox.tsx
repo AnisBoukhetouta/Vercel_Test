@@ -62,8 +62,8 @@ export default function ModelBox() {
     } else setIndex(index <= -5 ? -5 : index - 1);
   };
 
-  const handleSetItem = (item) => {
-    setItem(item);
+  const handleSetItem = (e) => {
+    setItem(e);
     setIndex(0);
   };
 
