@@ -18,6 +18,7 @@ export default function ModelBox() {
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
+  const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
     if (item) {
@@ -52,49 +53,77 @@ export default function ModelBox() {
     });
   });
 
+  const handleWheel = (e) => {
+    const { deltaY } = e;
+    if (deltaY < 0) {
+      setIndex(index + 1);
+    } else setIndex(index - 1);
+  };
+
+  React.useEffect(() => {
+    console.log("~~~~~INDEX~~~~~", index);
+  }, [index]);
+
   return (
     <>
       {!view && (
         <GameLayout>
-          <Canvas
-            camera={{ position: [1, 1, 5], fov: 50 }}
-            className={classes.modelBox}
-            style={{
-              position: "relative",
-              backgroundImage: `url(${
-                item ? item.imageOver : items.length ? items[0].imageOver : ""
-              })`,
-              backgroundSize: "100% 100%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundPositionY: "Top",
-            }}
-            shadows
-          >
-            <Model />
-          </Canvas>
-          {loading && (
-            <LinearProgress className={classes.progressbar} color="error" />
-          )}
-          <>
-            {items.length && (
-              <div className={classes.miniCard}>
-                <GameCard item={item ?? items[0]} link={true} />
-                <div className={classes.buttonline}>
-                  <button
-                    className={classes.lobbyHeaderButton}
-                    type="button"
-                    onClick={() => setView(true)}
-                  >
-                    PLAY NOW
-                  </button>
+          <div onWheel={handleWheel}>
+            <div>
+              <Canvas
+                camera={{ position: [1, 1, 5], fov: 50 }}
+                className={classes.modelBox}
+                style={{
+                  position: "relative",
+                  backgroundImage: `url(${
+                    item
+                      ? item.imageOver
+                      : items.length
+                      ? items[0].imageOver
+                      : ""
+                  })`,
+                  backgroundSize: "100% 100%",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPositionY: "Top",
+                }}
+                shadows
+              >
+                <Model />
+              </Canvas>
+              {loading && (
+                <LinearProgress className={classes.progressbar} color="error" />
+              )}
+              {items.length && (
+                <div className={classes.miniCard}>
+                  <GameCard item={item ?? items[0]} link={true} />
+                  <div className={classes.buttonline}>
+                    <button
+                      className={classes.lobbyHeaderButton}
+                      type="button"
+                      onClick={() => setView(true)}
+                    >
+                      PLAY NOW
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
-            <div className={classes.topGamesContainer}>
-              <TopGames setItem={setItem} />
+              )}
             </div>
-          </>
+            <div className={classes.topGamesContainer}>
+              <div
+                className={
+                  index < 5
+                    ? classes.topGames
+                    : index < 10
+                    ? classes.topGamesHalfShow
+                    : classes.topGamesShow
+                }
+              >
+                <TopGames setItem={setItem} />
+              </div>
+            </div>
+            <div className={index < 10?classes.hiddenGround : classes.showGround}></div>
+          </div>
         </GameLayout>
       )}
       {!!view && (

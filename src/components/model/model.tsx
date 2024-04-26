@@ -11,7 +11,6 @@ export default function Model() {
         minPolarAngle={1.34}
         maxPolarAngle={1.34}
         maxDistance={7.5}
-        // minDistance={5.5}
         minDistance={6.5}
       />
       <ambientLight />

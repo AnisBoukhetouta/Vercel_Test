@@ -65,12 +65,10 @@ export default function TopGames({ setItem }: Props) {
   });
 
   return (
-    <div className={classes.topGames}>
-      <ScrollingCarousel
-        children={items.map((item) => (
-          <GameCard onSetItem={setItem} key={item._id} item={item} />
-        ))}
-      />
-    </div>
+    <ScrollingCarousel
+      children={items.map((item) => (
+        <GameCard onSetItem={setItem} key={item._id} item={item} />
+      ))}
+    />
   );
 }
