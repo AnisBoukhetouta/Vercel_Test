@@ -60,10 +60,6 @@ export default function ModelBox() {
     } else setIndex(index - 1);
   };
 
-  React.useEffect(() => {
-    console.log("~~~~~INDEX~~~~~", index);
-  }, [index]);
-
   return (
     <>
       {!view && (

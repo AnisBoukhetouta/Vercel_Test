@@ -83,6 +83,7 @@
   bottom: -100%;
   width: 100%;
   height: 100%;
+  z-index: 0;
   background-image: url("images/gameLobby.jpg");
   /* background-image: url("images/gameLobby.jpg"),
     linear-gradient(to top, #000000, #000000); */
@@ -94,6 +95,7 @@
   bottom: 0;
   width: 100%;
   height: 120%;
+  z-index: 0;
   background-image: url("images/gameLobby.jpg");
   background-size: 100% 120%;
   transition: all 0.7s;
