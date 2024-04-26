@@ -95,7 +95,7 @@ h2 {
   align-items: start;
   margin: 10px;
 }
-h1 {
+.lobbyheader > h1 {
   color: white;
   width: 800px;
   text-wrap: wrap;
@@ -106,7 +106,7 @@ h1 {
   line-height: 1.5;
   -webkit-text-stroke: 1px grey;
 }
-h3 {
+.lobbyheader > h3 {
   margin: 30px 0;
   color: white;
   width: fit-content;
