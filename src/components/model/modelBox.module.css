@@ -58,6 +58,7 @@
   scrollbar-width: none;
   transition: all 1s ease-out;
   display: flex;
+  z-index: 1;
 }
 .topGamesHalfShow {
   width: 90%;

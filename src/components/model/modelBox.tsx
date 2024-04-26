@@ -38,7 +38,6 @@ export default function ModelBox() {
           .then((response) => {
             setFetchedData(response.data);
             setItems((prevStore) => {
-              console.log("~~~~~~~~~~~~~", prevStore);
               // Use the previous state (prevStore) to update the state
               return [
                 ...prevStore,
@@ -62,18 +61,16 @@ export default function ModelBox() {
     console.log("@@@@@@@@@@@@@@@", items);
   }, [items]);
 
-  // fetchedData.map((data, index) => {
-  //   items.push({
-  //     _id: data._id,
-  //     imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
-  //   });
-  // });
-
   const handleWheel = (e) => {
     const { deltaY } = e;
     if (deltaY < 0) {
       setIndex(index + 1);
     } else setIndex(index - 1);
+  };
+
+  const handleSetItem = (item) => {
+    setItem(item);
+    setIndex(0);
   };
 
   return (
@@ -131,10 +128,10 @@ export default function ModelBox() {
                     : classes.topGamesShow
                 }
               >
-                <TopGames items={items || []} setItem={setItem} />
-                <TopGames items={items || []} setItem={setItem} />
-                <TopGames items={items || []} setItem={setItem} />
-                <TopGames items={items || []} setItem={setItem} />
+                <TopGames items={items || []} setItem={handleSetItem} />
+                <TopGames items={items || []} setItem={handleSetItem} />
+                <TopGames items={items || []} setItem={handleSetItem} />
+                <TopGames items={items || []} setItem={handleSetItem} />
               </div>
             </div>
             <div
