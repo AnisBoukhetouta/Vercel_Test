@@ -153,7 +153,7 @@ export default function ModelBox() {
                 <div
                   style={{
                     height: "100vh",
-                    overflow: "scroll",
+                    overflow: index > 10 ? "scroll" : "hidden",
                     scrollbarWidth: "none",
                   }}
                 >
