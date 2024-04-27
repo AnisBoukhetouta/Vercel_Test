@@ -153,7 +153,8 @@ export default function ModelBox() {
                 <div
                   style={{
                     height: "100vh",
-                    overflow: "hidden",
+                    overflow: "scroll",
+                    scrollbarWidth: "none",
                   }}
                 >
                   <TopGames items={fetchedData || []} setItem={handleSetItem} />
