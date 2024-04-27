@@ -25,6 +25,8 @@ const initialValues = {
   iOsApp: "",
   steamLink: "",
   gameType: "",
+  cardTemplate: "",
+  backgroundColor: "",
   landscapeFile: null,
   portraitFile: null,
   squareFile: null,
@@ -386,6 +388,83 @@ export default function GameUpload() {
                   <CloudUpload fontSize="large" />
                   <div>Upload</div>
                 </button>
+              </div>
+            </Stack>
+          </Paper>
+          <Paper
+            sx={{
+              marginTop: 3,
+              padding: 5,
+              backgroundColor: "rgba(54, 52, 52, 0.744)",
+              color: "rgb(202, 196, 196)",
+            }}
+          >
+            <h2 className={classes.pageTitle}>Game card styling *</h2>
+            <Stack>
+              <div>
+                <div className={classes.fieldName}>Card Template</div>
+                <Autocomplete
+                  sx={{ width: 300 }}
+                  options={AppConstants.cardTemplate}
+                  onChange={(event, value) =>
+                    (formik.values.cardTemplate = value || "")
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      name="category"
+                      required
+                      value={formik.values.cardTemplate}
+                      onBlur={formik.handleBlur}
+                      error={
+                        formik.touched.cardTemplate &&
+                        Boolean(formik.errors.cardTemplate)
+                      }
+                      helperText={
+                        formik.touched.cardTemplate &&
+                        formik.errors.cardTemplate
+                      }
+                      {...params}
+                    />
+                  )}
+                />
+              </div>
+              <div>
+                <div className={classes.alignedFlexBox}>
+                  <div className={classes.fieldName}>Background Color</div>
+                </div>
+                <Autocomplete
+                  onChange={(event, value) =>
+                    (formik.values.backgroundColor = value || "")
+                  }
+                  sx={{ width: 300 }}
+                  options={AppConstants.backgroundColor}
+                  renderInput={(params) => (
+                    <TextField
+                      name="tags"
+                      required
+                      value={formik.values.backgroundColor}
+                      onBlur={formik.handleBlur}
+                      error={
+                        formik.touched.backgroundColor &&
+                        Boolean(formik.errors.backgroundColor)
+                      }
+                      helperText={
+                        formik.touched.backgroundColor &&
+                        formik.errors.backgroundColor
+                      }
+                      {...params}
+                    />
+                  )}
+                />
+              </div>
+              <div style={{ width: "25%" }}>
+                <div className={classes.fieldName}>Square 1:1 (800x800)</div>
+                <FileUpload
+                  title="Square"
+                  fieldName="squareFile"
+                  height={200}
+                  setFieldValue={setSquareFile}
+                />
               </div>
             </Stack>
           </Paper>
