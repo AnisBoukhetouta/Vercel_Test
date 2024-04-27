@@ -1,3 +1,7 @@
+.wheel {
+  height: 100vh;
+  overflow: hidden;
+}
 .modelBox {
   height: 100vh !important;
   position: relative;
@@ -15,20 +19,70 @@
   left: 5%;
 }
 .lobbyHeaderButton {
-  padding: 20px;
-  width: 210px;
-  border-radius: 22px;
-  font-size: 26px;
-  font-weight: 900;
+  padding: 5px 44px;
+  width: 250px;
+  border-radius: 18px;
+  font-size: 20px;
+  font-weight: 1000;
+  letter-spacing: -1px;
   color: rgb(10, 10, 10);
-  background: #f7ff19;
+  background: #c7d7ec;
   cursor: pointer;
   border: 0;
 }
+.startCard {
+  position: absolute;
+  padding: 15px;
+  padding-bottom: 0;
+  bottom: 0;
+  left: 5%;
+  width: 280px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  background: rgba(64, 64, 64, 0.35);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgba(64, 64, 64, 0.21);
+  transition: all 1s;
+  z-index: 5;
+}
+.startCardRemove {
+  position: absolute;
+  padding: 15px;
+  padding-bottom: 0;
+  bottom: -230px;
+  left: 5%;
+  width: 280px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  background: rgba(64, 64, 64, 0.35);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgba(64, 64, 64, 0.21);
+  transition: all 0.3s;
+  z-index: 5;
+}
+h2 {
+  text-align: center;
+  font-weight: 1000;
+  color: white;
+  font-style: italic;
+  margin: 30px 0;
+}
 .buttonline {
-  margin: 10px;
-  margin-top: 150%;
-  width: 210px;
+  width: 250px;
   outline-color: transparent;
   outline-offset: 0.75rem;
   outline-width: 0;
@@ -39,7 +93,39 @@
   overflow: clip;
   border-radius: 20px;
 }
-
+.lobbyHearder {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 10px;
+}
+.lobbyheader > h1 {
+  color: white;
+  width: 800px;
+  text-wrap: wrap;
+  font-size: 50px;
+  letter-spacing: -1px;
+  font-style: italic;
+  font-weight: 1000;
+  line-height: 1.5;
+  -webkit-text-stroke: 1px grey;
+}
+.lobbyheader > h3 {
+  margin: 30px 0;
+  color: white;
+  width: fit-content;
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 2px;
+  background: rgba(64, 64, 64, 0.35);
+  border-radius: 13px;
+  padding: 4px 13px 2px 13px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgba(64, 64, 64, 0.21);
+  transition: all 1s;
+}
 .buttonline:hover {
   outline-width: 0.3rem;
   outline-offset: 0.25rem;
@@ -48,6 +134,64 @@
 .topGamesContainer {
   display: flex;
   justify-content: center;
+}
+.topGames {
+  width: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  scrollbar-width: none;
+  transition: all 0.3S;
+  display: flex;
+  z-index: 1;
+}
+.topGamesHalfShow {
+  width: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: -38vh;
+  scrollbar-width: none;
+  display: flex;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.topGamesShow {
+  width: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: -90vh;
+  scrollbar-width: none;
+  transition: all 1s ease-out;
+  display: flex;
+  z-index: 1;
+  transition: all 0.7s;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+.hiddenGround {
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-image: url("images/gameLobby.jpg");
+  /* background-image: url("images/gameLobby.jpg"),
+    linear-gradient(to top, #000000, #000000); */
+  background-size: 100% 120%;
+  transition: all 1s;
+}
+.showGround {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120%;
+  z-index: 0;
+  background-image: url("images/gameLobby.jpg");
+  background-size: 100% 120%;
+  transition: all 0.7s;
 }
 .playground {
   position: absolute;

@@ -33,7 +33,6 @@ export interface Data {
 
 export default function LobbyHeaderGame() {
   const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
-  const items: Item[] = [];
 
   useEffect(() => {
     const fetch = async () => {
@@ -41,7 +40,16 @@ export default function LobbyHeaderGame() {
         await axios
           .get(AppConstants.getFilesUrl)
           .then((response) => {
-            setFetchedData(response.data);
+            setFetchedData((prevState) => {
+              return [
+                ...prevState,
+                ...response.data.map((data) => ({
+                  _id: data._id,
+                  // imageOver: data.files[0].path,
+                  imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
+                })),
+              ];
+            });
             console.log("FetchedData~~~~~~", response.data);
           })
           .catch((error) => console.log(error));
@@ -52,18 +60,11 @@ export default function LobbyHeaderGame() {
     fetch();
   }, []);
 
-  fetchedData.map((data, index) => {
-    items.push({
-      _id: data._id,
-      imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
-    });
-  });
-
   return (
     <div className={classes.lobodyGame}>
       <div className={classes.topGames}>
         <div className={classes.title}>BY EPIC</div>
-        <GameCards cardData={items} />
+        <GameCards cardData={fetchedData} />
       </div>
     </div>
   );

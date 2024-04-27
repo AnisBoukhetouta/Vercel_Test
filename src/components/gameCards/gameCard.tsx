@@ -22,9 +22,6 @@ export default function GameCard({ item, onSetItem, link }: Props) {
     if (item) {
       setLoading(true);
       toDataURL(item.imageOver, function (dataUrl) {
-        // setTimeout(() => {
-        //   setLoading(false);
-        // }, 3000);
         setLoading(false);
       });
     }
@@ -34,7 +31,7 @@ export default function GameCard({ item, onSetItem, link }: Props) {
     <div className={classes.cardBody}>
       {item ? (
         <div
-          className={classes.center}
+          className={link ? classes.linkedCenter : classes.center}
           key={item._id}
           onClick={() => handleClick(!mouseOver)}
           onMouseOver={() => setMouseOver(true)}
