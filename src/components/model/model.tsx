@@ -10,8 +10,8 @@ export default function Model() {
         maxAzimuthAngle={0.2}
         minPolarAngle={1.34}
         maxPolarAngle={1.34}
-        maxDistance={7.5}
-        minDistance={6.5}
+        maxDistance={7}
+        minDistance={5.5}
       />
       <ambientLight />
       <directionalLight

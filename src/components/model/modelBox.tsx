@@ -11,7 +11,8 @@ import Playground from "../../pages/playground/playground";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
-import {gsap} from "gsap";
+import { gsap } from "gsap";
+import { ScrollControls } from "@react-three/drei";
 
 export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Item[]>([]);
@@ -84,7 +85,7 @@ export default function ModelBox() {
         <GameLayout>
           <div className={classes.wheel} onWheel={handleWheel}>
             <Canvas
-              camera={{ position: [1, 1, 5], fov: 50 }}
+              camera={{ position: [1, 1, 6.5], fov: 50 }}
               className={classes.modelBox}
               style={{
                 position: "relative",
@@ -149,12 +150,17 @@ export default function ModelBox() {
                     <h3>YOUR CURRENT LOBBY</h3>
                   </div>
                 )}
-                <div style={{height: "100vh", overflow: "scroll", scrollbarWidth: "none"}}>
-                <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                <div
+                  style={{
+                    height: "100vh",
+                    overflow: "hidden",
+                  }}
+                >
+                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
                 </div>
               </div>
             </div>
