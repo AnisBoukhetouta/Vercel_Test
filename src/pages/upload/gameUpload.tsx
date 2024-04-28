@@ -204,31 +204,37 @@ export default function GameUpload() {
               </a>
             </div>
             <Stack
-              direction="row"
+              direction="column"
               sx={{
                 justifyContent: checkMainImage ? "space-between" : "center",
               }}
             >
-              <div style={{ width: checkMainImage ? "45%" : "80%" }}>
-                <div className={classes.fieldName}>Main Image * (*.png)</div>
-                <FileUpload
-                  title="Main Image"
-                  fieldName="mainImageFile"
-                  height={270}
-                  setFieldValue={setMainImageFile}
-                />
+              <div className={classes.uploadBox}>
+                <div style={{ width: "45%" }}>
+                  <div className={classes.fieldName}>Main Image * (*.png)</div>
+                  <FileUpload
+                    title="Main Image"
+                    fieldName="mainImageFile"
+                    height={270}
+                    setFieldValue={setMainImageFile}
+                  />
+                </div>
+                <div className={classes.previewBox}></div>
               </div>
               {checkMainImage && (
-                <div style={{ width: "45%" }}>
-                  <div className={classes.fieldName}>
-                    Secondary Image (*.png)
+                <div className={classes.uploadBox}>
+                  <div style={{ width: "45%" }}>
+                    <div className={classes.fieldName}>
+                      Secondary Image (*.png)
+                    </div>
+                    <FileUpload
+                      title="Second Image"
+                      fieldName="secondImageFile"
+                      height={270}
+                      setFieldValue={setSecondImageFile}
+                    />
                   </div>
-                  <FileUpload
-                    title="Second Image"
-                    fieldName="secondImageFile"
-                    height={270}
-                    setFieldValue={setSecondImageFile}
-                  />
+                  <div className={classes.previewBox}></div>
                 </div>
               )}
             </Stack>
