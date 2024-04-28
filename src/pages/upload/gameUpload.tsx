@@ -198,9 +198,7 @@ export default function GameUpload() {
               We will use the cover image to show your game on our pages
               (homepage, category pages, …). Make it appealing and professional
               looking! A good cover image will make the users want to play your
-              game. Please provide 3 sizes for your game cover : landscape
-              (1920x1080) portrait (800x1200) and square (800x800). For more
-              information, make sure to read our{" "}
+              game. For more information, make sure to read our{" "}
               <a href="#" className={classes.alink}>
                 guidelines for game covers.
               </a>
