@@ -5,12 +5,14 @@ import AppConstants from "../../../../AppConstants";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../../firebase";
 import axios from "axios";
+import CardMore from "./cardMore";
 
 interface Props {
   setOptions: (e: boolean) => void;
+  handleAdd: () => void;
 }
 
-export default function CharacterView({ setOptions }: Props) {
+export default function CharacterView({ setOptions, handleAdd }: Props) {
   const navigate = useNavigate();
   const [equipType, setEquipType] = React.useState("Outfit");
   const [uid, setUid] = React.useState("");
@@ -71,15 +73,17 @@ export default function CharacterView({ setOptions }: Props) {
                 key={key}
                 onClick={() => setEquipType(item.fileType)}
               >
+                <div className={`${classes.alarm}`}>14</div>
                 <img
                   src={
-                    image.destination !== undefined
+                    !image.destination
                       ? `${AppConstants.baseUrl}/${image.destination}/${image.fileName}`
                       : item.image
                   }
                   alt="character"
                   className={classes.cardImg}
                 />
+                <CardMore handleAdd={handleAdd} />
                 <div className={classes.colorFlow} />
               </div>
             );
