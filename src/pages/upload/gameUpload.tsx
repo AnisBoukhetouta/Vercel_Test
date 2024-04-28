@@ -70,9 +70,7 @@ export default function GameUpload() {
       console.log("Error submitting form:", e);
     }
   };
-
   const checkMainImage = mainImageFile && mainImageFile?.length > 0;
-
   return (
     <Formik
       initialValues={{
