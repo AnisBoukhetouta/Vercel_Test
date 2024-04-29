@@ -16,11 +16,12 @@ const dots = () => {
   );
 };
 
-const CardMore = ({handleAdd} : props) => {
+const CardMore = ({ handleAdd }: props) => {
   return (
     <>
-      <div className={classes.cardMore} onClick={handleAdd}>{dots()}</div>
-      
+      <div className={classes.cardMore} onClick={handleAdd}>
+        {dots()}
+      </div>
     </>
   );
 };
