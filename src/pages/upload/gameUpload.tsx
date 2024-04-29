@@ -30,6 +30,8 @@ export default function GameUpload() {
   const [secondImageFile, setSecondImageFile] = React.useState<File[] | null>(
     null
   );
+  const [mainImageUrl, setMainImageUrl] = React.useState<string>("");
+  const [secondImageUrl, setSecondImageUrl] = React.useState<string>("");
   let uploadContainer: File[] = [];
 
   const onUpload = async (values, { setSubmitting }) => {
@@ -75,7 +77,15 @@ export default function GameUpload() {
   const checkMainImage = mainImageFile && mainImageFile?.length > 0;
   const checkSecondImage = secondImageFile && secondImageFile?.length > 0;
 
+  const handleMainImage = (e) => {
+    setMainImageFile(e);
+    setMainImageUrl(URL.createObjectURL(e[0]));
+  };
 
+  const handleSecondImage = (e) => {
+    setSecondImageFile(e);
+    setSecondImageUrl(URL.createObjectURL(e[0]));
+  };
 
   return (
     <Formik
@@ -222,7 +232,7 @@ export default function GameUpload() {
                     title="Main Image"
                     fieldName="mainImageFile"
                     height={270}
-                    setFieldValue={setMainImageFile}
+                    setFieldValue={handleMainImage}
                   />
                 </div>
                 {checkMainImage && (
@@ -237,7 +247,7 @@ export default function GameUpload() {
                         <FortniteButtonImage
                           top="auto"
                           bottom="0"
-                          src="assets/images/character.webp"
+                          src={mainImageUrl}
                         />
                       </FortniteButton>
                     </div>
@@ -254,7 +264,7 @@ export default function GameUpload() {
                       title="Second Image"
                       fieldName="secondImageFile"
                       height={270}
-                      setFieldValue={setSecondImageFile}
+                      setFieldValue={handleSecondImage}
                     />
                   </div>
                   {checkMainImage && checkSecondImage && (
@@ -267,7 +277,7 @@ export default function GameUpload() {
                           subtext="New"
                         >
                           <FortniteButtonImage
-                            src="assets/images/evie.webp"
+                            src={secondImageUrl}
                             width="120%"
                             height="95%"
                             right="5%"
@@ -275,7 +285,7 @@ export default function GameUpload() {
                             bottom="-40px"
                           />
                           <FortniteButtonImage
-                            src="assets/images/character.webp"
+                            src={mainImageUrl}
                             width="130%"
                             height="90%"
                             left="7%"
