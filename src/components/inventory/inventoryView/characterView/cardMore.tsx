@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./characterView.module.css";
 
 interface props {
-  handleAdd: () => void;
+  handleAdd?: () => void;
 }
 
 const dots = () => {

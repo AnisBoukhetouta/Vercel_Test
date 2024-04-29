@@ -4,11 +4,11 @@
 }
 
 .navTitle {
-  font-size:95px;
+  font-size: 95px;
   font-weight: 900;
   color: white;
   transform: skewX(-10deg);
-  top:-25px;
+  top: -25px;
 }
 
 .optionTitle {
@@ -16,7 +16,7 @@
   font-weight: 900;
   color: rgba(131, 203, 255, 0.837);
   transform: skewX(-8deg);
-  top:-40px;
+  top: -40px;
 }
 
 .equipCards {
@@ -140,18 +140,23 @@
   width: 40vw;
 }
 
+.cardAdd {
+  display: none;
+}
+
+.card:hover .cardAdd {
+  display: grid;
+}
+
 .cardMore {
   position: absolute;
-  display: none;
+  /* display: none; */
   bottom: 8px;
   right: 8px;
   width: 70px;
   height: 50px;
   background-color: rgba(175, 236, 236, 0.841);
   border-radius: 18px;
-}
-
-.card:hover .cardMore {
   display: flex;
   align-items: center;
   justify-content: space-around;

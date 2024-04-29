@@ -83,7 +83,9 @@ export default function CharacterView({ setOptions, handleAdd }: Props) {
                   alt="character"
                   className={classes.cardImg}
                 />
-                <CardMore handleAdd={handleAdd} />
+                <div className={classes.cardAdd}>
+                  <CardMore handleAdd={handleAdd} />
+                </div>
                 <div className={classes.colorFlow} />
               </div>
             );

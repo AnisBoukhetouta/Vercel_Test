@@ -160,3 +160,12 @@
   border: none;
   outline: none;
 }
+
+
+.cardAdd {
+  display: none;
+}
+
+.card:hover .cardAdd {
+  display: grid;
+}

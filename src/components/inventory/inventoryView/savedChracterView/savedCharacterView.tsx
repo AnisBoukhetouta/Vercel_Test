@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./savedCharacterView.module.css";
 import SaveNaveBar from "./saveNavbar/saveNavbar";
+import CardMore from "../characterView/cardMore";
 
 interface props {
   handlePrev: () => void;
@@ -30,6 +31,9 @@ export default function SavedCharacterView({ handlePrev }: props) {
                   alt="character"
                   className={classes.cardImg}
                 />
+                <div className={classes.cardAdd}>
+                  <CardMore />
+                </div>
                 <div className={classes.colorFlow} />
               </div>
             ))}
