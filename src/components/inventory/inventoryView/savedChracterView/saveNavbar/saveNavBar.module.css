@@ -1,0 +1,50 @@
+.navlinks {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+.navButton {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: transparent;
+  border: 0;
+  font-size: 26px;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+  display: grid;
+  letter-spacing: 2px;
+}
+
+.navButton:hover {
+  background-color: rgba(158, 217, 252, 0.649);
+  color: rgb(39, 39, 39);
+  border-radius: 15px;
+}
+
+.dot {
+  position: absolute;
+  padding: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: rgb(234, 228, 54);
+  right: 10px;
+  top: 10px;
+}
+
+.prev {
+  cursor: pointer;
+  padding: 5px;
+  padding-left: 15px;
+}
+
+.prev:hover {
+  background-color: rgba(158, 217, 252, 0.649);
+  color: rgb(39, 39, 39);
+  border-radius: 15px;
+}

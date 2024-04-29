@@ -1,17 +1,30 @@
 .inventoryNavContainer {
-  width: 320px;
+  width: 400px;
   height: 100%;
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 
 .inventoryNav {
-  width: 250px;
+  width: 310px;
   padding: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.387);
+  background-color: rgb(0, 11, 110);
   border-radius: 15px;
 }
 
 .inventoryNavButton {
+  width: 100%;
+  height: 60px;
+  padding: 1rem;
+  align-items: center;
+  display: flex;
+  border: 0;
+  gap: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: 10PX;
+}
+
+.inventoryNavtitile {
   width: 100%;
   height: 55px;
   padding: 1rem;
@@ -20,7 +33,6 @@
   border: 0;
   gap: 1rem;
   background-color: transparent;
-  cursor: pointer;
 }
 
 .buttonIcon {
@@ -29,14 +41,14 @@
 }
 
 .buttonTitle {
-  font-size: 20px;
+  font-size: 25px;
   color: white;
   font-weight: 800;
 }
 
 .inventoryNavButton:hover {
   background: #e2e2e2cd;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .inventoryNavButton:hover .buttonTitle {
@@ -45,4 +57,26 @@
 
 .inventoryNavButton:hover path {
   fill: rgba(17, 15, 15, 0.869);
+}
+
+.dot {
+  position: absolute;
+  background-color: yellow;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  top: 6px;
+  right: 6px;
+}
+
+.underLine {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(105, 105, 105);
+  border: 0;  
+  margin-top: 1rem;
+}
+
+.titieBottom {
+  margin-top: 1rem;
 }

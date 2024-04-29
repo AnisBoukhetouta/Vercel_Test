@@ -1,10 +1,31 @@
+.pages {
+  display: flex;
+  width: 200vw;
+}
 .inventoryContainer {
   width: 100vw;
   height: 100vh;
   padding-top: 8rem;
-  padding-left: 4rem;
+  padding-left: 8rem;
   display: flex;
-  background: radial-gradient(#1ab1f2, #0c2858);
+  margin: 0;
+  background: radial-gradient(
+    at calc(100% - 200px) calc(100% - 100px),
+    #48b8f0cd,
+    #070054
+  );
   overflow-y: scroll;
   scrollbar-width: none;
+}
+
+.savedCharacter {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    at calc(100% - 200px) calc(100% - 100px),
+    #34b3f3cd,
+    #060132
+  );
+  display: flex;
+  padding-top: 100px;
 }

@@ -1,26 +1,28 @@
 .Cotainer {
   display: flex;
+  margin-left: 80px;
 }
 
 .navTitle {
-  font-size: 50px;
+  font-size: 95px;
   font-weight: 900;
   color: white;
   transform: skewX(-10deg);
+  top: -25px;
 }
 
 .optionTitle {
-  font-size: 30px;
+  font-size: 60px;
   font-weight: 900;
-  color: rgba(135, 172, 198, 0.724);
+  color: rgba(131, 203, 255, 0.837);
   transform: skewX(-8deg);
+  top: -40px;
 }
 
 .equipCards {
   max-width: 500px;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2rem;
 }
 
 .cardImg {
@@ -31,9 +33,9 @@
 }
 
 .card {
-  height: 120px;
-  background-color: rgba(255, 255, 255, 0.186);
-  border-radius: 15px;
+  height: 150px;
+  background-color: rgba(61, 150, 240, 0.729);
+  border-radius: 20px;
   cursor: pointer;
   outline-color: transparent;
   outline-offset: 0.3rem;
@@ -48,7 +50,7 @@
 }
 
 .cardWidth {
-  width: 120px;
+  width: 150px;
 }
 
 .card:hover {
@@ -67,7 +69,7 @@
   padding: 2rem;
   align-items: center;
   display: flex;
-  background-color: #e2e2e2cd;
+  background-color: #b7edeef0;
   cursor: pointer;
   font-size: 22px;
   color: rgba(6, 6, 6, 0.91);
@@ -115,17 +117,18 @@
   position: absolute;
   top: 0;
   left: 100%; /* Start from the left edge */
-  width: 50%; /* Adjust width as needed */
-  height: 100%;
+  width: 30%; /* Adjust width as needed */
+  height: 60%;
   background: radial-gradient(
     rgba(163, 253, 255, 0.974),
     rgba(163, 253, 255, 0.573)
   );
-  border-radius: 10px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .card:hover .colorFlow {
-  animation: flow 0.8s linear forwards; /* Animation lasts 4 seconds */
+  animation: flow 0.3s linear forwards; /* Animation lasts 4 seconds */
   box-shadow: 1px 1px 10px 10px rgba(163, 253, 255, 0.457);
   opacity: 0.5;
 }
@@ -135,4 +138,51 @@
 }
 .modelViewerContainer {
   width: 40vw;
+}
+
+.cardAdd {
+  display: none;
+}
+
+.card:hover .cardAdd {
+  display: grid;
+}
+
+.cardMore {
+  position: absolute;
+  /* display: none; */
+  bottom: 8px;
+  right: 8px;
+  width: 70px;
+  height: 50px;
+  background-color: rgba(175, 236, 236, 0.841);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 6px;
+}
+
+.dot {
+  padding: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: black;
+}
+
+.alarm {
+  position: absolute;
+  padding: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 20px;
+  background-color: rgb(234, 234, 6);
+  display: grid;
+  font-weight: 1000;
+  font-size: 24px;
+  justify-content: center;
+  right: 8px;
+  top: 8px;
+  z-index: 100;
 }
