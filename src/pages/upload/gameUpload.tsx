@@ -257,7 +257,7 @@ export default function GameUpload() {
                       setFieldValue={setSecondImageFile}
                     />
                   </div>
-                  {checkSecondImage && (
+                  {checkMainImage && checkSecondImage && (
                     <div className={classes.previewBox}>
                       <div className={classes.secondButton}>
                         <FortniteButton
