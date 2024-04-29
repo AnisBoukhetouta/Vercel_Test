@@ -69,7 +69,7 @@ export default function CharacterView({ setOptions, handleAdd }: Props) {
             ).filter((x) => x.fileType === item.fileType && x);
             return (
               <div
-                className={`${classes.card} ${classes.cardWidth}`}
+                className={`${classes.card}`}
                 key={key}
                 onClick={() => setEquipType(item.fileType)}
               >

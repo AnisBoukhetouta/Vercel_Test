@@ -44,9 +44,6 @@
   overflow: clip;
   margin: 0.5rem;
 }
-.cardWidth {
-  width: 150px;
-}
 .card:hover {
   outline-offset: 0.3rem;
   outline-width: 0.25rem;
@@ -102,7 +99,6 @@
     left: 100%; /* Move back to the right edge */
   }
 }
-
 .colorFlow {
   position: absolute;
   top: 0;
@@ -135,7 +131,6 @@
 }
 .cardMore {
   position: absolute;
-  /* display: none; */
   bottom: 8px;
   right: 8px;
   width: 70px;
