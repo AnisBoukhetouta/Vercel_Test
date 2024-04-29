@@ -14,42 +14,33 @@ import { CloudUpload } from "@mui/icons-material";
 import HelpIcon from "@mui/icons-material/Help";
 import classes from "./upload.module.css";
 import axios from "axios";
+import FortniteButton from "../../components/forniteButton/FortniteButton";
+import FortniteButtonImage from "../../components/forniteButton/FortniteButtonImage";
 
 const initialValues = {
   gameTitle: "",
-  category: "",
-  tags: "",
-  description: "",
-  controls: "",
-  googlePlay: "",
-  iOsApp: "",
-  steamLink: "",
-  gameType: "",
-  landscapeFile: null,
-  portraitFile: null,
-  squareFile: null,
+  gameSubTitle: "",
+  gameSlug: "",
+  mainImageFile: null,
+  secondImageFile: null,
 };
 export default function GameUpload() {
   const [fileUpload, setFileUpload] = React.useState<File[]>([]);
-  const [landscapeFile, setLandscapeFile] = React.useState<File | null>(null);
-  const [portraitFile, setPortraitFile] = React.useState<File | null>(null);
-  const [squareFile, setSquareFile] = React.useState<File | null>(null);
+  const [mainImageFile, setMainImageFile] = React.useState<File[] | null>(null);
+  const [secondImageFile, setSecondImageFile] = React.useState<File[] | null>(
+    null
+  );
+  const [mainImageUrl, setMainImageUrl] = React.useState<string>("");
+  const [secondImageUrl, setSecondImageUrl] = React.useState<string>("");
   let uploadContainer: File[] = [];
 
   const onUpload = async (values, { setSubmitting }) => {
     const formData = new FormData();
     formData.append("gameTitle", values.gameTitle);
-    formData.append("category", values.category);
-    formData.append("tags", values.tags);
-    formData.append("description", values.description);
-    formData.append("controls", values.controls);
-    formData.append("googlePlay", values.googlePlay);
-    formData.append("iOsApp", values.iOsApp);
-    formData.append("steamLink", values.steamLink);
-    formData.append("gameType", values.gameType);
-    landscapeFile && formData.append("landscapeFile", landscapeFile[0]);
-    portraitFile && formData.append("portraitFile", portraitFile[0]);
-    squareFile && formData.append("squareFile", squareFile[0]);
+    formData.append("gameSubTitle", values.gameSubTitle);
+    formData.append("gameSlug", values.gameSlug);
+    mainImageFile && formData.append("mainImageFile", mainImageFile[0]);
+    secondImageFile && formData.append("secondImageFile", secondImageFile[0]);
     fileUpload.map((file, index) => {
       const data = ".data";
       const wasm = ".wasm";
@@ -83,15 +74,26 @@ export default function GameUpload() {
       console.log("Error submitting form:", e);
     }
   };
+  const checkMainImage = mainImageFile && mainImageFile?.length > 0;
+  const checkSecondImage = secondImageFile && secondImageFile?.length > 0;
+
+  const handleMainImage = (e) => {
+    setMainImageFile(e);
+    setMainImageUrl(URL.createObjectURL(e[0]));
+  };
+
+  const handleSecondImage = (e) => {
+    setSecondImageFile(e);
+    setSecondImageUrl(URL.createObjectURL(e[0]));
+  };
 
   return (
     <Formik
       initialValues={{
         ...initialValues,
         fileUpload,
-        landscapeFile,
-        portraitFile,
-        squareFile,
+        mainImageFile,
+        secondImageFile,
       }}
       onSubmit={onUpload}
     >
@@ -109,11 +111,11 @@ export default function GameUpload() {
             <h2 className={classes.pageTitle}>Game details</h2>
             <Stack>
               <div>
-                <div className={classes.fieldName}>Game title *</div>
+                <div className={classes.fieldName}>Game Title *</div>
                 <TextField
                   name="gameTitle"
                   variant="outlined"
-                  sx={{ width: 500 }}
+                  sx={{ width: "50%" }}
                   id="gameTitle"
                   required
                   value={formik.values.gameTitle}
@@ -132,185 +134,51 @@ export default function GameUpload() {
                 </div>
               </div>
               <div>
-                <div className={classes.fieldName}>Category *</div>
-                <Autocomplete
-                  sx={{ width: 500 }}
-                  options={AppConstants.categories}
-                  onChange={(event, value) =>
-                    (formik.values.category = value || "")
+                <div className={classes.fieldName}>Game Subtitle *</div>
+                <TextField
+                  name="gameSubTitle"
+                  variant="outlined"
+                  sx={{ width: "50%" }}
+                  id="gameSubTitle"
+                  required
+                  value={formik.values.gameSubTitle}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.gameSubTitle &&
+                    Boolean(formik.errors.gameSubTitle)
                   }
-                  renderInput={(params) => (
-                    <TextField
-                      name="category"
-                      required
-                      value={formik.values.category}
-                      onBlur={formik.handleBlur}
-                      error={
-                        formik.touched.category &&
-                        Boolean(formik.errors.category)
-                      }
-                      helperText={
-                        formik.touched.category && formik.errors.category
-                      }
-                      {...params}
-                    />
-                  )}
+                  helperText={
+                    formik.touched.gameSubTitle && formik.errors.gameSubTitle
+                  }
                 />
+                <div className={classes.description2}>
+                  Must be the same as the title that appears in your game - Max
+                  length is 40 chars.
+                </div>
               </div>
               <div>
-                <div className={classes.alignedFlexBox}>
-                  <div className={classes.fieldName}>Tags *</div>
-                  <div className={classes.description}>MAX. 5</div>
-                </div>
-                <Autocomplete
-                  onChange={(event, value) =>
-                    (formik.values.tags = value || "")
+                <div className={classes.fieldName}>Game Slug *</div>
+                <TextField
+                  name="gameSlug"
+                  variant="outlined"
+                  sx={{ width: "50%" }}
+                  id="gameSlug"
+                  required
+                  value={formik.values.gameSlug}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.gameSlug && Boolean(formik.errors.gameSlug)
                   }
-                  sx={{ width: 500 }}
-                  options={AppConstants.tags}
-                  renderInput={(params) => (
-                    <TextField
-                      name="tags"
-                      required
-                      value={formik.values.tags}
-                      onBlur={formik.handleBlur}
-                      error={formik.touched.tags && Boolean(formik.errors.tags)}
-                      helperText={formik.touched.tags && formik.errors.tags}
-                      {...params}
-                    />
-                  )}
+                  helperText={formik.touched.gameSlug && formik.errors.gameSlug}
                 />
+                <div className={classes.description2}>
+                  Must be the same as the title that appears in your game - Max
+                  length is 40 chars.
+                </div>
               </div>
-              <div className={classes.alignedFlexBox}>
-                <div className={classes.fieldName}>Description *</div>
-                <div className={classes.description}>NO HTML ALLOWED</div>
-              </div>
-              <TextareaAutosize
-                name="description"
-                required
-                value={formik.values.description}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                style={{
-                  margin: 0,
-                  height: 200,
-                  backgroundColor: "#00000000",
-                  color: "rgb(202, 196, 196)",
-                  border: "1px solid white",
-                  borderRadius: 10,
-                  padding: 15,
-                }}
-              />
-              <div className={classes.fieldName}>Controls *</div>
-              <TextareaAutosize
-                name="controls"
-                required
-                value={formik.values.controls}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                style={{
-                  margin: 0,
-                  height: 200,
-                  backgroundColor: "#00000000",
-                  color: "rgb(202, 196, 196)",
-                  border: "1px solid white",
-                  borderRadius: 10,
-                  padding: 15,
-                }}
-              />
-
-              <Stack direction="row" justifyContent="space-between">
-                <Stack direction="column" width={300}>
-                  <div className={classes.fieldName}>
-                    Google Play Store link
-                  </div>
-                  <TextField
-                    name="googlePlay"
-                    value={formik.values.googlePlay}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.googlePlay &&
-                      Boolean(formik.errors.googlePlay)
-                    }
-                    helperText={
-                      formik.touched.googlePlay && formik.errors.googlePlay
-                    }
-                    variant="outlined"
-                  />
-                </Stack>
-                <Stack direction="column" width={300}>
-                  <div className={classes.fieldName}>iOS App Store link</div>
-                  <TextField
-                    name="iOsApp"
-                    value={formik.values.iOsApp}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.iOsApp && Boolean(formik.errors.iOsApp)
-                    }
-                    helperText={formik.touched.iOsApp && formik.errors.iOsApp}
-                    variant="outlined"
-                  />
-                </Stack>
-                <Stack direction="column" width={300}>
-                  <div className={classes.fieldName}>Steam link</div>
-                  <TextField
-                    name="steamLink"
-                    value={formik.values.steamLink}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.steamLink &&
-                      Boolean(formik.errors.steamLink)
-                    }
-                    helperText={
-                      formik.touched.steamLink && formik.errors.steamLink
-                    }
-                    variant="outlined"
-                  />
-                </Stack>
-              </Stack>
             </Stack>
-          </Paper>
-          <Paper
-            sx={{
-              marginTop: 3,
-              padding: 5,
-              backgroundColor: "rgba(54, 52, 52, 0.744)",
-              color: "rgb(202, 196, 196)",
-            }}
-          >
-            <h2 className={classes.pageTitle}>Game Type</h2>
-            <div>
-              <Alert variant="filled" severity="warning">
-                Please read our CrazyGames documentation carefully before
-                submitting a game!
-              </Alert>
-              <div className={classes.fieldName}>Game Type *</div>
-              <Autocomplete
-                sx={{ width: 500 }}
-                onChange={(event, value) =>
-                  (formik.values.gameType = value || "")
-                }
-                options={AppConstants.gameTypes}
-                renderInput={(params) => (
-                  <TextField
-                    name="gameType"
-                    required
-                    value={formik.values.gameType}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.gameType && Boolean(formik.errors.gameType)
-                    }
-                    helperText={
-                      formik.touched.gameType && formik.errors.gameType
-                    }
-                    {...params}
-                  />
-                )}
-              />
-            </div>
           </Paper>
           <Paper
             sx={{
@@ -338,47 +206,98 @@ export default function GameUpload() {
               />
             </div>
             <h2 className={classes.fieldName}>Cover Images *</h2>
+            <Alert variant="filled" severity="warning">
+              Please read our CrazyGames documentation carefully before
+              submitting a game!
+            </Alert>
             <div className={classes.description2}>
               We will use the cover image to show your game on our pages
               (homepage, category pages, …). Make it appealing and professional
               looking! A good cover image will make the users want to play your
-              game. Please provide 3 sizes for your game cover : landscape
-              (1920x1080) portrait (800x1200) and square (800x800). For more
-              information, make sure to read our{" "}
+              game. For more information, make sure to read our{" "}
               <a href="#" className={classes.alink}>
                 guidelines for game covers.
               </a>
             </div>
-            <Stack direction="row" sx={{ justifyContent: "space-between" }}>
-              <div style={{ width: "45%" }}>
-                <div className={classes.fieldName}>
-                  Landscape 16:9 (1920x1080)
+            <Stack
+              direction="column"
+              sx={{
+                justifyContent: checkMainImage ? "space-between" : "center",
+              }}
+            >
+              <div className={classes.uploadBox}>
+                <div style={{ width: "45%" }}>
+                  <div className={classes.fieldName}>Main Image * (*.png)</div>
+                  <FileUpload
+                    title="Main Image"
+                    fieldName="mainImageFile"
+                    height={270}
+                    setFieldValue={handleMainImage}
+                  />
                 </div>
-                <FileUpload
-                  fieldName="landscapeFile"
-                  title="Landscape"
-                  height={280}
-                  setFieldValue={setLandscapeFile}
-                />
+                {checkMainImage && (
+                  <div className={classes.previewBox}>
+                    <div className={classes.firstButton}>
+                      <FortniteButton
+                        color="blue"
+                        type="secondary"
+                        text="New"
+                        subtext="New"
+                      >
+                        <FortniteButtonImage
+                          top="auto"
+                          bottom="0"
+                          src={mainImageUrl}
+                        />
+                      </FortniteButton>
+                    </div>
+                  </div>
+                )}
               </div>
-              <div style={{ width: "25%" }}>
-                <div className={classes.fieldName}>Portrait 2:3 (800x1200)</div>
-                <FileUpload
-                  title="Portrait"
-                  fieldName="portraitFile"
-                  height={350}
-                  setFieldValue={setPortraitFile}
-                />
-              </div>
-              <div style={{ width: "25%" }}>
-                <div className={classes.fieldName}>Square 1:1 (800x800)</div>
-                <FileUpload
-                  title="Square"
-                  fieldName="squareFile"
-                  height={200}
-                  setFieldValue={setSquareFile}
-                />
-              </div>
+              {checkMainImage && (
+                <div className={classes.uploadBox}>
+                  <div style={{ width: "45%" }}>
+                    <div className={classes.fieldName}>
+                      Secondary Image (*.png)
+                    </div>
+                    <FileUpload
+                      title="Second Image"
+                      fieldName="secondImageFile"
+                      height={270}
+                      setFieldValue={handleSecondImage}
+                    />
+                  </div>
+                  {checkMainImage && checkSecondImage && (
+                    <div className={classes.previewBox}>
+                      <div className={classes.secondButton}>
+                        <FortniteButton
+                          color="yellow"
+                          type="secondary"
+                          text="New"
+                          subtext="New"
+                        >
+                          <FortniteButtonImage
+                            src={secondImageUrl}
+                            width="120%"
+                            height="95%"
+                            right="5%"
+                            top="auto"
+                            bottom="-40px"
+                          />
+                          <FortniteButtonImage
+                            src={mainImageUrl}
+                            width="130%"
+                            height="90%"
+                            left="7%"
+                            top="auto"
+                            bottom="0"
+                          />
+                        </FortniteButton>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </Stack>
             <Stack direction="row" sx={{ justifyContent: "end" }}>
               <div className={classes.buttonline}>

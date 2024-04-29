@@ -18,6 +18,8 @@
   font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 900;
   font-size: 24px;
+  text-align: center;
+  font-style: italic;
   padding-top: 3rem;
 }
 .fieldName {
@@ -29,6 +31,7 @@
   margin-bottom: 10px !important;
 }
 .pageTitle {
+  font-style: italic;
   font-family: Nunito, Arial, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 24px;
@@ -105,4 +108,24 @@ button[disabled] {
 [aria-disabled="true"] {
   border: none;
   outline: none;
+}
+.uploadBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.previewBox {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.firstButton {
+  width: 40%;
+  height: 270px;
+}
+.secondButton {
+  width: 50%;
+  height: 340px;
 }

@@ -179,6 +179,8 @@ const AppConstants = {
     { fileType: "Contrail", image: "images/inventory/empty.png" },
     { fileType: "Aura", image: "images/inventory/empty.png" },
   ],
+  cardTemplate: ["FortniteButton"],
+  backgroundColor: ["blue", "yellow"],
   baseUrl: import.meta.env.VITE_APP_BASE,
   uploadUrl: import.meta.env.VITE_UPLOAD_FILES,
   getFilesUrl: import.meta.env.VITE_GET_FILES,
