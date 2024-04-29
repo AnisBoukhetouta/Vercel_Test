@@ -14,6 +14,8 @@ import { CloudUpload } from "@mui/icons-material";
 import HelpIcon from "@mui/icons-material/Help";
 import classes from "./upload.module.css";
 import axios from "axios";
+import FortniteButton from "../../components/forniteButton/FortniteButton";
+import FortniteButtonImage from "../../components/forniteButton/FortniteButtonImage";
 
 const initialValues = {
   gameTitle: "",
@@ -71,6 +73,10 @@ export default function GameUpload() {
     }
   };
   const checkMainImage = mainImageFile && mainImageFile?.length > 0;
+  const checkSecondImage = secondImageFile && secondImageFile?.length > 0;
+
+
+
   return (
     <Formik
       initialValues={{
@@ -219,7 +225,24 @@ export default function GameUpload() {
                     setFieldValue={setMainImageFile}
                   />
                 </div>
-                <div className={classes.previewBox}></div>
+                {checkMainImage && (
+                  <div className={classes.previewBox}>
+                    <div className={classes.firstButton}>
+                      <FortniteButton
+                        color="blue"
+                        type="secondary"
+                        text="New"
+                        subtext="New"
+                      >
+                        <FortniteButtonImage
+                          top="auto"
+                          bottom="0"
+                          src="assets/images/character.webp"
+                        />
+                      </FortniteButton>
+                    </div>
+                  </div>
+                )}
               </div>
               {checkMainImage && (
                 <div className={classes.uploadBox}>
@@ -234,7 +257,35 @@ export default function GameUpload() {
                       setFieldValue={setSecondImageFile}
                     />
                   </div>
-                  <div className={classes.previewBox}></div>
+                  {checkSecondImage && (
+                    <div className={classes.previewBox}>
+                      <div className={classes.secondButton}>
+                        <FortniteButton
+                          color="yellow"
+                          type="secondary"
+                          text="New"
+                          subtext="New"
+                        >
+                          <FortniteButtonImage
+                            src="assets/images/evie.webp"
+                            width="120%"
+                            height="95%"
+                            right="5%"
+                            top="auto"
+                            bottom="-40px"
+                          />
+                          <FortniteButtonImage
+                            src="assets/images/character.webp"
+                            width="130%"
+                            height="90%"
+                            left="7%"
+                            top="auto"
+                            bottom="0"
+                          />
+                        </FortniteButton>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </Stack>

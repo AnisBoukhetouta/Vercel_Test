@@ -118,5 +118,14 @@ button[disabled] {
 .previewBox {
   width: 50%;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+.firstButton {
+  width: 40%;
+  height: 200px;
+}
+.secondButton {
+  width: 50%;
+  height: 270px;
 }
