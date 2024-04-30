@@ -10,8 +10,8 @@ const SaveNaveBar = ({handlePrev} : props) => {
   return (
     <ul className={classes.navlinks}>
       <Prev handlePrev={handlePrev}/>
-      {charactor.map((item) => (
-        <button className={classes.navButton}>
+      {charactor.map((item, index) => (
+        <button key={index} className={classes.navButton}>
           {item.title.toLocaleUpperCase()}
           <span className={classes.dot}></span>
         </button>

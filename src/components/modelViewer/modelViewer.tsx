@@ -10,7 +10,7 @@ interface Props {
 }
 
 function ModelViewer({ src }: Props) {
-  console.log("~~~~~~~~~~", src);
+  console.log("~~~Model~~~", src);
   useLoader.clear(GLTFLoader, src ?? "./models/character0.glb")
   
   function Model() {
