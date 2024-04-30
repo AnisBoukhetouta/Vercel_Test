@@ -84,5 +84,6 @@ const newcourses = [
   { id: 3, color: "red" },
   { id: 4, color: "red" },
   { id: 5, color: "red" },
+  { id: 6, color: "red" },
 ];
 export default CustomizeForm;

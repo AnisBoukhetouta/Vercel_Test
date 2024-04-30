@@ -11,6 +11,7 @@ import Playground from "../../pages/playground/playground";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
+import Courses from "../../pages/courses/index";
 import { gsap } from "gsap";
 import { ScrollControls } from "@react-three/drei";
 
@@ -83,7 +84,10 @@ export default function ModelBox() {
     <>
       {!view && (
         <GameLayout>
-          <div className={classes.wheel} onWheel={handleWheel}>
+          <div
+            className={classes.wheel}
+            onWheel={index < 10 ? handleWheel : () => {}}
+          >
             <Canvas
               camera={{ position: [1, 1, 6.5], fov: 50 }}
               className={classes.modelBox}
@@ -144,12 +148,12 @@ export default function ModelBox() {
                     : classes.topGamesShow
                 }
               >
-                {index < 10 && (
+                {/* {index < 10 && (
                   <div className={classes.lobbyheader}>
                     <h1>ZERO BUILD - BATTLE ROYALE</h1>
                     <h3>YOUR CURRENT LOBBY</h3>
                   </div>
-                )}
+                )} */}
                 <div
                   style={{
                     height: "100vh",
@@ -157,11 +161,7 @@ export default function ModelBox() {
                     scrollbarWidth: "none",
                   }}
                 >
-                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
-                  <TopGames items={fetchedData || []} setItem={handleSetItem} />
+                  <Courses />
                 </div>
               </div>
             </div>
