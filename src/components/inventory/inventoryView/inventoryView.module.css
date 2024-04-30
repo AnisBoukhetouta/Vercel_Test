@@ -157,6 +157,7 @@
 }
 .modelViewerContainer {
   width: 40vw;
+  height: 90vh;
 }
 @keyframes flow {
   0% {

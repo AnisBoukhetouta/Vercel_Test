@@ -11,10 +11,10 @@ interface Props {
 
 function ModelViewer({ src }: Props) {
   console.log("~~~Model~~~", src);
-  useLoader.clear(GLTFLoader, src ?? "./models/character0.glb")
+  useLoader.clear(GLTFLoader, "./models/character0.glb")
   
   function Model() {
-    const gltf = useLoader(GLTFLoader, src ?? "./models/character0.glb");
+    const gltf = useLoader(GLTFLoader, "./models/character0.glb");
     const { camera } = useThree();
     const { animations, scene } = gltf;
     const mixer = new THREE.AnimationMixer(scene);

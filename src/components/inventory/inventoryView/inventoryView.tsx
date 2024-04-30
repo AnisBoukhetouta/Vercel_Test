@@ -104,11 +104,11 @@ export default function InventoryView({ handleAdd }: props) {
               OPTIONS
             </button>
           </div>
-          {glbFile.length > 0 && (
+          {/* {glbFile.length > 0 && ( */}
             <div className={classes.modelViewerContainer}>
               <ModelViewer src={glbFile} />
             </div>
-          )}
+          {/* )} */}
         </div>
       )}
     </div>
