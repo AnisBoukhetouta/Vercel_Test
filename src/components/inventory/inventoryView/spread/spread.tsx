@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./characterView.module.css";
+import classes from "./spread.module.css";
 
 interface props {
   handleAdd?: () => void;
@@ -16,14 +16,14 @@ const dots = () => {
   );
 };
 
-const CardMore = ({ handleAdd }: props) => {
+const Spread = ({ handleAdd }: props) => {
   return (
     <>
-      <div className={classes.cardMore} onClick={handleAdd}>
+      <div className={classes.spread} onClick={handleAdd}>
         {dots()}
       </div>
     </>
   );
 };
 
-export default CardMore;
+export default Spread;
