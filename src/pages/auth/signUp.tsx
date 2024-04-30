@@ -48,6 +48,7 @@ const Signup = () => {
       const userInfo = {
         userName,
         email: email,
+        password: password,
         creationTime,
         lastSignInTime,
         uid,
@@ -66,7 +67,6 @@ const Signup = () => {
       navigate("/regist/login");
     } catch (error) {
       console.error("Error signing up:", error);
-      // Handle error here, e.g., show error message to user
     }
   };
 
@@ -74,12 +74,9 @@ const Signup = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      // User signed in successfully
-      // Redirect or perform additional actions as needed
       console.log("SUCCESSFUL");
     } catch (error) {
       console.error("Error signing in with Google:", error);
-      // Handle error here, e.g., show error message to user
     }
   };
 

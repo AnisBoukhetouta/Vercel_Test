@@ -24,7 +24,7 @@ const initialValues = {
   mainImageFile: null,
   secondImageFile: null,
 };
-export default function GameUpload() {
+export default function GameUpload({ uid }) {
   const [fileUpload, setFileUpload] = React.useState<File[]>([]);
   const [mainImageFile, setMainImageFile] = React.useState<File[] | null>(null);
   const [secondImageFile, setSecondImageFile] = React.useState<File[] | null>(
@@ -36,6 +36,7 @@ export default function GameUpload() {
 
   const onUpload = async (values, { setSubmitting }) => {
     const formData = new FormData();
+    formData.append("userId", uid);
     formData.append("gameTitle", values.gameTitle);
     formData.append("gameSubTitle", values.gameSubTitle);
     formData.append("gameSlug", values.gameSlug);

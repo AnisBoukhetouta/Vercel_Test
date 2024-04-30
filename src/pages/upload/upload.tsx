@@ -57,7 +57,7 @@ export default function Upload() {
           />
         </div>
       </div>
-      {uploadType == "PwnIQ_Game" && <GameUpload />}
+      {uploadType == "PwnIQ_Game" && <GameUpload uid={uid}/>}
       {uploadType === "Character" && <CharacterUpload uid={uid} />}
     </Container>
   );
