@@ -1,3 +1,6 @@
+import { AuthGuard } from "../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../components/dashboard/dashboard-layout";
+
 const Play = () => {
   return (
     <div>
@@ -5,3 +8,10 @@ const Play = () => {
     </div>
   );
 };
+Play.getLayout = (page) => (
+  <AuthGuard>
+    <DashboardLayout>{page}</DashboardLayout>
+  </AuthGuard>
+);
+
+export default Play;
