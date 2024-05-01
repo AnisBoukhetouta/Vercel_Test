@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Canvas } from "@react-three/fiber";
 import Model from "./model";
 import classes from "./modelBox.module.css";
-import TopGames, { Data, Item } from "../topGames/topGames";
 import GameCard from "../gameCards/gameCard";
 import AppConstants from "../../AppConstants";
 import { LinearProgress } from "@mui/material";
@@ -14,18 +13,19 @@ import Courses from "../../pages/courses/courses";
 import { Game } from "../../@types/dataTypes";
 
 export default function ModelBox() {
-  const [fetchedData, setFetchedData] = React.useState<Item[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [view, setView] = useState<boolean>(false);
-  const [item, setItem] = useState<any>();
-  const [index, setIndex] = useState<number>(0);
+  const [fetchedData, setFetchedData] = React.useState<Game[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [view, setView] = React.useState<boolean>(false);
+  const [item, setItem] = React.useState<Game>();
+  const [index, setIndex] = React.useState<number>(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
+    console.log("~~~~~~~~~~~~~", item);
     if (item) {
       setLoading(true);
-      toDataURL(item.imageOver, function (dataUrl) {
-        setLoading(false);
-      });
+      // toDataURL(item.imageOver, function (dataUrl) {
+      setLoading(false);
+      // });
     }
   }, [item]);
 
@@ -35,15 +35,6 @@ export default function ModelBox() {
         await axios
           .get(AppConstants.getFilesUrl)
           .then((response) => {
-            // setFetchedData((prevStore) => {
-            //   return [
-            //     ...prevStore,
-            //     ...response.data.map((item) => ({
-            //       _id: item._id,
-            //       imageOver: `${AppConstants.baseUrl}/${item.files[0].destination}/${item.files[2].fileName}`,
-            //     })),
-            //   ];
-            // });
             console.log("FetchedData~~~~~~", response.data);
           })
           .catch((error) => console.log(error));
@@ -62,7 +53,6 @@ export default function ModelBox() {
   };
 
   const handleSetItem = (e: Game) => {
-    console.log("~~~~~~~~", e);
     setItem(e);
     setIndex(0);
   };
@@ -80,13 +70,8 @@ export default function ModelBox() {
               className={classes.modelBox}
               style={{
                 position: "relative",
-                backgroundImage: `url(${
-                  item
-                    ? item.imageOver
-                    : fetchedData.length
-                    ? fetchedData[0].imageOver
-                    : ""
-                })`,
+                background:
+                  "radial-gradient(rgb(0, 166, 255), rgb(34, 51, 216))",
                 backgroundSize: "100% 100%",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -99,12 +84,9 @@ export default function ModelBox() {
             {loading && (
               <LinearProgress className={classes.progressbar} color="error" />
             )}
-            {fetchedData.length && (
-              <div className={classes.miniCard}>
-                <GameCard item={item ?? fetchedData[0]} link={true} />
-              </div>
-            )}
-
+            <div className={classes.miniCard}>
+              <GameCard item={fetchedData[0]} link={true} />
+            </div>
             <div
               className={
                 index < 5 ? classes.startCard : classes.startCardRemove
@@ -117,7 +99,7 @@ export default function ModelBox() {
                 <button
                   className={classes.lobbyHeaderButton}
                   type="button"
-                  onClick={() => setView(true)}
+                  onClick={() => item && setView(true)}
                 >
                   RANKED: OFF
                   <br />
@@ -152,11 +134,11 @@ export default function ModelBox() {
           </div>
         </GameLayout>
       )}
-      {!!view && (
+      {/*!!view && (
         <div className={classes.playground}>
           <Playground item={!!item ? item._id : fetchedData[0]._id} />
         </div>
-      )}
+      ) */}
     </>
   );
 }

@@ -52,7 +52,7 @@ export default function GameCard({ item, onSetItem, link }: Props) {
           variant="rounded"
           width={235}
           sx={{ bgcolor: "grey.900" }}
-          height={!link ? 198 : 120}
+          height={!link ? 300 : 150}
         />
       )}
     </div>

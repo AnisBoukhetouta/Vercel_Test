@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import {
   Alert,
   Box,
-  Container,
-  LinearProgress,
   Typography,
 } from "@mui/material";
 import { Unity, UnityConfig, useUnityContext } from "react-unity-webgl";
@@ -15,6 +13,13 @@ import { getAuth } from "firebase/auth";
 import AppConstants from "../../AppConstants";
 
 const UnityWrapper = ({ unityConfig }) => {
+
+  useEffect(() => {
+    const auth = getAuth();
+    const dataToSend = auth.currentUser?.displayName ?? `Noob00${Math.floor(Math.random() * 999)}`;
+    sendDataToUnity(dataToSend);
+  });
+  
   const navigate = useNavigate();
   const [completed, setCompleted] = React.useState(false);
   const [view, setView] = React.useState(false);
@@ -48,12 +53,6 @@ const UnityWrapper = ({ unityConfig }) => {
       unityContext.sendMessage("RoomController", "ReceiveDataFromWeb", userName);
     }
   };
-
-  useEffect(() => {
-    const auth = getAuth();
-    const dataToSend = auth.currentUser?.displayName ?? `Noob00${Math.floor(Math.random() * 999)}`;
-    sendDataToUnity(dataToSend);
-  });
 
   return (
     <div className={classes.container}>
