@@ -57,7 +57,11 @@ export const DashboardHorizontalNavbar = (props) => {
           >
             <MenuIcon fontSize="small" />
           </IconButton>
-
+          <Box>
+            <NextLink href="/home" passHref>
+              <a className={styles.homeNav}>PWNIQ</a>
+            </NextLink>
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box>
             <NextLink href="/play" passHref>

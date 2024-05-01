@@ -263,7 +263,7 @@ export const DashboardNavbar = (props) => {
             </NextLink>
           </Box>
           <Box>
-            <NextLink href="/" passHref>
+            <NextLink href="/home" passHref>
               <a className={styles.homeNav}>PWNIQ</a>
             </NextLink>
           </Box>
