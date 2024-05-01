@@ -8,16 +8,13 @@ import AppConstants from "../../AppConstants";
 import { LinearProgress } from "@mui/material";
 import { toDataURL } from "../imageCach";
 import Playground from "../../pages/playground/playground";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
-import Courses from "../../pages/courses/index";
-import { gsap } from "gsap";
-import { ScrollControls } from "@react-three/drei";
+import Courses from "../../pages/courses/courses";
+import { Game } from "../../@types/dataTypes";
 
 export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Item[]>([]);
-  // const fetchedData: Item[] = [];
   const [loading, setLoading] = useState<boolean>(false);
   const [view, setView] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
@@ -38,16 +35,15 @@ export default function ModelBox() {
         await axios
           .get(AppConstants.getFilesUrl)
           .then((response) => {
-            setFetchedData((prevStore) => {
-              // Use the previous state (prevStore) to update the state
-              return [
-                ...prevStore,
-                ...response.data.map((item) => ({
-                  _id: item._id,
-                  imageOver: `${AppConstants.baseUrl}/${item.files[0].destination}/${item.files[2].fileName}`,
-                })),
-              ];
-            });
+            // setFetchedData((prevStore) => {
+            //   return [
+            //     ...prevStore,
+            //     ...response.data.map((item) => ({
+            //       _id: item._id,
+            //       imageOver: `${AppConstants.baseUrl}/${item.files[0].destination}/${item.files[2].fileName}`,
+            //     })),
+            //   ];
+            // });
             console.log("FetchedData~~~~~~", response.data);
           })
           .catch((error) => console.log(error));
@@ -58,16 +54,6 @@ export default function ModelBox() {
     fetch();
   }, []);
 
-  // const app = React.useRef<HTMLDivElement>(null);
-  // const ref = React.useRef<HTMLDivElement>(null);
-  // useEffect(() => {
-  //   // gsap.to(app.current, { rotate: 360, duration: 5 })
-  //     // gsap.to(app.current, { rotate: 360, duration: 1 })
-  //     gsap.fromTo(ref.current, { y: 0}, { y: -1000, duration: 1, scrollTrigger: {
-  //       tirgger: app.current
-  //     }})
-  // }, [])
-
   const handleWheel = (e) => {
     const { deltaY } = e;
     if (deltaY < 0) {
@@ -75,7 +61,8 @@ export default function ModelBox() {
     } else setIndex(index <= -5 ? -5 : index - 1);
   };
 
-  const handleSetItem = (e) => {
+  const handleSetItem = (e: Game) => {
+    console.log("~~~~~~~~", e);
     setItem(e);
     setIndex(0);
   };
@@ -148,12 +135,6 @@ export default function ModelBox() {
                     : classes.topGamesShow
                 }
               >
-                {/* {index < 10 && (
-                  <div className={classes.lobbyheader}>
-                    <h1>ZERO BUILD - BATTLE ROYALE</h1>
-                    <h3>YOUR CURRENT LOBBY</h3>
-                  </div>
-                )} */}
                 <div
                   style={{
                     height: "100vh",
@@ -161,7 +142,7 @@ export default function ModelBox() {
                     scrollbarWidth: "none",
                   }}
                 >
-                  <Courses />
+                  <Courses onSet={handleSetItem} />
                 </div>
               </div>
             </div>

@@ -9,15 +9,6 @@
   }
 }
 
-.customizeBody {
-  width: 100%;
-  height: 100%;
-}
-.cardRow {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
 .name {
   font-size: 20px;
   font-weight: 600;
@@ -31,9 +22,6 @@
   margin: 10px;
   width: 100%;
   height: 244px;
-}
-.newCourses {
-  width: 100%;
 }
 
 .buttonCSS {
@@ -57,13 +45,6 @@
   clip-path: inset(0);
   transition: clip-path 150ms linear;
   cursor: pointer;
-}
-
-.cardText {
-  font-size: 30px;
-  color: white;
-  margin: 10px;
-  font-family: cursive;
 }
 
 .buttonColor {

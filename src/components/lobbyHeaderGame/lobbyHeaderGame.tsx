@@ -1,38 +1,12 @@
 import React, { useEffect } from "react";
 import classes from "./lobbyHeaderGame.module.css";
 import axios from "axios";
-import GameCards from "../gameCards/gameCards";
 import AppConstants from "../../AppConstants";
-
-interface Item {
-  _id: string;
-  imageOver: string;
-}
-
-export interface Data {
-  _id: string;
-  files: {
-    category: string;
-    controls: string;
-    description: string;
-    destination: string;
-    enCoding: string;
-    fieldName: string;
-    fileName: string;
-    gameTitle: string;
-    gameType: string;
-    mimeType: string;
-    originalName: string;
-    path: string;
-    size: string;
-    tags: string;
-    __v: string;
-    _id: string;
-  }[];
-}
+import { Game } from "../../@types/dataTypes";
+import FortGameCards from "../fortGameCards/fortGameCards";
 
 export default function LobbyHeaderGame() {
-  const [fetchedData, setFetchedData] = React.useState<Data[]>([]);
+  const [fetchedData, setFetchedData] = React.useState<Game[]>([]);
 
   useEffect(() => {
     const fetch = async () => {
@@ -41,14 +15,7 @@ export default function LobbyHeaderGame() {
           .get(AppConstants.getFilesUrl)
           .then((response) => {
             setFetchedData((prevState) => {
-              return [
-                ...prevState,
-                ...response.data.map((data) => ({
-                  _id: data._id,
-                  // imageOver: data.files[0].path,
-                  imageOver: `${AppConstants.baseUrl}/${data.files[0].destination}/${data.files[2].fileName}`,
-                })),
-              ];
+              return [...prevState, ...response.data.map((data) => data)];
             });
             console.log("FetchedData~~~~~~", response.data);
           })
@@ -64,7 +31,7 @@ export default function LobbyHeaderGame() {
     <div className={classes.lobodyGame}>
       <div className={classes.topGames}>
         <div className={classes.title}>BY EPIC</div>
-        <GameCards cardData={fetchedData} />
+        <FortGameCards gameDatas={fetchedData} />
       </div>
     </div>
   );

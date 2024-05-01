@@ -24,8 +24,6 @@ class FortniteButton extends React.Component<Props> {
       const thiz = this.buttonRef.current;
       thiz.addEventListener("mouseover", this.mouseOverListener);
       thiz.addEventListener("focus", this.focusListener);
-      thiz.addEventListener("mouseout", this.mouseOutListener);
-      thiz.addEventListener("blur", this.blurListener);
     }
   }
 
@@ -34,40 +32,15 @@ class FortniteButton extends React.Component<Props> {
       const thiz = this.buttonRef.current;
       thiz.removeEventListener("mouseover", this.mouseOverListener);
       thiz.removeEventListener("focus", this.focusListener);
-      thiz.removeEventListener("mouseout", this.mouseOutListener);
-      thiz.removeEventListener("blur", this.blurListener);
     }
   }
 
   mouseOverListener = () => {
     this.playFlashAnimation();
-    this.toggleHoverClassOnChildren();
   };
 
   focusListener = () => {
     this.playFlashAnimation();
-    this.toggleFocusClassOnChildren();
-  };
-
-  mouseOutListener = () => {
-    this.toggleHoverClassOnChildren();
-  };
-
-  blurListener = () => {
-    this.toggleFocusClassOnChildren();
-  };
-
-  toggleHoverClassOnChildren = () => {
-    
-    // Array.from(this.children).forEach((child) => {
-    //   child.classList.toggle("hovered");
-    // });
-  };
-
-  toggleFocusClassOnChildren = () => {
-    // Array.from(this.children).forEach((child) => {
-    //   child.classList.toggle("focused");
-    // });
   };
 
   playFlashAnimation = () => {

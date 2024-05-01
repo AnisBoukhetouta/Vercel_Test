@@ -1,12 +1,34 @@
 import React from "react";
 import classes from "./index.module.css";
-import CardButton from "./cardButton";
 import Button from "./Button";
 import CustomizButton from "./CustomizButton";
-import FortniteButton from "../forniteButton/FortniteButton";
-import FortniteButtonImage from "../forniteButton/FortniteButtonImage";
+import FortGameCards from "../fortGameCards/fortGameCards";
+import axios from "axios";
+import AppConstants from "../../AppConstants";
+import { Game } from "../../@types/dataTypes";
 
 const CustomizeForm = () => {
+  const [fetchedData, setFetchedData] = React.useState<Game[]>([]);
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      try {
+        await axios
+          .get(AppConstants.getFilesUrl)
+          .then((response) => {
+            setFetchedData((prevState) => {
+              return [...prevState, ...response.data.map((data) => data)];
+            });
+            console.log("FetchedData~~~~~~", response.data);
+          })
+          .catch((error) => console.log(error));
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetch();
+  }, []);
+
   return (
     <div className={classes.customize}>
       <Button />
@@ -15,55 +37,19 @@ const CustomizeForm = () => {
         <div className={classes.newCourses}>
           <span className={classes.cardText}>New Courses</span>
           <div className={classes.cardRow}>
-            {(newcourses || []).map((item) => (
-              <div key={item.id} className={classes.card}>
-                {/* <CardButton /> */}
-                <FortniteButton
-                  color="blue"
-                  type="secondary"
-                  text="New"
-                  subtext="New"
-                >
-                  <FortniteButtonImage top="auto" bottom="0" src="assets/images/character.webp" />
-                </FortniteButton>
-              </div>
-            ))}
+            <FortGameCards gameDatas={fetchedData} />
           </div>
         </div>
         <div className={classes.newCourses}>
           <span className={classes.cardText}>Popular Courses</span>
           <div className={classes.cardRow}>
-            {(newcourses || []).map((item) => (
-              <div key={item.id} className={classes.card}>
-                {/* <CardButton /> */}
-                <FortniteButton
-                  color="yellow"
-                  type="secondary"
-                  text="New"
-                  subtext="New"
-                >
-                  <FortniteButtonImage top="auto" bottom="0" src="assets/images/character.webp" />
-                </FortniteButton>
-              </div>
-            ))}
+            <FortGameCards gameDatas={fetchedData} />
           </div>
         </div>
         <div className={classes.newCourses}>
           <span className={classes.cardText}>Trending Courses</span>
           <div className={classes.cardRow}>
-            {(newcourses || []).map((item) => (
-              <div key={item.id} className={classes.card}>
-                {/* <CardButton /> */}
-                <FortniteButton
-                  color="blue"
-                  type="secondary"
-                  text="New"
-                  subtext="New"
-                >
-                  <FortniteButtonImage top="auto" bottom="0" src="assets/images/character.webp" />
-                </FortniteButton>
-              </div>
-            ))}
+            <FortGameCards gameDatas={fetchedData} />
           </div>
         </div>
       </div>

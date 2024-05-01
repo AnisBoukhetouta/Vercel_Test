@@ -1,13 +1,6 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import {
-  Alert,
-  Autocomplete,
-  Paper,
-  Stack,
-  TextField,
-  TextareaAutosize,
-} from "@mui/material";
+import { Alert, Paper, Stack, TextField } from "@mui/material";
 import AppConstants from "../../AppConstants";
 import FileUpload from "../../components/fileUpload/fileUpload";
 import { CloudUpload } from "@mui/icons-material";
@@ -40,6 +33,9 @@ export default function GameUpload({ uid }) {
     formData.append("gameTitle", values.gameTitle);
     formData.append("gameSubTitle", values.gameSubTitle);
     formData.append("gameSlug", values.gameSlug);
+    secondImageFile
+      ? formData.append("cardType", "two")
+      : formData.append("cardType", "one");
     mainImageFile && formData.append("mainImageFile", mainImageFile[0]);
     secondImageFile && formData.append("secondImageFile", secondImageFile[0]);
     fileUpload.map((file, index) => {

@@ -15,7 +15,7 @@ import Signup from "./pages/auth/signUp";
 import Login from "./pages/auth/logIn";
 import User from "./pages/auth/user";
 import Inventory from "./pages/inventory/inventory";
-import Courses from "./pages/courses/index";
+import Courses from "./pages/courses/courses";
 
 const App = () => {
   let routes = (
