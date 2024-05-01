@@ -8,6 +8,14 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/timeline'
 ]);
 
+const path = require('path');
+
+module.exports = {
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
+}
+
 module.exports = withTM({
   reactStrictMode: true,
   webpack(config) {

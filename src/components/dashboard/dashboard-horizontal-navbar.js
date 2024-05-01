@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import styles from "./dashboard.module.scss";
+import NextLink from "next/link";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import {
@@ -22,6 +24,7 @@ import { ContactsPopover } from "./contacts-popover";
 import { ContentSearchDialog } from "./content-search-dialog";
 import { NotificationsPopover } from "./notifications-popover";
 import { LanguagePopover } from "./language-popover";
+import { Logo } from "../logo";
 
 const languages = {
   en: "/static/icons/uk_flag.svg",
@@ -260,12 +263,38 @@ export const DashboardHorizontalNavbar = (props) => {
           >
             <MenuIcon fontSize="small" />
           </IconButton>
+
           <Box sx={{ flexGrow: 1 }} />
-          <LanguageButton />
-          <ContentSearchButton />
-          <ContactsButton />
-          <NotificationsButton />
-          <AccountButton />
+          <Box>
+            <NextLink href="/" passHref>
+              <a className={styles.navItem}>PLAY</a>
+            </NextLink>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box>
+            <NextLink href="/" passHref>
+              <a className={styles.navItem}>DASHBOARD</a>
+            </NextLink>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box>
+            <NextLink href="/" passHref>
+              <a className={styles.navItem}>COURSES</a>
+            </NextLink>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box>
+            <NextLink href="/" passHref>
+              <a className={styles.navItem}>CREATE</a>
+            </NextLink>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box>
+            <NextLink href="/" passHref>
+              <a className={styles.navItem}>MORE</a>
+            </NextLink>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
         </Toolbar>
       </DashboardNavbarRoot>
     </>
