@@ -11,6 +11,7 @@ import axios from "axios";
 import GameLayout from "../../navigation/layout/gamelayout";
 import Courses from "../../pages/courses/courses";
 import { Game } from "../../@types/dataTypes";
+import { useLocation } from "react-router-dom";
 
 export default function ModelBox() {
   const [fetchedData, setFetchedData] = React.useState<Game[]>([]);
@@ -18,6 +19,7 @@ export default function ModelBox() {
   const [view, setView] = React.useState<boolean>(false);
   const [item, setItem] = React.useState<Game>();
   const [index, setIndex] = React.useState<number>(0);
+  const location = useLocation();
 
   React.useEffect(() => {
     console.log("~~~~~~~~~~~~~", item);
@@ -36,6 +38,10 @@ export default function ModelBox() {
           .get(AppConstants.getFilesUrl)
           .then((response) => {
             console.log("FetchedData~~~~~~", response.data);
+            let [current] = response.data.filter(
+              (x) => x._id === location.state
+            );
+            setItem(current);
           })
           .catch((error) => console.log(error));
       } catch (e) {
@@ -134,11 +140,11 @@ export default function ModelBox() {
           </div>
         </GameLayout>
       )}
-      {/*!!view && (
+      {!!view && (
         <div className={classes.playground}>
-          <Playground item={!!item ? item._id : fetchedData[0]._id} />
+          <Playground item={item} />
         </div>
-      ) */}
+      )}
     </>
   );
 }
