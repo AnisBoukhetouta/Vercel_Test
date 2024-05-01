@@ -60,31 +60,31 @@ export const DashboardHorizontalNavbar = (props) => {
 
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            <NextLink href="/" passHref>
+            <NextLink href="/play" passHref>
               <a className={styles.navItem}>PLAY</a>
             </NextLink>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            <NextLink href="/" passHref>
+            <NextLink href="/pwniqDashboard" passHref>
               <a className={styles.navItem}>DASHBOARD</a>
             </NextLink>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            <NextLink href="/" passHref>
+            <NextLink href="/courses" passHref>
               <a className={styles.navItem}>COURSES</a>
             </NextLink>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            <NextLink href="/" passHref>
+            <NextLink href="/create" passHref>
               <a className={styles.navItem}>CREATE</a>
             </NextLink>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box>
-            <NextLink href="/" passHref>
+            <NextLink href="/more" passHref>
               <a className={styles.navItem}>MORE</a>
             </NextLink>
           </Box>
