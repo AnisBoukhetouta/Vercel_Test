@@ -8,15 +8,45 @@ import Iconify from 'src/components/iconify';
 
 export const navConfig = [
   {
-    title: 'Home',
+    title: 'Play',
     icon: <Iconify icon="solar:home-2-bold-duotone" />,
     path: '/',
   },
   {
-    title: 'Components',
-    icon: <Iconify icon="solar:atom-bold-duotone" />,
-    path: paths.components,
+    title: 'Dashboard',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/dashboard',
   },
+  {
+    title: 'Courses',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/courses',
+  },
+  {
+    title: 'Chorse',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/chorse',
+  },
+  {
+    title: 'Create',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/create',
+  },
+  {
+    title: 'More',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/more',
+  },
+  {
+    title: 'Home',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/home',
+  },
+  // {
+  //   title: 'Components',
+  //   icon: <Iconify icon="solar:atom-bold-duotone" />,
+  //   path: paths.components,
+  // },
   {
     title: 'Pages',
     path: '/pages',

@@ -1,11 +1,12 @@
-import { HomeView } from 'src/sections/home/view';
+import { PlayView } from 'src/sections/play/view';
 
-// ----------------------------------------------------------------------
+//----------------------------------------------------------------
 
 export const metadata = {
-  title: 'Minimal: The starting point for your next project',
-};
+  title: 'Play',
+  description: 'Play the game',
+}
 
-export default function HomePage() {
-  return <HomeView />;
+export default function PlayPage() {
+  return <PlayView />;
 }
