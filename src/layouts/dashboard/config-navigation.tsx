@@ -51,13 +51,23 @@ export function useNavData() {
       {
         subheader: 'overview v5.7.0',
         items: [
-          { title: 'one', path: paths.dashboard.root, icon: ICONS.dashboard },
-          { title: 'two', path: paths.dashboard.two, icon: ICONS.ecommerce },
+          // { title: 'one', path: paths.dashboard.root, icon: ICONS.dashboard },
+          // { title: 'two', path: paths.dashboard.two, icon: ICONS.ecommerce },
+          // {
+          //   title: 'three',
+          //   path: paths.dashboard.three,
+          //   icon: ICONS.analytics,
+          // },
+          { title: 'PWNIQ', path: paths.dashboard.root, icon: ICONS.dashboard },
+          { title: 'Play', path: paths.dashboard.play, icon: ICONS.ecommerce },
           {
-            title: 'three',
-            path: paths.dashboard.three,
+            title: 'Dashboard',
+            path: paths.dashboard.dashboard,
             icon: ICONS.analytics,
           },
+          { title: 'Courses', path: paths.dashboard.courses, icon: ICONS.menuItem },
+          { title: 'Create', path: paths.dashboard.create, icon: ICONS.product },
+          { title: 'More', path: paths.dashboard.more, icon: ICONS.banking },
         ],
       },
 
