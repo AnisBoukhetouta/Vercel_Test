@@ -31,7 +31,7 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          <ModelViewer />
+          <ModelViewer src='' />
           <Paper
             elevation={3}
             sx={{
