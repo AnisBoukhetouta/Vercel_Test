@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 
 import { usePathname } from 'src/routes/hooks';
 
-import Footer from './footer';
 import Header from './header';
 
 // ----------------------------------------------------------------------
@@ -17,7 +16,10 @@ export default function MainLayout({ children }: Props) {
   const homePage = pathname === '/';
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>
+    <Box
+      component="div"
+      sx={{ display: 'flex', flexDirection: 'column', height: 1, overflow: 'hidden' }}
+    >
       <Header />
 
       <Box
@@ -32,7 +34,7 @@ export default function MainLayout({ children }: Props) {
         {children}
       </Box>
 
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 }

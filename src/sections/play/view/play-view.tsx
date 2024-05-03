@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useScroll } from 'framer-motion';
 
 import { Stack } from '@mui/system';
@@ -16,13 +17,32 @@ import { HeaderTypography, NormalTypography } from 'src/components/custom-typo/c
 import PlayProgresses from '../play-progresses';
 
 export default function PlayView() {
+  const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
+
+  const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
+    const { deltaY } = e;
+    if (deltaY > 0) {
+      setIndex((x) => (x > 0 ? x - 1 : 0));
+    } else if (deltaY < 0) {
+      setIndex((x) => (x < 8 ? x + 1 : 8));
+    }
+  }, []);
+
+  React.useEffect(() => {
+    console.log('Z~~~~~~~~~~', index);
+  }, [index]);
+
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
-      <Box component='div' sx={{ pt: { xs: 8, md: 10 }, px: 5, width: '100%', height: '100vh' }}>
+      <Box
+        onWheel={handleWheel}
+        component="div"
+        sx={{ pt: { xs: 8, md: 10 }, px: 5, width: '100%', height: '100vh' }}
+      >
         <Box
-          component='div'
+          component="div"
           sx={{
             mt: 5,
             position: 'relative',
@@ -34,46 +54,58 @@ export default function PlayView() {
           }}
         >
           <ModelViewer src="" />
-          <Paper
-            elevation={3}
-            sx={{
-              position: 'absolute',
+          <div
+            style={{
+              width: '100%',
               display: 'flex',
-              flexDirection: 'column',
-              width: 400,
-              height: 250,
-              p: 5,
-              left: 50,
-              bottom: 50,
-            }}
-          >
-            <div style={{ flexGrow: 1 }} />
-            <NormalTypography title="Current Game" />
-            <div style={{ flexGrow: 1 }} />
-            <HeaderTypography title="Capture the Flag" />
-            <div style={{ flexGrow: 1 }} />
-            <CustomButton title="Play" fullWidth />
-            <div style={{ flexGrow: 1 }} />
-          </Paper>
-          <Paper
-            elevation={3}
-            sx={{
               position: 'absolute',
-              width: { lg: '55%', xl: 950 },
-              height: 435,
-              p: 5,
-              right: 25,
-              bottom: 25,
+              bottom: index > 3 ? 25 : '-80vh',
+              transition: 'all 1s',
+              alignItems: 'end',
+              justifyContent: 'space-around',
             }}
           >
-            <Stack direction="column" justifyContent="space-between" height="100%">
-              <Typography sx={{ fontSize: '18px', lineHeight: '28px', fontWeight: 700 }}>
-                [Username]
-              </Typography>
-              <PlayProgresses />
-              <CustomStepper />
-            </Stack>
-          </Paper>
+            <Paper
+              elevation={3}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: 400,
+                height: 250,
+                p: 5,
+                // position: 'absolute',
+                // left: 50,
+                // bottom: 50,
+              }}
+            >
+              <div style={{ flexGrow: 1 }} />
+              <NormalTypography title="Current Game" />
+              <div style={{ flexGrow: 1 }} />
+              <HeaderTypography title="Capture the Flag" />
+              <div style={{ flexGrow: 1 }} />
+              <CustomButton title="Play" fullWidth />
+              <div style={{ flexGrow: 1 }} />
+            </Paper>
+            <Paper
+              elevation={3}
+              sx={{
+                width: { lg: '55%', xl: 950 },
+                height: 435,
+                p: 5,
+                // position: 'absolute',
+                // right: 25,
+                // bottom: 25,
+              }}
+            >
+              <Stack direction="column" justifyContent="space-between" height="100%">
+                <Typography sx={{ fontSize: '18px', lineHeight: '28px', fontWeight: 700 }}>
+                  [Username]
+                </Typography>
+                <PlayProgresses />
+                <CustomStepper />
+              </Stack>
+            </Paper>
+          </div>
         </Box>
       </Box>
     </MainLayout>

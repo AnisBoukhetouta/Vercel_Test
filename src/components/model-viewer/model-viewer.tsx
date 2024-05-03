@@ -1,3 +1,4 @@
+import React from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -9,8 +10,7 @@ interface Props {
   src: string;
 }
 
-function ModelViewer({ src }: Props) {
-  console.log('~~~Model~~~', src);
+const ModelViewer = React.memo(({ src }: Props) => {
   useLoader.clear(GLTFLoader, '/models/character.glb');
 
   return (
@@ -30,7 +30,7 @@ function ModelViewer({ src }: Props) {
       />
     </Canvas>
   );
-}
+});
 
 export default ModelViewer;
 
