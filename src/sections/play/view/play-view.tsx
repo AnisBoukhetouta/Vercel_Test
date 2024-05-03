@@ -11,6 +11,7 @@ import ScrollProgress from 'src/components/scroll-progress';
 import { CustomButton } from 'src/components/custom-button';
 import { CustomStepper } from 'src/components/custom-stepper';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
+import { HeaderTypography, NormalTypography } from 'src/components/custom-typo/cystom-typo';
 
 import PlayProgresses from '../play-progresses';
 
@@ -31,7 +32,7 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          <ModelViewer src='' />
+          <ModelViewer src="" />
           <Paper
             elevation={3}
             sx={{
@@ -46,11 +47,9 @@ export default function PlayView() {
             }}
           >
             <div style={{ flexGrow: 1 }} />
-            <Typography sx={{ fontSize: '15px', lineHeight: '22px' }}>Current Game</Typography>
+            <NormalTypography title="Current Game" />
             <div style={{ flexGrow: 1 }} />
-            <Typography sx={{ fontSize: '33px', lineHeight: '48px', fontWeight: 700 }}>
-              Capture the Flag
-            </Typography>
+            <HeaderTypography title="Capture the Flag" />
             <div style={{ flexGrow: 1 }} />
             <CustomButton title="Play" fullWidth />
             <div style={{ flexGrow: 1 }} />
