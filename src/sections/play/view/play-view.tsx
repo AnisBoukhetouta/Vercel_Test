@@ -10,6 +10,7 @@ import MainLayout from 'src/layouts/main';
 import ScrollProgress from 'src/components/scroll-progress';
 import { CustomButton } from 'src/components/custom-button';
 import { CustomStepper } from 'src/components/custom-stepper';
+import ModelViewer from 'src/components/model-viewer/model-viewer';
 
 import PlayProgresses from '../play-progresses';
 
@@ -30,6 +31,7 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
+          <ModelViewer />
           <Paper
             elevation={3}
             sx={{
