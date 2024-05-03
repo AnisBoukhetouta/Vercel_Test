@@ -204,7 +204,7 @@ export function AuthProvider({ children }: Props) {
       await sendEmailVerification(newUser.user);
 
       const userProfile = doc(collection(DB, 'users'), newUser.user?.uid);
-      setDoc(userProfile, {
+      await setDoc(userProfile, {
         uid: newUser.user?.uid,
         email,
         displayName: `${firstName} ${lastName}`,
