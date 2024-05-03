@@ -29,10 +29,6 @@ export default function PlayView() {
     }
   }, []);
 
-  React.useEffect(() => {
-    console.log('Z~~~~~~~~~~', index);
-  }, [index]);
-
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
@@ -73,9 +69,6 @@ export default function PlayView() {
                 width: 400,
                 height: 250,
                 p: 5,
-                // position: 'absolute',
-                // left: 50,
-                // bottom: 50,
               }}
             >
               <div style={{ flexGrow: 1 }} />
@@ -92,9 +85,6 @@ export default function PlayView() {
                 width: { lg: '55%', xl: 950 },
                 height: 435,
                 p: 5,
-                // position: 'absolute',
-                // right: 25,
-                // bottom: 25,
               }}
             >
               <Stack direction="column" justifyContent="space-between" height="100%">
