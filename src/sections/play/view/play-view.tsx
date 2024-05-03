@@ -20,8 +20,9 @@ export default function PlayView() {
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
-      <Box sx={{ pt: { xs: 8, md: 10 }, px: 5, width: '100%', height: '100vh' }}>
+      <Box component='div' sx={{ pt: { xs: 8, md: 10 }, px: 5, width: '100%', height: '100vh' }}>
         <Box
+          component='div'
           sx={{
             mt: 5,
             position: 'relative',
