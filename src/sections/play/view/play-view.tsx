@@ -7,6 +7,7 @@ import { Stack } from '@mui/system';
 import { Box, Paper, alpha, Typography } from '@mui/material';
 
 import MainLayout from 'src/layouts/main';
+// import { useGetGames } from 'src/api/games';
 
 import ScrollProgress from 'src/components/scroll-progress';
 import { CustomButton } from 'src/components/custom-button';
@@ -19,6 +20,7 @@ import PlayProgresses from '../play-progresses';
 export default function PlayView() {
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
+  // const results = useGetGames();
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;
@@ -28,6 +30,10 @@ export default function PlayView() {
       setIndex((x) => (x < 8 ? x + 1 : 8));
     }
   }, []);
+
+  // React.useEffect(() => {
+  //   console.log('~~~~~~~~~~~~', results);
+  // }, [results]);
 
   return (
     <MainLayout>
