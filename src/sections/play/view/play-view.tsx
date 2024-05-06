@@ -19,6 +19,7 @@ import { HeaderTypography, NormalTypography } from 'src/components/custom-typo/c
 
 import PlayCarousel from '../play-carousel';
 import PlayProgresses from '../play-progresses';
+import PlayFeatureSorted from '../play-feature-sorted';
 
 export default function PlayView() {
   const [index, setIndex] = React.useState<number>(0);
@@ -113,12 +114,20 @@ export default function PlayView() {
                 p: 5,
               }}
             >
-              <Stack direction="column" justifyContent="space-between" height="100%">
-                <Typography sx={{ fontSize: '18px', lineHeight: '28px', fontWeight: 700 }}>
-                  [Username]
-                </Typography>
-                <PlayProgresses />
-                <CustomStepper />
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                gap={2}
+                height="100%"
+              >
+                <Stack direction="column" justifyContent="space-between" width="60%">
+                  <Typography sx={{ fontSize: '18px', lineHeight: '28px', fontWeight: 700 }}>
+                    [Username]
+                  </Typography>
+                  <PlayProgresses />
+                  <CustomStepper />
+                </Stack>
+                <PlayFeatureSorted />
               </Stack>
             </Paper>
           </div>

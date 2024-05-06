@@ -294,6 +294,11 @@ export const _postTitles = [
   'Travel Photography Tips: Capturing Memories Around the World',
 ];
 
+export const _featureTitles = [
+  'Strike a yogi pose 1',
+  'Strike a yogi pose 2',
+  'Strike a yogi pose 3',
+];
 // ----------------------------------------------------------------------
 
 export const _productNames = [
@@ -514,6 +519,8 @@ export const _sentences = [
   'The artist dipped the brush into vibrant paint, bringing the canvas to life with bold strokes and vivid colors.',
   'The laughter of children echoed through the playground, filling the atmosphere with pure joy.',
 ];
+
+export const _featureSentences = ['', '', ''];
 
 // ----------------------------------------------------------------------
 

@@ -4,14 +4,13 @@ import { CustomButton } from '../custom-button';
 
 interface Props {
   title: string;
-  width: number | string;
   percents: number;
   color: 'inherit' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
 }
 
-export default function CustomProgressBar({ title, width, percents, color }: Props) {
+export default function CustomProgressBar({ title, percents, color }: Props) {
   return (
-    <Stack direction="row" sx={{ width }} alignItems="center">
+    <Stack direction="row" alignItems="center">
       <Stack direction="column" gap={1} sx={{ width: '60%' }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography sx={{ fontSize: 12 }}>{title.toUpperCase()}</Typography>

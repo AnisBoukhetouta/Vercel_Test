@@ -47,7 +47,7 @@ export default function CustomStepper() {
   }));
 
   return (
-    <div style={{ width: '60%', display: 'flex', justifyContent: 'space-between' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <Stepper
         sx={{ width: '60%' }}
         alternativeLabel

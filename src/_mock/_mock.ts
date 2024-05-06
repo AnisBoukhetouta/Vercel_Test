@@ -27,6 +27,8 @@ import {
   _productNames,
   _descriptions,
   _phoneNumbers,
+  _featureTitles,
+  _featureSentences,
   _carouselBigTitles,
   _carouselSmallTitles,
 } from './assets';
@@ -41,12 +43,14 @@ export const _mock = {
   // Text
   taskNames: (index: number) => _taskNames[index],
   postTitle: (index: number) => _postTitles[index],
+  featureTitle: (index: number) => _featureTitles[index],
   jobTitle: (index: number) => _jobTitles[index],
   tourName: (index: number) => _tourNames[index],
   productName: (index: number) => _productNames[index],
   carouselBigTitle: (index: number) => _carouselBigTitles[index],
   carouselSmallTitle: (index: number) => _carouselSmallTitles[index],
   sentence: (index: number) => _sentences[index],
+  featureSentence: (index: number) => _featureSentences[index],
   description: (index: number) => _descriptions[index],
   // Contact
   email: (index: number) => _emails[index],
