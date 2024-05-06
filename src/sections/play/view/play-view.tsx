@@ -9,6 +9,7 @@ import { Box, Paper, alpha, Typography } from '@mui/material';
 import MainLayout from 'src/layouts/main';
 // import { useGetGames } from 'src/api/games';
 
+import { GameContext } from 'src/game/context/game-context';
 import { _carouselBigCards, _carouselSmallCards } from 'src/_mock';
 
 import ScrollProgress from 'src/components/scroll-progress';
@@ -22,6 +23,7 @@ import PlayProgresses from '../play-progresses';
 import PlayFeatureSorted from '../play-feature-sorted';
 
 export default function PlayView() {
+  const [gameTitle, setGameTitle] = React.useState<string>('');
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
   // const results = useGetGames();
@@ -38,6 +40,8 @@ export default function PlayView() {
   // React.useEffect(() => {
   //   console.log('~~~~~~~~~~~~', results);
   // }, [results]);
+
+  const memoContext = React.useMemo(() => ({ gameTitle, setGameTitle }), [gameTitle]);
 
   return (
     <MainLayout>
@@ -122,7 +126,9 @@ export default function PlayView() {
                   <PlayProgresses />
                   <CustomStepper />
                 </Stack>
-                <PlayFeatureSorted />
+                <GameContext.Provider value={memoContext}>
+                  <PlayFeatureSorted />
+                </GameContext.Provider>
                 {/* <PlayFeatureBottom /> */}
               </Stack>
             </Paper>

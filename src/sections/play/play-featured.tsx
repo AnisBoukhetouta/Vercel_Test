@@ -9,6 +9,8 @@ import { alpha, useTheme } from '@mui/material/styles';
 import Image from 'src/components/image';
 import { varFade, MotionContainer } from 'src/components/animate';
 import Carousel, { useCarousel, CarouselDots, CarouselArrows } from 'src/components/carousel';
+import { useGameContext } from 'src/game/hook/use-game-context';
+import React from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -70,6 +72,7 @@ type CarouselItemProps = {
 
 function CarouselItem({ item, height, active }: CarouselItemProps) {
   const theme = useTheme();
+  const { setGameTitle } = useGameContext();
 
   const { coverUrl, title, description } = item;
 
@@ -93,7 +96,7 @@ function CarouselItem({ item, height, active }: CarouselItemProps) {
 
   return (
     <MotionContainer
-      onClick={() => console.log('')}
+      onClick={() => setGameTitle(title)}
       action
       animate={active}
       sx={{ position: 'relative' }}
