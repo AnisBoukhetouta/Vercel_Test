@@ -1,6 +1,4 @@
-import { Stack, Typography, LinearProgress } from '@mui/material';
-
-import { CustomButton } from '../custom-button';
+import { Stack, Button, Typography, LinearProgress } from '@mui/material';
 
 interface Props {
   title: string;
@@ -19,7 +17,11 @@ export default function CustomProgressBar({ title, percents, color }: Props) {
         <LinearProgress sx={{ height: 8 }} color={color} variant="determinate" value={percents} />
       </Stack>
       <div style={{ flexGrow: 1 }} />
-      <CustomButton title={`Build ${title}`} width="35%" height={45} padding="0 30px" />
+      <Button sx={{ width: '35%', height: 45, padding: '0 30px', backgroundColor: 'gold' }}>
+        <a href={`#${title}`} style={{ textDecoration: 'none', color: 'black' }}>
+          {title}
+        </a>
+      </Button>
     </Stack>
   );
 }
