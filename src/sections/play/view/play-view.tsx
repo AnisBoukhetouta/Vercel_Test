@@ -44,11 +44,11 @@ export default function PlayView() {
       <ScrollProgress scrollYProgress={scrollYProgress} />
       <Box
         onWheel={handleWheel}
-        component="div"
+        component='div'
         sx={{ pt: { xs: 8, md: 10 }, px: 5, width: '100%', height: '100vh' }}
       >
         <Box
-          component="div"
+          component='div'
           sx={{
             mt: 5,
             position: 'relative',
@@ -59,13 +59,13 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          <ModelViewer src="" />
+          <ModelViewer src='' />
           <PlayCarousel
-            height="250px"
+            height='250px'
             list={_carouselBigCards}
             sx={{ position: 'absolute', width: 330, height: 250, top: 0 }}
-            header="NEW COURSE"
-            buttonTitle="Add Course"
+            header='NEW COURSE'
+            buttonTitle='Add Course'
           />
           <div
             style={{
@@ -80,11 +80,11 @@ export default function PlayView() {
           >
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <PlayCarousel
-                height="167px"
+                height='167px'
                 list={_carouselSmallCards}
                 sx={{ width: 344, height: 167, mb: 5 }}
-                header="MULTIPLAYER"
-                buttonTitle="Play Now"
+                header='MULTIPLAYER'
+                buttonTitle='Play Now'
               />
               <Paper
                 elevation={3}
@@ -98,11 +98,11 @@ export default function PlayView() {
                 }}
               >
                 <div style={{ flexGrow: 1 }} />
-                <NormalTypography title="Current Game" />
+                <NormalTypography title='Current Game' />
                 <div style={{ flexGrow: 1 }} />
-                <HeaderTypography title="Capture the Flag" />
+                <HeaderTypography title='Capture the Flag' />
                 <div style={{ flexGrow: 1 }} />
-                <CustomButton title="Play" fullWidth />
+                <CustomButton title='Play' fullWidth />
                 <div style={{ flexGrow: 1 }} />
               </Paper>
             </div>
@@ -115,12 +115,12 @@ export default function PlayView() {
               }}
             >
               <Stack
-                direction="row"
-                justifyContent="space-between"
+                direction='row'
+                justifyContent='space-between'
                 gap={2}
-                height="100%"
+                height='100%'
               >
-                <Stack direction="column" justifyContent="space-between" width="60%">
+                <Stack direction='column' justifyContent='space-between' width='60%'>
                   <Typography sx={{ fontSize: '18px', lineHeight: '28px', fontWeight: 700 }}>
                     [Username]
                   </Typography>
