@@ -11,6 +11,7 @@ import {
 import { bgGradient } from 'src/theme/css';
 
 import Iconify from '../iconify';
+import CustomButton from '../custom-button/custom-button';
 
 //----------------------------------------------------------------
 
@@ -46,18 +47,21 @@ export default function CustomStepper() {
   }));
 
   return (
-    <Stepper
-      sx={{ width: '60%' }}
-      alternativeLabel
-      activeStep={1}
-      connector={<ColorlibConnector />}
-    >
-      {STEPS.map((label) => (
-        <Step key={label}>
-          <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-        </Step>
-      ))}
-    </Stepper>
+    <div style={{ width: '60%', display: 'flex', justifyContent: 'space-between' }}>
+      <Stepper
+        sx={{ width: '60%' }}
+        alternativeLabel
+        activeStep={1}
+        connector={<ColorlibConnector />}
+      >
+        {STEPS.map((label) => (
+          <Step key={label}>
+            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+      <CustomButton title="Complete Tasks" width="35%" height={45} padding="0 30px" />
+    </div>
   );
 }
 
