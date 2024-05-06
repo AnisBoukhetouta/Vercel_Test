@@ -27,6 +27,8 @@ import {
   _productNames,
   _descriptions,
   _phoneNumbers,
+  _carouselBigTitles,
+  _carouselSmallTitles,
 } from './assets';
 
 // ----------------------------------------------------------------------
@@ -42,6 +44,8 @@ export const _mock = {
   jobTitle: (index: number) => _jobTitles[index],
   tourName: (index: number) => _tourNames[index],
   productName: (index: number) => _productNames[index],
+  carouselBigTitle: (index: number) => _carouselBigTitles[index],
+  carouselSmallTitle: (index: number) => _carouselSmallTitles[index],
   sentence: (index: number) => _sentences[index],
   description: (index: number) => _descriptions[index],
   // Contact

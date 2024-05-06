@@ -323,6 +323,24 @@ export const _productNames = [
   'Run Star Hike Platform Sneaker',
 ];
 
+// ---------------------------------------------------------------------
+
+export const _carouselBigTitles = [
+  'Boston Tea Party 1',
+  'Boston Tea Party 2',
+  'Boston Tea Party 3',
+  'Boston Tea Party 4',
+  'Boston Tea Party 5',
+];
+
+export const _carouselSmallTitles = [
+  'Capture the Flag 1',
+  'Capture the Flag 2',
+  'Capture the Flag 3',
+  'Capture the Flag 4',
+  'Capture the Flag 5',
+];
+
 // ----------------------------------------------------------------------
 
 export const _tourNames = [
