@@ -92,7 +92,12 @@ function CarouselItem({ item, height, active }: CarouselItemProps) {
   );
 
   return (
-    <MotionContainer action animate={active} sx={{ position: 'relative' }}>
+    <MotionContainer
+      onClick={() => console.log('')}
+      action
+      animate={active}
+      sx={{ position: 'relative' }}
+    >
       <Stack
         spacing={1}
         sx={{
