@@ -1,19 +1,12 @@
-'use client';
+import { PlayView } from 'src/sections/play/view';
 
-import { useEffect } from 'react';
+//----------------------------------------------------------------
 
-import { useRouter } from 'src/routes/hooks';
+export const metadata = {
+  title: 'Play',
+  description: 'Play the game',
+}
 
-import { PATH_AFTER_LOGIN } from 'src/config-global';
-
-// ----------------------------------------------------------------------
-
-export default function HomePage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push(PATH_AFTER_LOGIN);
-  }, [router]);
-
-  return null;
+export default function PlayPage() {
+  return <PlayView />;
 }

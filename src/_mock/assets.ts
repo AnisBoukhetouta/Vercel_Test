@@ -294,6 +294,11 @@ export const _postTitles = [
   'Travel Photography Tips: Capturing Memories Around the World',
 ];
 
+export const _featureTitles = [
+  'Strike a yogi pose 1',
+  'Strike a yogi pose 2',
+  'Strike a yogi pose 3',
+];
 // ----------------------------------------------------------------------
 
 export const _productNames = [
@@ -321,6 +326,24 @@ export const _productNames = [
   'Superturf Adventure X Atmos',
   'Chuck Taylor All Star Lift Sneaker',
   'Run Star Hike Platform Sneaker',
+];
+
+// ---------------------------------------------------------------------
+
+export const _carouselBigTitles = [
+  'Boston Tea Party 1',
+  'Boston Tea Party 2',
+  'Boston Tea Party 3',
+  'Boston Tea Party 4',
+  'Boston Tea Party 5',
+];
+
+export const _carouselSmallTitles = [
+  'Capture the Flag 1',
+  'Capture the Flag 2',
+  'Capture the Flag 3',
+  'Capture the Flag 4',
+  'Capture the Flag 5',
 ];
 
 // ----------------------------------------------------------------------
@@ -496,6 +519,8 @@ export const _sentences = [
   'The artist dipped the brush into vibrant paint, bringing the canvas to life with bold strokes and vivid colors.',
   'The laughter of children echoed through the playground, filling the atmosphere with pure joy.',
 ];
+
+export const _featureSentences = ['', '', ''];
 
 // ----------------------------------------------------------------------
 
