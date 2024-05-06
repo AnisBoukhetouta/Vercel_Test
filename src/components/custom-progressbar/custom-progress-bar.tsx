@@ -17,11 +17,11 @@ export default function CustomProgressBar({ title, percents, color }: Props) {
         <LinearProgress sx={{ height: 8 }} color={color} variant="determinate" value={percents} />
       </Stack>
       <div style={{ flexGrow: 1 }} />
-      <Button sx={{ width: '35%', height: 45, padding: '0 30px', backgroundColor: 'gold' }}>
-        <a href={`#${title}`} style={{ textDecoration: 'none', color: 'black' }}>
+      <a href={`#${title}`} style={{ textDecoration: 'none', color: 'black', width: '35%' }}>
+        <Button sx={{ width: '100%', height: 45, padding: '0 30px', backgroundColor: 'gold' }}>
           {title}
-        </a>
-      </Button>
+        </Button>
+      </a>
     </Stack>
   );
 }

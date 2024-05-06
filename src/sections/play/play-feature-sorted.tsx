@@ -20,7 +20,7 @@ interface Prop {
 
 const FeatureGroup = ({ group }: Prop) => (
   <Stack direction="column" alignItems="start" gap="9px">
-    <Typography component="div" id={group} sx={{ fonstSize: 16, fontWeight: 600 }}>
+    <Typography component="div" id={group} sx={{ fonstSize: '16px !important', fontWeight: 600 }}>
       {group}
     </Typography>
     {cards.map((x) => (
