@@ -1,3 +1,4 @@
+import React from 'react';
 import { m } from 'framer-motion';
 
 import Link from '@mui/material/Link';
@@ -6,11 +7,11 @@ import Typography from '@mui/material/Typography';
 import Card, { CardProps } from '@mui/material/Card';
 import { alpha, useTheme } from '@mui/material/styles';
 
+import { useGameContext } from 'src/game/hook/use-game-context';
+
 import Image from 'src/components/image';
 import { varFade, MotionContainer } from 'src/components/animate';
 import Carousel, { useCarousel, CarouselDots, CarouselArrows } from 'src/components/carousel';
-import { useGameContext } from 'src/game/hook/use-game-context';
-import React from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -72,7 +73,7 @@ type CarouselItemProps = {
 
 function CarouselItem({ item, height, active }: CarouselItemProps) {
   const theme = useTheme();
-  const { setGameTitle } = useGameContext();
+  const { setIndex, setGameTitle } = useGameContext();
 
   const { coverUrl, title, description } = item;
 
@@ -94,13 +95,13 @@ function CarouselItem({ item, height, active }: CarouselItemProps) {
     />
   );
 
+  const handleClick = () => {
+    setGameTitle(title);
+    setIndex(0);
+  };
+
   return (
-    <MotionContainer
-      onClick={() => setGameTitle(title)}
-      action
-      animate={active}
-      sx={{ position: 'relative' }}
-    >
+    <MotionContainer onClick={handleClick} action animate={active} sx={{ position: 'relative' }}>
       <Stack
         spacing={1}
         sx={{

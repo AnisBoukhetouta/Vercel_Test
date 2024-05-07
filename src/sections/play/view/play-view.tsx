@@ -41,7 +41,7 @@ export default function PlayView() {
   //   console.log('~~~~~~~~~~~~', results);
   // }, [results]);
 
-  const memoContext = React.useMemo(() => ({ gameTitle, setGameTitle }), [gameTitle]);
+  const memoContext = React.useMemo(() => ({ gameTitle, setGameTitle, setIndex }), [gameTitle]);
 
   return (
     <MainLayout>
