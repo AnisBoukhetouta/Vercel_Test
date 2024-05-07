@@ -3,7 +3,7 @@
 import React from 'react';
 import { useScroll } from 'framer-motion';
 
-import { Box, Stack, alpha } from '@mui/material';
+import { Box, alpha } from '@mui/material';
 
 import MainLayout from 'src/layouts/main';
 // import { useGetGames } from 'src/api/games';
@@ -14,9 +14,8 @@ import { GameContext } from 'src/game/context/game-context';
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
 
-import PlayItem from '../play-item';
-
 import PlayLeftPanel from '../play-left-panel';
+import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
 import CustomCarousel from '../../../components/custom-carousel/custom-carousel';
 
@@ -41,6 +40,8 @@ export default function PlayView() {
 
   const memoContext = React.useMemo(() => ({ gameTitle, setGameTitle, setIndex }), [gameTitle]);
 
+  console.log('****************', gameTitle);
+
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
@@ -53,6 +54,7 @@ export default function PlayView() {
           component="div"
           sx={{
             mt: 5,
+            p: '14px',
             position: 'relative',
             width: '100%',
             height: '85vh',
@@ -61,34 +63,37 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          {/* <ModelViewer src="" />
-          <CustomCarousel
-            height="250px"
-            list={_carouselBigCards}
-            sx={{ position: 'absolute', width: 330, height: 250, top: 0 }}
-            header="NEW COURSE"
-            buttonTitle="Add Course"
-          />
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              position: 'absolute',
-              bottom: index > 3 ? 25 : '-80vh',
-              transition: 'all 1s',
-              alignItems: 'end',
-              justifyContent: 'space-around',
-            }}
-          >
-            <PlayLeftPanel />
-            <GameContext.Provider value={memoContext}>
-              <PlayRightPanel />
-            </GameContext.Provider>
-            <PlayFeatureBottom />
-          </div> */}
-          <Stack>
-            <PlayItem />
-          </Stack>
+          {gameTitle === '' ? (
+            <>
+              <ModelViewer src="" />
+              <CustomCarousel
+                height="250px"
+                list={_carouselBigCards}
+                sx={{ position: 'absolute', width: 330, height: 250, top: 0 }}
+                header="NEW COURSE"
+                buttonTitle="Add Course"
+              />
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  position: 'absolute',
+                  bottom: index > 3 ? 25 : '-80vh',
+                  transition: 'all 1s',
+                  alignItems: 'end',
+                  justifyContent: 'space-around',
+                }}
+              >
+                <PlayLeftPanel />
+                <GameContext.Provider value={memoContext}>
+                  <PlayRightPanel />
+                </GameContext.Provider>
+                {/* <PlayFeatureBottom /> */}
+              </div>
+            </>
+          ) : (
+            <PlayGamePanel />
+          )}
         </Box>
       </Box>
     </MainLayout>

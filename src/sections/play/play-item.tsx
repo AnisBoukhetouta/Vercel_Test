@@ -9,18 +9,17 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 
-import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { fDate } from 'src/utils/format-time';
 
 import Iconify from 'src/components/iconify';
 import CustomPopover, { usePopover } from 'src/components/custom-popover';
+import CustomVerticalStepper from 'src/components/custom-stepper/custom-vertical-stepper';
 
 // ----------------------------------------------------------------------
 
 const job = {
-  id: 'e99f09a7-dd88-49d5-b1c8-1daf80c2d7b6',
   company: {
     name: 'Durgan - Murazik',
     logo: '/logo/logo_full.svg',
@@ -39,10 +38,10 @@ const onDelete = () => console.log('ON_DELETE');
 export default function PlayItem() {
   const popover = usePopover();
 
-  const { id, title, company, createdAt, experience, employmentTypes, role } = job;
+  const { title, company, createdAt, experience, employmentTypes, role } = job;
 
   return (
-    <div style={{ width: 344, height: 612 }}>
+    <>
       <Card>
         <IconButton onClick={popover.onOpen} sx={{ position: 'absolute', top: 8, right: 8 }}>
           <Iconify icon="eva:more-vertical-fill" />
@@ -59,7 +58,7 @@ export default function PlayItem() {
           <ListItemText
             sx={{ mb: 1 }}
             primary={
-              <Link component={RouterLink} href={paths.dashboard.job.details(id)} color="inherit">
+              <Link component={RouterLink} href="#" color="inherit">
                 {title}
               </Link>
             }
@@ -82,7 +81,6 @@ export default function PlayItem() {
             sx={{ color: 'primary.main', typography: 'caption' }}
           >
             <Iconify width={16} icon="solar:users-group-rounded-bold" />
-            {/* {candidates.length} Candidates */}
             {223} Players
           </Stack>
         </Stack>
@@ -129,6 +127,7 @@ export default function PlayItem() {
             </Stack>
           ))}
         </Box>
+        <CustomVerticalStepper />
       </Card>
 
       <CustomPopover
@@ -168,6 +167,6 @@ export default function PlayItem() {
           Delete
         </MenuItem>
       </CustomPopover>
-    </div>
+    </>
   );
 }
