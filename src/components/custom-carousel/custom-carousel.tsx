@@ -23,7 +23,7 @@ interface Props extends CardProps {
   buttonTitle: string;
 }
 
-export default function PlayCarousel({ list, height, header, buttonTitle, ...other }: Props) {
+export default function CustomCarousel({ list, height, header, buttonTitle, ...other }: Props) {
   const carousel = useCarousel({
     speed: 800,
     autoplay: true,
