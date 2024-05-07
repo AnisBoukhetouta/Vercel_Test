@@ -83,7 +83,7 @@ export default function Header() {
             <Logo />
           </Badge>
 
-          <Box sx={{ flexGrow: 1 }} />
+          <Box component="div" sx={{ flexGrow: 1 }} />
 
           {mdUp && <NavDesktop data={navConfig} />}
 
