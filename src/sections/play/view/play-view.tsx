@@ -3,7 +3,7 @@
 import React from 'react';
 import { useScroll } from 'framer-motion';
 
-import { Box, alpha } from '@mui/material';
+import { Box, Stack, alpha } from '@mui/material';
 
 import MainLayout from 'src/layouts/main';
 // import { useGetGames } from 'src/api/games';
@@ -13,6 +13,8 @@ import { GameContext } from 'src/game/context/game-context';
 
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
+
+import PlayItem from '../play-item';
 
 import PlayLeftPanel from '../play-left-panel';
 import PlayRightPanel from '../play-right-panel';
@@ -59,7 +61,7 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          <ModelViewer src="" />
+          {/* <ModelViewer src="" />
           <CustomCarousel
             height="250px"
             list={_carouselBigCards}
@@ -82,8 +84,11 @@ export default function PlayView() {
             <GameContext.Provider value={memoContext}>
               <PlayRightPanel />
             </GameContext.Provider>
-            {/* <PlayFeatureBottom /> */}
-          </div>
+            <PlayFeatureBottom />
+          </div> */}
+          <Stack>
+            <PlayItem />
+          </Stack>
         </Box>
       </Box>
     </MainLayout>
