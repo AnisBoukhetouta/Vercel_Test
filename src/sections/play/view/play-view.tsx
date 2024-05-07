@@ -50,7 +50,7 @@ export default function PlayView() {
       <Box
         onWheel={handleWheel}
         component="div"
-        sx={{ pt: { xs: 8, md: 10 }, px: 5, width: '100%', height: '100vh' }}
+        sx={{ pt: 4, px: 5, width: '100%', height: '100vh' }}
       >
         <Box
           component="div"
@@ -59,7 +59,7 @@ export default function PlayView() {
             p: '14px',
             position: 'relative',
             width: '100%',
-            height: '85vh',
+            height: '90vh',
             borderRadius: 2,
             bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
