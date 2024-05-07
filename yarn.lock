@@ -7832,6 +7832,11 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-unity-webgl@^9.5.2:
+  version "9.5.2"
+  resolved "https://registry.npmjs.org/react-unity-webgl/-/react-unity-webgl-9.5.2.tgz"
+  integrity sha512-m/vYHoIF5zNev/yxq6tBWOHg4LKcD9npHWzvIwDQcgTwKZFLnD3s7VUkueT8Z3cmrhEylCXq9P2zai28chW2Mw==
+
 react-use-measure@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.1.tgz"
@@ -8590,6 +8595,15 @@ three-mesh-bvh@^0.7.0:
   resolved "https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.7.4.tgz"
   integrity sha512-flxe0A4uflTPR6elgq/Y8VrLoljDNS899i422SxQcU3EtMj6o8z4kZRyqZqGWzR0qMf1InTZzY1/0xZl/rnvVw==
 
+three-nebula@^10.0.3:
+  version "10.0.3"
+  resolved "https://registry.npmjs.org/three-nebula/-/three-nebula-10.0.3.tgz"
+  integrity sha512-cX0UVkCGKx1r36z/yo26HAjsMGa3NcSvGZlODTLo6lfNikpK7oYXgq5r4yVrjaGjhpeKnFalNTI8LsHiZ8KlYw==
+  dependencies:
+    lodash "^4.17.21"
+    potpack "^1.0.1"
+    uuid "^3.3.2"
+
 three-stdlib@^2.29.9:
   version "2.29.11"
   resolved "https://registry.npmjs.org/three-stdlib/-/three-stdlib-2.29.11.tgz"
@@ -8602,7 +8616,7 @@ three-stdlib@^2.29.9:
     fflate "^0.6.9"
     potpack "^1.0.1"
 
-three@^0.164.1, "three@>= 0.151.0", "three@>= 0.159.0", three@>=0.125.0, three@>=0.126, three@>=0.126.1, three@>=0.128.0, three@>=0.133, three@>=0.137, three@>=0.144.0:
+three@^0.164.1, "three@>= 0.151.0", "three@>= 0.159.0", "three@>=0.122.0 <1.0.0", three@>=0.125.0, three@>=0.126, three@>=0.126.1, three@>=0.128.0, three@>=0.133, three@>=0.137, three@>=0.144.0:
   version "0.164.1"
   resolved "https://registry.npmjs.org/three/-/three-0.164.1.tgz"
   integrity sha512-iC/hUBbl1vzFny7f5GtqzVXYjMJKaTPxiCxXfrvVdBi1Sf+jhd1CAkitiFwC7mIBFCo3MrDLJG97yisoaWig0w==
@@ -9008,6 +9022,11 @@ utility-types@^3.10.0:
   version "3.11.0"
   resolved "https://registry.npmjs.org/utility-types/-/utility-types-3.11.0.tgz"
   integrity sha512-6Z7Ma2aVEWisaL6TvBCy7P8rm2LQoPv6dJ7ecIaIixHcwfbJ0x7mWdbcwlIM5IGQxPZSFYeqRCqlOOeKoJYMkw==
+
+uuid@^3.3.2:
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz"
+  integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
 uuid@^8.3.2:
   version "8.3.2"

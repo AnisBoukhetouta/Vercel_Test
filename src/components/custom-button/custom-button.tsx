@@ -1,5 +1,7 @@
 import { Button } from '@mui/material';
 
+import { useGameContext } from 'src/game/hook/use-game-context';
+
 interface Props {
   title: string;
   width?: string | number;
@@ -19,8 +21,10 @@ export default function CustomButton({
   fullWidth,
   backgroundColor,
 }: Props) {
+  const { setPlay } = useGameContext();
   return (
     <Button
+      onClick={() => setPlay(true)}
       fullWidth={fullWidth}
       sx={{ width, height, margin, padding, backgroundColor: backgroundColor ?? 'gold' }}
     >

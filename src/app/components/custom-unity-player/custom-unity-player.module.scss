@@ -1,0 +1,22 @@
+.unity {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  background: #555;
+  aspect-ratio: 912/480;
+}
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  top: -130px;
+  width: 500px;
+  height: 500px;
+}
+/* @keyframes l27 {
+  100% {transform: rotate(1turn)}
+} */

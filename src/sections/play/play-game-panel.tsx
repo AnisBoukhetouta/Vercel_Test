@@ -1,11 +1,13 @@
 import { Stack } from '@mui/material';
 
+import CustomUnityPlayer from 'src/app/components/custom-unity-player/custom-unity-player';
+
 import PlayItem from './play-item';
 import EcommerceWidgetSummary from '../overview/e-commerce/ecommerce-widget-summary';
 
 export default function PlayGamePanel() {
   return (
-    <Stack sx={{ height: '100%' }} direction="column">
+    <Stack sx={{ width: '100%', height: '100%' }} direction="row" justifyContent="space-between">
       <Stack sx={{ width: 344, height: '100%' }} justifyContent="space-between">
         <PlayItem />
         <EcommerceWidgetSummary
@@ -17,6 +19,7 @@ export default function PlayGamePanel() {
           }}
         />
       </Stack>
+      <CustomUnityPlayer />
     </Stack>
   );
 }

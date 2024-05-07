@@ -20,6 +20,7 @@ import PlayRightPanel from '../play-right-panel';
 import CustomCarousel from '../../../components/custom-carousel/custom-carousel';
 
 export default function PlayView() {
+  const [play, setPlay] = React.useState<boolean>(false);
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
@@ -38,9 +39,10 @@ export default function PlayView() {
   //   console.log('~~~~~~~~~~~~', results);
   // }, [results]);
 
-  const memoContext = React.useMemo(() => ({ gameTitle, setGameTitle, setIndex }), [gameTitle]);
-
-  console.log('****************', gameTitle);
+  const memoContext = React.useMemo(
+    () => ({ gameTitle, setGameTitle, setIndex, setPlay }),
+    [gameTitle]
+  );
 
   return (
     <MainLayout>
@@ -63,7 +65,7 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          {gameTitle === '' ? (
+          {!play ? (
             <>
               <ModelViewer src="" />
               <CustomCarousel
@@ -84,8 +86,8 @@ export default function PlayView() {
                   justifyContent: 'space-around',
                 }}
               >
-                <PlayLeftPanel />
                 <GameContext.Provider value={memoContext}>
+                  <PlayLeftPanel />
                   <PlayRightPanel />
                 </GameContext.Provider>
                 {/* <PlayFeatureBottom /> */}
