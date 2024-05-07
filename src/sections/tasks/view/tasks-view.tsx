@@ -5,6 +5,7 @@ import { useScroll } from 'framer-motion';
 import { Box, alpha } from '@mui/material';
 
 import ScrollProgress from 'src/components/scroll-progress';
+import { CustomKanbanView } from 'src/components/custom-kanban/view';
 
 export default function TasksView() {
   const { scrollYProgress } = useScroll();
@@ -25,7 +26,7 @@ export default function TasksView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          111
+          <CustomKanbanView />
         </Box>
       </Box>
     </>
