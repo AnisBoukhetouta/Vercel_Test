@@ -80,7 +80,7 @@ export default function PlayView() {
                   width: '100%',
                   display: 'flex',
                   position: 'absolute',
-                  bottom: index > -3 ? 25 : '-80vh',
+                  bottom: index < -3 ? 25 : '-80vh',
                   transition: 'all 1s',
                   alignItems: 'end',
                   justifyContent: 'space-around',

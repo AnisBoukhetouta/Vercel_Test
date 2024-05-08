@@ -22,6 +22,7 @@ const ModelViewer = React.memo(({ src }: Props) => {
       <Model />
       <OrbitControls
         enablePan={false}
+        reverseOrbit
         minDistance={9.5}
         maxDistance={10.5}
         zoomSpeed={0.3}
