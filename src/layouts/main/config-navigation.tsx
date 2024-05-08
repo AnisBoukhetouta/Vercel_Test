@@ -22,11 +22,6 @@ export const navConfig = [
     icon: <Iconify icon="solar:home-2-bold-duotone" />,
     path: '/courses',
   },
-  // {
-  //   title: 'Chorse',
-  //   icon: <Iconify icon="solar:home-2-bold-duotone" />,
-  //   path: '/chorse',
-  // },
   {
     title: 'Tasks',
     icon: <Iconify icon="solar:home-2-bold-duotone" />,
@@ -46,6 +41,11 @@ export const navConfig = [
     title: 'Home',
     icon: <Iconify icon="solar:home-2-bold-duotone" />,
     path: '/home',
+  },
+  {
+    title: 'Minimal',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/minimal',
   },
   // {
   //   title: 'Components',
@@ -117,9 +117,9 @@ export const navConfig = [
       },
     ],
   },
-  {
-    title: 'Docs',
-    icon: <Iconify icon="solar:notebook-bold-duotone" />,
-    path: paths.docs,
-  },
+  // {
+  //   title: 'Docs',
+  //   icon: <Iconify icon="solar:notebook-bold-duotone" />,
+  //   path: paths.docs,
+  // },
 ];

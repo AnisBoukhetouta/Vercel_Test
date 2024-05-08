@@ -1,11 +1,10 @@
-import { OverviewAppView } from 'src/sections/overview/app/view';
-
-// ----------------------------------------------------------------------
+import { DashboardView } from 'src/sections/dashboard/view';
 
 export const metadata = {
-  title: 'Dashboard: App',
+  title: 'Dashboard',
+  description: 'Dashboard',
 };
 
-export default function OverviewAppPage() {
-  return <OverviewAppView />;
+export default function DashboardPage() {
+  return <DashboardView />;
 }
