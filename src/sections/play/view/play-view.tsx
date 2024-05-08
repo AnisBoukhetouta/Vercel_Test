@@ -28,10 +28,10 @@ export default function PlayView() {
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;
-    if (deltaY > 0) {
-      setIndex((x) => (x > 0 ? x + 1 : 0));
-    } else if (deltaY < 0) {
-      setIndex((x) => (x < -8 ? x - 1 : -8));
+    if (deltaY < 0) {
+      setIndex((x) => (x > 0 ? x - 1 : 0));
+    } else if (deltaY > 0) {
+      setIndex((x) => (x < 8 ? x + 1 : 8));
     }
   }, []);
 
@@ -80,7 +80,7 @@ export default function PlayView() {
                   width: '100%',
                   display: 'flex',
                   position: 'absolute',
-                  bottom: index < -3 ? 25 : '-80vh',
+                  bottom: index > 3 ? 25 : '-80vh',
                   transition: 'all 1s',
                   alignItems: 'end',
                   justifyContent: 'space-around',
