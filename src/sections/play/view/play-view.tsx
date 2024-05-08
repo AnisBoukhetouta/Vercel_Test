@@ -13,7 +13,6 @@ import { GameContext } from 'src/game/context/game-context';
 
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
-import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';

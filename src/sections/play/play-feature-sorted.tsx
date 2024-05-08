@@ -26,7 +26,7 @@ const FeatureGroup = ({ group }: Prop) => (
       (x) =>
         // <PlayFeatured key={x} list={_playFeatured} sx={{ width: 169, height: 129 }} height={129} />
         // <Box component="div" width="330px" height="250px">
-        group !== 'Shields' ? <FortniteSoloCard /> : <FortniteCoupleCard />
+        group !== 'Shields' ? <FortniteSoloCard key={x} /> : <FortniteCoupleCard key={x} />
       // </Box>
     )}
   </Stack>

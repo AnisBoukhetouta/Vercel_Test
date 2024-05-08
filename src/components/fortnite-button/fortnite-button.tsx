@@ -7,6 +7,7 @@ interface Props {
   text: string | React.ReactElement;
   subtext: string | React.ReactElement;
   type: string;
+  onClick?: () => void;
   children?: React.ReactNode;
 }
 
@@ -58,10 +59,10 @@ class FortniteButton extends React.Component<Props> {
   };
 
   render() {
-    const { color, children, type, text, subtext } = this.props;
+    const { color, children, type, text, subtext, onClick } = this.props;
     return (
       <div ref={this.buttonRef} className="fortnite-card">
-        <button type="button" className={`fortnite-button ${color}`}>
+        <button type="button"  onClick={onClick} className={`fortnite-button ${color}`}>
           <div className="wrapper">
             <div className="vignette-bg" />
             <div className="scrolling-bg" />
