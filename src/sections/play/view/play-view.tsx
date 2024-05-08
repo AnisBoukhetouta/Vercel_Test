@@ -13,6 +13,7 @@ import { GameContext } from 'src/game/context/game-context';
 
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
+import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
@@ -71,7 +72,7 @@ export default function PlayView() {
               <CustomCarousel
                 height="250px"
                 list={_carouselBigCards}
-                sx={{ position: 'absolute', width: 330, height: 250, top: 0 }}
+                sx={{ position: 'absolute', width: 330, height: 250, top: 15 }}
                 header="NEW COURSE"
                 buttonTitle="Add Course"
               />

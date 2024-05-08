@@ -1,8 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 
-import { _playFeatured } from 'src/_mock';
-
-import PlayFeatured from './play-featured';
+import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
+import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-card';
 
 export default function PlayFeatureSorted() {
   return (
@@ -23,9 +22,13 @@ const FeatureGroup = ({ group }: Prop) => (
     <Typography component="div" id={group} sx={{ fonstSize: '16px !important', fontWeight: 600 }}>
       {group}
     </Typography>
-    {cards.map((x) => (
-      <PlayFeatured key={x} list={_playFeatured} sx={{ width: 169, height: 129 }} height={129} />
-    ))}
+    {cards.map(
+      (x) =>
+        // <PlayFeatured key={x} list={_playFeatured} sx={{ width: 169, height: 129 }} height={129} />
+        // <Box component="div" width="330px" height="250px">
+        group !== 'Shields' ? <FortniteSoloCard /> : <FortniteCoupleCard />
+      // </Box>
+    )}
   </Stack>
 );
 
