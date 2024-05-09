@@ -11,6 +11,8 @@ import AvatarGroup, { avatarGroupClasses } from '@mui/material/AvatarGroup';
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { bgBlur } from 'src/theme/css';
+import { useGetTimer } from 'src/api/task';
+import { useAuthContext } from 'src/auth/hooks';
 
 import Iconify from 'src/components/iconify';
 
@@ -40,6 +42,9 @@ export default function KanbanTaskItem({
   const theme = useTheme();
 
   const openDetails = useBoolean();
+
+  const { user } = useAuthContext();
+  const { timer } = useGetTimer(user?.uid);
 
   const renderPriority = (
     <Iconify
@@ -86,7 +91,7 @@ export default function KanbanTaskItem({
     </Box>
   );
 
-  const renderTask = (
+  const renderTask = task.taskTimer && timer && (
     <>
       <Box
         component="div"
@@ -94,19 +99,18 @@ export default function KanbanTaskItem({
           p: theme.spacing(1, 1, 0, 1),
         }}
       >
-        {task.taskTimer && (
-          <CustomTaskTimer
-            chart={{
-              series: [
-                {
-                  label: 'Next Random Task',
-                  percent: task.taskTimer,
-                  total: '03h 23m 12s',
-                },
-              ],
-            }}
-          />
-        )}
+        <CustomTaskTimer
+          timer={timer}
+          chart={{
+            series: [
+              {
+                label: 'Next Random Task',
+                percent: task.taskTimer,
+                total: '03h 23m 12s',
+              },
+            ],
+          }}
+        />
       </Box>
       <Box
         component="div"
@@ -147,8 +151,8 @@ export default function KanbanTaskItem({
           },
         }}
       >
-        {task.assignee.map((user) => (
-          <Avatar key={user.id} alt={user.name} src={user.avatarUrl} />
+        {task.assignee.map((x) => (
+          <Avatar key={x.id} alt={x.name} src={x.avatarUrl} />
         ))}
       </AvatarGroup>
     </Stack>

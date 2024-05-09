@@ -1,3 +1,4 @@
+import React from 'react';
 import { ApexOptions } from 'apexcharts';
 
 import Stack from '@mui/material/Stack';
@@ -8,13 +9,12 @@ import Card, { CardProps } from '@mui/material/Card';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { useGetTimer } from 'src/api/task';
-
 import Chart, { useChart } from 'src/components/chart';
 
 // ----------------------------------------------------------------------
 
 interface Props extends CardProps {
+  timer: number;
   chart: {
     colors?: string[][];
     series: {
@@ -26,7 +26,17 @@ interface Props extends CardProps {
   };
 }
 
-export default function CustomTaskTimer({ chart, ...other }: Props) {
+type Clock = {
+  hour: string;
+  minute: string;
+  second: string;
+};
+
+export default function CustomTaskTimer({ chart, timer, ...other }: Props) {
+  const [clock, setClock] = React.useState<Clock>();
+  const [percentage, setPercentage] = React.useState<number>(0);
+  const [interval, setInterval] = React.useState<number>(timer);
+
   const theme = useTheme();
 
   const smUp = useResponsive('up', 'sm');
@@ -93,8 +103,24 @@ export default function CustomTaskTimer({ chart, ...other }: Props) {
     },
   };
 
-  const timer = useGetTimer();
-  console.log('~~~TIMER~~~', timer);
+  React.useEffect(() => {
+    setInterval(timer);
+  }, [timer]);
+
+  React.useEffect(() => {
+    const timerId = setTimeout(() => {
+      setInterval((prevInterval) => prevInterval + 1000);
+    }, 1000);
+    setPercentage(Math.floor(interval / 108000));
+    setClock({
+      hour: String(Math.floor(interval / 3600000)).padStart(2, '0'),
+      minute: String(Math.floor((interval % 3600000) / 60000)).padStart(2, '0'),
+      second: String(Math.floor(((interval % 3600000) % 60000) / 1000)).padStart(2, '0'),
+    });
+    console.log('Timer:', interval);
+    if (interval >= 10800000) setInterval(timer);
+    return () => clearTimeout(timerId);
+  }, [interval]);
 
   return (
     <Card {...other}>
@@ -111,28 +137,27 @@ export default function CustomTaskTimer({ chart, ...other }: Props) {
         {series.map((item, index) => (
           <Stack
             key={item.label}
-            spacing={3}
             direction="row"
             alignItems="center"
-            justifyContent={{ sm: 'center' }}
+            justifyContent="space-between"
             sx={{
               py: 5,
               width: 1,
-              px: { xs: 3, sm: 0 },
+              px: { xs: 3, sm: 1 },
             }}
           >
             <Chart
               dir="ltr"
               type="radialBar"
-              series={[item.percent]}
+              series={[percentage ?? item.percent]}
               options={index === 1 ? chartOptionsCheckout : chartOptionsCheckIn}
               width={106}
               height={106}
             />
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Typography variant="h4" sx={{ mb: 0.5 }}>
-                {item.total}
+              <Typography variant="h5" sx={{ mb: 0.5 }}>
+                {`${clock?.hour}h ${clock?.minute}m ${clock?.second}s`}
               </Typography>
 
               <Typography variant="body2" sx={{ opacity: 0.72 }}>

@@ -35,6 +35,7 @@ export const endpoints = {
     login: '/api/auth/login',
     register: '/api/auth/register',
     userInfo: '/userInfo',
+    mutateUserInfo: '/mutateUserInfo',
   },
   mail: {
     list: '/api/mail/list',

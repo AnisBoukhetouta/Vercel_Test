@@ -5,8 +5,9 @@ import { fetcher, endpoints } from 'src/utils/axios';
 
 const URL = endpoints.taskTimer;
 
-export function useGetTimer() {
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher);
+export function useGetTimer(userId: string) {
+  const GET_URL = `${URL}?uid=${userId}`;
+  const { data, isLoading, error, isValidating } = useSWR(GET_URL, fetcher);
 
   const memoizedValue = useMemo(
     () => ({ timer: data?.timer, isLoading, error, isValidating }),

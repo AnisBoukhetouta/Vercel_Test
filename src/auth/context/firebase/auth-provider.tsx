@@ -16,7 +16,7 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
-import { postUserInfo } from 'src/api/auth';
+import { postUserInfo, mutateUserInfo } from 'src/api/auth';
 
 import { firebaseApp } from './lib';
 import { AuthContext } from './auth-context';
@@ -173,7 +173,20 @@ export function AuthProvider({ children }: Props) {
 
   // LOGIN
   const login = useCallback(async (email: string, password: string) => {
-    await signInWithEmailAndPassword(AUTH, email, password);
+    const { user } = await signInWithEmailAndPassword(AUTH, email, password);
+    const {
+      uid,
+      metadata: { createdAt, creationTime, lastLoginAt, lastSignInTime },
+    } = user;
+    const userInfo = {
+      uid,
+      createdAt,
+      creationTime,
+      lastLoginAt,
+      lastSignInTime,
+    };
+
+    await mutateUserInfo(userInfo);
   }, []);
 
   const loginWithGoogle = useCallback(async () => {
@@ -198,8 +211,6 @@ export function AuthProvider({ children }: Props) {
   const register = useCallback(
     async (email: string, password: string, firstName: string, lastName: string) => {
       const newUser = await createUserWithEmailAndPassword(AUTH, email, password);
-
-      console.log('~~~~~NEW_USER~~~~~', newUser);
 
       const { user } = newUser;
       const {
