@@ -86,6 +86,8 @@ export default function Header() {
           <Box component="div" sx={{ flexGrow: 1 }} />
 
           {mdUp && <NavDesktop data={navConfig} />}
+          
+          <Box component="div" sx={{ flexGrow: 1 }} />
 
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
             <Button variant="contained" target="_blank" rel="noopener" href={paths.minimalUI}>
