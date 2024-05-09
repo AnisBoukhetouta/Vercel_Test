@@ -67,7 +67,7 @@ export default function PlayView() {
           }}
         >
           {!play ? (
-            <>
+            <GameContext.Provider value={memoContext}>
               <ModelViewer src="" />
               <CustomCarousel
                 height="250px"
@@ -87,10 +87,8 @@ export default function PlayView() {
                   justifyContent: 'space-around',
                 }}
               >
-                <GameContext.Provider value={memoContext}>
-                  <PlayLeftPanel />
-                  <PlayRightPanel />
-                </GameContext.Provider>
+                <PlayLeftPanel />
+                <PlayRightPanel />
               </div>
               <div
                 style={{
@@ -103,11 +101,9 @@ export default function PlayView() {
                   justifyContent: 'space-around',
                 }}
               >
-                <GameContext.Provider value={memoContext}>
-                  <PlayFeatureBottom />
-                </GameContext.Provider>
+                <PlayFeatureBottom />
               </div>
-            </>
+            </GameContext.Provider>
           ) : (
             <PlayGamePanel />
           )}
