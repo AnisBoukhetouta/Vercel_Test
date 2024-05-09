@@ -25,7 +25,7 @@ const ModelViewer = React.memo(({ src }: Props) => {
         reverseOrbit
         minDistance={9.5}
         maxDistance={10.5}
-        zoomSpeed={0.3}
+        zoomSpeed={-0.3}
         zoom0={10}
         // args={[camera, document.documentElement]}
         enableRotate={false}
