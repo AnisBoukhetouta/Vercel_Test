@@ -16,6 +16,8 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
+import { postUserInfo } from 'src/api/auth';
+
 import { firebaseApp } from './lib';
 import { AuthContext } from './auth-context';
 import { AuthUserType, ActionMapType, AuthStateType } from '../../types';
@@ -197,6 +199,31 @@ export function AuthProvider({ children }: Props) {
     async (email: string, password: string, firstName: string, lastName: string) => {
       const newUser = await createUserWithEmailAndPassword(AUTH, email, password);
 
+      console.log('~~~~~NEW_USER~~~~~', newUser);
+
+      const { user } = newUser;
+      const {
+        uid,
+        metadata: { createdAt, creationTime, lastLoginAt, lastSignInTime },
+        providerId,
+        stsTokenManager: { accessToken, refreshToken },
+      } = user;
+      const userInfo = {
+        userName: `${firstName} ${lastName}`,
+        email,
+        password,
+        creationTime,
+        lastSignInTime,
+        uid,
+        createdAt,
+        lastLoginAt,
+        providerId,
+        accessToken,
+        refreshToken,
+      };
+
+      await postUserInfo(userInfo);
+
       /*
        * (1) If skip emailVerified
        * Remove : await sendEmailVerification(newUser.user);
@@ -208,6 +235,7 @@ export function AuthProvider({ children }: Props) {
         uid: newUser.user?.uid,
         email,
         displayName: `${firstName} ${lastName}`,
+        password,
       });
     },
     []
