@@ -28,6 +28,7 @@ export type IKanbanTask = {
   priority: string;
   labels: string[];
   description?: string;
+  taskTimer?: number;
   attachments: string[];
   comments: IKanbanComment[];
   assignee: IKanbanAssignee[];

@@ -17,6 +17,8 @@ import Iconify from 'src/components/iconify';
 import { IKanbanTask } from 'src/types/kanban';
 
 import KanbanDetails from './kanban-details';
+import CustomTaskTimer from '../custom-task-timer/custom-task-timer';
+import CustomTypoButtonBox from '../custom-typo-button-box/custom-typo-button-box';
 
 // ----------------------------------------------------------------------
 
@@ -65,6 +67,7 @@ export default function KanbanTaskItem({
 
   const renderImg = (
     <Box
+      component="div"
       sx={{
         p: theme.spacing(1, 1, 0, 1),
       }}
@@ -81,6 +84,39 @@ export default function KanbanTaskItem({
         }}
       />
     </Box>
+  );
+
+  const renderTask = (
+    <>
+      <Box
+        component="div"
+        sx={{
+          p: theme.spacing(1, 1, 0, 1),
+        }}
+      >
+        {task.taskTimer && (
+          <CustomTaskTimer
+            chart={{
+              series: [
+                {
+                  label: 'Next Random Task',
+                  percent: task.taskTimer,
+                  total: '03h 23m 12s',
+                },
+              ],
+            }}
+          />
+        )}
+      </Box>
+      <Box
+        component="div"
+        sx={{
+          p: theme.spacing(1, 1, 1, 1),
+        }}
+      >
+        <CustomTypoButtonBox title="Capture the Flag" />
+      </Box>
+    </>
   );
 
   const renderInfo = (
@@ -152,14 +188,17 @@ export default function KanbanTaskItem({
             {...other}
           >
             {!!task.attachments.length && renderImg}
+            {!!task.taskTimer && renderTask}
 
-            <Stack spacing={2} sx={{ px: 2, py: 2.5, position: 'relative' }}>
-              {renderPriority}
+            {!task.taskTimer && (
+              <Stack spacing={2} sx={{ px: 2, py: 2.5, position: 'relative' }}>
+                {renderPriority}
 
-              <Typography variant="subtitle2">{task.name}</Typography>
+                <Typography variant="subtitle2">{task.name}</Typography>
 
-              {renderInfo}
-            </Stack>
+                {renderInfo}
+              </Stack>
+            )}
           </Paper>
         )}
       </Draggable>
