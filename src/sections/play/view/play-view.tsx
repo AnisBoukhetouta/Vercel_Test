@@ -17,6 +17,7 @@ import ModelViewer from 'src/components/model-viewer/model-viewer';
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
+import PlayFeatureBottom from '../play-feature-bottom-panel';
 import CustomCarousel from '../../../components/custom-carousel/custom-carousel';
 
 export default function PlayView() {
@@ -80,7 +81,7 @@ export default function PlayView() {
                   width: '100%',
                   display: 'flex',
                   position: 'absolute',
-                  bottom: index > 3 ? 25 : '-80vh',
+                  bottom: index > 3 ? '-60vh' : 25,
                   transition: 'all 1s',
                   alignItems: 'end',
                   justifyContent: 'space-around',
@@ -90,7 +91,21 @@ export default function PlayView() {
                   <PlayLeftPanel />
                   <PlayRightPanel />
                 </GameContext.Provider>
-                {/* <PlayFeatureBottom /> */}
+              </div>
+              <div
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  position: 'absolute',
+                  bottom: index > 3 ? 25 : '-60vh',
+                  transition: 'all 1s',
+                  alignItems: 'end',
+                  justifyContent: 'space-around',
+                }}
+              >
+                <GameContext.Provider value={memoContext}>
+                  <PlayFeatureBottom />
+                </GameContext.Provider>
               </div>
             </>
           ) : (

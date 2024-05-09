@@ -8,13 +8,13 @@ import { HeaderTypography, NormalTypography } from 'src/components/custom-typo/c
 
 export default function PlayLeftPanel() {
   return (
-    <Stack direction='column'>
+    <Stack direction="column">
       <CustomCarousel
-        height='167px'
+        height="167px"
         list={_carouselSmallCards}
         sx={{ width: 344, height: 167, mb: 5 }}
-        header='MULTIPLAYER'
-        buttonTitle='Play Now'
+        header="MULTIPLAYER"
+        buttonTitle="Play Now"
       />
       <Paper
         elevation={3}
@@ -28,11 +28,11 @@ export default function PlayLeftPanel() {
         }}
       >
         <div style={{ flexGrow: 1 }} />
-        <NormalTypography title='Current Game' />
+        <NormalTypography title="Current Game" />
         <div style={{ flexGrow: 1 }} />
-        <HeaderTypography title='Capture the Flag' />
+        <HeaderTypography title="Capture the Flag" />
         <div style={{ flexGrow: 1 }} />
-        <CustomButton title='Play' fullWidth />
+        <CustomButton title="Play" fullWidth />
         <div style={{ flexGrow: 1 }} />
       </Paper>
     </Stack>
