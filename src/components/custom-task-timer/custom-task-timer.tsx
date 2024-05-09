@@ -8,6 +8,8 @@ import Card, { CardProps } from '@mui/material/Card';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
+import { useGetTimer } from 'src/api/task';
+
 import Chart, { useChart } from 'src/components/chart';
 
 // ----------------------------------------------------------------------
@@ -90,6 +92,9 @@ export default function CustomTaskTimer({ chart, ...other }: Props) {
       },
     },
   };
+
+  const timer = useGetTimer();
+  console.log('~~~TIMER~~~', timer);
 
   return (
     <Card {...other}>
