@@ -34,8 +34,8 @@ export const endpoints = {
     me: '/api/auth/me',
     login: '/api/auth/login',
     register: '/api/auth/register',
-    userInfo: '/userInfo',
-    mutateUserInfo: '/mutateUserInfo',
+    userInfo: '/api/pwniq/userInfo',
+    mutateUserInfo: '/api/pwniq/mutateUserInfo',
   },
   mail: {
     list: '/api/mail/list',
@@ -55,7 +55,7 @@ export const endpoints = {
   },
   //-------------------------------------
   games: {
-    games: '/getGames',
-    assets: '/getAssets',
+    games: '/api/pwniq/getGames',
+    assets: '/api/pwniq/getAssets',
   },
 };
