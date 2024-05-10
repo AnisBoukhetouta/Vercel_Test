@@ -25,7 +25,6 @@ export default function PlayView() {
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
-  // const results = useGetGames();
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;
@@ -35,10 +34,6 @@ export default function PlayView() {
       setIndex((x) => (x < 8 ? x + 1 : 8));
     }
   }, []);
-
-  // React.useEffect(() => {
-  //   console.log('~~~~~~~~~~~~', results);
-  // }, [results]);
 
   const memoContext = React.useMemo(
     () => ({ gameTitle, setGameTitle, setIndex, setPlay }),
