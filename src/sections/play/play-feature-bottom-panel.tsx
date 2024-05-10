@@ -7,15 +7,15 @@ import PlayFeatured from './play-featured';
 
 export default function PlayFeatureBottom() {
   return (
-    <Stack width="100%" height="100%" sx={{ position: 'absolute', top: -300, left: 0 }}>
-      <Grid container spacing={3}>
-        <Grid xs={4}>
-          <PlayFeatured list={_playFeatured} sx={{ width: '358px' }} height="274px" />
+    <Stack width="98%" height="100%" sx={{ position: 'absolute', top: 500, left: 0 }}>
+      <Grid container direction="row" spacing={2}>
+        <Grid xs={12} sm={4}>
+          <PlayFeatured list={_playFeatured} height="274px" />
         </Grid>
-        <Grid container xs={8} spacing={3}>
+        <Grid container xs={12} sm={8} spacing={3}>
           {featured.map((x) => (
-            <Grid key={x} xs={3}>
-              <PlayFeatured list={_playFeatured} sx={{ width: '169px' }} height="129px" />
+            <Grid key={x} xs={6} md={3} xl={2}>
+              <PlayFeatured list={_playFeatured} height="129px" />
             </Grid>
           ))}
         </Grid>
