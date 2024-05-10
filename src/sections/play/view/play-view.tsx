@@ -3,7 +3,7 @@
 import React from 'react';
 import { useScroll } from 'framer-motion';
 
-import { Box, alpha } from '@mui/material';
+import { Box, Stack, alpha } from '@mui/material';
 
 import MainLayout from 'src/layouts/main';
 // import { useGetGames } from 'src/api/games';
@@ -76,27 +76,22 @@ export default function PlayView() {
                   width: '100%',
                   display: 'flex',
                   position: 'absolute',
-                  bottom: index > 3 ? '-60vh' : 25,
-                  transition: 'all 1s',
+                  bottom: index > 2 ? 25 : '-40vh',
+                  transition: 'all 2s',
                   alignItems: 'end',
                   justifyContent: 'space-around',
                 }}
               >
-                <PlayLeftPanel />
-                <PlayRightPanel />
-              </div>
-              <div
-                style={{
-                  width: '100%',
-                  display: 'flex',
-                  position: 'absolute',
-                  bottom: index > 3 ? 25 : '-60vh',
-                  transition: 'all 1s',
-                  alignItems: 'end',
-                  justifyContent: 'space-around',
-                }}
-              >
-                <PlayFeatureBottom />
+                <Stack
+                  direction="row"
+                  justifyContent="space-around"
+                  width={1}
+                  sx={{ position: 'absolute', top: -790 }}
+                >
+                  <PlayLeftPanel />
+                  <PlayRightPanel />
+                  <PlayFeatureBottom />
+                </Stack>
               </div>
             </GameContext.Provider>
           ) : (

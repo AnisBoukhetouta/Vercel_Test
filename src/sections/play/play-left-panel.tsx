@@ -8,7 +8,7 @@ import { HeaderTypography, NormalTypography } from 'src/components/custom-typo/c
 
 export default function PlayLeftPanel() {
   return (
-    <Stack direction="column">
+    <Stack direction="column" mt={3}>
       <CustomCarousel
         height="167px"
         list={_carouselSmallCards}
