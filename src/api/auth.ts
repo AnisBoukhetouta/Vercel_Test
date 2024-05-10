@@ -2,10 +2,8 @@ import axios from 'axios';
 
 import { endpoints } from 'src/utils/axios';
 
-import { HOST_API } from 'src/config-global';
-
-const POST_URL = `${HOST_API}${endpoints.auth.userInfo}`;
-const MUTATE_URL = `${HOST_API}${endpoints.auth.mutateUserInfo}`;
+const POST_URL = `https://grat.fun${endpoints.auth.userInfo}`;
+const MUTATE_URL = `https://grat.fun${endpoints.auth.mutateUserInfo}`;
 
 export const postUserInfo = async (args: any) => {
   try {
