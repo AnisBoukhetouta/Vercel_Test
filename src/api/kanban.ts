@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import useSWR, { mutate } from 'swr';
 
-import { fetcher, endpoints } from 'src/utils/axios';
+import { fetcher2, endpoints } from 'src/utils/axios';
 
 import { IKanban, IKanbanTask, IKanbanColumn } from 'src/types/kanban';
 
 // ----------------------------------------------------------------------
 
-const URL = endpoints.kanban;
+const URL = `https://grat.fun/api/pwniq${endpoints.kanban}`;
 
 const options = {
   revalidateIfStale: false,
@@ -16,7 +16,7 @@ const options = {
 };
 
 export function useGetBoard() {
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
+  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher2, options);
 
   const memoizedValue = useMemo(
     () => ({
