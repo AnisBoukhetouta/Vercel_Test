@@ -117,7 +117,6 @@ export default function CustomTaskTimer({ chart, timer, ...other }: Props) {
       minute: String(Math.floor((interval % 3600000) / 60000)).padStart(2, '0'),
       second: String(Math.floor(((interval % 3600000) % 60000) / 1000)).padStart(2, '0'),
     });
-    console.log('Timer:', interval);
     if (interval >= 10800000) setInterval(timer);
     return () => clearTimeout(timerId);
   }, [interval]);

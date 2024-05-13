@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Droppable, DropResult, DragDropContext } from '@hello-pangea/dnd';
 
 import Stack from '@mui/material/Stack';
@@ -18,7 +18,11 @@ import { KanbanColumnSkeleton } from '../kanban-skeleton';
 
 // ----------------------------------------------------------------------
 
-export default function CustomKanbanView() {
+type Props = {
+  userId: string;
+};
+
+export default function CustomKanbanView({ userId }: Props) {
   const { board, boardLoading, boardEmpty } = useGetBoard();
 
   const onDragEnd = useCallback(
@@ -40,7 +44,7 @@ export default function CustomKanbanView() {
 
           newOrdered.splice(destination.index, 0, draggableId);
 
-          moveColumn(newOrdered);
+          moveColumn(newOrdered, userId);
           return;
         }
 
@@ -56,13 +60,16 @@ export default function CustomKanbanView() {
 
           newTaskIds.splice(destination.index, 0, draggableId);
 
-          moveTask({
-            ...board?.columns,
-            [sourceColumn.id]: {
-              ...sourceColumn,
-              taskIds: newTaskIds,
+          moveTask(
+            {
+              ...board?.columns,
+              [sourceColumn.id]: {
+                ...sourceColumn,
+                taskIds: newTaskIds,
+              },
             },
-          });
+            userId
+          );
 
           console.info('Moving to same list!');
 
@@ -80,17 +87,20 @@ export default function CustomKanbanView() {
         // Insert into destination
         destinationTaskIds.splice(destination.index, 0, draggableId);
 
-        moveTask({
-          ...board?.columns,
-          [sourceColumn.id]: {
-            ...sourceColumn,
-            taskIds: sourceTaskIds,
+        moveTask(
+          {
+            ...board?.columns,
+            [sourceColumn.id]: {
+              ...sourceColumn,
+              taskIds: sourceTaskIds,
+            },
+            [destinationColumn.id]: {
+              ...destinationColumn,
+              taskIds: destinationTaskIds,
+            },
           },
-          [destinationColumn.id]: {
-            ...destinationColumn,
-            taskIds: destinationTaskIds,
-          },
-        });
+          userId
+        );
 
         console.info('Moving to different list!');
       } catch (error) {
@@ -124,9 +134,9 @@ export default function CustomKanbanView() {
         Stack
       </Typography>
 
-      {boardLoading && renderSkeleton}
+      {boardLoading && !userId && renderSkeleton}
 
-      {boardEmpty && (
+      {boardEmpty && userId && (
         <EmptyContent
           filled
           title="No Data"
@@ -137,7 +147,7 @@ export default function CustomKanbanView() {
         />
       )}
 
-      {!!board?.ordered.length && (
+      {!!board?.ordered.length && !!userId && (
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="board" type="COLUMN" direction="horizontal">
             {(provided) => (

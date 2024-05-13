@@ -1,14 +1,22 @@
 'use client';
 
+import React from 'react';
 import { useScroll } from 'framer-motion';
 
 import { Box, alpha } from '@mui/material';
 
 import ScrollProgress from 'src/components/scroll-progress';
 import { CustomKanbanView } from 'src/components/custom-kanban/view';
+import { useAuthContext } from 'src/auth/hooks';
 
 export default function TasksView() {
   const { scrollYProgress } = useScroll();
+  const { user } = useAuthContext();
+  const [userId, setUserId] = React.useState<string>('');
+
+  React.useEffect(() => {
+    setUserId(user?.uid);
+  }, [user]);
 
   return (
     <>
@@ -26,7 +34,7 @@ export default function TasksView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          <CustomKanbanView />
+          {userId && <CustomKanbanView userId={userId} />}
         </Box>
       </Box>
     </>

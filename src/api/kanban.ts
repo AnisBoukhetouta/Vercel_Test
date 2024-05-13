@@ -1,13 +1,20 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import useSWR, { mutate } from 'swr';
 
 import { fetcher2, endpoints } from 'src/utils/axios';
 
 import { IKanban, IKanbanTask, IKanbanColumn } from 'src/types/kanban';
+import axios from 'axios';
+import { useAuthContext } from 'src/auth/hooks';
+// import { HOST_API } from 'src/config-global';
 
 // ----------------------------------------------------------------------
 
-const URL = `https://grat.fun/api/pwniq${endpoints.kanban}`;
+// const CUSTOMHOST = process.env.NEXT_LOCAL_HOST;
+// const URL = `https://grat.fun/api/pwniq${endpoints.kanban}`;
+const URL = `http://localhost:6001/api/pwniq${endpoints.kanban}`;
+// const URL = `${CUSTOMHOST}${endpoints.kanban}`;
+// const URL = `${HOST_API}${endpoints.kanban}`;
 
 const options = {
   revalidateIfStale: false,
@@ -114,10 +121,12 @@ export async function updateColumn(columnId: string, columnName: string) {
 
 // ----------------------------------------------------------------------
 
-export async function moveColumn(newOrdered: string[]) {
+export async function moveColumn(newOrdered: string[], userId: string) {
   /**
    * Work in local
    */
+  let data = null;
+
   mutate(
     URL,
     (currentData: any) => {
@@ -126,13 +135,16 @@ export async function moveColumn(newOrdered: string[]) {
       // update ordered in board.ordered
       const ordered = newOrdered;
 
-      return {
+      data = {
         ...currentData,
+        userId,
         board: {
           ...board,
           ordered,
         },
       };
+
+      return data;
     },
     false
   );
@@ -142,6 +154,7 @@ export async function moveColumn(newOrdered: string[]) {
    */
   // const data = { newOrdered };
   // await axios.post(endpoints.kanban, data, { params: { endpoint: 'move-column' } });
+  await axios.post(URL, data, { params: { endpoint: userId } });
 }
 
 // ----------------------------------------------------------------------
@@ -325,25 +338,30 @@ export async function updateTask(taskData: IKanbanTask) {
 
 // ----------------------------------------------------------------------
 
-export async function moveTask(updateColumns: Record<string, IKanbanColumn>) {
+export async function moveTask(updateColumns: Record<string, IKanbanColumn>, userId: string) {
   /**
    * Work in local
    */
+  console.log('userID', userId);
+  let data = null;
   mutate(
     URL,
-    (currentData) => {
+    (currentData: any) => {
       const board = currentData.board as IKanban;
 
       // update board.columns
       const columns = updateColumns;
 
-      return {
+      data = {
         ...currentData,
+        userId,
         board: {
           ...board,
           columns,
         },
       };
+
+      return data;
     },
     false
   );
@@ -353,6 +371,7 @@ export async function moveTask(updateColumns: Record<string, IKanbanColumn>) {
    */
   // const data = { updateColumns };
   // await axios.post(endpoints.kanban, data, { params: { endpoint: 'move-task' } });
+  await axios.post(URL, data, { params: { endpoint: userId } });
 }
 
 // ----------------------------------------------------------------------
