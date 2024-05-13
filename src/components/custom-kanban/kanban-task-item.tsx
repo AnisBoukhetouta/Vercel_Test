@@ -118,7 +118,7 @@ export default function KanbanTaskItem({
           p: theme.spacing(1, 1, 1, 1),
         }}
       >
-        <CustomTypoButtonBox title="Capture the Flag" />
+        <CustomTypoButtonBox title="Capture the Flag" buttonTitle="Request" />
       </Box>
     </>
   );

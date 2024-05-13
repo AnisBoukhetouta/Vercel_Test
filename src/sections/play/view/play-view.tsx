@@ -36,7 +36,7 @@ export default function PlayView() {
   }, []);
 
   const memoContext = React.useMemo(
-    () => ({ gameTitle, setGameTitle, setIndex, setPlay }),
+    () => ({ setGameTitle, setIndex, setPlay }),
     [gameTitle]
   );
 

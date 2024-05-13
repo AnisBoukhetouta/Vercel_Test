@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { alpha } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
@@ -25,6 +26,9 @@ import { IKanbanTask, IKanbanColumn } from 'src/types/kanban';
 import KanbanTaskAdd from './kanban-task-add';
 import KanbanTaskItem from './kanban-task-item';
 import KanbanColumnToolBar from './kanban-column-tool-bar';
+import { Box } from '@mui/material';
+import CustomTypoButtonBox from '../custom-typo-button-box/custom-typo-button-box';
+import { useGameContext } from 'src/game/hook/use-game-context';
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +39,9 @@ type Props = {
 };
 
 export default function KanbanColumn({ column, tasks, index }: Props) {
+  const { setPlay } = useGameContext();
   const { enqueueSnackbar } = useSnackbar();
+  const theme = useTheme();
 
   const openAddTask = useBoolean();
 
@@ -180,6 +186,16 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
                     width: 280,
                   }}
                 >
+                  {column.taskIds.length > 0 && column.name === 'Ready To Test' && (
+                    <Box
+                      component="div"
+                      sx={{
+                        p: theme.spacing(0, 0.5, 0.5, 0.5),
+                      }}
+                    >
+                      <CustomTypoButtonBox title="Game" buttonTitle="Start" onClick={setPlay} />
+                    </Box>
+                  )}
                   {column.taskIds.map((taskId, taskIndex) => (
                     <KanbanTaskItem
                       key={taskId}

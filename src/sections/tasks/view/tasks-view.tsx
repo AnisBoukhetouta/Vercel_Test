@@ -8,15 +8,21 @@ import { Box, alpha } from '@mui/material';
 import ScrollProgress from 'src/components/scroll-progress';
 import { CustomKanbanView } from 'src/components/custom-kanban/view';
 import { useAuthContext } from 'src/auth/hooks';
+import { GameContext } from 'src/game/context/game-context';
+import PlayGamePanel from 'src/sections/play/play-game-panel';
 
 export default function TasksView() {
   const { scrollYProgress } = useScroll();
   const { user } = useAuthContext();
   const [userId, setUserId] = React.useState<string>('');
 
+  const [play, setPlay] = React.useState<boolean>(false);
+
   React.useEffect(() => {
     setUserId(user?.uid);
   }, [user]);
+
+  const memoContext = React.useMemo(() => ({ setPlay }), []);
 
   return (
     <>
@@ -34,7 +40,12 @@ export default function TasksView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          {userId && <CustomKanbanView userId={userId} />}
+          {!play && userId && (
+            <GameContext.Provider value={memoContext}>
+              <CustomKanbanView userId={userId} />
+            </GameContext.Provider>
+          )}
+          {play && <PlayGamePanel />}
         </Box>
       </Box>
     </>
