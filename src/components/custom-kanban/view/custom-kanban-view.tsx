@@ -175,6 +175,7 @@ export default function CustomKanbanView({ userId }: Props) {
                     <KanbanColumn
                       index={index}
                       key={columnId}
+                      userId={userId}
                       column={board?.columns[columnId]}
                       tasks={board?.tasks}
                     />
@@ -182,7 +183,7 @@ export default function CustomKanbanView({ userId }: Props) {
 
                   {provided.placeholder}
 
-                  <KanbanColumnAdd />
+                  <KanbanColumnAdd userId={userId} />
                 </Stack>
               </Scrollbar>
             )}

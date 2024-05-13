@@ -16,7 +16,11 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function KanbanColumnAdd() {
+interface Props {
+  userId: string;
+}
+
+export default function KanbanColumnAdd({ userId }: Props) {
   const [columnName, setColumnName] = useState('');
 
   const openAddColumn = useBoolean();
@@ -28,11 +32,14 @@ export default function KanbanColumnAdd() {
   const handleCreateColumn = useCallback(async () => {
     try {
       if (columnName) {
-        createColumn({
-          id: uuidv4(),
-          name: columnName,
-          taskIds: [],
-        });
+        createColumn(
+          {
+            id: uuidv4(),
+            name: columnName,
+            taskIds: [],
+          },
+          userId
+        );
         setColumnName('');
       }
       openAddColumn.onFalse();

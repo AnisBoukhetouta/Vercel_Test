@@ -36,9 +36,10 @@ type Props = {
   column: IKanbanColumn;
   tasks: Record<string, IKanbanTask>;
   index: number;
+  userId: string;
 };
 
-export default function KanbanColumn({ column, tasks, index }: Props) {
+export default function KanbanColumn({ column, tasks, index, userId }: Props) {
   const { setPlay } = useGameContext();
   const { enqueueSnackbar } = useSnackbar();
   const theme = useTheme();
@@ -49,7 +50,7 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
     async (columnName: string) => {
       try {
         if (column.name !== columnName) {
-          updateColumn(column.id, columnName);
+          updateColumn(column.id, columnName, userId);
 
           enqueueSnackbar('Update success!', {
             anchorOrigin: { vertical: 'top', horizontal: 'center' },
@@ -64,7 +65,7 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
 
   const handleClearColumn = useCallback(async () => {
     try {
-      clearColumn(column.id);
+      clearColumn(column.id, userId);
     } catch (error) {
       console.error(error);
     }
@@ -72,7 +73,7 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
 
   const handleDeleteColumn = useCallback(async () => {
     try {
-      deleteColumn(column.id);
+      deleteColumn(column.id, userId);
 
       enqueueSnackbar('Delete success!', {
         anchorOrigin: { vertical: 'top', horizontal: 'center' },
@@ -85,7 +86,7 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
   const handleAddTask = useCallback(
     async (taskData: IKanbanTask) => {
       try {
-        createTask(column.id, taskData);
+        createTask(column.id, taskData, userId);
 
         openAddTask.onFalse();
       } catch (error) {
@@ -97,7 +98,7 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
 
   const handleUpdateTask = useCallback(async (taskData: IKanbanTask) => {
     try {
-      updateTask(taskData);
+      updateTask(taskData, userId);
     } catch (error) {
       console.error(error);
     }
@@ -106,7 +107,7 @@ export default function KanbanColumn({ column, tasks, index }: Props) {
   const handleDeleteTask = useCallback(
     async (taskId: string) => {
       try {
-        deleteTask(column.id, taskId);
+        deleteTask(column.id, taskId, userId);
 
         enqueueSnackbar('Delete success!', {
           anchorOrigin: { vertical: 'top', horizontal: 'center' },
