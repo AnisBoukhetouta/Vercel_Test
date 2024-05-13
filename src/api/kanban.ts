@@ -11,8 +11,8 @@ import { useAuthContext } from 'src/auth/hooks';
 // ----------------------------------------------------------------------
 
 // const CUSTOMHOST = process.env.NEXT_LOCAL_HOST;
-// const URL = `https://grat.fun/api/pwniq${endpoints.kanban}`;
-const URL = `http://localhost:6001/api/pwniq${endpoints.kanban}`;
+const URL = `https://grat.fun/api/pwniq${endpoints.kanban}`;
+// const URL = `http://localhost:6001/api/pwniq${endpoints.kanban}`;
 // const URL = `${CUSTOMHOST}${endpoints.kanban}`;
 // const URL = `${HOST_API}${endpoints.kanban}`;
 
