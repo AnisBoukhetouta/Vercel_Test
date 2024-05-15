@@ -24,7 +24,7 @@ export default function Layout({ children }: Props) {
         component="div"
         sx={{
           m: 3,
-          p: '14px',
+          p: '40px',
           height: '85vh',
           overflow: 'scroll',
           scrollbarWidth: 'none',
