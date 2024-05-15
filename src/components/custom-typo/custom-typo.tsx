@@ -18,7 +18,10 @@ export function HeaderTypography({ title }: Props) {
 
 export function SmallTypography({ title }: Props) {
   return (
-    <Typography sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}>
+    <Typography
+      width="120px"
+      sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}
+    >
       {title}
     </Typography>
   );
