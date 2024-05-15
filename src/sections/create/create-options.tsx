@@ -6,7 +6,7 @@ import { SmallTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateOptions() {
   return (
-    <Stack direction="row" gap={5} alignItems="center">
+    <Stack direction="row" gap={1} alignItems="center">
       <SmallTypography title="OPTIONS" />
       <FormControlLabel control={<Switch defaultChecked />} label="Requires Fullscreen" />
     </Stack>
