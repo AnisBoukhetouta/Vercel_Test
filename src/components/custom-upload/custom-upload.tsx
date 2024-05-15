@@ -7,7 +7,7 @@ import { alpha } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-// import { UploadIllustration } from 'src/assets/illustrations';
+import { UploadIllustration } from 'src/assets/illustrations';
 
 import Iconify from '../iconify';
 import { UploadProps } from './types';
@@ -48,7 +48,7 @@ export default function Upload({
 
   const renderPlaceholder = (
     <Stack spacing={3} alignItems="center" justifyContent="center" flexWrap="wrap">
-      {/* <UploadIllustration sx={{ width: 1, maxWidth: 200 }} /> */}
+      {multiple && <UploadIllustration sx={{ width: 1, maxWidth: 200 }} />}
       <Stack spacing={1} sx={{ textAlign: 'center' }}>
         <Typography variant="h6">Drop or Select file</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -136,6 +136,7 @@ export default function Upload({
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
           border: (theme) => `1px dashed ${alpha(theme.palette.grey[500], 0.2)}`,
           transition: (theme) => theme.transitions.create(['opacity', 'padding']),
