@@ -59,18 +59,26 @@ export default function CustomKanbanView({ userId }: Props) {
           newTaskIds.splice(source.index, 1);
 
           newTaskIds.splice(destination.index, 0, draggableId);
+          console.log('~~~~~~~~~~~~~~', draggableId);
 
-          moveTask(
-            {
-              ...board?.columns,
-              [sourceColumn.id]: {
-                ...sourceColumn,
-                taskIds: newTaskIds,
+          if (
+            (destination.droppableId === '1-column-e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1' &&
+              destination.index === 0) ||
+            draggableId === '1-task-e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1'
+          ) {
+            console.log('YOU CANNOT');
+          } else {
+            moveTask(
+              {
+                ...board?.columns,
+                [sourceColumn.id]: {
+                  ...sourceColumn,
+                  taskIds: newTaskIds,
+                },
               },
-            },
-            userId
-          );
-
+              userId
+            );
+          }
           console.info('Moving to same list!');
 
           return;
@@ -87,27 +95,37 @@ export default function CustomKanbanView({ userId }: Props) {
         // Insert into destination
         destinationTaskIds.splice(destination.index, 0, draggableId);
 
-        moveTask(
-          {
-            ...board?.columns,
-            [sourceColumn.id]: {
-              ...sourceColumn,
-              taskIds: sourceTaskIds,
+        console.log('~~~~~~~~~~~~~~', draggableId);
+
+        if (
+          (destination.droppableId === '1-column-e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1' &&
+            destination.index === 0) ||
+          draggableId === '1-task-e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1'
+        ) {
+          console.log('YOU CANNOT');
+        } else {
+          moveTask(
+            {
+              ...board?.columns,
+              [sourceColumn.id]: {
+                ...sourceColumn,
+                taskIds: sourceTaskIds,
+              },
+              [destinationColumn.id]: {
+                ...destinationColumn,
+                taskIds: destinationTaskIds,
+              },
             },
-            [destinationColumn.id]: {
-              ...destinationColumn,
-              taskIds: destinationTaskIds,
-            },
-          },
-          userId
-        );
+            userId
+          );
+        }
 
         console.info('Moving to different list!');
       } catch (error) {
         console.error(error);
       }
     },
-    [board?.columns, board?.ordered]
+    [board?.columns, board?.ordered, userId]
   );
 
   const renderSkeleton = (
@@ -149,8 +167,8 @@ export default function CustomKanbanView({ userId }: Props) {
 
       {!!board?.ordered.length && !!userId && (
         <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="board" type="COLUMN" direction="horizontal">
-            {(provided) => (
+          <Droppable droppableId="" type="COLUMN" direction="horizontal">
+            {(provided: any) => (
               <Scrollbar
                 sx={{
                   height: 1,

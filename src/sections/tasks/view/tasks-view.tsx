@@ -5,10 +5,12 @@ import { useScroll } from 'framer-motion';
 
 import { Box, alpha } from '@mui/material';
 
-import ScrollProgress from 'src/components/scroll-progress';
-import { CustomKanbanView } from 'src/components/custom-kanban/view';
 import { useAuthContext } from 'src/auth/hooks';
 import { GameContext } from 'src/game/context/game-context';
+
+import ScrollProgress from 'src/components/scroll-progress';
+import { CustomKanbanView } from 'src/components/custom-kanban/view';
+
 import PlayGamePanel from 'src/sections/play/play-game-panel';
 
 export default function TasksView() {

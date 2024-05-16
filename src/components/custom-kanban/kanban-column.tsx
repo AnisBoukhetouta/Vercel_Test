@@ -1,14 +1,15 @@
 import { useCallback } from 'react';
 import { Droppable, Draggable } from '@hello-pangea/dnd';
 
+import { Box } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { alpha } from '@mui/material/styles';
-import { useTheme } from '@mui/material/styles';
+import { alpha, useTheme } from '@mui/material/styles';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import { useGameContext } from 'src/game/hook/use-game-context';
 import {
   createTask,
   updateTask,
@@ -26,9 +27,7 @@ import { IKanbanTask, IKanbanColumn } from 'src/types/kanban';
 import KanbanTaskAdd from './kanban-task-add';
 import KanbanTaskItem from './kanban-task-item';
 import KanbanColumnToolBar from './kanban-column-tool-bar';
-import { Box } from '@mui/material';
 import CustomTypoButtonBox from '../custom-typo-button-box/custom-typo-button-box';
-import { useGameContext } from 'src/game/hook/use-game-context';
 
 // ----------------------------------------------------------------------
 
@@ -60,7 +59,7 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
         console.error(error);
       }
     },
-    [column.id, column.name, enqueueSnackbar]
+    [userId, column.id, column.name, enqueueSnackbar]
   );
 
   const handleClearColumn = useCallback(async () => {
@@ -69,7 +68,7 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
     } catch (error) {
       console.error(error);
     }
-  }, [column.id]);
+  }, [column.id, userId]);
 
   const handleDeleteColumn = useCallback(async () => {
     try {
@@ -81,7 +80,7 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
     } catch (error) {
       console.error(error);
     }
-  }, [column.id, enqueueSnackbar]);
+  }, [column.id, enqueueSnackbar, userId]);
 
   const handleAddTask = useCallback(
     async (taskData: IKanbanTask) => {
@@ -93,16 +92,19 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
         console.error(error);
       }
     },
-    [column.id, openAddTask]
+    [column.id, openAddTask, userId]
   );
 
-  const handleUpdateTask = useCallback(async (taskData: IKanbanTask) => {
-    try {
-      updateTask(taskData, userId);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  const handleUpdateTask = useCallback(
+    async (taskData: IKanbanTask) => {
+      try {
+        updateTask(taskData, userId);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [userId]
+  );
 
   const handleDeleteTask = useCallback(
     async (taskId: string) => {
@@ -116,7 +118,7 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
         console.error(error);
       }
     },
-    [column.id, enqueueSnackbar]
+    [column.id, enqueueSnackbar, userId]
   );
 
   const renderAddTask = (
@@ -164,7 +166,7 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
             borderRadius: 2,
             bgcolor: 'background.neutral',
             ...(snapshot.isDragging && {
-              bgcolor: (theme) => alpha(theme.palette.grey[500], 0.24),
+              bgcolor: (bg) => alpha(bg.palette.grey[500], 0.24),
             }),
           }}
         >
