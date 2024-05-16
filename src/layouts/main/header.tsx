@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
@@ -43,34 +43,7 @@ export default function Header() {
 
   const offsetTop = useOffSetTop(HEADER.H_DESKTOP);
 
-  const { authenticated, method } = useAuthContext();
-
-  const [checked, setChecked] = useState(false);
-
-  // const check = React.useCallback(() => {
-  //   if (!authenticated) {
-  //     const searchParams = new URLSearchParams({
-  //       returnTo: window.location.pathname,
-  //     }).toString();
-
-  //     const loginPath = loginPaths[method];
-
-  //     const href = `${loginPath}?${searchParams}`;
-
-  //     router.replace(href);
-  //   } else {
-  //     setChecked(true);
-  //   }
-  // }, [authenticated, method, router]);
-
-  // React.useEffect(() => {
-  //   check();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
-  // if (!checked) {
-  //   return null;
-  // }
+  const { authenticated } = useAuthContext();
 
   return (
     <AppBar>
