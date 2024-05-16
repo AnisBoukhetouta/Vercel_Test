@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { moveTask, moveColumn, useGetBoard } from 'src/api/kanban';
+import { moveTask, useGetBoard } from 'src/api/kanban';
 
 import Scrollbar from 'src/components/scrollbar';
 import EmptyContent from 'src/components/empty-content';
@@ -44,7 +44,7 @@ export default function CustomKanbanView({ userId }: Props) {
 
           newOrdered.splice(destination.index, 0, draggableId);
 
-          moveColumn(newOrdered, userId);
+          // moveColumn(newOrdered, userId);
           return;
         }
 
