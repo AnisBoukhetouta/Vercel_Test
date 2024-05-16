@@ -189,7 +189,7 @@ export default function KanbanColumn({ column, tasks, index, userId }: Props) {
                     width: 280,
                   }}
                 >
-                  {column.taskIds.length > 0 && column.name === 'Ready To Test' && (
+                  {column.taskIds.length > 0 && column.name === 'In Progress' && (
                     <Box
                       component="div"
                       sx={{
