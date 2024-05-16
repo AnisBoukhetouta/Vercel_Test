@@ -59,7 +59,6 @@ export default function CustomKanbanView({ userId }: Props) {
           newTaskIds.splice(source.index, 1);
 
           newTaskIds.splice(destination.index, 0, draggableId);
-          console.log('~~~~~~~~~~~~~~', draggableId);
 
           if (
             (destination.droppableId === '1-column-e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1' &&
@@ -94,8 +93,6 @@ export default function CustomKanbanView({ userId }: Props) {
 
         // Insert into destination
         destinationTaskIds.splice(destination.index, 0, draggableId);
-
-        console.log('~~~~~~~~~~~~~~', draggableId);
 
         if (
           (destination.droppableId === '1-column-e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1' &&
