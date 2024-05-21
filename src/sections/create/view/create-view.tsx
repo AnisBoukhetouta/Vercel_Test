@@ -1,4 +1,10 @@
-import { Stack } from '@mui/material';
+'use client';
+
+import { Form, Formik } from 'formik';
+
+import { Stack, Button } from '@mui/material';
+
+import CreateGameProvider from 'src/create-game/context/create-game-provider';
 
 import CreateType from '../create-type';
 import CreateImage from '../create-image';
@@ -9,15 +15,47 @@ import CreateGameFile from '../create-game-file';
 import CreateRewardGlb from '../create-reward-glb';
 
 export default function CreateView() {
+  const initialValues = {
+    gameType: '',
+    gameTitle: '',
+    gameDescription: '',
+    gameOptions: true,
+    mainImage: null,
+    secondImage: null,
+    rewardGlb: null,
+    backgroundGlb: null,
+    gameFiles: null,
+  };
   return (
-    <Stack gap={5}>
-      <CreateType />
-      <CreateDetails />
-      <CreateOptions />
-      <CreateImage />
-      {/* <CreatePreview /> */}
-      <CreateRewardGlb />
-      <CreateGameFile />
-    </Stack>
+    <CreateGameProvider>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, actions) => console.log('~~~SUBMIT~~~', values, actions)}
+      >
+        {(formik) => (
+          <Form>
+            <Stack gap={5}>
+              <CreateType />
+              <CreateDetails />
+              <CreateOptions />
+              <CreateImage />
+              {/* <CreatePreview /> */}
+              <CreateRewardGlb />
+              <CreateGameFile />
+              <Stack direction="row" justifyContent="end">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  sx={{ fontSize: '20px', width: '250px' }}
+                >
+                  Upload
+                </Button>
+              </Stack>
+            </Stack>
+          </Form>
+        )}
+      </Formik>
+    </CreateGameProvider>
   );
 }

@@ -1,15 +1,25 @@
 'use client';
 
+import React from 'react';
+
 import Radio from '@mui/material/Radio';
 import { Stack, RadioGroup, FormControlLabel } from '@mui/material';
+
+import { UseCreateGameContext } from 'src/create-game/hook/use-create-game-context';
 
 import { SmallTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateType() {
+  const { setGameType } = UseCreateGameContext();
   return (
     <Stack direction="row" alignItems="center" gap={1}>
       <SmallTypography title="GAME TYPE" />
-      <RadioGroup row defaultValue="sixth" sx={{ gap: 1, maxWidth: '880px' }}>
+      <RadioGroup
+        onChange={(e) => setGameType(e.target.defaultValue)}
+        row
+        defaultValue="first"
+        sx={{ gap: 1, maxWidth: '880px' }}
+      >
         <FormControlLabel value="first" control={<Radio size="medium" />} label="Main" />
         <FormControlLabel
           value="second"
