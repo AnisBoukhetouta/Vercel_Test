@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Form, Formik } from 'formik';
 
 import { Stack, Button } from '@mui/material';
@@ -26,35 +27,40 @@ export default function CreateView() {
     backgroundGlb: null,
     gameFiles: null,
   };
+
   return (
     <CreateGameProvider>
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => console.log('~~~SUBMIT~~~', values, actions)}
       >
-        {(formik) => (
-          <Form>
-            <Stack gap={5}>
-              <CreateType />
-              <CreateDetails />
-              <CreateOptions />
-              <CreateImage />
-              {/* <CreatePreview /> */}
-              <CreateRewardGlb />
-              <CreateGameFile />
-              <Stack direction="row" justifyContent="end">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  sx={{ fontSize: '20px', width: '250px' }}
-                >
-                  Upload
-                </Button>
+        {(formik) => {
+          console.log('@@@@@@@@@', formik.values.gameOptions);
+          return (
+            <Form>
+              <Stack gap={5}>
+                <CreateType />
+                <CreateDetails />
+                <CreateOptions />
+                <CreateImage />
+                {/* <CreatePreview /> */}
+                <CreateRewardGlb />
+                <CreateGameFile />
+                <Stack direction="row" justifyContent="end">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    disabled={formik.isSubmitting}
+                    sx={{ fontSize: '20px', width: '250px' }}
+                  >
+                    Upload
+                  </Button>
+                </Stack>
               </Stack>
-            </Stack>
-          </Form>
-        )}
+            </Form>
+          );
+        }}
       </Formik>
     </CreateGameProvider>
   );
