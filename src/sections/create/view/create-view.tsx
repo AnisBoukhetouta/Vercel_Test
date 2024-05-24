@@ -84,7 +84,7 @@ export default function CreateView() {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:6001/api/pwniq/gameUpload',
+        url: 'https://grat.fun/api/pwniq/gameUpload',
         headers: {
           'Content-Type': 'multipart/form-data',
         },
