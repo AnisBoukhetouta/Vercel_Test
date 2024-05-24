@@ -3,6 +3,7 @@
 import axios from 'axios';
 import * as Yup from 'yup';
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Form, Formik, FormikHelpers } from 'formik';
 
 import { Stack, Button } from '@mui/material';
@@ -47,6 +48,7 @@ const validationSchema = Yup.object().shape({
 
 export default function CreateView() {
   const { user } = useAuthContext();
+  const router = useRouter();
   const [userId, setUserId] = React.useState<string>('');
   useEffect(() => {
     setUserId(user?.uid);
@@ -98,6 +100,7 @@ export default function CreateView() {
           console.log(error);
         });
       setSubmitting(false);
+      router.push('/');
     } catch (e) {
       console.error('Submitting error :', e);
     }
