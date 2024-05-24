@@ -91,7 +91,7 @@ export default function CreateView() {
         data: formData,
       };
 
-      axios
+      await axios
         .request(config)
         .then((response) => {
           console.log(JSON.stringify(response.data));
