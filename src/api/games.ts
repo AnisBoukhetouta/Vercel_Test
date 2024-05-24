@@ -3,12 +3,12 @@
 import useSWR from 'swr';
 import { useMemo } from 'react';
 
-import { fetcher, endpoints } from 'src/utils/axios';
+import { fetcher2, endpoints } from 'src/utils/axios';
 
 export function useGetGames() {
-  const URL = endpoints.games.games;
+  const URL = `https://grat.fun/api/pwniq${endpoints.games.games}`;
 
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher);
+  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher2);
 
   const memoizedValue = useMemo(
     () => ({ data, isLoading, error, isValidating }),
@@ -21,7 +21,7 @@ export function useGetGames() {
 export function useGetAssets() {
   const URL = endpoints.games.assets;
 
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher);
+  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher2);
 
   const memoizedValue = useMemo(
     () => ({ data, isLoading, error, isValidating }),
