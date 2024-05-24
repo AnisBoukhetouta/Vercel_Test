@@ -13,10 +13,6 @@ export default function CreateGameProvider({ children }: Props) {
   const [gameDetails, setGameDetails] = React.useState<string>('');
   const [options, setOptions] = React.useState<boolean>(true);
 
-  React.useEffect(() => {
-    console.log('~~~~~~~~~~~~~~~', gameType);
-  }, [gameType]);
-
   const memoContext = React.useMemo(
     () => ({ gameType, setGameType, gameDetails, setGameDetails, options, setOptions }),
     [gameType, gameDetails, options]

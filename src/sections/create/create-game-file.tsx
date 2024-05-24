@@ -26,7 +26,7 @@ export default function CreateGameFile() {
           })
         ),
       ]);
-      setFieldValue('gameFiles', [...files, ...acceptedFiles]);
+      setFieldValue('gameFiles', [...acceptedFiles]);
     },
     [files, setFieldValue]
   );

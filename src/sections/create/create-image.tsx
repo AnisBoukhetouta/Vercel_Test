@@ -66,47 +66,44 @@ export default function CreateImage() {
       <Stack direction="row" gap={1}>
         <Stack gap={1} justifyContent="space-between">
           <SmallTypography title="MAIN COLOR" />
-          <Button variant="contained" color="primary">
-            BLUE
-          </Button>
-          <Button variant="contained" color="secondary">
-            GREEN
-          </Button>
-          <Button variant="contained" color="info">
-            INFO
-          </Button>
-          <Button variant="contained" color="success">
-            SUCCESS
-          </Button>
-          <Button variant="contained" color="warning">
-            WARNING
-          </Button>
-          <Button variant="contained" color="error">
-            RED
-          </Button>
+          {colors.map((types, index) => (
+            <Button
+              key={index}
+              variant="contained"
+              color={types.color}
+              onClick={() => {
+                setFieldValue('mainColor', types.color);
+              }}
+            >
+              {types.name}
+            </Button>
+          ))}
         </Stack>
         <Stack gap={1} justifyContent="space-between">
           <SmallTypography title="SECONDARY COLOR" />
-          <Button variant="contained" color="primary">
-            BLUE
-          </Button>
-          <Button variant="contained" color="secondary">
-            GREEN
-          </Button>
-          <Button variant="contained" color="info">
-            INFO
-          </Button>
-          <Button variant="contained" color="success">
-            SUCCESS
-          </Button>
-          <Button variant="contained" color="warning">
-            WARNING
-          </Button>
-          <Button variant="contained" color="error">
-            RED
-          </Button>
+          {colors.map((types, index) => (
+            <Button
+              key={index + 6}
+              variant="contained"
+              color={types.color}
+              onClick={() => {
+                setFieldValue('secondColor', types.color);
+              }}
+            >
+              {types.name}
+            </Button>
+          ))}
         </Stack>
       </Stack>
     </Stack>
   );
 }
+
+const colors = [
+  { color: 'primary', name: 'BLUE' },
+  { color: 'secondary', name: 'GREEN' },
+  { color: 'info', name: 'INFO' },
+  { color: 'success', name: 'SUCCESS' },
+  { color: 'warning', name: 'WARNING' },
+  { color: 'error', name: 'RED' },
+];
