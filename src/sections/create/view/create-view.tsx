@@ -37,7 +37,7 @@ const validationSchema = Yup.object().shape({
   gameDescription: Yup.string().required('Game description is required'),
   gameOptions: Yup.boolean(),
   mainImage: Yup.mixed().required('Main image is required'),
-  secondImage: Yup.mixed().required('Second image is required'),
+  // secondImage: Yup.mixed(),
   mainColor: Yup.string().required('Main color is required'),
   secondColor: Yup.string().required('Second color is required'),
   rewardGlb: Yup.mixed().required('Reward GLB is required'),
@@ -55,48 +55,52 @@ export default function CreateView() {
     values: typeof initialValues,
     { setSubmitting }: FormikHelpers<typeof initialValues>
   ) => {
-    console.log('Form Values:', values);
-    const formData = new FormData();
+    try {
+      console.log('Form Values:', values);
+      const formData = new FormData();
 
-    formData.append('userId', userId);
-    formData.append('gameTitle', values.gameTitle);
-    formData.append('gameType', values.gameType);
-    formData.append('gameDescription', values.gameDescription);
-    formData.append('gameOption', values.gameOptions.toString());
-    formData.append('mainColor', values.mainColor);
-    formData.append('secondColor', values.secondColor);
-    if (values.mainImage) formData.append('mainImage', values.mainImage);
-    if (values.secondImage) formData.append('secondImage', values.secondImage);
-    if (values.rewardGlb) formData.append('rewardGlb', values.rewardGlb);
-    if (values.backgroundGlb) formData.append('backgroundGlb', values.backgroundGlb);
-    if (values.gameFiles.length > 0) {
-      values.gameFiles.forEach((file, index) => {
-        if (file.name.endsWith('.data')) formData.append(`gameFile0`, file);
-        if (file.name.endsWith('.wasm')) formData.append(`gameFile1`, file);
-        if (file.name.endsWith('.framework.js')) formData.append(`gameFile2`, file);
-        if (file.name.endsWith('.loader.js')) formData.append(`gameFile3`, file);
-      });
+      formData.append('userId', userId);
+      formData.append('gameTitle', values.gameTitle);
+      formData.append('gameType', values.gameType);
+      formData.append('gameDescription', values.gameDescription);
+      formData.append('gameOption', values.gameOptions.toString());
+      formData.append('mainColor', values.mainColor);
+      if (values.secondImage !== null) formData.append('secondColor', values.secondColor);
+      if (values.mainImage) formData.append('mainImage', values.mainImage);
+      if (values.secondImage) formData.append('secondImage', values.secondImage);
+      if (values.rewardGlb) formData.append('rewardGlb', values.rewardGlb);
+      if (values.backgroundGlb) formData.append('backgroundGlb', values.backgroundGlb);
+      if (values.gameFiles.length > 0) {
+        values.gameFiles.forEach((file, index) => {
+          if (file.name.endsWith('.data')) formData.append(`gameFile0`, file);
+          if (file.name.endsWith('.wasm')) formData.append(`gameFile1`, file);
+          if (file.name.endsWith('.framework.js')) formData.append(`gameFile2`, file);
+          if (file.name.endsWith('.loader.js')) formData.append(`gameFile3`, file);
+        });
+      }
+
+      const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:6001/api/pwniq/gameUpload',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        data: formData,
+      };
+
+      axios
+        .request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setSubmitting(false);
+    } catch (e) {
+      console.error('Submitting error :', e);
     }
-
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'http://localhost:6001/api/pwniq/gameUpload',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      data: formData,
-    };
-
-    axios
-      .request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    setSubmitting(false);
   };
 
   return (

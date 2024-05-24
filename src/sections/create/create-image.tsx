@@ -50,7 +50,10 @@ export default function CreateImage() {
         <CustomUpload
           file={mainFile}
           onDrop={handleDropMainFile}
-          onDelete={() => setMainFile(null)}
+          onDelete={() => {
+            setMainFile(null);
+            setFieldValue('mainImage', null);
+          }}
           sx={{ width: '450px' }}
         />
       </Stack>
@@ -59,7 +62,10 @@ export default function CreateImage() {
         <CustomUpload
           file={secondFile}
           onDrop={handleDropSecondFile}
-          onDelete={() => setSecondFile(null)}
+          onDelete={() => {
+            setSecondFile(null);
+            setFieldValue('secondImage', null);
+          }}
           sx={{ width: '450px' }}
         />
       </Stack>
