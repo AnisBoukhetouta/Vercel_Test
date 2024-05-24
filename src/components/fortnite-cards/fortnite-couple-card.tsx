@@ -22,7 +22,6 @@ export default function FortniteCoupleCard({ cardData, mainImage, secondImage }:
     setGameTitle(cardData?.gameTitle ?? 'New');
   };
 
-  console.log('~~~~~~~~~~~~~~~~~~', mainImage);
   return (
     <div className={classes.coupleCard}>
       <FortniteButton

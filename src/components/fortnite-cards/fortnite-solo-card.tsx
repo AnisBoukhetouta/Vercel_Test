@@ -20,7 +20,6 @@ export default function FortniteSoloCard({ cardData, mainImage }: Props) {
     console.log('CLICKED');
     setGameTitle(cardData?.gameTitle ?? 'New');
   };
-  console.log('~~~~~~~~~~~~~~~~~~', mainImage);
 
   return (
     <div className={classes.soloCard}>
