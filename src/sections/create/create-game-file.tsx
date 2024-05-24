@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useFormikContext } from 'formik';
 
 import { Stack, Switch, CardHeader, CardContent, FormControlLabel } from '@mui/material';
 
@@ -13,6 +14,8 @@ export default function CreateGameFile() {
   const preview = useBoolean();
   const [files, setFiles] = React.useState<(File | string)[]>([]);
 
+  const { setFieldValue } = useFormikContext();
+
   const handleDropMultiFile = React.useCallback(
     (acceptedFiles: File[]) => {
       setFiles([
@@ -23,17 +26,20 @@ export default function CreateGameFile() {
           })
         ),
       ]);
+      setFieldValue('gameFiles', [...files, ...acceptedFiles]);
     },
-    [files]
+    [files, setFieldValue]
   );
 
   const handleRemoveFile = (inputFile: File | string) => {
     const filesFiltered = files.filter((fileFiltered) => fileFiltered !== inputFile);
     setFiles(filesFiltered);
+    setFieldValue('gameFiles', filesFiltered);
   };
 
   const handleRemoveAllFiles = () => {
     setFiles([]);
+    setFieldValue('gameFiles', []);
   };
 
   return (

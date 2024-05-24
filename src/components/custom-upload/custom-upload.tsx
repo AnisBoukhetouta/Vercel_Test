@@ -2,7 +2,7 @@ import { useDropzone } from 'react-dropzone';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import { alpha } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -99,7 +99,7 @@ export default function Upload({
         <MultiFilePreview files={files} thumbnail={thumbnail} onRemove={onRemove} />
       </Box>
 
-      <Stack direction="row" justifyContent="flex-end" spacing={1.5}>
+      {/* <Stack direction="row" justifyContent="flex-end" spacing={1.5}>
         {onRemoveAll && (
           <Button color="inherit" variant="outlined" size="small" onClick={onRemoveAll}>
             Remove All
@@ -116,7 +116,7 @@ export default function Upload({
             Upload
           </Button>
         )}
-      </Stack>
+      </Stack> */}
     </>
   );
 

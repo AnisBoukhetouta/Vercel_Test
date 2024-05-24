@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useFormikContext } from 'formik';
 
 import { Stack } from '@mui/material';
 
@@ -11,27 +12,37 @@ export default function CreateRewardGlb() {
   const [mainFile, setMainFile] = React.useState<File | string | null>(null);
   const [secondFile, setSecondFile] = React.useState<File | string | null>(null);
 
-  const handleDropMainFile = React.useCallback((acceptedFiles: File[]) => {
-    const newFile = acceptedFiles[0];
-    if (newFile) {
-      setMainFile(
-        Object.assign(newFile, {
-          preview: URL.createObjectURL(newFile),
-        })
-      );
-    }
-  }, []);
+  const { setFieldValue } = useFormikContext();
 
-  const handleDropSecondFile = React.useCallback((acceptedFiles: File[]) => {
-    const newFile = acceptedFiles[0];
-    if (newFile) {
-      setSecondFile(
-        Object.assign(newFile, {
-          preview: URL.createObjectURL(newFile),
-        })
-      );
-    }
-  }, []);
+  const handleDropMainFile = React.useCallback(
+    (acceptedFiles: File[]) => {
+      const newFile = acceptedFiles[0];
+      if (newFile) {
+        setMainFile(
+          Object.assign(newFile, {
+            preview: URL.createObjectURL(newFile),
+          })
+        );
+        setFieldValue('rewardGlb', newFile);
+      }
+    },
+    [setFieldValue]
+  );
+
+  const handleDropSecondFile = React.useCallback(
+    (acceptedFiles: File[]) => {
+      const newFile = acceptedFiles[0];
+      if (newFile) {
+        setSecondFile(
+          Object.assign(newFile, {
+            preview: URL.createObjectURL(newFile),
+          })
+        );
+        setFieldValue('backgroundGlb', newFile);
+      }
+    },
+    [setFieldValue]
+  );
 
   return (
     <Stack direction="row" flexWrap="wrap" gap={7}>
@@ -40,7 +51,10 @@ export default function CreateRewardGlb() {
         <CustomUpload
           file={mainFile}
           onDrop={handleDropMainFile}
-          onDelete={() => setMainFile(null)}
+          onDelete={() => {
+            setMainFile(null);
+            setFieldValue('rewardGlb', null);
+          }}
           sx={{ width: '450px' }}
         />
       </Stack>
@@ -49,7 +63,10 @@ export default function CreateRewardGlb() {
         <CustomUpload
           file={secondFile}
           onDrop={handleDropSecondFile}
-          onDelete={() => setSecondFile(null)}
+          onDelete={() => {
+            setSecondFile(null);
+            setFieldValue('backgroundGlb', null);
+          }}
           sx={{ width: '450px' }}
         />
       </Stack>

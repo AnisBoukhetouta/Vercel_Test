@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useFormikContext } from 'formik';
 
 import { Stack, Button } from '@mui/material';
 
@@ -10,28 +11,37 @@ import { SmallTypography } from 'src/components/custom-typo/custom-typo';
 export default function CreateImage() {
   const [mainFile, setMainFile] = React.useState<File | string | null>(null);
   const [secondFile, setSecondFile] = React.useState<File | string | null>(null);
+  const { setFieldValue } = useFormikContext();
 
-  const handleDropMainFile = React.useCallback((acceptedFiles: File[]) => {
-    const newFile = acceptedFiles[0];
-    if (newFile) {
-      setMainFile(
-        Object.assign(newFile, {
-          preview: URL.createObjectURL(newFile),
-        })
-      );
-    }
-  }, []);
+  const handleDropMainFile = React.useCallback(
+    (acceptedFiles: File[]) => {
+      const newFile = acceptedFiles[0];
+      if (newFile) {
+        setMainFile(
+          Object.assign(newFile, {
+            preview: URL.createObjectURL(newFile),
+          })
+        );
+        setFieldValue('mainImage', newFile);
+      }
+    },
+    [setFieldValue]
+  );
 
-  const handleDropSecondFile = React.useCallback((acceptedFiles: File[]) => {
-    const newFile = acceptedFiles[0];
-    if (newFile) {
-      setSecondFile(
-        Object.assign(newFile, {
-          preview: URL.createObjectURL(newFile),
-        })
-      );
-    }
-  }, []);
+  const handleDropSecondFile = React.useCallback(
+    (acceptedFiles: File[]) => {
+      const newFile = acceptedFiles[0];
+      if (newFile) {
+        setSecondFile(
+          Object.assign(newFile, {
+            preview: URL.createObjectURL(newFile),
+          })
+        );
+        setFieldValue('secondImage', newFile);
+      }
+    },
+    [setFieldValue]
+  );
 
   return (
     <Stack direction="row" gap={3} flexWrap="wrap" justifyContent="space-between">
