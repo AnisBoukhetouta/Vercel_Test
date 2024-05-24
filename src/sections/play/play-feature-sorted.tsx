@@ -9,7 +9,13 @@ import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-ca
 
 export default function PlayFeatureSorted() {
   return (
-    <Stack direction="column" width="35%" height="100%" sx={{ overflowY: 'scroll' }} gap="9px">
+    <Stack
+      direction="column"
+      width="35%"
+      height="100%"
+      sx={{ overflowY: 'scroll', scrollbarWidth: 'none' }}
+      gap="9px"
+    >
       <FeatureGroup />
     </Stack>
   );
