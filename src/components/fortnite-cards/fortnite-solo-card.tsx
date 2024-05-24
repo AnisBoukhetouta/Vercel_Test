@@ -9,9 +9,10 @@ import FortniteButtonImage from '../fortnite-button/fortnite-button-image';
 
 interface Props {
   cardData?: Game;
+  mainImage: string;
 }
 
-export default function FortniteSoloCard({ cardData }: Props) {
+export default function FortniteSoloCard({ cardData, mainImage }: Props) {
   const { setIndex, setGameTitle } = useGameContext();
 
   const handleClick = () => {
@@ -19,6 +20,7 @@ export default function FortniteSoloCard({ cardData }: Props) {
     console.log('CLICKED');
     setGameTitle(cardData?.gameTitle ?? 'New');
   };
+  console.log('~~~~~~~~~~~~~~~~~~', mainImage);
 
   return (
     <div className={classes.soloCard}>
@@ -32,7 +34,7 @@ export default function FortniteSoloCard({ cardData }: Props) {
         <FortniteButtonImage
           top="auto"
           bottom="0"
-          src="/assets/images/fortnite/images/character.webp"
+          src={mainImage ?? '/assets/images/fortnite/images/character.webp'}
         />
       </FortniteButton>
     </div>

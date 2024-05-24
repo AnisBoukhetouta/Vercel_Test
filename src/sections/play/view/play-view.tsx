@@ -6,7 +6,6 @@ import { useScroll } from 'framer-motion';
 import { Box, Stack, alpha } from '@mui/material';
 
 import MainLayout from 'src/layouts/main';
-import { useGetGames } from 'src/api/games';
 import { _carouselBigCards } from 'src/_mock';
 import { GameContext } from 'src/game/context/game-context';
 
@@ -24,12 +23,6 @@ export default function PlayView() {
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
-
-  const games = useGetGames();
-
-  React.useEffect(() => {
-    console.log('~~~~~~~~~~~~~~~~~', games);
-  }, [games]);
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;

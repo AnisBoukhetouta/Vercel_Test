@@ -9,9 +9,11 @@ import FortniteButtonImage from '../fortnite-button/fortnite-button-image';
 
 interface Props {
   cardData?: Game;
+  mainImage: string;
+  secondImage: string;
 }
 
-export default function FortniteCoupleCard({ cardData }: Props) {
+export default function FortniteCoupleCard({ cardData, mainImage, secondImage }: Props) {
   const { setIndex, setGameTitle } = useGameContext();
 
   const handleClick = () => {
@@ -20,6 +22,7 @@ export default function FortniteCoupleCard({ cardData }: Props) {
     setGameTitle(cardData?.gameTitle ?? 'New');
   };
 
+  console.log('~~~~~~~~~~~~~~~~~~', mainImage);
   return (
     <div className={classes.coupleCard}>
       <FortniteButton
@@ -30,7 +33,7 @@ export default function FortniteCoupleCard({ cardData }: Props) {
         subtext={cardData?.gameSubTitle ?? 'New'}
       >
         <FortniteButtonImage
-          src="/assets/images/fortnite/images/evie.webp"
+          src={mainImage ?? '/assets/images/fortnite/images/evie.webp'}
           width="120%"
           height="95%"
           right="15%"
@@ -38,12 +41,12 @@ export default function FortniteCoupleCard({ cardData }: Props) {
           bottom="-40px"
         />
         <FortniteButtonImage
-          src="/assets/images/fortnite/images/character.webp"
+          src={secondImage ?? '/assets/images/fortnite/images/character.webp'}
           width="130%"
           height="90%"
           left="15%"
           top="auto"
-          bottom="0"
+          bottom="-40px"
         />
       </FortniteButton>
     </div>
