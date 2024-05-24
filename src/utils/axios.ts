@@ -63,7 +63,7 @@ export const endpoints = {
   },
   //-------------------------------------
   games: {
-    games: '/api/pwniq/getGames',
-    assets: '/api/pwniq/getAssets',
+    games: '/getGames',
+    assets: '/getAssets',
   },
 };
