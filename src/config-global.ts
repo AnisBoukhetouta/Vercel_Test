@@ -4,7 +4,7 @@ import { paths } from 'src/routes/paths';
 // ----------------------------------------------------------------------
 
 export const HOST_API = process.env.NEXT_PUBLIC_HOST_API;
-export const DEV_HOST_API = process.env.NEXT_DEV_HOST_API;
+export const DEV_HOST_API = process.env.NEXT_PUBLIC_DEV_HOST_API;
 export const ASSETS_API = process.env.NEXT_PUBLIC_ASSETS_API;
 
 export const FIREBASE_API = {
