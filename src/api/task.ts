@@ -3,7 +3,9 @@ import { useMemo } from 'react';
 
 import { fetcher2, endpoints } from 'src/utils/axios';
 
-const URL = `https://grat.fun/api/pwniq${endpoints.taskTimer}`;
+import { DEV_HOST_API } from 'src/config-global';
+
+const URL = `${DEV_HOST_API}${endpoints.taskTimer}`;
 
 export function useGetTimer(userId: string) {
   const GET_URL = `${URL}?uid=${userId}`;

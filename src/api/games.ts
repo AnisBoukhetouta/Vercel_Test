@@ -5,8 +5,10 @@ import { useMemo } from 'react';
 
 import { fetcher2, endpoints } from 'src/utils/axios';
 
+import { DEV_HOST_API } from 'src/config-global';
+
 export function useGetGames() {
-  const URL = `https://grat.fun/api/pwniq${endpoints.games.games}`;
+  const URL = `${DEV_HOST_API}${endpoints.games.games}`;
 
   const { data, isLoading, error, isValidating } = useSWR(URL, fetcher2);
 

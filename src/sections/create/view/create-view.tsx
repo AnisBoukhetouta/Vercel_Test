@@ -9,6 +9,7 @@ import { Form, Formik, FormikHelpers } from 'formik';
 import { Stack, Button } from '@mui/material';
 
 import { useAuthContext } from 'src/auth/hooks';
+import { DEV_HOST_API } from 'src/config-global';
 
 import CreateType from '../create-type';
 import CreateImage from '../create-image';
@@ -84,7 +85,7 @@ export default function CreateView() {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'https://grat.fun/api/pwniq/gameUpload',
+        url: `${DEV_HOST_API}/gameUpload`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },

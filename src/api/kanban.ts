@@ -4,13 +4,14 @@ import useSWR, { mutate } from 'swr';
 
 import { fetcher2, endpoints } from 'src/utils/axios';
 
+import { DEV_HOST_API } from 'src/config-global';
+
 import { IKanban, IKanbanTask, IKanbanColumn } from 'src/types/kanban';
-// import { HOST_API } from 'src/config-global';
 
 // ----------------------------------------------------------------------
 
 // const CUSTOMHOST = process.env.NEXT_LOCAL_HOST;
-const URL = `https://grat.fun/api/pwniq${endpoints.kanban}`;
+const URL = `${DEV_HOST_API}${endpoints.kanban}`;
 // const URL = `http://localhost:6001/api/pwniq${endpoints.kanban}`;
 // const URL = `${CUSTOMHOST}${endpoints.kanban}`;
 // const URL = `${HOST_API}${endpoints.kanban}`;

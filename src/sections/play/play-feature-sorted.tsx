@@ -3,6 +3,7 @@ import { isArray } from 'lodash';
 import { Stack, Typography } from '@mui/material';
 
 import { useGetGames } from 'src/api/games';
+import { DEV_HOST_API } from 'src/config-global';
 
 import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-card';
@@ -22,7 +23,7 @@ export default function PlayFeatureSorted() {
 }
 
 // const baseImageUrl = `${HOST_API}`;
-const baseImageUrl = 'https://grat.fun/api/pwniq';
+const baseImageUrl = DEV_HOST_API;
 const FeatureGroup = () => {
   const { data, isLoading, error, isValidating } = useGetGames();
   console.log(data);
