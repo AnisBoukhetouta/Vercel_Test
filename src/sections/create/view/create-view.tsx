@@ -15,6 +15,7 @@ import { DEV_HOST_API } from 'src/config-global';
 
 import CreateType from '../create-type';
 import CreateImage from '../create-image';
+import CreateDialog from '../create-dialog';
 import CreateDetails from '../create-details';
 import CreateOptions from '../create-options';
 import CreateGameFile from '../create-game-file';
@@ -50,19 +51,22 @@ const validationSchema = Yup.object().shape({
 });
 
 const SubmitButton = () => {
-  const { isValid, isSubmitting } = useFormikContext();
+  const { isValid, isSubmitting, dirty } = useFormikContext();
   return (
-    <Stack direction="row" justifyContent="end">
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        disabled={isSubmitting || !isValid}
-        sx={{ fontSize: '20px', width: '250px' }}
-      >
-        Upload
-      </Button>
-    </Stack>
+    <>
+      <Stack direction="row" justifyContent="end">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          disabled={isSubmitting || !isValid || !dirty}
+          sx={{ fontSize: '20px', width: '250px' }}
+        >
+          Upload
+        </Button>
+      </Stack>
+      <CreateDialog />
+    </>
   );
 };
 
@@ -129,29 +133,25 @@ export default function CreateView() {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       {(formik) => (
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-              formik.handleSubmit(e);
-            }}
-          >
-            <Stack gap={5}>
-              <CreateType />
-              <CreateDetails />
-              <CreateOptions />
-              <CreateImage />
-              <CreateRewardGlb />
-              <CreateGameFile />
-              <SubmitButton />
-            </Stack>
-          </Form>
-        )}
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault();
+            formik.handleSubmit(e);
+          }}
+        >
+          <Stack gap={5}>
+            <CreateType />
+            <CreateDetails />
+            <CreateOptions />
+            <CreateImage />
+            <CreateRewardGlb />
+            <CreateGameFile />
+            <SubmitButton />
+          </Stack>
+        </Form>
+      )}
     </Formik>
   );
 }
