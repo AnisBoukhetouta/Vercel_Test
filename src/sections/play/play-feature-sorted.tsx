@@ -22,7 +22,6 @@ export default function PlayFeatureSorted() {
   );
 }
 
-// const baseImageUrl = `${HOST_API}`;
 const baseImageUrl = DEV_HOST_API;
 const FeatureGroup = () => {
   const { data, isLoading, error, isValidating } = useGetGames();
@@ -58,6 +57,3 @@ const FeatureGroup = () => {
     </Stack>
   );
 };
-
-const group = ['Speed', 'Shields', 'Endurance'];
-const cards = ['first', 'second'];

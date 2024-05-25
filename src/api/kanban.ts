@@ -10,11 +10,7 @@ import { IKanban, IKanbanTask, IKanbanColumn } from 'src/types/kanban';
 
 // ----------------------------------------------------------------------
 
-// const CUSTOMHOST = process.env.NEXT_LOCAL_HOST;
 const URL = `${DEV_HOST_API}${endpoints.kanban}`;
-// const URL = `http://localhost:6001/api/pwniq${endpoints.kanban}`;
-// const URL = `${CUSTOMHOST}${endpoints.kanban}`;
-// const URL = `${HOST_API}${endpoints.kanban}`;
 
 const options = {
   revalidateIfStale: false,

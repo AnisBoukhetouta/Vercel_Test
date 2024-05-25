@@ -4,9 +4,11 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Form, Formik, FormikHelpers } from 'formik';
+import { Form, Formik, FormikHelpers, useFormikContext } from 'formik';
 
 import { Stack, Button } from '@mui/material';
+
+import { endpoints } from 'src/utils/axios';
 
 import { useAuthContext } from 'src/auth/hooks';
 import { DEV_HOST_API } from 'src/config-global';
@@ -15,7 +17,6 @@ import CreateType from '../create-type';
 import CreateImage from '../create-image';
 import CreateDetails from '../create-details';
 import CreateOptions from '../create-options';
-// import CreatePreview from '../create-preview';
 import CreateGameFile from '../create-game-file';
 import CreateRewardGlb from '../create-reward-glb';
 
@@ -39,21 +40,41 @@ const validationSchema = Yup.object().shape({
   gameDescription: Yup.string().required('Game description is required'),
   gameOptions: Yup.boolean(),
   mainImage: Yup.mixed().required('Main image is required'),
-  // secondImage: Yup.mixed(),
   mainColor: Yup.string().required('Main color is required'),
   secondColor: Yup.string().required('Second color is required'),
   rewardGlb: Yup.mixed().required('Reward GLB is required'),
   backgroundGlb: Yup.mixed().required('Background GLB is required'),
-  gameFiles: Yup.array().of(Yup.mixed().required('Game file is required')),
+  gameFiles: Yup.array()
+    .of(Yup.mixed().required('Game file is required'))
+    .length(4, 'Exactly 4 game files are required'),
 });
+
+const SubmitButton = () => {
+  const { isValid, isSubmitting } = useFormikContext();
+  return (
+    <Stack direction="row" justifyContent="end">
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        disabled={isSubmitting || !isValid}
+        sx={{ fontSize: '20px', width: '250px' }}
+      >
+        Upload
+      </Button>
+    </Stack>
+  );
+};
 
 export default function CreateView() {
   const { user } = useAuthContext();
   const router = useRouter();
   const [userId, setUserId] = React.useState<string>('');
+
   useEffect(() => {
     setUserId(user?.uid);
   }, [user]);
+
   const onSubmit = async (
     values: typeof initialValues,
     { setSubmitting }: FormikHelpers<typeof initialValues>
@@ -85,7 +106,7 @@ export default function CreateView() {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${DEV_HOST_API}/gameUpload`,
+        url: `${DEV_HOST_API}${endpoints.games.upload}`,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -108,35 +129,29 @@ export default function CreateView() {
   };
 
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
       {(formik) => (
-        <Form
-          onSubmit={(e) => {
-            e.preventDefault();
-            formik.handleSubmit(e);
-          }}
-        >
-          <Stack gap={5}>
-            <CreateType />
-            <CreateDetails />
-            <CreateOptions />
-            <CreateImage />
-            <CreateRewardGlb />
-            <CreateGameFile />
-            <Stack direction="row" justifyContent="end">
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                disabled={formik.isSubmitting}
-                sx={{ fontSize: '20px', width: '250px' }}
-              >
-                Upload
-              </Button>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              formik.handleSubmit(e);
+            }}
+          >
+            <Stack gap={5}>
+              <CreateType />
+              <CreateDetails />
+              <CreateOptions />
+              <CreateImage />
+              <CreateRewardGlb />
+              <CreateGameFile />
+              <SubmitButton />
             </Stack>
-          </Stack>
-        </Form>
-      )}
+          </Form>
+        )}
     </Formik>
   );
 }
