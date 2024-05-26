@@ -6,6 +6,8 @@ import { useFormikContext } from 'formik';
 import Radio from '@mui/material/Radio';
 import { Stack, RadioGroup, FormControlLabel } from '@mui/material';
 
+import { GameType } from 'src/constants';
+
 import { SmallTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateType() {
@@ -20,24 +22,28 @@ export default function CreateType() {
         // defaultValue="first"
         sx={{ gap: 1, maxWidth: '880px' }}
       >
-        <FormControlLabel value="first" control={<Radio size="medium" />} label="Main" />
+        <FormControlLabel value={GameType.first} control={<Radio size="medium" />} label="Main" />
         <FormControlLabel
-          value="second"
+          value={GameType.second}
           control={<Radio size="medium" />}
           label="Speed Mini-Game"
         />
         <FormControlLabel
-          value="third"
+          value={GameType.third}
           control={<Radio size="medium" />}
           label="Shield Mini-Game"
         />
         <FormControlLabel
-          value="forth"
+          value={GameType.fourth}
           control={<Radio size="medium" />}
           label="Endurance Mini-Game"
         />
-        <FormControlLabel value="fifth" control={<Radio size="medium" />} label="Course" />
-        <FormControlLabel value="sixth" control={<Radio size="medium" />} label="Other Mini-Game" />
+        <FormControlLabel value={GameType.fifth} control={<Radio size="medium" />} label="Course" />
+        <FormControlLabel
+          value={GameType.sixth}
+          control={<Radio size="medium" />}
+          label="Other Mini-Game"
+        />
       </RadioGroup>
     </Stack>
   );
