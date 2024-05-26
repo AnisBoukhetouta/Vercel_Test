@@ -2,23 +2,22 @@ import React from 'react';
 
 import { useGameContext } from 'src/game/hook/use-game-context';
 
-import { Game } from './types';
 import classes from './frotnite-card.module.scss';
 import FortniteButton from '../fortnite-button/fortnite-button';
 import FortniteButtonImage from '../fortnite-button/fortnite-button-image';
 
 interface Props {
-  cardData?: Game;
+  title: string;
   mainImage: string;
 }
 
-export default function FortniteSoloCard({ cardData, mainImage }: Props) {
+export default function FortniteSoloCard({ title, mainImage }: Props) {
   const { setIndex, setGameTitle } = useGameContext();
 
   const handleClick = () => {
     setIndex(0);
     console.log('CLICKED');
-    setGameTitle(cardData?.gameTitle ?? 'New');
+    setGameTitle(title);
   };
 
   return (
@@ -27,14 +26,10 @@ export default function FortniteSoloCard({ cardData, mainImage }: Props) {
         color="blue"
         type="secondary"
         onClick={handleClick}
-        text={cardData?.gameTitle ?? 'New'}
-        subtext={cardData?.gameSubTitle ?? 'New'}
+        text={title}
+        subtext={title}
       >
-        <FortniteButtonImage
-          top="auto"
-          bottom="0"
-          src={mainImage ?? '/assets/images/fortnite/images/character.webp'}
-        />
+        <FortniteButtonImage top="auto" bottom="0" src={mainImage} />
       </FortniteButton>
     </div>
   );

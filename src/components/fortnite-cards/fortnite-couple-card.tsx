@@ -2,24 +2,23 @@ import React from 'react';
 
 import { useGameContext } from 'src/game/hook/use-game-context';
 
-import { Game } from './types';
 import classes from './frotnite-card.module.scss';
 import FortniteButton from '../fortnite-button/fortnite-button';
 import FortniteButtonImage from '../fortnite-button/fortnite-button-image';
 
 interface Props {
-  cardData?: Game;
+  title: string;
   mainImage: string;
   secondImage: string;
 }
 
-export default function FortniteCoupleCard({ cardData, mainImage, secondImage }: Props) {
+export default function FortniteCoupleCard({ title, mainImage, secondImage }: Props) {
   const { setIndex, setGameTitle } = useGameContext();
 
   const handleClick = () => {
     setIndex(0);
     console.log('CLICKED');
-    setGameTitle(cardData?.gameTitle ?? 'New');
+    setGameTitle(title);
   };
 
   return (
@@ -28,11 +27,11 @@ export default function FortniteCoupleCard({ cardData, mainImage, secondImage }:
         color="yellow"
         type="secondary"
         onClick={handleClick}
-        text={cardData?.gameTitle ?? 'New'}
-        subtext={cardData?.gameSubTitle ?? 'New'}
+        text={title}
+        subtext={title}
       >
         <FortniteButtonImage
-          src={mainImage ?? '/assets/images/fortnite/images/evie.webp'}
+          src={mainImage}
           width="120%"
           height="95%"
           right="15%"
@@ -40,7 +39,7 @@ export default function FortniteCoupleCard({ cardData, mainImage, secondImage }:
           bottom="-40px"
         />
         <FortniteButtonImage
-          src={secondImage ?? '/assets/images/fortnite/images/character.webp'}
+          src={secondImage}
           width="130%"
           height="90%"
           left="15%"

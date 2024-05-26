@@ -1,18 +1,39 @@
+import React from 'react';
 import { isArray } from 'lodash';
 
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 
-import { useGetGames } from 'src/api/games';
 import { DEV_HOST_API } from 'src/config-global';
+import { useGameContext } from 'src/game/hook/use-game-context';
 
 import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-card';
 
-const baseImageUrl = DEV_HOST_API;
+function GameCard({ cardData }: any) {
+  const mainImagePath = cardData.files[0];
+  if (cardData.secondColor) {
+    const secondImagePath = cardData.files[1];
+    return (
+      <FortniteCoupleCard
+        title={cardData.gameTitle}
+        mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
+        secondImage={`${DEV_HOST_API}/${secondImagePath.secondImage}`}
+      />
+    );
+  }
+  return (
+    <FortniteSoloCard
+      title={cardData.gameTitle}
+      mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
+    />
+  );
+}
 
 export default function PlayFeatureSorted() {
-  const { data, isLoading, error, isValidating } = useGetGames();
+  const { data } = useGameContext();
+
   console.log(data);
+
   return (
     <Stack
       direction="column"
@@ -22,32 +43,7 @@ export default function PlayFeatureSorted() {
       gap="9px"
     >
       <Stack direction="column" alignItems="start" gap="9px">
-        {isArray(data) &&
-          data.map((x) => (
-            <div key={x.gameTitle}>
-              <Typography component="div" sx={{ fonstSize: '16px !important', fontWeight: 600 }}>
-                {x.gameType}
-              </Typography>
-              {!x.secondColor ? (
-                <FortniteSoloCard
-                  mainImage={`${baseImageUrl}/${
-                    x.files.find(({ fieldName }: any) => fieldName === 'mainImage').destination
-                  }/${x.files.find(({ fieldName }: any) => fieldName === 'mainImage').fileName}`}
-                  key={x._id}
-                />
-              ) : (
-                <FortniteCoupleCard
-                  mainImage={`${baseImageUrl}/${
-                    x.files.find(({ fieldName }: any) => fieldName === 'mainImage').destination
-                  }/${x.files.find(({ fieldName }: any) => fieldName === 'mainImage').fileName}`}
-                  secondImage={`${baseImageUrl}/${
-                    x.files.find(({ fieldName }: any) => fieldName === 'secondImage').destination
-                  }/${x.files.find(({ fieldName }: any) => fieldName === 'secondImage').fileName}`}
-                  key={x._id}
-                />
-              )}
-            </div>
-          ))}
+        {isArray(data) && data.length > 0 && data.map((x) => <GameCard key={x._id} cardData={x} />)}
       </Stack>
     </Stack>
   );

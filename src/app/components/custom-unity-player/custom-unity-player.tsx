@@ -4,20 +4,30 @@ import { Unity, UnityConfig, useUnityContext } from 'react-unity-webgl';
 
 import { Box, Alert, Typography } from '@mui/material';
 
+import { DEV_HOST_API } from 'src/config-global';
+import { useGameContext } from 'src/game/hook/use-game-context';
+
 import Nebula from '../nebula/nebula';
 import classes from './custom-unity-player.module.scss';
 
 export default function CustomUnityPlayer() {
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(null);
+  const { data, gameTitle } = useGameContext();
+  const [game] = data.filter((x: any) => x.gameTitle === gameTitle);
+
+  const unityLoader = game.files[6].gameFile3;
+  const unityData = game.files[4].gameFile0;
+  const unityFramework = game.files[5].gameFile2;
+  const unityCode = game.files[7].gameFile1;
 
   React.useEffect(() => {
     setUnityConfig({
-      loaderUrl: `/build/Public.loader.js`,
-      dataUrl: `/build/Public.data`,
-      frameworkUrl: `/build/Public.framework.js`,
-      codeUrl: `/build/Public.wasm`,
+      loaderUrl: `${DEV_HOST_API}/${unityLoader}`,
+      dataUrl: `${DEV_HOST_API}/${unityData}`,
+      frameworkUrl: `${DEV_HOST_API}/${unityFramework}`,
+      codeUrl: `${DEV_HOST_API}/${unityCode}`,
     });
-  }, []);
+  }, [unityLoader, unityData, unityFramework, unityCode]);
 
   return (
     <Box
