@@ -32,7 +32,7 @@ export default function PlayRightPanel() {
             {userName}
           </Typography>
           <PlayProgresses />
-          <CustomStepper />
+          <CustomStepper context />
         </Stack>
         <PlayFeatureSorted />
       </Stack>

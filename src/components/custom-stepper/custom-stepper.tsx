@@ -17,7 +17,11 @@ import CustomButton from '../custom-button/custom-button';
 
 const STEPS = ['Stones', 'Sword', 'Brow & Arow'];
 
-export default function CustomStepper() {
+type Prop = {
+  context?: boolean;
+};
+
+export default function CustomStepper({ context }: Prop) {
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
       top: 22,
@@ -49,7 +53,7 @@ export default function CustomStepper() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <Stepper
-        sx={{ width: '60%' }}
+        sx={{ width: context ? '60%' : 1 }}
         alternativeLabel
         activeStep={1}
         connector={<ColorlibConnector />}
@@ -60,7 +64,7 @@ export default function CustomStepper() {
           </Step>
         ))}
       </Stepper>
-      <CustomButton title="Complete Tasks" width="35%" height={45} padding="0 30px" />
+      {context && <CustomButton title="Complete Tasks" width="35%" height={45} padding="0 30px" />}
     </div>
   );
 }

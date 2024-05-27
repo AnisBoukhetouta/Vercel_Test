@@ -8,7 +8,7 @@ import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber';
 import classes from './model-viewer.module.scss';
 
 interface Props {
-  src: string;
+  src?: string;
 }
 
 const ModelViewer = React.memo(({ src }: Props) => {
