@@ -15,3 +15,10 @@ export const GameTypeConverter = [
   'Course',
   'Other Mini-Game',
 ];
+
+export enum CharacterType {
+  skin,
+  backBling,
+  glider,
+  icon,
+}

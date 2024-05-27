@@ -10,6 +10,8 @@ import { useSearchParams } from 'src/routes/hooks';
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { useGetMails } from 'src/api/mail';
+import { CharacterType } from 'src/constants';
+import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
 
 import { CustomStepper } from 'src/components/custom-stepper';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
@@ -26,6 +28,7 @@ export default function PlayerDashboard() {
   const selectedMailId = searchParams.get('id') || '';
   const selectedLabelId = searchParams.get('label') || 'inbox';
   const { mails, mailsLoading, mailsError, mailsEmpty } = useGetMails(selectedLabelId);
+  const { characterId, setCharacterId } = useDashboardContext();
 
   const handleClickMail = React.useCallback((mailId: string) => {
     console.log('MailId: ', mailId);
@@ -36,19 +39,47 @@ export default function PlayerDashboard() {
       <Grid container spacing={2}>
         <Grid item xs={5}>
           <Box component="div" height="473px">
-            <ModelViewer />
+            <ModelViewer src={`/models/character${characterId + 1}.glb`} />
           </Box>
-          <Stack direction="row" justifyContent="space-between" sx={{ p: 3 }}>
-            <Fab variant="extended" color="primary" aria-label="Skin">
+          <Stack direction="row" justifyContent="center" spacing={5} sx={{ p: 3 }}>
+            <Fab
+              variant="extended"
+              color="primary"
+              aria-label="Skin"
+              onClick={() => {
+                setCharacterId(CharacterType.skin);
+              }}
+            >
               Skin
             </Fab>
-            <Fab variant="extended" color="primary" aria-label="Skin">
+            <Fab
+              variant="extended"
+              color="primary"
+              aria-label="Skin"
+              onClick={() => {
+                setCharacterId(CharacterType.backBling);
+              }}
+            >
               Back Bling
             </Fab>
-            <Fab variant="extended" color="primary" aria-label="Skin">
+            <Fab
+              variant="extended"
+              color="primary"
+              aria-label="Skin"
+              onClick={() => {
+                setCharacterId(CharacterType.glider);
+              }}
+            >
               Glider
             </Fab>
-            <Fab variant="extended" color="primary" aria-label="Skin">
+            <Fab
+              variant="extended"
+              color="primary"
+              aria-label="Skin"
+              onClick={() => {
+                setCharacterId(CharacterType.icon);
+              }}
+            >
               Icon
             </Fab>
           </Stack>

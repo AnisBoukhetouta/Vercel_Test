@@ -12,14 +12,14 @@ interface Props {
 }
 
 const ModelViewer = React.memo(({ src }: Props) => {
-  useLoader.clear(GLTFLoader, '/models/character.glb');
+  useLoader.clear(GLTFLoader, src ?? '/models/character.glb');
 
   return (
     <Canvas className={classes.modelContainer}>
       <ambientLight intensity={0.5} color="white" />
       <directionalLight intensity={0.6} color="white" position={[5, 5, 5]} />
       <pointLight intensity={0.8} color="white" position={[-5, -5, -5]} />
-      <Model />
+      <Model src={src} />
       <OrbitControls
         enablePan={false}
         reverseOrbit
@@ -36,8 +36,8 @@ const ModelViewer = React.memo(({ src }: Props) => {
 
 export default ModelViewer;
 
-function Model() {
-  const gltf = useLoader(GLTFLoader, '/models/character.glb');
+function Model({ src }: Props) {
+  const gltf = useLoader(GLTFLoader, src ?? '/models/character.glb');
   const { camera } = useThree();
   const { animations, scene } = gltf;
   const mixer = new THREE.AnimationMixer(scene);

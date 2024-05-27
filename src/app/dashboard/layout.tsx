@@ -3,7 +3,6 @@
 import { useScroll } from 'framer-motion';
 
 import MainLayout from 'src/layouts/main';
-import DashboardProvider from 'src/dashboard/context/dashboard-provider';
 
 import ScrollProgress from 'src/components/scroll-progress';
 
@@ -18,10 +17,8 @@ export default function Layout({ children }: Props) {
 
   return (
     <MainLayout>
-      <DashboardProvider>
-        <ScrollProgress scrollYProgress={scrollYProgress} />
-        {children}
-      </DashboardProvider>
+      <ScrollProgress scrollYProgress={scrollYProgress} />
+      {children}
     </MainLayout>
   );
 }

@@ -1,3 +1,5 @@
+import DashboardProvider from 'src/dashboard/context/dashboard-provider';
+
 import { DashboardView } from 'src/sections/dashboard/view';
 
 export const metadata = {
@@ -6,5 +8,9 @@ export const metadata = {
 };
 
 export default function DashboardPage() {
-  return <DashboardView />;
+  return (
+    <DashboardProvider>
+      <DashboardView />
+    </DashboardProvider>
+  );
 }
