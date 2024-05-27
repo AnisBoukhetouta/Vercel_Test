@@ -14,11 +14,12 @@ export default function CustomUnityPlayer() {
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(null);
   const { data, gameTitle } = useGameContext();
   const [game] = data.filter((x: any) => x.gameTitle === gameTitle);
+  const configSelector = game.files.lengh > 7;
 
-  const unityLoader = game.files[6].gameFile3;
-  const unityData = game.files[4].gameFile0;
-  const unityFramework = game.files[5].gameFile2;
-  const unityCode = game.files[7].gameFile1;
+  const unityLoader = configSelector ? game.files[6].gameFile3 : game.files[5].gameFile3;
+  const unityData = configSelector ? game.files[4].gameFile0 : game.files[3].gameFile0;
+  const unityFramework = configSelector ? game.files[5].gameFile2 : game.files[4].gameFile2;
+  const unityCode = configSelector ? game.files[7].gameFile1 : game.files[6].gameFile1;
 
   React.useEffect(() => {
     setUnityConfig({
