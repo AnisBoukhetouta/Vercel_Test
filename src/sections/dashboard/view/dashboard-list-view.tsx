@@ -231,7 +231,7 @@ export default function DashboardListView() {
   return (
     <>
       <Container
-        maxWidth={settings.themeStretch ? false : 'lg'}
+        maxWidth={settings.themeStretch ? false : 'xxl'}
         sx={{
           height: '100%',
           flexGrow: 1,
