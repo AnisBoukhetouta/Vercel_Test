@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { Box } from '@mui/system';
 import { Fab, Grid, Alert, Stack, Typography } from '@mui/material';
@@ -38,8 +38,10 @@ export default function PlayerDashboard() {
     <Box component="div" sx={{ px: '24px' }}>
       <Grid container spacing={2}>
         <Grid item xs={5}>
-          <Box component="div" height="473px">
-            <ModelViewer src={`/models/character${characterId + 1}.glb`} />
+          <Box component="div" height="473px" sx={{ display: 'relative' }}>
+            <Suspense fallback={<h4>Loading...</h4>}>
+              <ModelViewer src={`/models/character${characterId + 1}.glb`} />
+            </Suspense>
           </Box>
           <Stack direction="row" justifyContent="center" spacing={5} sx={{ p: 3 }}>
             <Fab

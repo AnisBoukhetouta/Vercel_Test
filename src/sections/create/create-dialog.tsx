@@ -29,7 +29,7 @@ export default function AlertDialog() {
 
   return (
     <Dialog open={view}>
-      <DialogTitle>{`Use Google's location service?`}</DialogTitle>
+      <DialogTitle>Game Uploading</DialogTitle>
 
       <DialogContent>
         <Typography sx={{ color: 'text.secondary', textAlign: 'center' }}>
