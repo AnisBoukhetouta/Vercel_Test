@@ -1,14 +1,20 @@
 'use client';
 
+import React from 'react';
+
 import { Box } from '@mui/system';
 import { Radio, RadioGroup, Typography, FormControlLabel } from '@mui/material';
 
+import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
+
 export default function DashboardRoleRadioGroup() {
+  const { role, setRole } = useDashboardContext();
   return (
     <Box component="div" sx={{ px: '24px' }}>
       <RadioGroup
         row
-        defaultValue="Admin"
+        value={role}
+        onChange={(e) => setRole(e.target.value)}
         sx={{ alignItems: 'center', justifyContent: 'center', gap: '5%' }}
       >
         <Typography
