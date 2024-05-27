@@ -8,16 +8,18 @@ import FortniteButtonImage from '../fortnite-button/fortnite-button-image';
 
 interface Props {
   title: string;
+  description: string;
   mainImage: string;
 }
 
-export default function FortniteSoloCard({ title, mainImage }: Props) {
-  const { setIndex, setGameTitle } = useGameContext();
+export default function FortniteSoloCard({ title, description, mainImage }: Props) {
+  const { setIndex, setGameTitle, setDescription } = useGameContext();
 
   const handleClick = () => {
     setIndex(0);
     console.log('CLICKED');
     setGameTitle(title);
+    setDescription(description);
   };
 
   return (

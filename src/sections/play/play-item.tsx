@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { RouterLink } from 'src/routes/components';
 
-import { fDate } from 'src/utils/format-time';
+import { useGameContext } from 'src/game/hook/use-game-context';
 
 import Iconify from 'src/components/iconify';
 import CustomPopover, { usePopover } from 'src/components/custom-popover';
@@ -37,7 +37,7 @@ const onDelete = () => console.log('ON_DELETE');
 
 export default function PlayItem() {
   const popover = usePopover();
-
+  const { gameTitle, description } = useGameContext();
   const { title, company, createdAt, experience, employmentTypes, role } = job;
 
   return (
@@ -59,10 +59,12 @@ export default function PlayItem() {
             sx={{ mb: 1 }}
             primary={
               <Link component={RouterLink} href="#" color="inherit">
-                {title}
+                {gameTitle}
+                {/* {title} */}
               </Link>
             }
-            secondary={`Boost shields: ${fDate(createdAt)}`}
+            // secondary={`Boost shields: ${fDate(createdAt)}`}
+            secondary={description}
             primaryTypographyProps={{
               typography: 'subtitle1',
             }}

@@ -16,6 +16,7 @@ function GameCard({ cardData }: any) {
     return (
       <FortniteCoupleCard
         title={cardData.gameTitle}
+        description={cardData.gameDescription}
         mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
         secondImage={`${DEV_HOST_API}/${secondImagePath.secondImage}`}
       />
@@ -24,7 +25,8 @@ function GameCard({ cardData }: any) {
   return (
     <FortniteSoloCard
       title={cardData.gameTitle}
-      mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
+        description={cardData.gameDescription}
+        mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
     />
   );
 }
