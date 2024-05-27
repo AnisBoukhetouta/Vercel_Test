@@ -2,8 +2,8 @@
 
 import { Box, alpha } from '@mui/material';
 
-import DashboardListView from './dashboard-admin/dashboard-list-view';
-import DashboardPlayView from './dashboard-admin/dashboard-play-view';
+import AdminDashboard from './dashboard-admin';
+import DashboardRoleRadioGroup from './dashboard-role-radio-group';
 
 export default function DashboardView() {
   return (
@@ -20,8 +20,8 @@ export default function DashboardView() {
         border: (theme) => `dashed 1px ${theme.palette.divider}`,
       }}
     >
-      <DashboardPlayView />
-      <DashboardListView />
+      <DashboardRoleRadioGroup />
+      <AdminDashboard />
     </Box>
   );
 }
