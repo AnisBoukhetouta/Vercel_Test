@@ -15,7 +15,7 @@ export default function DashboardRoleRadioGroup() {
         row
         value={role}
         onChange={(e) => setRole(e.target.value)}
-        sx={{ alignItems: 'center', justifyContent: 'center', gap: '5%' }}
+        sx={{ alignItems: 'center', justifyContent: 'start', gap: 3, pl: 5 }}
       >
         <Typography
           width="80px"
