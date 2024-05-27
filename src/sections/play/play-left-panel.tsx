@@ -1,12 +1,14 @@
 import { Paper, Stack } from '@mui/material';
 
 import { _carouselSmallCards } from 'src/_mock';
+import { useGameContext } from 'src/game/hook/use-game-context';
 
 import { CustomButton } from 'src/components/custom-button';
 import CustomCarousel from 'src/components/custom-carousel/custom-carousel';
 import { HeaderTypography, NormalTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function PlayLeftPanel() {
+  const { gameTitle } = useGameContext();
   return (
     <Stack direction="column" mt={3}>
       <CustomCarousel
@@ -30,7 +32,7 @@ export default function PlayLeftPanel() {
         <div style={{ flexGrow: 1 }} />
         <NormalTypography title="Current Game" />
         <div style={{ flexGrow: 1 }} />
-        <HeaderTypography title="Capture the Flag" />
+        <HeaderTypography title={gameTitle || 'Capture the Flag'} />
         <div style={{ flexGrow: 1 }} />
         <CustomButton title="Play" fullWidth />
         <div style={{ flexGrow: 1 }} />
