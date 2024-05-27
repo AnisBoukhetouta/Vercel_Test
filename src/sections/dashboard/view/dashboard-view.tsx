@@ -2,8 +2,8 @@
 
 import { Box, alpha } from '@mui/material';
 
-import AdminDashboard from './dashboard-admin';
-import DashboardRoleRadioGroup from './dashboard-role-radio-group';
+import AdminDashboard from '../dashboard-admin';
+import DashboardRoleRadioGroup from '../dashboard-role-radio-group';
 
 export default function DashboardView() {
   return (
