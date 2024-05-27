@@ -9,6 +9,7 @@ import { useSearchParams } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import Loading from 'src/app/loading';
 import { useGetMails } from 'src/api/mail';
 import { CharacterType } from 'src/constants';
 import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
@@ -38,8 +39,8 @@ export default function PlayerDashboard() {
     <Box component="div" sx={{ px: '24px' }}>
       <Grid container spacing={2}>
         <Grid item xs={5}>
-          <Box component="div" height="473px" sx={{ display: 'relative' }}>
-            <Suspense fallback={<h4>Loading...</h4>}>
+          <Box component="div" height="473px" sx={{ position: 'relative' }}>
+            <Suspense fallback={<Loading />}>
               <ModelViewer src={`/models/character${characterId + 1}.glb`} />
             </Suspense>
           </Box>
