@@ -60,7 +60,7 @@ export default function AnalyticsWebsiteVisits({ title, subheader, chart, ...oth
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
-      <Box sx={{ p: 3, pb: 1 }}>
+      <Box component="div" sx={{ p: 3, pb: 1 }}>
         <Chart
           dir="ltr"
           type="line"
