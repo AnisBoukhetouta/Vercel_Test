@@ -14,7 +14,7 @@ export default function CustomUnityPlayer() {
   const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(null);
   const { data, gameTitle } = useGameContext();
   const [game] = data.filter((x: any) => x.gameTitle === gameTitle);
-  const configSelector = game.files.lengh > 7;
+  const configSelector = game.files.length > 7;
 
   const unityLoader = configSelector ? game.files[6].gameFile3 : game.files[5].gameFile3;
   const unityData = configSelector ? game.files[4].gameFile0 : game.files[3].gameFile0;
