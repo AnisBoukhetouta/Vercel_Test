@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { Box } from '@mui/system';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Button, Typography } from '@mui/material';
 
 import { useSearchParams } from 'src/routes/hooks';
 
@@ -11,6 +11,7 @@ import { useBoolean } from 'src/hooks/use-boolean';
 
 import { useGetMails } from 'src/api/mail';
 import { AnalyticsChartsValue } from 'src/constants';
+import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
 
 import { CustomStepper } from 'src/components/custom-stepper';
 
@@ -21,11 +22,13 @@ import CustomMailList from './CustomMailList';
 import PlayerEchoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
 import PlayerController from './player-controller';
+import PlayerConfirmDialog from './player-confirm-dialog';
 // import CustomBasicApexChart from './CustomApexBasicChart';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
 
 export default function PlayerDashboard() {
   const openMail = useBoolean();
+  const { confirm } = useDashboardContext();
   const searchParams = useSearchParams();
   const selectedMailId = searchParams.get('id') || '';
   const selectedLabelId = searchParams.get('label') || 'inbox';
@@ -89,6 +92,17 @@ export default function PlayerDashboard() {
           </Stack>
         </Grid>
       </Grid>
+      <PlayerConfirmDialog
+        open={confirm.value}
+        onClose={confirm.onFalse}
+        title="Skins"
+        content="Select your favourite skins"
+        action={
+          <Button variant="contained" color="primary" onClick={() => {}}>
+            Select
+          </Button>
+        }
+      />
     </Box>
   );
 }

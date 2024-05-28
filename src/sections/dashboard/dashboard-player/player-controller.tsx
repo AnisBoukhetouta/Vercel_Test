@@ -6,17 +6,10 @@ import { CharacterType } from 'src/constants';
 import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
 
 export default function PlayerController() {
-  const { setCharacterId } = useDashboardContext();
+  const { confirm, setCharacterId } = useDashboardContext();
   return (
     <Stack direction="row" justifyContent="center" spacing={5} sx={{ p: 3 }}>
-      <Fab
-        variant="extended"
-        color="primary"
-        aria-label="Skin"
-        onClick={() => {
-          setCharacterId(CharacterType.skin);
-        }}
-      >
+      <Fab variant="extended" color="primary" aria-label="Skin" onClick={confirm.onTrue}>
         Skin
       </Fab>
       <Fab
