@@ -144,19 +144,7 @@ export default function PlayerDashboard() {
               <Grid item xs={6}>
                 <Stack spacing={3}>
                   <Typography variant="h4">Activity</Typography>
-                  {/* <Box
-                    component="div"
-                    sx={{
-                      height: '208px',
-                      width: '100%',
-                      backgroundColor: '#D9D9D9',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  > */}
                   <CustomBasicApexChart />
-                  {/* </Box> */}
                   <Stack spacing={3}>
                     <Alert severity="info" sx={{ width: '100%' }} onClose={() => {}}>
                       Mini-Course Added
