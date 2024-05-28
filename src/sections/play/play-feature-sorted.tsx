@@ -9,7 +9,7 @@ import { useGameContext } from 'src/game/hook/use-game-context';
 import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-card';
 
-function GameCard({ cardData }: any) {
+export function GameCard({ cardData }: any) {
   const { setIndex, setGameTitle, setDescription } = useGameContext();
 
   const handleClick = ({ title, description }: any) => {
