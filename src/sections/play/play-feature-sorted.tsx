@@ -10,6 +10,14 @@ import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-card';
 
 function GameCard({ cardData }: any) {
+  const { setIndex, setGameTitle, setDescription } = useGameContext();
+
+  const handleClick = ({ title, description }: any) => {
+    setIndex(0);
+    console.log('CLICKED');
+    setGameTitle(title);
+    setDescription(description);
+  };
   const mainImagePath = cardData.files[0];
   if (cardData.secondColor) {
     const secondImagePath = cardData.files[1];
@@ -19,14 +27,16 @@ function GameCard({ cardData }: any) {
         description={cardData.gameDescription}
         mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
         secondImage={`${DEV_HOST_API}/${secondImagePath.secondImage}`}
+        onClick={handleClick}
       />
     );
   }
   return (
     <FortniteSoloCard
       title={cardData.gameTitle}
-        description={cardData.gameDescription}
-        mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
+      description={cardData.gameDescription}
+      mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
+      onClick={handleClick}
     />
   );
 }
