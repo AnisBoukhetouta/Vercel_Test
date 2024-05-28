@@ -11,6 +11,8 @@ import Chart, { useChart } from 'src/components/chart';
 interface Props extends CardProps {
   title?: string;
   subheader?: string;
+  width?: number | string;
+  height?: number | string;
   chart: {
     labels: string[];
     colors?: string[];
@@ -24,7 +26,14 @@ interface Props extends CardProps {
   };
 }
 
-export default function AnalyticsWebsiteVisits({ title, subheader, chart, ...other }: Props) {
+export default function AnalyticsWebsiteVisits({
+  title,
+  width,
+  height,
+  subheader,
+  chart,
+  ...other
+}: Props) {
   const { labels, colors, series, options } = chart;
 
   const chartOptions = useChart({
@@ -66,8 +75,8 @@ export default function AnalyticsWebsiteVisits({ title, subheader, chart, ...oth
           type="line"
           series={series}
           options={chartOptions}
-          width="100%"
-          height={364}
+          width={width ?? '100%'}
+          height={height ?? 364}
         />
       </Box>
     </Card>

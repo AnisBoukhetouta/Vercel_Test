@@ -78,7 +78,7 @@ function CarouselItem({ item, height, header, buttonTitle }: CarouselItemProps) 
       sx={{
         width: 1,
         // height: { xs: 280, xl: 320 },
-        height: [height],
+        height,
       }}
     />
   );

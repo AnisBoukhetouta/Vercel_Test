@@ -41,10 +41,6 @@ export default function PlayView() {
     [data, gameTitle, description]
   );
 
-  React.useEffect(() => {
-    console.log("~~~~~~~~~~~~~~~~~~~~", description);
-  },[description]);
-
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
@@ -71,7 +67,7 @@ export default function PlayView() {
               <PlayGamePanel />
             ) : (
               <>
-                <ModelViewer src="" />
+                <ModelViewer src="/models/character.glb" />
                 <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}
@@ -79,8 +75,9 @@ export default function PlayView() {
                   header="NEW COURSE"
                   buttonTitle="Add Course"
                 />
-                <div
-                  style={{
+                <Box
+                  component="div"
+                  sx={{
                     width: '100%',
                     display: 'flex',
                     position: 'absolute',
@@ -100,7 +97,7 @@ export default function PlayView() {
                     <PlayRightPanel />
                     <PlayFeatureBottom />
                   </Stack>
-                </div>
+                </Box>
               </>
             )}
           </GameContext.Provider>
