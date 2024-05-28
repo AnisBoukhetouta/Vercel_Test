@@ -37,7 +37,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/**/*.scss"
-  ],
+, "src/sections/dashboard/dashboard-player/CustomApexBasicChart.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -21,6 +21,7 @@ import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-we
 import EcommerceWidgetSummary from 'src/sections/overview/e-commerce/ecommerce-widget-summary';
 
 import CustomMailList from './CustomMailList';
+import CustomBasicApexChart from './CustomApexBasicChart';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
 
 export default function PlayerDashboard() {
@@ -143,7 +144,7 @@ export default function PlayerDashboard() {
               <Grid item xs={6}>
                 <Stack spacing={3}>
                   <Typography variant="h4">Activity</Typography>
-                  <Box
+                  {/* <Box
                     component="div"
                     sx={{
                       height: '208px',
@@ -153,20 +154,9 @@ export default function PlayerDashboard() {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}
-                  >
-                    <Typography
-                      sx={{
-                        width: '195px',
-                        height: '85px',
-                        textAlign: 'center',
-                        fontSize: '12px',
-                        lineHeight: '20px',
-                      }}
-                    >
-                      Heatmap Chart, like github
-                      https://apexcharts.com/react-chart-demos/heatmap-charts/basic/
-                    </Typography>
-                  </Box>
+                  > */}
+                  <CustomBasicApexChart />
+                  {/* </Box> */}
                   <Stack spacing={3}>
                     <Alert severity="info" sx={{ width: '100%' }} onClose={() => {}}>
                       Mini-Course Added
