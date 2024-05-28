@@ -21,7 +21,7 @@ import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-we
 import EcommerceWidgetSummary from 'src/sections/overview/e-commerce/ecommerce-widget-summary';
 
 import CustomMailList from './CustomMailList';
-import CustomBasicApexChart from './CustomApexBasicChart';
+// import CustomBasicApexChart from './CustomApexBasicChart';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
 
 export default function PlayerDashboard() {
@@ -144,7 +144,7 @@ export default function PlayerDashboard() {
               <Grid item xs={6}>
                 <Stack spacing={3}>
                   <Typography variant="h4">Activity</Typography>
-                  <CustomBasicApexChart />
+                  {/* <CustomBasicApexChart /> */}
                   <Stack spacing={3}>
                     <Alert severity="info" sx={{ width: '100%' }} onClose={() => {}}>
                       Mini-Course Added
