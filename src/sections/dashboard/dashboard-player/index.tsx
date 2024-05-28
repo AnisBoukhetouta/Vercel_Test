@@ -22,7 +22,7 @@ import CustomMailList from './CustomMailList';
 import PlayerEchoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
 import PlayerController from './player-controller';
-import PlayerConfirmDialog from './player-confirm-dialog';
+import PlayerConfirmDialog from './player-confirm-dialog/player-confirm-dialog';
 // import CustomBasicApexChart from './CustomApexBasicChart';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
 
@@ -96,7 +96,7 @@ export default function PlayerDashboard() {
         open={confirm.value}
         onClose={confirm.onFalse}
         title="Skins"
-        content="Select your favourite skins"
+        content={<h1>Select your favourite skin</h1>}
         action={
           <Button variant="contained" color="primary" onClick={() => {}}>
             Select
