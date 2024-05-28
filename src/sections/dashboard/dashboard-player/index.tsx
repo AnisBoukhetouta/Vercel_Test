@@ -22,9 +22,10 @@ import CustomMailList from './CustomMailList';
 import PlayerEchoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
 import PlayerController from './player-controller';
-import PlayerConfirmDialog from './player-confirm-dialog/player-confirm-dialog';
 // import CustomBasicApexChart from './CustomApexBasicChart';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
+import PlayerConfirmDialog from './player-confirm-dialog/player-confirm-dialog';
+import PlayerConfirmContent from './player-confirm-dialog/player-confirm-content';
 
 export default function PlayerDashboard() {
   const openMail = useBoolean();
@@ -96,7 +97,7 @@ export default function PlayerDashboard() {
         open={confirm.value}
         onClose={confirm.onFalse}
         title="Skins"
-        content={<h1>Select your favourite skin</h1>}
+        content={<PlayerConfirmContent />}
         action={
           <Button variant="contained" color="primary" onClick={() => {}}>
             Select
