@@ -20,7 +20,7 @@ import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-we
 
 import PlayerModel from './player-model';
 import CustomMailList from './CustomMailList';
-import PlayerEchoData from './player-eco-data';
+import PlayerEcoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
 import PlayerController from './player-controller';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
@@ -69,7 +69,7 @@ export default function PlayerDashboard() {
           <Stack spacing={10} sx={{ py: 3 }}>
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <PlayerEchoData />
+                <PlayerEcoData />
               </Grid>
               <Grid item xs={6}>
                 <Stack spacing={3}>
