@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import ReactApexChart from 'react-apexcharts';
+import Chart from 'react-apexcharts';
+import { ApexOptions } from 'apexcharts';
 
-function generateData(count: any, yrange: any) {
-  let i = 0;
+function generateData(count: number, yrange: { min: number; max: number }) {
   const series = [];
-  while (i < count) {
+  for (let i = 0; i < count; i += 1) {
     const x = (i + 1).toString();
     const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
@@ -14,24 +14,8 @@ function generateData(count: any, yrange: any) {
       x,
       y,
     });
-    // eslint-disable-next-line no-plusplus
-    i++;
   }
   return series;
-}
-
-export default function CustomBasicApexChart() {
-  return (
-    <ReactApexChart
-      options={charts.options}
-      series={charts.series}
-      type="heatmap"
-      padding={0}
-      margin={0}
-      width="100%"
-      height={290}
-    />
-  );
 }
 
 const charts = {
@@ -103,7 +87,7 @@ const charts = {
   options: {
     chart: {
       height: 300,
-      type: 'heatmap',
+      type: 'heatmap' as const,
     },
     dataLabels: {
       enabled: false,
@@ -112,5 +96,10 @@ const charts = {
     title: {
       text: '',
     },
-  },
+  } as ApexOptions,
 };
+
+const PlayerApexChart: React.FC = () => (
+  <Chart options={charts.options} series={charts.series} type="heatmap" width="100%" height={290} />
+);
+export default PlayerApexChart;

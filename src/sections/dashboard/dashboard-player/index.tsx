@@ -21,8 +21,8 @@ import PlayerModel from './player-model';
 import CustomMailList from './CustomMailList';
 import PlayerEchoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
+import PlayerApexChart from './player-apex-chart';
 import PlayerController from './player-controller';
-// import CustomBasicApexChart from './CustomApexBasicChart';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
 import PlayerConfirmDialog from './player-confirm-dialog/player-confirm-dialog';
 import PlayerConfirmContent from './player-confirm-dialog/player-confirm-content';
@@ -74,7 +74,7 @@ export default function PlayerDashboard() {
               <Grid item xs={6}>
                 <Stack spacing={3}>
                   <Typography variant="h4">Activity</Typography>
-                  {/* <CustomBasicApexChart /> */}
+                  <PlayerApexChart />
                   <PlayerAlertBox />
                 </Stack>
               </Grid>
