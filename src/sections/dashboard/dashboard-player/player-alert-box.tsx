@@ -4,7 +4,7 @@ import { Alert, Stack } from '@mui/material';
 
 export default function PlayerAlertBox() {
   return (
-    <Stack spacing={3}>
+    <Stack spacing={5}>
       <Alert severity="info" sx={{ width: '100%' }} onClose={() => {}}>
         Mini-Course Added
       </Alert>

@@ -55,34 +55,34 @@ const charts = {
         max: 90,
       }),
     },
-    {
-      name: 'Metric6',
-      data: generateData(18, {
-        min: 0,
-        max: 90,
-      }),
-    },
-    {
-      name: 'Metric7',
-      data: generateData(18, {
-        min: 0,
-        max: 90,
-      }),
-    },
-    {
-      name: 'Metric8',
-      data: generateData(18, {
-        min: 0,
-        max: 90,
-      }),
-    },
-    {
-      name: 'Metric9',
-      data: generateData(18, {
-        min: 0,
-        max: 90,
-      }),
-    },
+    // {
+    //   name: 'Metric6',
+    //   data: generateData(18, {
+    //     min: 0,
+    //     max: 90,
+    //   }),
+    // },
+    // {
+    //   name: 'Metric7',
+    //   data: generateData(18, {
+    //     min: 0,
+    //     max: 90,
+    //   }),
+    // },
+    // {
+    //   name: 'Metric8',
+    //   data: generateData(18, {
+    //     min: 0,
+    //     max: 90,
+    //   }),
+    // },
+    // {
+    //   name: 'Metric9',
+    //   data: generateData(18, {
+    //     min: 0,
+    //     max: 90,
+    //   }),
+    // },
   ],
   options: {
     chart: {
@@ -100,6 +100,6 @@ const charts = {
 };
 
 const ApexBasicChart: React.FC = () => (
-  <Chart options={charts.options} series={charts.series} type="heatmap" width="100%" height={290} />
+  <Chart options={charts.options} series={charts.series} type="heatmap" width="100%" height={200} />
 );
 export default ApexBasicChart;
