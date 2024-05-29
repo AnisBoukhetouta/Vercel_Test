@@ -14,6 +14,7 @@ import { AnalyticsChartsValue } from 'src/constants';
 import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
 
 import { CustomStepper } from 'src/components/custom-stepper';
+import {ApexBasicChart} from 'src/components/custom-apex-chart';
 
 import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-website-visits';
 
@@ -21,7 +22,6 @@ import PlayerModel from './player-model';
 import CustomMailList from './CustomMailList';
 import PlayerEchoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
-import PlayerApexChart from './player-apex-chart';
 import PlayerController from './player-controller';
 import CustomAnalyticsSubject from './CustomAnalyticsSubject';
 import PlayerConfirmDialog from './player-confirm-dialog/player-confirm-dialog';
@@ -74,7 +74,7 @@ export default function PlayerDashboard() {
               <Grid item xs={6}>
                 <Stack spacing={3}>
                   <Typography variant="h4">Activity</Typography>
-                  <PlayerApexChart />
+                  <ApexBasicChart />
                   <PlayerAlertBox />
                 </Stack>
               </Grid>

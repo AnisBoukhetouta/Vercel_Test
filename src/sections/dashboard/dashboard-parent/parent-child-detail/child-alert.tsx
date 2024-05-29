@@ -1,8 +1,8 @@
-import { Alert, Stack } from "@mui/material";
+import { Alert, Stack } from '@mui/material';
 
 export default function ChildAlert() {
   return (
-    <Stack spacing={3} sx={{ pt: 7 }}>
+    <Stack spacing={4} sx={{ pt: 7 }}>
       <Alert severity="info" sx={{ width: '100%' }} onClose={() => {}}>
         Mini-Course Added
       </Alert>

@@ -1,8 +1,9 @@
 import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
 
+import { ApexMultipleChart } from 'src/components/custom-apex-chart';
+
 import ParentGrade from './parent-grade';
-import ParentApexChart from './parent-apex-chart';
 import ParentChildDetail from './parent-child-detail/parent-child-detail';
 
 export default function ParentDashboard() {
@@ -10,7 +11,7 @@ export default function ParentDashboard() {
     <Box component="div" sx={{ p: '24px' }}>
       <Grid container spacing={5}>
         <Grid item xs={8}>
-          <ParentApexChart />
+          <ApexMultipleChart />
         </Grid>
         <Grid item xs={3}>
           <ParentGrade />
