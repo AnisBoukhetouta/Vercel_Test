@@ -182,7 +182,7 @@ export default function FirebaseRegisterView() {
                   color="primary"
                   size="medium"
                   onClick={handleCodeCheck}
-                  disabled={false}
+                  disabled={!code}
                   edge="end"
                 >
                   <CustomCheckButton checking={checking} checked={checked} error={checkError} />
