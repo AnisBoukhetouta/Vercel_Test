@@ -30,7 +30,7 @@ export const mutateUserInfo = async (args: any) => {
 
 export const codeCheckApi = async (args: any) => {
   try {
-    const {data} = await axios.post(CODE_CHECK_URL, args);
+    const { data } = await axios.post(CODE_CHECK_URL, args);
     return data;
   } catch (err) {
     console.error(err);
