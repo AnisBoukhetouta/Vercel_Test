@@ -2,8 +2,11 @@ import { Grid } from '@mui/material';
 
 import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 
-export default function PlayerConfirmContent() {
-  const container = skins.map((skin, index) => (
+import { useCheckoutContext } from 'src/sections/checkout/context';
+
+export default function PlayerConfirmContent({ characters }: any[] | any) {
+  const { setGlb } = useCheckoutContext();
+  const container = characters.map((skin: any, index: number) => (
     <Grid
       item
       key={index}
@@ -13,8 +16,8 @@ export default function PlayerConfirmContent() {
       <FortniteSoloCard
         title="Skin"
         description="Skin"
-        mainImage={`/assets/images/profile_images/${skin}`}
-        onClick={() => {}}
+        mainImage={skin.coverImage}
+        onClick={() => setGlb(skin.character)}
       />
     </Grid>
   ));

@@ -10,11 +10,13 @@ import { useSearchParams } from 'src/routes/hooks';
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { useGetMails } from 'src/api/mail';
+import { DEV_HOST_API } from 'src/config-global';
 import { AnalyticsChartsValue } from 'src/constants';
+import { getAllCharacters } from 'src/api/dashboard';
 import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
 
 import { CustomStepper } from 'src/components/custom-stepper';
-import {ApexBasicChart} from 'src/components/custom-apex-chart';
+import { ApexBasicChart } from 'src/components/custom-apex-chart';
 
 import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-website-visits';
 
@@ -34,9 +36,37 @@ export default function PlayerDashboard() {
   const selectedMailId = searchParams.get('id') || '';
   const selectedLabelId = searchParams.get('label') || 'inbox';
   const { mails, mailsLoading, mailsError, mailsEmpty } = useGetMails(selectedLabelId);
+  const [characters, setCharacters] = React.useState<any>([]);
 
   const handleClickMail = React.useCallback((mailId: string) => {
     console.log('MailId: ', mailId);
+  }, []);
+
+  const handleGetCharacters = async () => {
+    try {
+      const result = await getAllCharacters();
+      console.log('result: ', result);
+      return result;
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+
+  React.useEffect(() => {
+    handleGetCharacters().then((result) => {
+      const cardData = result.map((model: any) => {
+        if (result.length > 0) {
+          return {
+            _id: model._id,
+            coverImage: `${DEV_HOST_API}${model.path}/${model.coverImage}`,
+            characterTitle: model.characterTitle,
+            character: `${DEV_HOST_API}${model.path}/${model.files[0].title}`,
+          };
+        }
+        return [];
+      });
+      setCharacters(cardData);
+    });
   }, []);
 
   return (
@@ -97,7 +127,7 @@ export default function PlayerDashboard() {
         open={confirm.value}
         onClose={confirm.onFalse}
         title="Skins"
-        content={<PlayerConfirmContent />}
+        content={<PlayerConfirmContent characters={characters} />}
         action={
           <Button variant="contained" color="primary" onClick={() => {}}>
             Select

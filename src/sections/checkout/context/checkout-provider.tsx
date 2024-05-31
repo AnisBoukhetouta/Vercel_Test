@@ -1,7 +1,7 @@
 'use client';
 
 import uniq from 'lodash/uniq';
-import { useMemo, useEffect, useCallback } from 'react';
+import React, { useMemo, useEffect, useCallback } from 'react';
 
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
@@ -36,6 +36,8 @@ type Props = {
 
 export function CheckoutProvider({ children }: Props) {
   const router = useRouter();
+
+  const [glb, setGlb] = React.useState<string>();
 
   const { state, update, reset } = useLocalStorage(STORAGE_KEY, initialState);
 
@@ -192,6 +194,9 @@ export function CheckoutProvider({ children }: Props) {
       ...state,
       completed,
       //
+      glb,
+      setGlb,
+      //
       onAddToCart,
       onDeleteCart,
       //
@@ -209,6 +214,10 @@ export function CheckoutProvider({ children }: Props) {
       onReset,
     }),
     [
+      //
+      glb,
+      setGlb,
+      //
       completed,
       onAddToCart,
       onApplyDiscount,

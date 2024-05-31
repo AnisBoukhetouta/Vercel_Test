@@ -45,6 +45,9 @@ export type ICheckoutValue = {
 export type CheckoutContextProps = ICheckoutValue & {
   completed: boolean;
   //
+  glb: string;
+  setGlb: (newGlb: string) => void;
+  //
   onAddToCart: (newItem: Omit<ICheckoutItem, 'subTotal'>) => void;
   onDeleteCart: (itemId: string) => void;
   //

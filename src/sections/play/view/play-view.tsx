@@ -13,6 +13,8 @@ import { GameContext } from 'src/game/context/game-context';
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
 
+import { useCheckoutContext } from 'src/sections/checkout/context';
+
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
@@ -26,6 +28,7 @@ export default function PlayView() {
   const [description, setDescription] = React.useState<string>('');
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
+  const { glb } = useCheckoutContext();
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;
@@ -67,7 +70,7 @@ export default function PlayView() {
               <PlayGamePanel />
             ) : (
               <>
-                <ModelViewer src="/models/character.glb" />
+                <ModelViewer src={glb ?? '/models/character1.glb'} />
                 <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}

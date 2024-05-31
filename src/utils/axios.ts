@@ -68,4 +68,7 @@ export const endpoints = {
     assets: '/api/getAssets',
     upload: '/api/gameUpload',
   },
+  dashboard: {
+    allCharacters: '/api/getAllCharacters',
+  }
 };
