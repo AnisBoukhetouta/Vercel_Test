@@ -64,8 +64,8 @@ export const endpoints = {
   },
   //-------------------------------------
   games: {
-    games: '/getGames',
-    assets: '/getAssets',
-    upload: '/gameUpload',
+    games: '/api/getGames',
+    assets: '/api/getAssets',
+    upload: '/api/gameUpload',
   },
 };
