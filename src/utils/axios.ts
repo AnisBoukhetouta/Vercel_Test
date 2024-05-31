@@ -42,8 +42,9 @@ export const endpoints = {
     me: '/api/auth/me',
     login: '/api/auth/login',
     register: '/api/auth/register',
-    userInfo: '/api/pwniq/userInfo',
-    mutateUserInfo: '/api/pwniq/mutateUserInfo',
+    userInfo: '/api/userInfo',
+    codeCheck: '/api/codeCheck',
+    mutateUserInfo: '/api/mutateUserInfo',
   },
   mail: {
     list: '/api/mail/list',

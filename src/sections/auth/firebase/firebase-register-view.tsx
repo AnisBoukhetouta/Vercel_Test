@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import { TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -20,10 +21,12 @@ import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import { codeCheckApi } from 'src/api/auth';
 import { useAuthContext } from 'src/auth/hooks';
 
 import Iconify from 'src/components/iconify';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
+import CustomCheckButton from 'src/components/custom-button/custom-check-button';
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +34,11 @@ export default function FirebaseRegisterView() {
   const { register, loginWithGoogle, loginWithGithub, loginWithTwitter } = useAuthContext();
 
   const [errorMsg, setErrorMsg] = useState('');
+
+  const [code, setCode] = useState('');
+  const [checking, setChecking] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [checkError, setCheckError] = useState(false);
 
   const router = useRouter();
 
@@ -102,6 +110,27 @@ export default function FirebaseRegisterView() {
     }
   };
 
+  const handleCodeChange = (event: any) => {
+    setChecked(false);
+    setCheckError(false);
+    setCode(event.target.value);
+  };
+
+  const handleCodeCheck = async () => {
+    try {
+      setChecking(true);
+      const response = await codeCheckApi({ code });
+      setChecking(false);
+      if (response) {
+        setChecked(true);
+      } else {
+        setCheckError(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const renderHead = (
     <Stack spacing={2} sx={{ mb: 5, position: 'relative' }}>
       <Typography variant="h4">Get started absolutely free</Typography>
@@ -141,20 +170,44 @@ export default function FirebaseRegisterView() {
   const renderForm = (
     <Stack spacing={2.5}>
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-        <RHFTextField name="firstName" label="First name" />
-        <RHFTextField name="lastName" label="Last name" />
+        <TextField
+          name="Code"
+          label="Pass Code"
+          fullWidth
+          onChange={handleCodeChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment sx={{ p: 0, m: 0 }} position="end">
+                <IconButton
+                  color="primary"
+                  size="medium"
+                  onClick={handleCodeCheck}
+                  disabled={false}
+                  edge="end"
+                >
+                  <CustomCheckButton checking={checking} checked={checked} error={checkError} />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Stack>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+        <RHFTextField name="firstName" label="First name" disabled={!checked} />
+        <RHFTextField name="lastName" label="Last name" disabled={!checked} />
       </Stack>
 
-      <RHFTextField name="email" label="Email address" />
+      <RHFTextField name="email" label="Email address" disabled={!checked} />
 
       <RHFTextField
         name="password"
         label="Password"
+        disabled={!checked}
         type={password.value ? 'text' : 'password'}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton onClick={password.onToggle} edge="end">
+              <IconButton onClick={password.onToggle} disabled={!checked} edge="end">
                 <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
               </IconButton>
             </InputAdornment>
@@ -168,6 +221,7 @@ export default function FirebaseRegisterView() {
         size="large"
         type="submit"
         variant="contained"
+        disabled={!checked}
         loading={isSubmitting}
       >
         Create account
