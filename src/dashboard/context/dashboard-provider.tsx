@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function DashboardProvider({ children }: Props) {
-  const [role, setRole] = React.useState<string>('Player');
+  const [role, setRole] = React.useState<string>('Admin');
   const [characterId, setCharacterId] = React.useState<number>(0);
   const confirm = useBoolean();
 
