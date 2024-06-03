@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { Box } from '@mui/system';
 import { Grid, Stack, Button, Typography } from '@mui/material';
@@ -9,18 +9,21 @@ import { useSearchParams } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import Loading from 'src/app/loading';
 import { useGetMails } from 'src/api/mail';
+import { useAuthContext } from 'src/auth/hooks';
 import { DEV_HOST_API } from 'src/config-global';
 import { AnalyticsChartsValue } from 'src/constants';
-import { getAllCharacters } from 'src/api/dashboard';
 import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
+import { mutateCharacter, getAllCharacters, getCurrentCharacter } from 'src/api/dashboard';
 
 import { CustomStepper } from 'src/components/custom-stepper';
 import { ApexBasicChart } from 'src/components/custom-apex-chart';
+import ModelViewer from 'src/components/model-viewer/model-viewer';
 
+import { useCheckoutContext } from 'src/sections/checkout/context';
 import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-website-visits';
 
-import PlayerModel from './player-model';
 import CustomMailList from './CustomMailList';
 import PlayerEcoData from './player-eco-data';
 import PlayerAlertBox from './player-alert-box';
@@ -31,12 +34,30 @@ import PlayerConfirmContent from './player-confirm-dialog/player-confirm-content
 
 export default function PlayerDashboard() {
   const openMail = useBoolean();
+  const { user } = useAuthContext();
+  const { glbId } = useCheckoutContext();
   const { confirm } = useDashboardContext();
   const searchParams = useSearchParams();
+  const [refresh, setRefresh] = React.useState(false);
   const selectedMailId = searchParams.get('id') || '';
   const selectedLabelId = searchParams.get('label') || 'inbox';
   const { mails, mailsLoading, mailsError, mailsEmpty } = useGetMails(selectedLabelId);
   const [characters, setCharacters] = React.useState<any>([]);
+  const [characterUrl, setCharacterUrl] = React.useState<string>();
+
+  React.useEffect(() => {
+    const currentCharacter = async (uid: string) => {
+      try {
+        const result = await getCurrentCharacter(uid);
+        setCharacterUrl(`${DEV_HOST_API}${result}`);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    if (user?.uid) {
+      currentCharacter(user?.uid);
+    }
+  }, [user, refresh]);
 
   const handleClickMail = React.useCallback((mailId: string) => {
     console.log('MailId: ', mailId);
@@ -49,6 +70,16 @@ export default function PlayerDashboard() {
       return result;
     } catch (error) {
       return console.error(error);
+    }
+  };
+
+  const updateCharacter = async () => {
+    try {
+      const result = await mutateCharacter({ uid: user?.uid, skinId: glbId });
+      console.log('result: ', result);
+      setRefresh(!refresh);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -73,7 +104,11 @@ export default function PlayerDashboard() {
     <Box component="div" sx={{ px: '24px' }}>
       <Grid container spacing={2}>
         <Grid item xs={5}>
-          <PlayerModel />
+          <Box component="div" height="473px" sx={{ position: 'relative' }}>
+            <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>
+              {!characterUrl ? <Loading sx={{ zIndex: 0 }} /> : <ModelViewer src={characterUrl} />}
+            </Suspense>
+          </Box>
           <PlayerController />
           <CustomAnalyticsSubject
             title=""
@@ -129,7 +164,7 @@ export default function PlayerDashboard() {
         title="Skins"
         content={<PlayerConfirmContent characters={characters} />}
         action={
-          <Button variant="contained" color="primary" onClick={() => {}}>
+          <Button variant="contained" color="primary" onClick={updateCharacter}>
             Select
           </Button>
         }

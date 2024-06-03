@@ -12,13 +12,9 @@ type Props = {
 
 export default function DashboardProvider({ children }: Props) {
   const [role, setRole] = React.useState<string>('Player');
-  const [characterId, setCharacterId] = React.useState<number>(0);
   const confirm = useBoolean();
 
-  const memoContext = React.useMemo(
-    () => ({ role, characterId, confirm, setRole, setCharacterId }),
-    [role, characterId, confirm]
-  );
+  const memoContext = React.useMemo(() => ({ role, confirm, setRole }), [role, confirm]);
 
   return <DashboardContext.Provider value={memoContext}>{children}</DashboardContext.Provider>;
 }

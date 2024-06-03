@@ -70,5 +70,7 @@ export const endpoints = {
   },
   dashboard: {
     allCharacters: '/api/getAllCharacters',
-  }
+    mutateCharacter: '/api/skinUpdate',
+    getCurrentCharacter: '/api/getCurrentSkin',
+  },
 };

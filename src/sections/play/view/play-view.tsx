@@ -1,19 +1,21 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useScroll } from 'framer-motion';
 
 import { Box, Stack, alpha } from '@mui/material';
 
+import Loading from 'src/app/loading';
 import MainLayout from 'src/layouts/main';
 import { useGetGames } from 'src/api/games';
 import { _carouselBigCards } from 'src/_mock';
+import { useAuthContext } from 'src/auth/hooks';
+import { DEV_HOST_API } from 'src/config-global';
+import { getCurrentCharacter } from 'src/api/dashboard';
 import { GameContext } from 'src/game/context/game-context';
 
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
-
-import { useCheckoutContext } from 'src/sections/checkout/context';
 
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
@@ -26,9 +28,24 @@ export default function PlayView() {
   const [play, setPlay] = React.useState<boolean>(false);
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [description, setDescription] = React.useState<string>('');
+  const [characterUrl, setCharacterUrl] = React.useState<string>();
   const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
-  const { glb } = useCheckoutContext();
+  const { user } = useAuthContext();
+
+  React.useEffect(() => {
+    const currentCharacter = async (uid: string) => {
+      try {
+        const result = await getCurrentCharacter(uid);
+        setCharacterUrl(`${DEV_HOST_API}${result}`);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    if (user?.uid) {
+      currentCharacter(user?.uid);
+    }
+  }, [user]);
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;
@@ -70,7 +87,13 @@ export default function PlayView() {
               <PlayGamePanel />
             ) : (
               <>
-                <ModelViewer src={glb ?? '/models/character1.glb'} />
+                <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>
+                  {!characterUrl ? (
+                    <Loading sx={{ zIndex: 0 }} />
+                  ) : (
+                    <ModelViewer src={characterUrl} />
+                  )}
+                </Suspense>
                 <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}

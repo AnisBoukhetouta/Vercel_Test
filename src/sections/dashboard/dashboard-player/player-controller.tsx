@@ -2,11 +2,10 @@
 
 import { Fab, Stack } from '@mui/material';
 
-import { CharacterType } from 'src/constants';
 import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
 
 export default function PlayerController() {
-  const { confirm, setCharacterId } = useDashboardContext();
+  const { confirm } = useDashboardContext();
   return (
     <Stack direction="row" justifyContent="center" spacing={5} sx={{ p: 3 }}>
       <Fab variant="extended" color="primary" aria-label="Skin" onClick={confirm.onTrue}>
@@ -17,7 +16,7 @@ export default function PlayerController() {
         color="primary"
         aria-label="Skin"
         onClick={() => {
-          setCharacterId(CharacterType.backBling);
+          console.log('CLICKED');
         }}
       >
         Back Bling
@@ -27,7 +26,7 @@ export default function PlayerController() {
         color="primary"
         aria-label="Skin"
         onClick={() => {
-          setCharacterId(CharacterType.glider);
+          console.log('CLICKED');
         }}
       >
         Glider
@@ -37,7 +36,7 @@ export default function PlayerController() {
         color="primary"
         aria-label="Skin"
         onClick={() => {
-          setCharacterId(CharacterType.icon);
+          console.log('CLICKED');
         }}
       >
         Icon

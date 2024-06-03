@@ -5,7 +5,13 @@ import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 import { useCheckoutContext } from 'src/sections/checkout/context';
 
 export default function PlayerConfirmContent({ characters }: any[] | any) {
-  const { setGlb } = useCheckoutContext();
+  const { setGlbId,setGlb } = useCheckoutContext();
+
+  const handleClick = (e: any) => {
+    setGlbId(e._id);
+    setGlb(e.character);
+  }
+
   const container = characters.map((skin: any, index: number) => (
     <Grid
       item
@@ -17,7 +23,7 @@ export default function PlayerConfirmContent({ characters }: any[] | any) {
         title="Skin"
         description="Skin"
         mainImage={skin.coverImage}
-        onClick={() => setGlb(skin.character)}
+        onClick={() => handleClick(skin)}
       />
     </Grid>
   ));

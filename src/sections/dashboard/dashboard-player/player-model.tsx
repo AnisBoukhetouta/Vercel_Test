@@ -1,24 +1,38 @@
 'use clinet';
 
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 
 import { Box } from '@mui/material';
 
 import Loading from 'src/app/loading';
-import { useDashboardContext } from 'src/dashboard/hook/useDashboardContext';
+import { useAuthContext } from 'src/auth/hooks';
+import { DEV_HOST_API } from 'src/config-global';
+import { getCurrentCharacter } from 'src/api/dashboard';
 
 import ModelViewer from 'src/components/model-viewer/model-viewer';
 
-import { useCheckoutContext } from 'src/sections/checkout/context';
-
 export default function PlayerModel() {
-  const { characterId } = useDashboardContext();
-  const { glb } = useCheckoutContext();
+  const { user } = useAuthContext();
+  const [characterUrl, setCharacterUrl] = React.useState<string>();
+
+  React.useEffect(() => {
+    const currentCharacter = async (uid: string) => {
+      try {
+        const result = await getCurrentCharacter(uid);
+        setCharacterUrl(`${DEV_HOST_API}${result}`);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    if (user?.uid) {
+      currentCharacter(user?.uid);
+    }
+  }, [user]);
 
   return (
     <Box component="div" height="473px" sx={{ position: 'relative' }}>
-      <Suspense fallback={<Loading sx={{ zIndex: 10 }} />}>
-        <ModelViewer src={glb ?? `/models/character${characterId + 1}.glb`} />
+      <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>
+        {!characterUrl ? <Loading sx={{ zIndex: 0 }} /> : <ModelViewer src={characterUrl} />}
       </Suspense>
     </Box>
   );

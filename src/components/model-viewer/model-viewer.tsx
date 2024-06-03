@@ -8,11 +8,11 @@ import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber';
 import classes from './model-viewer.module.scss';
 
 interface Props {
-  src?: string;
+  src: string;
 }
 
 const ModelViewer = React.memo(({ src }: Props) => {
-  useLoader.clear(GLTFLoader, src ?? '/models/character.glb');
+  useLoader.clear(GLTFLoader, src);
 
   return (
     <Canvas className={classes.modelContainer}>
