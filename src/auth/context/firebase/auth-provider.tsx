@@ -189,8 +189,6 @@ export function AuthProvider({ children }: Props) {
       lastLoginAt,
     };
 
-    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~', userInfo);
-
     await mutateUserInfo(userInfo);
   }, []);
 
