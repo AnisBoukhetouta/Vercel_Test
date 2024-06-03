@@ -26,6 +26,7 @@ import CustomCarousel from '../../../components/custom-carousel/custom-carousel'
 export default function PlayView() {
   const { data } = useGetGames();
   const [play, setPlay] = React.useState<boolean>(false);
+  const [view, setView] = React.useState<boolean>(true);
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [description, setDescription] = React.useState<string>('');
   const [characterUrl, setCharacterUrl] = React.useState<string>();
@@ -47,6 +48,12 @@ export default function PlayView() {
     }
   }, [user]);
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      setView(!!characterUrl);
+    }, 2000);
+  }, [characterUrl]);
+
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
     const { deltaY } = e;
     if (deltaY < 0) {
@@ -60,6 +67,16 @@ export default function PlayView() {
     () => ({ data, gameTitle, description, setDescription, setGameTitle, setIndex, setPlay }),
     [data, gameTitle, description]
   );
+
+  const renderContent = () => {
+    if (characterUrl) {
+      return <ModelViewer src={characterUrl} />;
+    }
+    if (view) {
+      return <Loading sx={{ zIndex: 0 }} />;
+    }
+    return <ModelViewer src="/models/character.glb" />;
+  };
 
   return (
     <MainLayout>
@@ -87,13 +104,7 @@ export default function PlayView() {
               <PlayGamePanel />
             ) : (
               <>
-                <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>
-                  {!characterUrl ? (
-                    <Loading sx={{ zIndex: 0 }} />
-                  ) : (
-                    <ModelViewer src={characterUrl} />
-                  )}
-                </Suspense>
+                <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>{renderContent()}</Suspense>
                 <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}
