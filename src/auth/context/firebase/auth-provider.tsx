@@ -178,13 +178,18 @@ export function AuthProvider({ children }: Props) {
       uid,
       metadata: { createdAt, creationTime, lastLoginAt, lastSignInTime },
     } = user;
+
     const userInfo = {
+      email,
+      password,
+      creationTime,
+      lastSignInTime,
       uid,
       createdAt,
-      creationTime,
       lastLoginAt,
-      lastSignInTime,
     };
+
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~', userInfo);
 
     await mutateUserInfo(userInfo);
   }, []);
@@ -216,8 +221,6 @@ export function AuthProvider({ children }: Props) {
       const {
         uid,
         metadata: { createdAt, creationTime, lastLoginAt, lastSignInTime },
-        providerId,
-        stsTokenManager: { accessToken, refreshToken },
       } = user;
       const userInfo = {
         userName: `${firstName} ${lastName}`,
@@ -228,9 +231,6 @@ export function AuthProvider({ children }: Props) {
         uid,
         createdAt,
         lastLoginAt,
-        providerId,
-        accessToken,
-        refreshToken,
       };
 
       await postUserInfo(userInfo);
