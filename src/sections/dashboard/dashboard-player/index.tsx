@@ -21,7 +21,6 @@ import { CustomStepper } from 'src/components/custom-stepper';
 import { ApexBasicChart } from 'src/components/custom-apex-chart';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
 
-import { useCheckoutContext } from 'src/sections/checkout/context';
 import AnalyticsWebsiteVisits from 'src/sections/overview/analytics/analytics-website-visits';
 
 import CustomMailList from './CustomMailList';
@@ -35,7 +34,7 @@ import PlayerConfirmContent from './player-confirm-dialog/player-confirm-content
 export default function PlayerDashboard() {
   const openMail = useBoolean();
   const { user } = useAuthContext();
-  const { glbId } = useCheckoutContext();
+  const [glbId, setGlbId] = React.useState<string>();
   const { confirm } = useDashboardContext();
   const searchParams = useSearchParams();
   const [refresh, setRefresh] = React.useState(false);
@@ -75,9 +74,11 @@ export default function PlayerDashboard() {
 
   const updateCharacter = async () => {
     try {
-      const result = await mutateCharacter({ uid: user?.uid, skinId: glbId });
-      console.log('result: ', result);
-      setRefresh(!refresh);
+      if (glbId) {
+        const result = await mutateCharacter({ uid: user?.uid, skinId: glbId });
+        console.log('result: ', result);
+        setRefresh(!refresh);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -162,9 +163,9 @@ export default function PlayerDashboard() {
         open={confirm.value}
         onClose={confirm.onFalse}
         title="Skins"
-        content={<PlayerConfirmContent characters={characters} />}
+        content={<PlayerConfirmContent characters={characters} setGlbId={setGlbId} />}
         action={
-          <Button variant="contained" color="primary" onClick={updateCharacter}>
+          <Button variant="contained" color="primary" disabled={!glbId} onClick={updateCharacter}>
             Select
           </Button>
         }

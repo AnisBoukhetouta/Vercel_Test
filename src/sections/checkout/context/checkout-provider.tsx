@@ -37,9 +37,6 @@ type Props = {
 export function CheckoutProvider({ children }: Props) {
   const router = useRouter();
 
-  const [glb, setGlb] = React.useState<string>();
-  const [glbId, setGlbId] = React.useState<string>();
-
   const { state, update, reset } = useLocalStorage(STORAGE_KEY, initialState);
 
   const onGetCart = useCallback(() => {
@@ -195,11 +192,6 @@ export function CheckoutProvider({ children }: Props) {
       ...state,
       completed,
       //
-      glbId,
-      glb,
-      setGlbId,
-      setGlb,
-      //
       onAddToCart,
       onDeleteCart,
       //
@@ -217,11 +209,6 @@ export function CheckoutProvider({ children }: Props) {
       onReset,
     }),
     [
-      //
-      glb,
-      glbId,
-      setGlb,
-      setGlbId,
       //
       completed,
       onAddToCart,
