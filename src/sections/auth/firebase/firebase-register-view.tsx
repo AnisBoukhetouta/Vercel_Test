@@ -78,7 +78,7 @@ export default function FirebaseRegisterView() {
 
       const href = `${paths.auth.firebase.verify}?${searchParams}`;
 
-      router.push(href);
+      // router.push(href);
     } catch (error) {
       console.error(error);
       reset();
