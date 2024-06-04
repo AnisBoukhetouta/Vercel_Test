@@ -1,4 +1,5 @@
 module.exports = {
+  compress: false,
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,

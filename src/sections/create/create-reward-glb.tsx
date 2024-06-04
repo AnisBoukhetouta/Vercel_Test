@@ -6,11 +6,13 @@ import { useFormikContext } from 'formik';
 import { Stack } from '@mui/material';
 
 import { CustomUpload } from 'src/components/custom-upload';
-import { SmallTypography } from 'src/components/custom-typo/custom-typo';
+import { SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateRewardGlb() {
   const [mainFile, setMainFile] = React.useState<File | string | null>(null);
   const [secondFile, setSecondFile] = React.useState<File | string | null>(null);
+
+  const accept = { 'model/gltf-binary': ['.glb', '.gltf'] };
 
   const { setFieldValue } = useFormikContext();
 
@@ -47,7 +49,7 @@ export default function CreateRewardGlb() {
   return (
     <Stack direction="row" flexWrap="wrap" gap={7}>
       <Stack direction="row">
-        <SmallTypography title="UPLOAD REWARD GLB" />
+        <SmallRequiredTypography title="UPLOAD REWARD GLB" />
         <CustomUpload
           file={mainFile}
           onDrop={handleDropMainFile}
@@ -55,11 +57,12 @@ export default function CreateRewardGlb() {
             setMainFile(null);
             setFieldValue('rewardGlb', null);
           }}
+          accept={accept}
           sx={{ width: '450px' }}
         />
       </Stack>
       <Stack direction="row" gap={5}>
-        <SmallTypography title="UPLOAD BACKGROUND GLB" />
+        <SmallRequiredTypography title="UPLOAD BACKGROUND GLB" />
         <CustomUpload
           file={secondFile}
           onDrop={handleDropSecondFile}
@@ -67,6 +70,7 @@ export default function CreateRewardGlb() {
             setSecondFile(null);
             setFieldValue('backgroundGlb', null);
           }}
+          accept={accept}
           sx={{ width: '450px' }}
         />
       </Stack>

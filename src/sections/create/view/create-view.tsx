@@ -100,10 +100,10 @@ export default function CreateView() {
       if (values.backgroundGlb) formData.append('backgroundGlb', values.backgroundGlb);
       if (values.gameFiles.length > 0) {
         values.gameFiles.forEach((file, index) => {
-          if (file.name.endsWith('.data')) formData.append(`gameFile0`, file);
-          if (file.name.endsWith('.wasm')) formData.append(`gameFile1`, file);
-          if (file.name.endsWith('.framework.js')) formData.append(`gameFile2`, file);
-          if (file.name.endsWith('.loader.js')) formData.append(`gameFile3`, file);
+          if (file.name.includes('.data')) formData.append(`gameFile0`, file);
+          if (file.name.includes('.wasm')) formData.append(`gameFile1`, file);
+          if (file.name.includes('.framework.js')) formData.append(`gameFile2`, file);
+          if (file.name.includes('.loader.js')) formData.append(`gameFile3`, file);
         });
       }
 

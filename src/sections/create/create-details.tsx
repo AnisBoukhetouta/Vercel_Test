@@ -4,13 +4,13 @@ import { useFormikContext } from 'formik';
 
 import { Stack, TextField } from '@mui/material';
 
-import { SmallTypography } from 'src/components/custom-typo/custom-typo';
+import { SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateDetails() {
   const { handleChange } = useFormikContext();
   return (
     <Stack direction="row" gap={1}>
-      <SmallTypography title="DETAILS" />
+      <SmallRequiredTypography title="DETAILS" />
       <Stack direction="row" gap={5} sx={{ minWidth: '675px' }}>
         <TextField
           name="gameTitle"

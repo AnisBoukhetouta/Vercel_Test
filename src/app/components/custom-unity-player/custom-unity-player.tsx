@@ -1,34 +1,32 @@
 import React from 'react';
 import { getAuth } from 'firebase/auth';
-import { Unity, UnityConfig, useUnityContext } from 'react-unity-webgl';
+import { Unity, useUnityContext } from 'react-unity-webgl';
 
 import { Box, Alert, Typography } from '@mui/material';
 
-import { DEV_HOST_API } from 'src/config-global';
+import { DEV_ASSET_API } from 'src/config-global';
 import { useGameContext } from 'src/game/hook/use-game-context';
 
 import Nebula from '../nebula/nebula';
 import classes from './custom-unity-player.module.scss';
 
 export default function CustomUnityPlayer() {
-  const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(null);
+  // const [unityConfig, setUnityConfig] = React.useState<UnityConfig | null>(null);
   const { data, gameTitle } = useGameContext();
   const [game] = data.filter((x: any) => x.gameTitle === gameTitle);
-  const configSelector = game.files.length > 7;
+  const { files } = game;
 
-  const unityLoader = configSelector ? game.files[6].gameFile3 : game.files[5].gameFile3;
-  const unityData = configSelector ? game.files[4].gameFile0 : game.files[3].gameFile0;
-  const unityFramework = configSelector ? game.files[5].gameFile2 : game.files[4].gameFile2;
-  const unityCode = configSelector ? game.files[7].gameFile1 : game.files[6].gameFile1;
+  const [dataUrl] = files.filter((x: any) => x.gameFile0);
+  const [codeUrl] = files.filter((x: any) => x.gameFile1);
+  const [frameworkUrl] = files.filter((x: any) => x.gameFile2);
+  const [loaderUrl] = files.filter((x: any) => x.gameFile3);
 
-  React.useEffect(() => {
-    setUnityConfig({
-      loaderUrl: `${DEV_HOST_API}/${unityLoader}`,
-      dataUrl: `${DEV_HOST_API}/${unityData}`,
-      frameworkUrl: `${DEV_HOST_API}/${unityFramework}`,
-      codeUrl: `${DEV_HOST_API}/${unityCode}`,
-    });
-  }, [unityLoader, unityData, unityFramework, unityCode]);
+  const unityConfig = {
+    loaderUrl: `${DEV_ASSET_API}/${loaderUrl.gameFile3}`,
+    dataUrl: `${DEV_ASSET_API}/${dataUrl.gameFile0}`,
+    frameworkUrl: `${DEV_ASSET_API}/${frameworkUrl.gameFile2}`,
+    codeUrl: `${DEV_ASSET_API}/${codeUrl.gameFile1}`,
+  };
 
   return (
     <Box
