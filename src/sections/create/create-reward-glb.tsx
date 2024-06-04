@@ -3,7 +3,7 @@
 import React from 'react';
 import { useFormikContext } from 'formik';
 
-import { Stack } from '@mui/material';
+import { Grid } from '@mui/material';
 
 import { CustomUpload } from 'src/components/custom-upload';
 import { SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
@@ -47,33 +47,45 @@ export default function CreateRewardGlb() {
   );
 
   return (
-    <Stack direction="row" flexWrap="wrap" gap={7}>
-      <Stack direction="row">
-        <SmallRequiredTypography title="UPLOAD REWARD GLB" />
-        <CustomUpload
-          file={mainFile}
-          onDrop={handleDropMainFile}
-          onDelete={() => {
-            setMainFile(null);
-            setFieldValue('rewardGlb', null);
-          }}
-          accept={accept}
-          sx={{ width: '450px' }}
-        />
-      </Stack>
-      <Stack direction="row" gap={5}>
-        <SmallRequiredTypography title="UPLOAD BACKGROUND GLB" />
-        <CustomUpload
-          file={secondFile}
-          onDrop={handleDropSecondFile}
-          onDelete={() => {
-            setSecondFile(null);
-            setFieldValue('backgroundGlb', null);
-          }}
-          accept={accept}
-          sx={{ width: '450px' }}
-        />
-      </Stack>
-    </Stack>
+    <Grid container spacing={5}>
+      <Grid item md={6} lg={4.75}>
+        <Grid container>
+          <Grid item xs={4.3}>
+            <SmallRequiredTypography title="UPLOAD REWARD GLB" />
+          </Grid>
+          <Grid item xs={7.7}>
+            <CustomUpload
+              file={mainFile}
+              onDrop={handleDropMainFile}
+              onDelete={() => {
+                setMainFile(null);
+                setFieldValue('rewardGlb', null);
+              }}
+              accept={accept}
+              sx={{ width: '100%' }}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item md={6} lg={4.75}>
+        <Grid container>
+          <Grid item xs={4}>
+            <SmallRequiredTypography title="UPLOAD BACKGROUND GLB" />
+          </Grid>
+          <Grid item xs={8}>
+            <CustomUpload
+              file={secondFile}
+              onDrop={handleDropSecondFile}
+              onDelete={() => {
+                setSecondFile(null);
+                setFieldValue('backgroundGlb', null);
+              }}
+              accept={accept}
+              sx={{ width: '100%' }}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }

@@ -3,7 +3,7 @@
 import React from 'react';
 import { useFormikContext } from 'formik';
 
-import { Stack, Button } from '@mui/material';
+import { Grid, Stack, Button } from '@mui/material';
 
 import { CustomUpload } from 'src/components/custom-upload';
 import { SmallTypography, SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
@@ -46,66 +46,84 @@ export default function CreateImage() {
   );
 
   return (
-    <Stack direction="row" gap={3} flexWrap="wrap" justifyContent="space-between">
-      <Stack direction="row">
-        <SmallRequiredTypography title="UPLOAD MAIN IMAGE" />
-        <CustomUpload
-          file={mainFile}
-          onDrop={handleDropMainFile}
-          onDelete={() => {
-            setMainFile(null);
-            setFieldValue('mainImage', null);
-          }}
-          accept={accept}
-          sx={{ width: '450px' }}
-        />
-      </Stack>
-      <Stack direction="row" gap={3}>
-        <SmallTypography title="UPLOAD SECONDARY IMAGE" />
-        <CustomUpload
-          file={secondFile}
-          onDrop={handleDropSecondFile}
-          onDelete={() => {
-            setSecondFile(null);
-            setFieldValue('secondImage', null);
-          }}
-          accept={accept}
-          sx={{ width: '450px' }}
-        />
-      </Stack>
-      <Stack direction="row" gap={1}>
-        <Stack gap={1} justifyContent="space-between">
-          <SmallRequiredTypography title="MAIN COLOR" />
-          {colors.map((types, index) => (
-            <Button
-              key={index}
-              variant="contained"
-              color={types.color}
-              onClick={() => {
-                setFieldValue('mainColor', types.color);
+    <Grid container spacing={5}>
+      <Grid item md={6} lg={4.75}>
+        <Grid container>
+          <Grid item xs={4.3}>
+            <SmallRequiredTypography title="UPLOAD MAIN IMAGE" />
+          </Grid>
+          <Grid item xs={7.7}>
+            <CustomUpload
+              file={mainFile}
+              onDrop={handleDropMainFile}
+              onDelete={() => {
+                setMainFile(null);
+                setFieldValue('mainImage', null);
               }}
-            >
-              {types.name}
-            </Button>
-          ))}
-        </Stack>
-        <Stack gap={1} justifyContent="space-between">
-          <SmallTypography title="SECONDARY COLOR" />
-          {colors.map((types, index) => (
-            <Button
-              key={index + 6}
-              variant="contained"
-              color={types.color}
-              onClick={() => {
-                setFieldValue('secondColor', types.color);
+              accept={accept}
+              sx={{ width: '100%' }}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item md={6} lg={4.75}>
+        <Grid container>
+          <Grid item xs={4}>
+            <SmallTypography title="UPLOAD SECONDARY IMAGE" />
+          </Grid>
+          <Grid item xs={8}>
+            <CustomUpload
+              file={secondFile}
+              onDrop={handleDropSecondFile}
+              onDelete={() => {
+                setSecondFile(null);
+                setFieldValue('secondImage', null);
               }}
-            >
-              {types.name}
-            </Button>
-          ))}
-        </Stack>
-      </Stack>
-    </Stack>
+              accept={accept}
+              sx={{ width: '100%' }}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item md={6} lg={2.5}>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <Stack gap={1} justifyContent="space-between">
+              <SmallRequiredTypography title="MAIN COLOR" />
+              {colors.map((types, index) => (
+                <Button
+                  key={index}
+                  variant="contained"
+                  color={types.color}
+                  onClick={() => {
+                    setFieldValue('mainColor', types.color);
+                  }}
+                >
+                  {types.name}
+                </Button>
+              ))}
+            </Stack>
+          </Grid>
+          <Grid item xs={6}>
+            <Stack gap={1} justifyContent="space-between">
+              <SmallTypography title="SECONDARY COLOR" />
+              {colors.map((types, index) => (
+                <Button
+                  key={index + 6}
+                  variant="contained"
+                  color={types.color}
+                  onClick={() => {
+                    setFieldValue('secondColor', types.color);
+                  }}
+                >
+                  {types.name}
+                </Button>
+              ))}
+            </Stack>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 

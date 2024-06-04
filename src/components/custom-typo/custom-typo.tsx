@@ -18,18 +18,17 @@ export function HeaderTypography({ title }: Props) {
 
 export function SmallTypography({ title }: Props) {
   return (
-    <Typography
-      width="180px"
-      sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}
-    >
-      {title}
-    </Typography>
+    <Stack height="30px" direction="row" alignItems="center">
+      <Typography sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}>
+        {title}
+      </Typography>
+    </Stack>
   );
 }
 
 export function SmallRequiredTypography({ title }: Props) {
   return (
-    <Stack direction="row" alignItems="baseline">
+    <Stack height="30px" direction="row" alignItems="baseline">
       <Typography sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}>
         {title}
       </Typography>

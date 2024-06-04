@@ -2,7 +2,7 @@
 
 import { useFormikContext } from 'formik';
 
-import { Grid, Stack, TextField } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 
 import { SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
 
