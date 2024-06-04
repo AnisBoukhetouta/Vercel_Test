@@ -8,13 +8,13 @@ import { Stack, RadioGroup, FormControlLabel } from '@mui/material';
 
 import { GameType } from 'src/constants';
 
-import { SmallTypography } from 'src/components/custom-typo/custom-typo';
+import { SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateType() {
   const { handleChange } = useFormikContext();
   return (
     <Stack direction="row" alignItems="center" gap={1}>
-      <SmallTypography title="GAME TYPE" />
+      <SmallRequiredTypography title="GAME TYPE" />
       <RadioGroup
         name="gameType"
         onChange={handleChange}

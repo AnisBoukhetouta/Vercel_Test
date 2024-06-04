@@ -8,7 +8,7 @@ import { Stack, Switch, CardHeader, CardContent, FormControlLabel } from '@mui/m
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { CustomUpload } from 'src/components/custom-upload';
-import { SmallTypography } from 'src/components/custom-typo/custom-typo';
+import { SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateGameFile() {
   const preview = useBoolean();
@@ -44,7 +44,7 @@ export default function CreateGameFile() {
 
   return (
     <Stack direction="row">
-      <SmallTypography title="GAME FILE UPLOAD" />
+      <SmallRequiredTypography title="GAME FILE UPLOAD" />
       <Stack width="90%" gap={3}>
         <CardHeader
           title="Upload Game Files *"

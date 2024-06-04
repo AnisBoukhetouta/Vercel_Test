@@ -6,12 +6,14 @@ import { useFormikContext } from 'formik';
 import { Stack, Button } from '@mui/material';
 
 import { CustomUpload } from 'src/components/custom-upload';
-import { SmallTypography } from 'src/components/custom-typo/custom-typo';
+import { SmallTypography, SmallRequiredTypography } from 'src/components/custom-typo/custom-typo';
 
 export default function CreateImage() {
   const [mainFile, setMainFile] = React.useState<File | string | null>(null);
   const [secondFile, setSecondFile] = React.useState<File | string | null>(null);
   const { setFieldValue } = useFormikContext();
+
+  const accept = { 'image/*': ['.jpeg', '.jpg', '.png', '.gif', '.bmp', '.webp', '.tiff', '.svg'] };
 
   const handleDropMainFile = React.useCallback(
     (acceptedFiles: File[]) => {
@@ -46,7 +48,7 @@ export default function CreateImage() {
   return (
     <Stack direction="row" gap={3} flexWrap="wrap" justifyContent="space-between">
       <Stack direction="row">
-        <SmallTypography title="UPLOAD MAIN IMAGE" />
+        <SmallRequiredTypography title="UPLOAD MAIN IMAGE" />
         <CustomUpload
           file={mainFile}
           onDrop={handleDropMainFile}
@@ -54,6 +56,7 @@ export default function CreateImage() {
             setMainFile(null);
             setFieldValue('mainImage', null);
           }}
+          accept={accept}
           sx={{ width: '450px' }}
         />
       </Stack>
@@ -66,12 +69,13 @@ export default function CreateImage() {
             setSecondFile(null);
             setFieldValue('secondImage', null);
           }}
+          accept={accept}
           sx={{ width: '450px' }}
         />
       </Stack>
       <Stack direction="row" gap={1}>
         <Stack gap={1} justifyContent="space-between">
-          <SmallTypography title="MAIN COLOR" />
+          <SmallRequiredTypography title="MAIN COLOR" />
           {colors.map((types, index) => (
             <Button
               key={index}
@@ -86,7 +90,7 @@ export default function CreateImage() {
           ))}
         </Stack>
         <Stack gap={1} justifyContent="space-between">
-          <SmallTypography title="SECONDARY COLOR" />
+          <SmallRequiredTypography title="SECONDARY COLOR" />
           {colors.map((types, index) => (
             <Button
               key={index + 6}

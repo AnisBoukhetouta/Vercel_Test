@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 interface Props {
   title: string;
@@ -24,5 +24,18 @@ export function SmallTypography({ title }: Props) {
     >
       {title}
     </Typography>
+  );
+}
+
+export function SmallRequiredTypography({ title }: Props) {
+  return (
+    <Stack direction="row" alignItems="baseline" sx={{ width: '180px' }}>
+      <Typography sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}>
+        {title}
+      </Typography>
+      <Typography variant="h6" color="error">
+        *
+      </Typography>
+    </Stack>
   );
 }
