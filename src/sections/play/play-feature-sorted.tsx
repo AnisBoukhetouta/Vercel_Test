@@ -3,7 +3,7 @@ import { isArray } from 'lodash';
 
 import { Stack } from '@mui/material';
 
-import { DEV_HOST_API } from 'src/config-global';
+import { DEV_ASSET_API } from 'src/config-global';
 import { useGameContext } from 'src/game/hook/use-game-context';
 
 import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
@@ -25,8 +25,8 @@ export function GameCard({ cardData }: any) {
       <FortniteCoupleCard
         title={cardData.gameTitle}
         description={cardData.gameDescription}
-        mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
-        secondImage={`${DEV_HOST_API}/${secondImagePath.secondImage}`}
+        mainImage={`${DEV_ASSET_API}/${mainImagePath.mainImage}`}
+        secondImage={`${DEV_ASSET_API}/${secondImagePath.secondImage}`}
         onClick={handleClick}
       />
     );
@@ -35,7 +35,7 @@ export function GameCard({ cardData }: any) {
     <FortniteSoloCard
       title={cardData.gameTitle}
       description={cardData.gameDescription}
-      mainImage={`${DEV_HOST_API}/${mainImagePath.mainImage}`}
+      mainImage={`${DEV_ASSET_API}/${mainImagePath.mainImage}`}
       onClick={handleClick}
     />
   );
