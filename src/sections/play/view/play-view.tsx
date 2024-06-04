@@ -51,7 +51,7 @@ export default function PlayView() {
   React.useEffect(() => {
     setTimeout(() => {
       setView(!!characterUrl);
-    }, 2000);
+    }, 3000);
   }, [characterUrl]);
 
   const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
