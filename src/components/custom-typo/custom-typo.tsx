@@ -29,7 +29,7 @@ export function SmallTypography({ title }: Props) {
 
 export function SmallRequiredTypography({ title }: Props) {
   return (
-    <Stack direction="row" alignItems="baseline" sx={{ width: '180px' }}>
+    <Stack direction="row" alignItems="baseline">
       <Typography sx={{ fontSize: '12px', lineHeight: '18px', fontWeight: 700, color: '#919EAB' }}>
         {title}
       </Typography>
