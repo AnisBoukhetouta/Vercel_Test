@@ -90,7 +90,7 @@ export default function CreateImage() {
           ))}
         </Stack>
         <Stack gap={1} justifyContent="space-between">
-          <SmallRequiredTypography title="SECONDARY COLOR" />
+          <SmallTypography title="SECONDARY COLOR" />
           {colors.map((types, index) => (
             <Button
               key={index + 6}
