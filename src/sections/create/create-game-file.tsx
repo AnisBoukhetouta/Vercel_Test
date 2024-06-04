@@ -14,6 +14,14 @@ export default function CreateGameFile() {
   const preview = useBoolean();
   const [files, setFiles] = React.useState<(File | string)[]>([]);
 
+  const accept = {
+    'application/data': ['.data'],
+    'application/wasm': ['.wasm'],
+    'application/javascript': ['.js'],
+    'application/gzip': ['.gz'],
+    'application/brotli': ['.br'],
+  };
+
   const { setFieldValue } = useFormikContext();
 
   const handleDropMultiFile = React.useCallback(
@@ -61,6 +69,7 @@ export default function CreateGameFile() {
             multiple
             thumbnail={preview.value}
             files={files}
+            accept={accept}
             onDrop={handleDropMultiFile}
             onRemove={handleRemoveFile}
             onRemoveAll={handleRemoveAllFiles}
