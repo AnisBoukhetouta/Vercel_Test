@@ -15,7 +15,7 @@ import CustomButton from '../custom-button/custom-button';
 
 //----------------------------------------------------------------
 
-const STEPS = ['Stones', 'Sword', 'Brow & Arow'];
+const STEPS = ['Stones', 'Sword', 'Arrow'];
 
 type Prop = {
   context?: boolean;

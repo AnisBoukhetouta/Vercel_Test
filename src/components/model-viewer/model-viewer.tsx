@@ -15,7 +15,7 @@ const ModelViewer = React.memo(({ src }: Props) => {
   useLoader.clear(GLTFLoader, src);
 
   return (
-    <Canvas className={classes.modelContainer}>
+    <Canvas className={classes.modelContainer} style={{ position: 'absolute', zIndex: 0 }}>
       <ambientLight intensity={0.5} color="white" />
       <directionalLight intensity={0.6} color="white" position={[5, 5, 5]} />
       <pointLight intensity={0.8} color="white" position={[-5, -5, -5]} />

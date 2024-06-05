@@ -8,7 +8,6 @@ import { Box, Stack, alpha } from '@mui/material';
 import Loading from 'src/app/loading';
 import MainLayout from 'src/layouts/main';
 import { useGetGames } from 'src/api/games';
-import { _carouselBigCards } from 'src/_mock';
 import { useAuthContext } from 'src/auth/hooks';
 import { DEV_HOST_API } from 'src/config-global';
 import { getCurrentCharacter } from 'src/api/dashboard';
@@ -22,7 +21,6 @@ import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
 import PlayFeatureBottom from '../play-feature-bottom-panel';
-import CustomCarousel from '../../../components/custom-carousel/custom-carousel';
 
 export default function PlayView() {
   const { data } = useGetGames();
@@ -106,37 +104,31 @@ export default function PlayView() {
               <PlayGamePanel />
             ) : (
               <>
-                <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>{renderContent()}</Suspense>
+                <Suspense fallback={<Loading sx={{ zIndex: -10 }} />}>{renderContent()}</Suspense>
                 {/* <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}
                   sx={{ position: 'absolute', width: 330, height: 250, top: 15 }}
                   header="NEW COURSE"
                   buttonTitle="Add Course"
-                />
+                /> */}
                 <Box
                   component="div"
                   sx={{
                     width: '100%',
-                    display: 'flex',
-                    position: 'absolute',
+                    top: 0,
                     bottom: index > 2 ? 25 : '-40vh',
                     transition: 'all 2s',
-                    alignItems: 'end',
+                    alignItems: 'start',
                     justifyContent: 'space-around',
                   }}
                 >
-                  <Stack
-                    direction="row"
-                    justifyContent="space-around"
-                    width={1}
-                    sx={{ position: 'absolute', top: -790 }}
-                  >
+                  <Stack direction="row" justifyContent="space-between" width={1}>
                     <PlayLeftPanel />
                     <PlayRightPanel />
-                    <PlayFeatureBottom />
                   </Stack>
-                </Box> */}
+                  {/* <PlayFeatureBottom /> */}
+                </Box>
               </>
             )}
           </GameContext.Provider>

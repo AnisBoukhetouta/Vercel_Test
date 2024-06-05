@@ -11,8 +11,18 @@ export function NormalTypography({ title }: Props) {
 }
 
 export function HeaderTypography({ title }: Props) {
+  const long = title.length > 17;
   return (
-    <Typography sx={{ fontSize: '32px', lineHeight: '48px', fontWeight: 700 }}>{title}</Typography>
+    <Typography
+      sx={{
+        fontSize: '32px',
+        lineHeight: long ? '30px' : '45px',
+        fontWeight: 700,
+        textAlign: 'center',
+      }}
+    >
+      {title}
+    </Typography>
   );
 }
 
