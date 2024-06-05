@@ -13,6 +13,8 @@ export interface CustomFile extends File {
 export interface UploadProps extends DropzoneOptions {
   error?: boolean;
   sx?: SxProps<Theme>;
+  title?: string;
+  description?: string;
   thumbnail?: boolean;
   placeholder?: React.ReactNode;
   helperText?: React.ReactNode;

@@ -63,6 +63,8 @@ export default function CreateRewardGlb() {
               }}
               accept={accept}
               sx={{ width: '100%' }}
+              title="Drop or Select Reward file"
+              description="This file must be *.glb or *.gltf"
             />
           </Grid>
         </Grid>
@@ -82,6 +84,8 @@ export default function CreateRewardGlb() {
               }}
               accept={accept}
               sx={{ width: '100%' }}
+              title="Drop or Select Background file"
+              description="This file must be *.glb or *.gltf"
             />
           </Grid>
         </Grid>

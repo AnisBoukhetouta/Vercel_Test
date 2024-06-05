@@ -3,7 +3,7 @@
 import React from 'react';
 import { useFormikContext } from 'formik';
 
-import { Stack, Switch, CardHeader, CardContent, FormControlLabel } from '@mui/material';
+import { Grid, Stack, Switch, CardHeader, CardContent, FormControlLabel } from '@mui/material';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
@@ -51,32 +51,38 @@ export default function CreateGameFile() {
   };
 
   return (
-    <Stack direction="row">
-      <SmallRequiredTypography title="GAME FILE UPLOAD" />
-      <Stack width="90%" gap={3}>
-        <CardHeader
-          title="Upload Game Files *"
-          sx={{ p: 0 }}
-          action={
-            <FormControlLabel
-              control={<Switch checked={preview.value} onClick={preview.onToggle} />}
-              label="Show Thumbnail"
-            />
-          }
-        />
-        <CardContent sx={{ p: 0 }}>
-          <CustomUpload
-            multiple
-            thumbnail={preview.value}
-            files={files}
-            accept={accept}
-            onDrop={handleDropMultiFile}
-            onRemove={handleRemoveFile}
-            onRemoveAll={handleRemoveAllFiles}
-            onUpload={() => console.info('ON UPLOAD')}
+    <Grid container spacing={5}>
+      <Grid item xs={12} sm={1.6}>
+        <SmallRequiredTypography title="GAME FILE UPLOAD" />
+      </Grid>
+      <Grid item xs={11} sm={10.4}>
+        <Stack width="100%">
+          <CardHeader
+            // title="Upload Game Files *"
+            sx={{ p: 0 }}
+            action={
+              <FormControlLabel
+                control={<Switch checked={preview.value} onClick={preview.onToggle} />}
+                label="Show Thumbnail"
+              />
+            }
           />
-        </CardContent>
-      </Stack>
-    </Stack>
+          <CardContent sx={{ p: 0 }}>
+            <CustomUpload
+              multiple
+              thumbnail={preview.value}
+              files={files}
+              accept={accept}
+              onDrop={handleDropMultiFile}
+              onRemove={handleRemoveFile}
+              onRemoveAll={handleRemoveAllFiles}
+              onUpload={() => console.info('ON UPLOAD')}
+              title="Drop or Select Game Files"
+              description="Yout must upload 4 build files of unity. That files must be *.js, *.data, *.wasm, *.gz or *.br"
+            />
+          </CardContent>
+        </Stack>
+      </Grid>
+    </Grid>
   );
 }

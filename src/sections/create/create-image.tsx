@@ -62,6 +62,7 @@ export default function CreateImage() {
               }}
               accept={accept}
               sx={{ width: '100%' }}
+              title="Drop or Select Main Image file"
             />
           </Grid>
         </Grid>
@@ -81,6 +82,7 @@ export default function CreateImage() {
               }}
               accept={accept}
               sx={{ width: '100%' }}
+              title="Drop or Select Second Image file"
             />
           </Grid>
         </Grid>
