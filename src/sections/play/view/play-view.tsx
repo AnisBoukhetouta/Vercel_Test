@@ -20,7 +20,6 @@ import ModelViewer from 'src/components/model-viewer/model-viewer';
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
-import PlayFeatureBottom from '../play-feature-bottom-panel';
 
 export default function PlayView() {
   const { data } = useGetGames();
@@ -112,23 +111,13 @@ export default function PlayView() {
                   header="NEW COURSE"
                   buttonTitle="Add Course"
                 /> */}
-                <Box
-                  component="div"
-                  sx={{
-                    width: '100%',
-                    top: 0,
-                    bottom: index > 2 ? 25 : '-40vh',
-                    transition: 'all 2s',
-                    alignItems: 'start',
-                    justifyContent: 'space-around',
-                  }}
-                >
-                  <Stack direction="row" justifyContent="space-between" width={1}>
-                    <PlayLeftPanel />
+                <Stack justifyContent="space-between" height="100%">
+                  <Stack width={1} alignItems="end">
                     <PlayRightPanel />
                   </Stack>
-                  {/* <PlayFeatureBottom /> */}
-                </Box>
+                  <PlayLeftPanel />
+                </Stack>
+                {/* <PlayFeatureBottom /> */}
               </>
             )}
           </GameContext.Provider>

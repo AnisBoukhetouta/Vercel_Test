@@ -18,7 +18,6 @@ export default function PlayLeftPanel() {
         zIndex: 1,
         display: 'flex',
         flexDirection: 'column',
-        borderRadius: '16px',
       }}
     >
       {/* <Stack direction="column" m={3}> */}

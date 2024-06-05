@@ -21,6 +21,7 @@ export default function PlayRightPanel() {
         m: 3,
         p: 3,
         zIndex: 1,
+        width: 'min-content',
       }}
     >
       <Stack direction="column" justifyContent="space-between" gap={2} height="100%">
