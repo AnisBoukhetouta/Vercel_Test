@@ -14,6 +14,7 @@ import { DEV_HOST_API } from 'src/config-global';
 import { getCurrentCharacter } from 'src/api/dashboard';
 import { GameContext } from 'src/game/context/game-context';
 
+import { SpaceTravel } from 'src/components/space-travel';
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
 
@@ -90,7 +91,7 @@ export default function PlayView() {
           component="div"
           sx={{
             mt: 5,
-            p: '14px',
+            // p: '14px',
             position: 'relative',
             width: '100%',
             height: '90vh',
@@ -99,13 +100,14 @@ export default function PlayView() {
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
+          <SpaceTravel />
           <GameContext.Provider value={memoContext}>
             {play && gameTitle ? (
               <PlayGamePanel />
             ) : (
               <>
                 <Suspense fallback={<Loading sx={{ zIndex: 0 }} />}>{renderContent()}</Suspense>
-                <CustomCarousel
+                {/* <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}
                   sx={{ position: 'absolute', width: 330, height: 250, top: 15 }}
@@ -134,7 +136,7 @@ export default function PlayView() {
                     <PlayRightPanel />
                     <PlayFeatureBottom />
                   </Stack>
-                </Box>
+                </Box> */}
               </>
             )}
           </GameContext.Provider>
