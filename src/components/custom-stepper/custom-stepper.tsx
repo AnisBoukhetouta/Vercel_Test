@@ -15,7 +15,7 @@ import CustomButton from '../custom-button/custom-button';
 
 //----------------------------------------------------------------
 
-const STEPS = ['Level 1', 'Level 2', 'Level 3','Level 4','Level 5'];
+const STEPS = ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'];
 
 type Prop = {
   context?: boolean;
@@ -51,7 +51,7 @@ export default function CustomStepper({ context }: Prop) {
   }));
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', gap: context ? 20 : 0 }}>
       <Stepper
         sx={{ width: context ? '60%' : 1 }}
         alternativeLabel
