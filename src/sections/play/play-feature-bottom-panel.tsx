@@ -21,7 +21,7 @@ export default function PlayFeatureBottom() {
           {/* {featured.map((x) => ( */}
           {isArray(data) && data.length > 0 ? (
             data.map((x: any) => (
-              <Grid key={x._id} xs={6} md={3} sx={{ textAlign: 'end' }}>
+              <Grid key={x._id} xs={6} md={2.9} sx={{ textAlign: 'end' }}>
                 <GameCard key={x._id} cardData={x} />
               </Grid>
             ))
