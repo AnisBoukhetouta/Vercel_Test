@@ -29,7 +29,6 @@ export default function PlayView() {
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [description, setDescription] = React.useState<string>('');
   const [characterUrl, setCharacterUrl] = React.useState<string>();
-  const [index, setIndex] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
   const { user } = useAuthContext();
 
@@ -54,7 +53,7 @@ export default function PlayView() {
   }, [characterUrl]);
 
   const memoContext = React.useMemo(
-    () => ({ data, gameTitle, description, setDescription, setGameTitle, setIndex, setPlay }),
+    () => ({ data, gameTitle, description, setDescription, setGameTitle, setPlay }),
     [data, gameTitle, description]
   );
 
