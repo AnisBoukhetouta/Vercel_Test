@@ -27,7 +27,7 @@ interface Props extends CardProps {
   height: string | number;
 }
 
-export default function PlayFeatured({ list, height, ...other }: Props) {
+const PlayFeatured = ({ list, height, ...other }: Props) => {
   const carousel = useCarousel({
     speed: 800,
     autoplay: true,
@@ -63,6 +63,8 @@ export default function PlayFeatured({ list, height, ...other }: Props) {
   );
 }
 
+export default React.memo(PlayFeatured);
+
 // ----------------------------------------------------------------------
 
 type CarouselItemProps = {
@@ -71,7 +73,7 @@ type CarouselItemProps = {
   active?: boolean;
 };
 
-function CarouselItem({ item, height, active }: CarouselItemProps) {
+const CarouselItem = React.memo(({ item, height, active }: CarouselItemProps) => {
   const theme = useTheme();
   const { setIndex, setGameTitle } = useGameContext();
 
@@ -138,4 +140,4 @@ function CarouselItem({ item, height, active }: CarouselItemProps) {
       {renderImg}
     </MotionContainer>
   );
-}
+});

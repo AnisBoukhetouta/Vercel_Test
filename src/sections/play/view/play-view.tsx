@@ -20,6 +20,7 @@ import ModelViewer from 'src/components/model-viewer/model-viewer';
 import PlayLeftPanel from '../play-left-panel';
 import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
+import PlayFeatureBottom from '../play-feature-bottom-panel';
 
 export default function PlayView() {
   const { data } = useGetGames();
@@ -52,15 +53,6 @@ export default function PlayView() {
     }, 3000);
   }, [characterUrl]);
 
-  const handleWheel = React.useCallback((e: React.WheelEvent<HTMLDivElement>) => {
-    const { deltaY } = e;
-    if (deltaY < 0) {
-      setIndex((x) => (x > 0 ? x - 1 : 0));
-    } else if (deltaY > 0) {
-      setIndex((x) => (x < 8 ? x + 1 : 8));
-    }
-  }, []);
-
   const memoContext = React.useMemo(
     () => ({ data, gameTitle, description, setDescription, setGameTitle, setIndex, setPlay }),
     [data, gameTitle, description]
@@ -79,11 +71,7 @@ export default function PlayView() {
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
-      <Box
-        onWheel={handleWheel}
-        component="div"
-        sx={{ pt: 4, px: 5, width: '100%', height: '100vh' }}
-      >
+      <Box component="div" sx={{ pt: 4, px: 5, width: '100%', height: '100vh' }}>
         <Box
           component="div"
           sx={{
@@ -93,17 +81,24 @@ export default function PlayView() {
             width: '100%',
             height: '90vh',
             borderRadius: 2,
+            overflow: 'auto',
+            scrollbarWidth: 'none',
             bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
             border: (theme) => `dashed 1px ${theme.palette.divider}`,
           }}
         >
-          <SpaceTravel />
           <GameContext.Provider value={memoContext}>
             {play && gameTitle ? (
               <PlayGamePanel />
             ) : (
               <>
-                <Suspense fallback={<Loading sx={{ zIndex: -10 }} />}>{renderContent()}</Suspense>
+                <Box component="div" style={{ position: 'sticky', top: 0, height: '100%' }}>
+                  <SpaceTravel />
+                  <Suspense fallback={<Loading sx={{ zIndex: -10 }} />}>{renderContent()}</Suspense>
+                  <Stack width={1} alignItems="end" style={{ top: 30 }}>
+                    <PlayRightPanel />
+                  </Stack>
+                </Box>
                 {/* <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}
@@ -111,13 +106,10 @@ export default function PlayView() {
                   header="NEW COURSE"
                   buttonTitle="Add Course"
                 /> */}
-                <Stack justifyContent="space-between" height="100%">
-                  <Stack width={1} alignItems="end">
-                    <PlayRightPanel />
-                  </Stack>
+                <Stack sx={{ position: 'absolute', top: 625 }}>
                   <PlayLeftPanel />
                 </Stack>
-                {/* <PlayFeatureBottom /> */}
+                <PlayFeatureBottom />
               </>
             )}
           </GameContext.Provider>

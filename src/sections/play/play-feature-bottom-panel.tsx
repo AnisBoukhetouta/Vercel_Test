@@ -7,7 +7,7 @@ import PlayFeatured from './play-featured';
 
 export default function PlayFeatureBottom() {
   return (
-    <Stack width="98%" height="100%" sx={{ position: 'absolute', top: 500, left: 0 }}>
+    <Stack width="100%" sx={{ p: 3 }}>
       <Grid container direction="row" spacing={2}>
         <Grid xs={12} sm={4}>
           <PlayFeatured list={_playFeatured} height="274px" />
