@@ -179,6 +179,8 @@ export function AuthProvider({ children }: Props) {
       metadata: { createdAt, creationTime, lastLoginAt, lastSignInTime },
     } = user;
 
+    localStorage.setItem('uid', JSON.stringify(uid));
+
     const userInfo = {
       email,
       password,
@@ -253,6 +255,9 @@ export function AuthProvider({ children }: Props) {
   // LOGOUT
   const logout = useCallback(async () => {
     await signOut(AUTH);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('uid');
+    }
   }, []);
 
   // FORGOT PASSWORD

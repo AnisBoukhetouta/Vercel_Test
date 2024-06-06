@@ -16,7 +16,6 @@ import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import { bgBlur } from 'src/theme/css';
-import { useAuthContext } from 'src/auth/hooks';
 
 import Logo from 'src/components/logo';
 import Label from 'src/components/label';
@@ -43,7 +42,15 @@ export default function Header() {
 
   const offsetTop = useOffSetTop(HEADER.H_DESKTOP);
 
-  const { authenticated } = useAuthContext();
+  // const { authenticated } = useAuthContext();
+
+  const [userId, setUserId] = React.useState<string>();
+  React.useEffect(() => {
+    const uid = localStorage.getItem('uid');
+    if (uid) {
+      setUserId(uid);
+    }
+  }, []);
 
   return (
     <AppBar>
@@ -103,7 +110,7 @@ export default function Header() {
             {/* <Button variant="contained" target="_blank" rel="noopener" href={paths.minimalUI}>
               Purchase Now
             </Button> */}
-            {authenticated && (
+            {userId && (
               <Stack
                 flexGrow={1}
                 direction="row"
@@ -122,9 +129,9 @@ export default function Header() {
                 <AccountPopover />
               </Stack>
             )}
-            {mdUp && !authenticated && <LoginButton />}
+            {mdUp && !userId && <LoginButton />}
 
-            {!authenticated && (
+            {!userId && (
               <SettingsButton
                 sx={{
                   ml: { xs: 1, md: 0 },

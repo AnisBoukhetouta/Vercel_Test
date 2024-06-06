@@ -8,7 +8,6 @@ import { Box, Stack, alpha } from '@mui/material';
 import Loading from 'src/app/loading';
 import MainLayout from 'src/layouts/main';
 import { useGetGames } from 'src/api/games';
-import { useAuthContext } from 'src/auth/hooks';
 import { DEV_HOST_API } from 'src/config-global';
 import { getCurrentCharacter } from 'src/api/dashboard';
 import { GameContext } from 'src/game/context/game-context';
@@ -30,21 +29,21 @@ export default function PlayView() {
   const [description, setDescription] = React.useState<string>('');
   const [characterUrl, setCharacterUrl] = React.useState<string>();
   const { scrollYProgress } = useScroll();
-  const { user } = useAuthContext();
 
   React.useEffect(() => {
-    const currentCharacter = async (uid: string) => {
+    const uid = localStorage.getItem('uid');
+    const currentCharacter = async (userId: string) => {
       try {
-        const result = await getCurrentCharacter(uid);
+        const result = await getCurrentCharacter(userId);
         setCharacterUrl(`${DEV_HOST_API}${result}`);
       } catch (e) {
         console.error(e);
       }
     };
-    if (user?.uid) {
-      currentCharacter(user?.uid);
+    if (uid) {
+      currentCharacter(JSON.parse(uid));
     }
-  }, [user]);
+  }, []);
 
   React.useEffect(() => {
     setTimeout(() => {
