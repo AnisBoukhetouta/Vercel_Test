@@ -70,49 +70,47 @@ export default function PlayView() {
   return (
     <MainLayout>
       <ScrollProgress scrollYProgress={scrollYProgress} />
-      <Box component="div" sx={{ pt: 4, px: 5, width: '100%', height: '100vh' }}>
-        <Box
-          component="div"
-          sx={{
-            mt: 5,
-            // p: '14px',
-            position: 'relative',
-            width: '100%',
-            height: '90vh',
-            borderRadius: 2,
-            overflow: 'auto',
-            scrollbarWidth: 'none',
-            bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
-            border: (theme) => `dashed 1px ${theme.palette.divider}`,
-          }}
-        >
-          <GameContext.Provider value={memoContext}>
-            {play && gameTitle ? (
-              <PlayGamePanel />
-            ) : (
-              <>
-                <Box component="div" style={{ position: 'sticky', top: 0, height: '100%' }}>
-                  <SpaceTravel />
-                  <Suspense fallback={<Loading sx={{ zIndex: -10 }} />}>{renderContent()}</Suspense>
-                  <Stack width={1} alignItems="end" style={{ top: 30 }}>
-                    <PlayRightPanel />
-                  </Stack>
-                </Box>
-                {/* <CustomCarousel
+      <Box
+        component="div"
+        sx={{
+          mt: 5,
+          // p: '14px',
+          position: 'relative',
+          width: '100%',
+          height: '90vh',
+          borderRadius: 2,
+          overflow: 'auto',
+          scrollbarWidth: 'none',
+          bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
+          border: (theme) => `dashed 1px ${theme.palette.divider}`,
+        }}
+      >
+        <GameContext.Provider value={memoContext}>
+          {play && gameTitle ? (
+            <PlayGamePanel />
+          ) : (
+            <>
+              <Box component="div" style={{ position: 'sticky', top: 0, height: '100%' }}>
+                <SpaceTravel />
+                <Suspense fallback={<Loading sx={{ zIndex: -10 }} />}>{renderContent()}</Suspense>
+                <Stack width={1} alignItems="end" style={{ top: 30 }}>
+                  <PlayRightPanel />
+                </Stack>
+              </Box>
+              {/* <CustomCarousel
                   height="250px"
                   list={_carouselBigCards}
                   sx={{ position: 'absolute', width: 330, height: 250, top: 15 }}
                   header="NEW COURSE"
                   buttonTitle="Add Course"
                 /> */}
-                <Stack sx={{ position: 'absolute', top: 'calc(100vh - 325px)' }}>
-                  <PlayLeftPanel />
-                </Stack>
-                <PlayFeatureBottom />
-              </>
-            )}
-          </GameContext.Provider>
-        </Box>
+              <Stack sx={{ position: 'absolute', top: 'calc(100vh - 325px)' }}>
+                <PlayLeftPanel />
+              </Stack>
+              <PlayFeatureBottom />
+            </>
+          )}
+        </GameContext.Provider>
       </Box>
     </MainLayout>
   );
