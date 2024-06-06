@@ -222,6 +222,9 @@ export function AuthProvider({ children }: Props) {
         uid,
         metadata: { createdAt, creationTime, lastLoginAt, lastSignInTime },
       } = user;
+
+      localStorage.setItem('uid', JSON.stringify(uid));
+      
       const userInfo = {
         userName: `${firstName} ${lastName}`,
         email,
