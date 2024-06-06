@@ -61,7 +61,7 @@ const PlayFeatured = ({ list, height, ...other }: Props) => {
       />
     </Card>
   );
-}
+};
 
 export default React.memo(PlayFeatured);
 
@@ -75,7 +75,7 @@ type CarouselItemProps = {
 
 const CarouselItem = React.memo(({ item, height, active }: CarouselItemProps) => {
   const theme = useTheme();
-  const { setIndex, setGameTitle } = useGameContext();
+  const { setGameTitle } = useGameContext();
 
   const { coverUrl, title, description } = item;
 
@@ -99,7 +99,6 @@ const CarouselItem = React.memo(({ item, height, active }: CarouselItemProps) =>
 
   const handleClick = () => {
     setGameTitle(title);
-    setIndex(0);
   };
 
   return (

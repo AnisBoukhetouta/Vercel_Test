@@ -10,10 +10,9 @@ import FortniteSoloCard from 'src/components/fortnite-cards/fortnite-solo-card';
 import FortniteCoupleCard from 'src/components/fortnite-cards/fortnite-couple-card';
 
 export function GameCard({ cardData }: any) {
-  const { setIndex, setGameTitle, setDescription } = useGameContext();
+  const { setGameTitle, setDescription } = useGameContext();
 
   const handleClick = ({ title, description }: any) => {
-    setIndex(0);
     console.log('CLICKED');
     setGameTitle(title);
     setDescription(description);
