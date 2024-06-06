@@ -15,7 +15,7 @@ import CustomButton from '../custom-button/custom-button';
 
 //----------------------------------------------------------------
 
-const STEPS = ['Stones', 'Sword', 'Arrow'];
+const STEPS = ['Level 1', 'Level 2', 'Level 3','Level 4','Level 5'];
 
 type Prop = {
   context?: boolean;
