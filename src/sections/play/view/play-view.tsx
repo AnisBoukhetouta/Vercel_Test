@@ -106,7 +106,7 @@ export default function PlayView() {
                   header="NEW COURSE"
                   buttonTitle="Add Course"
                 /> */}
-                <Stack sx={{ position: 'absolute', top: 625 }}>
+                <Stack sx={{ position: 'absolute', top: 'calc(100vh - 325px)' }}>
                   <PlayLeftPanel />
                 </Stack>
                 <PlayFeatureBottom />
