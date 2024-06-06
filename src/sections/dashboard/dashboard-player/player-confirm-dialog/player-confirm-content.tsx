@@ -17,7 +17,8 @@ export default function PlayerConfirmContent({ characters, setGlbId }: PlayerCon
       item
       key={index}
       xs={2.4}
-      sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      sx={{ mt: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', height: 270 }}
+      spacing={3}
     >
       <FortniteSoloCard
         title="Skin"

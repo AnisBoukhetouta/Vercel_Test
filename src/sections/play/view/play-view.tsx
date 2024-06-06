@@ -28,6 +28,7 @@ export default function PlayView() {
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [description, setDescription] = React.useState<string>('');
   const [characterUrl, setCharacterUrl] = React.useState<string>();
+  const [gameProgress, setGameProgress] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
 
   React.useEffect(() => {
