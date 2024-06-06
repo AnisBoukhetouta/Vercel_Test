@@ -106,6 +106,8 @@ function ColorlibStepIcon(props: StepIconProps) {
     1: <Iconify icon="eva:settings-2-outline" width={24} />,
     2: <Iconify icon="eva:person-add-outline" width={24} />,
     3: <Iconify icon="eva:monitor-outline" width={24} />,
+    4: <Iconify icon="eva:monitor-outline" width={24} />,
+    5: <Iconify icon="eva:monitor-outline" width={24} />
   };
 
   return (
