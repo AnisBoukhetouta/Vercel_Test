@@ -51,7 +51,7 @@ export default function CustomStepper({ context }: Prop) {
   }));
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 20 }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', gap: context ? 20 : 0 }}>
       <Stepper
         sx={{ width: context ? '60%' : 1 }}
         alternativeLabel
