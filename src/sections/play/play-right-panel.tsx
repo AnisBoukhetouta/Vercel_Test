@@ -24,7 +24,13 @@ export default function PlayRightPanel() {
         width: 'min-content',
       }}
     >
-      <Stack direction="column" justifyContent="space-between" gap={2} height="100%">
+      <Stack
+        width="max-content"
+        direction="column"
+        justifyContent="space-between"
+        gap={2}
+        height="100%"
+      >
         {/* <Stack direction="column" justifyContent="space-between"> */}
         {/* <Typography sx={{ fontSize: '18px', lineHeight: '28px', fontWeight: 700 }}>
             {userName}
