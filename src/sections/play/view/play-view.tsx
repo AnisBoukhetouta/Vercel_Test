@@ -2,33 +2,36 @@
 
 import React, { Suspense } from 'react';
 import { useScroll } from 'framer-motion';
+import { Unity, useUnityContext } from 'react-unity-webgl';
 
-import { Box, Stack, alpha } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import Loading from 'src/app/loading';
 import MainLayout from 'src/layouts/main';
 import { useGetGames } from 'src/api/games';
-import { DEV_HOST_API } from 'src/config-global';
 import { getCurrentCharacter } from 'src/api/dashboard';
 import { GameContext } from 'src/game/context/game-context';
+import { DEV_HOST_API, DEV_ASSET_API } from 'src/config-global';
+import { useGameContext } from 'src/game/hook/use-game-context';
 
 import { SpaceTravel } from 'src/components/space-travel';
 import ScrollProgress from 'src/components/scroll-progress';
 import ModelViewer from 'src/components/model-viewer/model-viewer';
 
 import PlayLeftPanel from '../play-left-panel';
-import PlayGamePanel from '../play-game-panel';
 import PlayRightPanel from '../play-right-panel';
+import classes from './custom-unity-player.module.scss';
 import PlayFeatureBottom from '../play-feature-bottom-panel';
 
 export default function PlayView() {
   const { data } = useGetGames();
-  const [play, setPlay] = React.useState<boolean>(false);
   const [view, setView] = React.useState<boolean>(true);
+  const [unityView, setUnityView] = React.useState<boolean>(false);
+  const [progress, setProgress] = React.useState<number>(0);
+  const [play, setPlay] = React.useState<boolean>(false);
   const [gameTitle, setGameTitle] = React.useState<string>('');
   const [description, setDescription] = React.useState<string>('');
   const [characterUrl, setCharacterUrl] = React.useState<string>();
-  const [gameProgress, setGameProgress] = React.useState<number>(0);
   const { scrollYProgress } = useScroll();
 
   React.useEffect(() => {
@@ -53,8 +56,19 @@ export default function PlayView() {
   }, [characterUrl]);
 
   const memoContext = React.useMemo(
-    () => ({ data, gameTitle, description, setDescription, setGameTitle, setPlay }),
-    [data, gameTitle, description]
+    () => ({
+      data,
+      progress,
+      gameTitle,
+      description,
+      unityView,
+      setDescription,
+      setGameTitle,
+      setPlay,
+      setProgress,
+      setUnityView,
+    }),
+    [data, progress, unityView, gameTitle, description]
   );
 
   const renderContent = () => {
@@ -69,49 +83,99 @@ export default function PlayView() {
 
   return (
     <MainLayout>
-      <ScrollProgress scrollYProgress={scrollYProgress} />
-      <Box
-        component="div"
-        sx={{
-          mt: 5,
-          // p: '14px',
-          position: 'relative',
-          width: '100%',
-          height: '90vh',
-          borderRadius: 2,
-          overflow: 'auto',
-          scrollbarWidth: 'none',
-          bgcolor: (theme) => alpha(theme.palette.grey[500], 0.04),
-          border: (theme) => `dashed 1px ${theme.palette.divider}`,
-        }}
-      >
-        <GameContext.Provider value={memoContext}>
+      <GameContext.Provider value={memoContext}>
+        <ScrollProgress scrollYProgress={scrollYProgress} />
+        <SpaceTravel />
+        <Box
+          component="div"
+          sx={{
+            mt: 5,
+            position: 'relative',
+            width: '100%',
+            height: '90vh',
+            borderRadius: 2,
+            overflow: 'auto',
+            scrollbarWidth: 'none',
+            bgcolor: '#FFFFFF00',
+          }}
+        >
           {play && gameTitle ? (
             <PlayGamePanel />
           ) : (
             <>
               <Box component="div" style={{ position: 'sticky', top: 0, height: '100%' }}>
-                <SpaceTravel />
                 <Suspense fallback={<Loading sx={{ zIndex: -10 }} />}>{renderContent()}</Suspense>
                 <Stack width={1} alignItems="end" style={{ top: 30 }}>
                   <PlayRightPanel />
                 </Stack>
               </Box>
-              {/* <CustomCarousel
-                  height="250px"
-                  list={_carouselBigCards}
-                  sx={{ position: 'absolute', width: 330, height: 250, top: 15 }}
-                  header="NEW COURSE"
-                  buttonTitle="Add Course"
-                /> */}
               <Stack sx={{ position: 'absolute', top: 'calc(100vh - 325px)' }}>
                 <PlayLeftPanel />
               </Stack>
               <PlayFeatureBottom />
             </>
           )}
-        </GameContext.Provider>
-      </Box>
+        </Box>
+      </GameContext.Provider>
     </MainLayout>
   );
 }
+
+function PlayGamePanel() {
+  const { data, gameTitle } = useGameContext();
+  const [game] = data.filter((x: any) => x.gameTitle === gameTitle);
+  const { files } = game;
+
+  const [dataUrl] = files.filter((x: any) => x.gameFile0);
+  const [codeUrl] = files.filter((x: any) => x.gameFile1);
+  const [frameworkUrl] = files.filter((x: any) => x.gameFile2);
+  const [loaderUrl] = files.filter((x: any) => x.gameFile3);
+
+  const unityConfig = {
+    loaderUrl: `${DEV_ASSET_API}/${loaderUrl.gameFile3}`,
+    dataUrl: `${DEV_ASSET_API}/${dataUrl.gameFile0}`,
+    frameworkUrl: `${DEV_ASSET_API}/${frameworkUrl.gameFile2}`,
+    codeUrl: `${DEV_ASSET_API}/${codeUrl.gameFile1}`,
+  };
+
+  return (
+    <Stack sx={{ width: '100%', height: '100%' }} direction="row" justifyContent="space-between">
+      <Box
+        component="div"
+        sx={{
+          background: '#ffffff00',
+          width: '100%',
+        }}
+      >
+        <div>{!!unityConfig && <UnityWrapper unityConfig={unityConfig} />}</div>
+      </Box>
+    </Stack>
+  );
+}
+
+const UnityWrapper = ({ unityConfig }: any) => {
+  const { unityView, setUnityView, setProgress } = useGameContext();
+  const unityContext = useUnityContext(unityConfig);
+  const { isLoaded, loadingProgression } = unityContext;
+  console.log('isLoaded', isLoaded, loadingProgression);
+
+  React.useEffect(() => {
+    setProgress(isLoaded);
+  }, [isLoaded, setProgress]);
+
+  React.useEffect(() => {
+    if (isLoaded) setTimeout(() => setUnityView(true), 2000);
+  }, [isLoaded, setUnityView]);
+
+  React.useEffect(() => {}, [unityView]);
+
+  return (
+    <Box component="div" className={classes.container}>
+      <Unity
+        unityProvider={unityContext.unityProvider}
+        className={classes.unity}
+        style={{ display: unityView ? 'inline' : 'none' }}
+      />
+    </Box>
+  );
+};

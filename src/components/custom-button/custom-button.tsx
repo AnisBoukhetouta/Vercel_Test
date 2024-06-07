@@ -26,7 +26,14 @@ export default function CustomButton({
     <Button
       onClick={() => setPlay(true)}
       fullWidth={fullWidth}
-      sx={{ width, height, margin, padding, backgroundColor: backgroundColor ?? 'gold' }}
+      sx={{
+        width,
+        height,
+        margin,
+        padding,
+        color: 'black',
+        backgroundColor: backgroundColor ?? 'gold',
+      }}
     >
       {title}
     </Button>

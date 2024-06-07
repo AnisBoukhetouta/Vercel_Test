@@ -2,11 +2,14 @@
 
 import React, { useRef, useEffect } from 'react';
 
+import { useGameContext } from 'src/game/hook/use-game-context';
+
 import './style.css';
 import SpaceTravel from './lib/space-travel';
 
 const SpaceTravelCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const { progress } = useGameContext();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -16,7 +19,7 @@ const SpaceTravelCanvas: React.FC = () => {
     }
 
     let paused = false;
-    let throttle = 0;
+    let throttle = progress;
 
     const spaceTravel = new SpaceTravel({
       canvas,
@@ -60,6 +63,7 @@ const SpaceTravelCanvas: React.FC = () => {
       spaceTravel.resize();
     };
 
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
     document.addEventListener('keydown', handleKeyDown);
     window.addEventListener('resize', handleResize);
@@ -72,7 +76,7 @@ const SpaceTravelCanvas: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       spaceTravel.pause();
     };
-  }, []);
+  }, [progress]);
 
   return <canvas id="space-travel" ref={canvasRef} />;
 };

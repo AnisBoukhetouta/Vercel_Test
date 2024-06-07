@@ -92,7 +92,7 @@ export default function Header() {
                 sx={{ ml: 1 }}
               >
                 <Label color="info" sx={{ textTransform: 'unset', height: 22, px: 0.5 }}>
-                  v5.7.0
+                  Pwn-IQ
                 </Label>
               </Link>
             }
